@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOUSE SERVICE S.A.S | Sous-traitance & Services Professionnels</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles CSS -->
+    <style>
+        :root {
+            /* Palette Corporate House Service */
+            --bg-color: #ffffff;
+            --bg-secondary: #f4f6f8; /* Gris très clair pour alternance sections */
+            
+            --text-main: #1a1a1a; /* Noir quasi pur */
+            --text-light: #555555;
+            
+            --hs-red: #D32F2F; /* Rouge professionnel (pas trop vif) */
+            --hs-blue: #29B6F6; /* Bleu ciel corporate */
+            --hs-yellow: #FBC02D; /* Jaune lisible sur blanc */
+            --hs-black: #000000;
+
+            --card-bg: #ffffff;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.1);
+            
+            --font-main: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        /* --- Typography & Utils --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-main);
+            font-weight: 700;
+            color: var(--hs-black);
+            line-height: 1.2;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .text-red { color: var(--hs-red); }
+        .text-blue { color: var(--hs-blue); }
+        .text-yellow { color: var(--hs-yellow); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .bg-gray {
+            background-color: var(--bg-secondary);
+        }
+
+        /* --- Preloader --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #fff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .loader-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--hs-black);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .loader-logo span { color: var(--hs-red); }
+        
+        .progress-bar {
+            width: 200px;
+            height: 4px;
+            background: #eee;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--hs-blue);
+            transition: width 0.5s ease;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: #fff;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 50px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--hs-black);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--hs-red); }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--hs-blue); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 90vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-color: #fff;
+            /* Subtil background pattern géométrique gris très clair */
+            background-image: radial-gradient(#f0f0f0 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 25px;
+            color: var(--hs-black);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 16px 35px;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--hs-red);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #b71c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--hs-black);
+            border: 2px solid var(--hs-black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--hs-black);
+            color: #fff;
+        }
+
+        /* Formes décoratives Hero */
+        .hero-shape {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            background: var(--bg-secondary);
+            border-radius: 20px 0 20px 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .shape-accent {
+            position: absolute;
+            border-radius: 50%;
+        }
+        .circle-1 {
+            width: 200px; height: 200px;
+            background: rgba(41, 182, 246, 0.1); /* Bleu */
+            top: -50px; right: -50px;
+        }
+        .circle-2 {
+            width: 150px; height: 150px;
+            background: rgba(251, 192, 45, 0.1); /* Jaune */
+            bottom: 50px; left: -30px;
+        }
+        
+        /* --- Titles --- */
+        .section-header {
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-header h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--hs-blue);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--hs-red);
+            margin-top: 15px;
+        }
+
+        /* --- About Section --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-soft);
+            border-top: 4px solid var(--hs-yellow);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--hs-black);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-top: 10px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .about-visual {
+            height: 500px;
+            background: #fff;
+            box-shadow: var(--shadow-soft);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        
+        /* Map simplifiée statique et élégante */
+        .map-bg {
+            width: 100%; height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 H 90 V 90 H 10 L 10 10" stroke="%23eee" fill="none"/></svg>');
+            opacity: 0.5;
+        }
+
+        /* --- Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 50px 40px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            border-bottom: 3px solid transparent;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-bottom: 3px solid var(--hs-blue);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--hs-red);
+            margin-bottom: 25px;
+            width: 70px;
+            height: 70px;
+            background: rgba(211, 47, 47, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .service-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            color: var(--hs-black);
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+        .service-list li i {
+            color: var(--hs-blue);
+            font-size: 0.9rem;
+        }
+        .service-list li:last-child { border-bottom: none; }
+
+        /* --- Recruitment Section --- */
+        .recruitment-section {
+            background-color: var(--hs-black);
+            color: #fff;
+        }
+        
+        .recruitment-section h2, .recruitment-section p {
+            color: #fff;
+        }
+
+        .recruitment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .quality-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--hs-yellow);
+            color: var(--hs-black);
+            border-radius: 4px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .profile-types {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .profile-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* --- Founder Section --- */
+        .founder-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .founder-card {
+            background: #fff;
+            padding: 60px;
+            border-radius: 10px;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            margin-top: 60px;
+            box-shadow: var(--shadow-hover);
+            border-top: 5px solid var(--hs-blue);
+        }
+
+        .founder-img-wrapper {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            margin: -130px auto 30px;
+            overflow: hidden;
+            background: #f0f0f0;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .founder-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .founder-name {
+            font-size: 1.6rem;
+            color: var(--hs-black);
+            margin-bottom: 5px;
+        }
+
+        .founder-title {
+            color: var(--hs-red);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .founder-bio {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* --- Newsletter & Contact --- */
+        .cta-box {
+            background: #fff;
+            border-radius: 10px;
+            padding: 80px 40px;
+            text-align: center;
+            color: var(--hs-black);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        /* Bande décorative */
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(to right, var(--hs-red), var(--hs-blue), var(--hs-yellow));
+        }
+
+        .cta-box h2 {
+            color: var(--hs-black);
+            margin-bottom: 15px;
+        }
+        
+        .cta-box p {
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .cta-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .cta-input {
+            padding: 15px 25px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 350px;
+            background: #f9f9f9;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            color: var(--hs-black);
+        }
+        
+        .cta-input:focus {
+            outline: none;
+            border-color: var(--hs-blue);
+            background: #fff;
+        }
+
+        .cta-btn {
+            padding: 15px 40px;
+            border-radius: 4px;
+            background: var(--hs-black);
+            color: #fff;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #333;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #111; /* Fond très sombre mais pas noir absolu pour douceur */
+            padding-top: 80px;
+            color: #aaa;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col .logo { color: #fff; }
+        .footer-col h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 30px; height: 2px;
+            background: var(--hs-blue);
+        }
+
+        .footer-col p, .footer-col a {
+            color: #999;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #222;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--hs-blue);
+            border-color: var(--hs-blue);
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 992px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text p { margin: 0 auto 40px; }
+            .btn-group { justify-content: center; }
+            .hero-shape { display: none; }
+            .about-grid, .recruitment-grid, .footer-grid { grid-template-columns: 1fr; }
+            .founder-card { padding: 40px 20px; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .section-header h2 { font-size: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 15px; }
+            .cta-input { width: 100%; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-logo">HOUSE <span>SERVICE SAS</span></div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            HOUSE <span>SERVICE</span> S.A.S
+        </a>
+        <div class="nav-links">
+            <a href="#about">À Propos</a>
+            <a href="#services">Services</a>
+            <a href="#recruitment">Carrières</a>
+            <a href="#founder">Direction</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="padding: 10px 25px; font-size: 0.8rem;">Devis Gratuit</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h4 class="text-blue" style="font-weight:700; text-transform:uppercase; margin-bottom:15px; letter-spacing:1px;">Sous-traitance & Services Spécialisés</h4>
+                <h1 class="animate-text">L'Excellence au service des <span class="text-red">Entreprises</span> & des Ménages</h1>
+                <p class="animate-text">Une expertise née à Kisangani pour servir toute la RDC. Nous offrons une gestion du personnel moderne, humaine et compétente.</p>
+                <div class="btn-group animate-text">
+                    <a href="#services" class="btn btn-primary">Nos Services</a>
+                    <a href="#contact" class="btn btn-secondary">Nous Contacter</a>
+                </div>
+            </div>
+            <!-- Élément visuel abstrait simple et pro -->
+            <div class="hero-shape animate-text">
+                <div style="font-size: 10rem; color: #ddd; opacity: 0.3;">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="shape-accent circle-1"></div>
+                <div class="shape-accent circle-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="section-header">
+                        <h4>Qui Sommes-Nous</h4>
+                        <h2>Un Partenaire <span class="text-blue">Idéal</span></h2>
+                    </div>
+                    <p>Fondée en pleine crise sanitaire le 20 juin 2020 à Kisangani par <strong>M. Théophile MUTATAY TSHILOBO</strong>, HOUSE SERVICE S.A.S est une réponse concrète aux besoins de gestion de personnel qualifié.</p>
+                    <p>De Kisangani à Kinshasa en passant par Goma, nous garantissons une sous-traitance professionnelle qui valorise l'humain et libère les entreprises et ménages des contraintes de gestion.</p>
+                    
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="2020">0</span>
+                            <span class="stat-label">Depuis</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="3">0</span>
+                            <span class="stat-label">Villes Clés</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="100">0%</span>
+                            <span class="stat-label">Professionnel</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="map-bg"></div>
+                    <!-- Indicateurs simples -->
+                    <div style="position: absolute; top: 40%; left: 55%; transform: translate(-50%, -50%); text-align: center;">
+                        <div style="width: 15px; height: 15px; background: var(--hs-red); border-radius: 50%; margin: 0 auto; box-shadow: 0 0 0 5px rgba(211,47,47,0.2);"></div>
+                        <span style="font-weight: 700; font-size: 0.8rem; margin-top: 5px; display: block; background: #fff; padding: 2px 8px; border-radius: 4px;">KISANGANI (HQ)</span>
+                    </div>
+                    <div style="position: absolute; top: 60%; left: 20%; transform: translate(-50%, -50%); text-align: center;">
+                         <div style="width: 10px; height: 10px; background: var(--hs-blue); border-radius: 50%; margin: 0 auto;"></div>
+                         <span style="font-size: 0.75rem; color: #777; margin-top: 5px; display: block;">KINSHASA</span>
+                    </div>
+                    <div style="position: absolute; top: 45%; left: 75%; transform: translate(-50%, -50%); text-align: center;">
+                        <div style="width: 10px; height: 10px; background: var(--hs-blue); border-radius: 50%; margin: 0 auto;"></div>
+                        <span style="font-size: 0.75rem; color: #777; margin-top: 5px; display: block;">GOMA</span>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-gray">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h4>Nos Domaines d'Intervention</h4>
+                <h2>Expertise & <span class="text-red">Engagement</span></h2>
+                <p style="max-width: 600px; margin: 20px auto 0; color: var(--text-light);">Nous offrons une gamme complète de services pour répondre aux exigences des professionnels et des particuliers.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <h3>Services d'Habitation</h3>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check-circle"></i> Assistants de ménage</li>
+                        <li><i class="fas fa-check-circle"></i> Cleaners (Nettoyage pro)</li>
+                        <li><i class="fas fa-check-circle"></i> Jardiniers & Espaces verts</li>
+                        <li><i class="fas fa-check-circle"></i> Baby-sitters qualifiés</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Commercial & Pro</h3>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check-circle"></i> Agents Commerciaux</li>
+                        <li><i class="fas fa-check-circle"></i> Hôtesses d'accueil</li>
+                        <li><i class="fas fa-check-circle"></i> Agents de Sécurité</li>
+                        <li><i class="fas fa-check-circle"></i> Serveurs & Protocole</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-plane-departure"></i></div>
+                    <h3>Services Spécialisés</h3>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check-circle"></i> Hôtesses de l'air</li>
+                        <li><i class="fas fa-check-circle"></i> Personnel sur mesure</li>
+                        <li><i class="fas fa-check-circle"></i> Guides Touristiques</li>
+                        <li><i class="fas fa-check-circle"></i> Gestion Administrative</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruitment Section -->
+    <section id="recruitment" class="section-padding recruitment-section">
+        <div class="container">
+            <div class="recruitment-grid">
+                <div>
+                    <span class="quality-badge">Formation Obligatoire</span>
+                    <h2>La Qualité au Cœur de Notre Service</h2>
+                    <p style="margin: 20px 0; opacity: 0.9;">Chez House Service, nous ne nous contentons pas de placer du personnel. Nous valorisons l'être humain et développons ses compétences.</p>
+                    <p style="opacity: 0.9;">Chaque agent passe par une <strong>formation interne rigoureuse</strong>. Nous bannissons les termes "domestique" au profit d'appellations respectueuses comme "Assistant(e) de ménage".</p>
+                    
+                    <div class="profile-types">
+                        <div class="profile-tag">Diplômés d'Université</div>
+                        <div class="profile-tag">Diplômés d'État</div>
+                        <div class="profile-tag">Talents en Formation</div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                   <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-user-graduate" style="font-size: 5rem; color: var(--hs-yellow); margin-bottom: 20px;"></i>
+                        <h3 style="color: #fff; font-size: 2rem;">100%</h3>
+                        <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Personnel Formé</p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="founder" class="section-padding bg-gray">
+        <div class="container founder-container">
+            <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+                <h4>Direction Générale</h4>
+                <h2>Le Leadership de l'Expertise</h2>
+            </div>
+            
+            <div class="founder-card">
+                <div class="founder-img-wrapper">
+                    <!-- Placeholder professional -->
+                    <img src="./images/WhatsApp Image 2025-12-09 à 17.05.05_2a96dc09.jpg" alt="M. Théophile MUTATAY TSHILOBO">
+                </div>
+                <h3 class="founder-name">M. Théophile MUTATAY TSHILOBO</h3>
+                <div class="founder-title">Fondateur & Directeur Général</div>
+                <p class="founder-bio">
+                    "Titulaire d'un Master et Enseignant à l'Institut Supérieur de Commerce (ISC/Kisangani). Spécialiste en stratégies commerciales, marketing digital & E-commerce. Ma mission est d'offrir une sous-traitance humaine, digne et hautement professionnelle."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter / CTA -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Prêt à optimiser votre gestion ?</h2>
+                <p>Recevez notre catalogue complet de services ou demandez un devis gratuit pour votre entreprise ou domicile.</p>
+                <form class="cta-form">
+                    <input type="email" placeholder="Votre adresse email professionnelle" class="cta-input" required>
+                    <button type="submit" class="cta-btn">Recevoir le Catalogue</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="margin-bottom: 20px; color: #fff;">HOUSE <span>SERVICE</span></a>
+                    <p>La solution aux problèmes des ménages et des entreprises en RDC. L'excellence opérationnelle à votre portée.</p>
+                    <div class="social-icons" style="margin-top: 20px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contacts</h4>
+                    <p><i class="fas fa-phone-alt" style="color: var(--hs-blue); margin-right: 10px; width: 20px;"></i> +243 81 49 10 495</p>
+                    <p><i class="fas fa-phone-alt" style="color: var(--hs-blue); margin-right: 10px; width: 20px;"></i> +243 85 38 36 804</p>
+                    <p><i class="fas fa-envelope" style="color: var(--hs-blue); margin-right: 10px; width: 20px;"></i> servicehouse71@gmail.com</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services Rapides</h4>
+                    <a href="#">Personnel Ménager</a>
+                    <a href="#">Sécurité & Gardiennage</a>
+                    <a href="#">Hôtesses & Protocole</a>
+                    <a href="#">Nettoyage Industriel</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Informations Légales</h4>
+                    <p>Siège : Kisangani, RDC</p>
+                    <p style="font-size: 0.8rem; opacity: 0.7;">RCCM: CD/KIS/RCCM/20-B-00055</p>
+                    <p style="font-size: 0.8rem; opacity: 0.7;">ID. NAT: 25-H5300-N85354B</p>
+                    <p style="font-size: 0.8rem; opacity: 0.7;">IMPOT: A2171244N</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="legal-info">
+                    &copy; 2025 House Service S.A.S. Tous droits réservés.
+                </div>
+                <div class="legal-links">
+                    <a href="#" style="color: #777; text-decoration: none; margin-left: 20px;">Mentions Légales</a>
+                    <a href="#" style="color: #777; text-decoration: none; margin-left: 20px;">Politique de Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- GSAP Only (No Three.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        // --- 1. Preloader Logic ---
+        window.addEventListener('load', () => {
+            const progress = document.querySelector('.progress-fill');
+            const preloader = document.getElementById('preloader');
+            const heroContent = document.querySelector('.hero-content');
+
+            // Simulate loading
+            progress.style.width = '100%';
+            
+            setTimeout(() => {
+                gsap.to(preloader, {
+                    yPercent: -100,
+                    duration: 0.8,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        animateHero();
+                    }
+                });
+            }, 600);
+        });
+
+        // --- 2. GSAP Animations (Professional & Subtle) ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Reveal
+        function animateHero() {
+            gsap.from('.animate-text', {
+                y: 30,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power3.out"
+            });
+            
+            gsap.from('.hero-shape', {
+                x: 50,
+                opacity: 0,
+                duration: 1.2,
+                delay: 0.5,
+                ease: "power3.out"
+            });
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 30) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Section Headers Fade In
+        gsap.utils.toArray('.section-header').forEach(header => {
+            gsap.from(header, {
+                scrollTrigger: {
+                    trigger: header,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 30,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        });
+
+        // Cards Stagger
+        gsap.from('.service-card', {
+            scrollTrigger: {
+                trigger: '.services-grid',
+                start: "top 80%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power2.out"
+        });
+
+        // Stats Counter Animation
+        const statItems = document.querySelectorAll('.stat-number');
+        statItems.forEach(item => {
+            const target = parseInt(item.getAttribute('data-target'));
+            ScrollTrigger.create({
+                trigger: item,
+                start: "top 90%",
+                once: true,
+                onEnter: () => {
+                    gsap.to(item, {
+                        innerHTML: target,
+                        duration: 1.5,
+                        snap: { innerHTML: 1 },
+                        ease: "power1.inOut"
+                    });
+                }
+            });
+        });
+
+        // Founder Image Reveal
+        gsap.from('.founder-card', {
+            scrollTrigger: {
+                trigger: '.founder-container',
+                start: "top 75%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out"
+        });
+
+    </script>
+</body>
+</html>
