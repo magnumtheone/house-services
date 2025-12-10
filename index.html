@@ -32,7 +32,7 @@
             --hs-black: #000000;
 
             --font-main: 'Montserrat', sans-serif;
-            --chat-width: 350px;
+            --chat-width: 320px;
         }
 
         /* --- MODE SOMBRE --- */
@@ -47,6 +47,9 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Images responsive par défaut */
+        img { max-width: 100%; height: auto; display: block; }
 
         body {
             background-color: var(--bg-color);
@@ -92,7 +95,7 @@
 
         /* --- Hero --- */
         .hero {
-            height: 90vh; min-height: 600px; display: flex; align-items: center;
+            height: 90vh; min-height: 60vh; display: flex; align-items: center;
             background-color: var(--bg-color);
             background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
             background-size: 30px 30px;
@@ -216,11 +219,18 @@
         /* Preloader */
         #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-color); z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; }
 
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+        }
+
         @media (max-width: 768px) {
-            .nav-links { display: none; } 
+            nav { padding: 12px 20px; }
+            .nav-links { display: none; }
             .hero-content { grid-template-columns: 1fr; text-align: center; }
             .btn-group { justify-content: center; }
             .chat-window { width: 90%; right: 5%; bottom: 90px; }
+            .container { padding: 0 15px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 20px; }
         }
     </style>
     <style>
