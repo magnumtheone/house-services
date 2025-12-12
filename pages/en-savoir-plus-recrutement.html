@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrières, Recrutement et Formation | House service S.A.S</title>
+    
+    <!-- Fonts - Cohérence avec index.html -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles CSS (Cohérence avec index.html) -->
+    <style>
+        /* --- COULEURS (Variables Globales pour Cohérence) --- */
+        :root {
+            --hs-red: #D32F2F; /* Couleur principale (Rouge) */
+            --hs-blue: #29B6F6; /* Couleur secondaire (Bleu Ciel) */
+            --bg-color: #ffffff;
+            --bg-secondary: #f4f6f8;
+            --bg-card: #ffffff;
+            --text-main: #1a1a1a;
+            --text-light: #555555;
+            --border-color: #eeeeee;
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            --header-height: 80px;
+        }
+
+        /* Mode Sombre (Dark Mode) */
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --bg-secondary: #2c2c2c;
+            --bg-card: #3a3a3a;
+            --text-main: #ffffff;
+            --text-light: #cccccc;
+            --border-color: #555555;
+            --shadow-light: 0 4px 6px -1px rgba(255, 255, 255, 0.05), 0 2px 4px -2px rgba(255, 255, 255, 0.03);
+        }
+
+        /* --- STYLES GÉNÉRAUX --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a { color: var(--hs-red); text-decoration: none; transition: color 0.3s; }
+        a:hover { color: var(--hs-blue); }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 80px 0; }
+        .text-center { text-align: center; }
+
+        h1, h2, h3 { color: var(--text-main); font-weight: 700; margin-bottom: 20px; }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; margin-top: 40px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
+        h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        p { margin-bottom: 20px; line-height: 1.7; color: var(--text-light); }
+        ul { list-style: none; padding-left: 0; margin-bottom: 20px; }
+        ul li { margin-bottom: 10px; display: flex; align-items: flex-start; }
+        ul li i { margin-right: 10px; color: var(--hs-red); font-size: 1.1em; margin-top: 4px; }
+        
+        /* --- HEADER --- */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow-light);
+            position: sticky; top: 0; z-index: 1000;
+            height: var(--header-height);
+            display: flex; align-items: center;
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo a {
+            display: flex; align-items: center; font-size: 1.4rem; font-weight: 800;
+            color: var(--text-main);
+        }
+        .logo img { height: 40px; margin-right: 10px; border-radius: 50%; }
+
+        .nav-links a {
+            margin-left: 30px; font-weight: 600; color: var(--text-main);
+            position: relative; padding: 5px 0;
+        }
+        .nav-links a:hover::after, .nav-links a.active::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 100%; height: 2px; background-color: var(--hs-red);
+        }
+        
+        .nav-toggle { display: none; } /* Caché par défaut */
+        
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--text-main);
+            color: #ffffff;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+        .footer-content {
+            display: flex; justify-content: space-between; flex-wrap: wrap;
+        }
+        .footer-section { width: 30%; margin-bottom: 20px; }
+        .footer-section h3 { color: var(--hs-blue); margin-bottom: 15px; }
+        .footer-section a { color: #cccccc; margin-bottom: 8px; display: block; }
+        .footer-section a:hover { color: var(--hs-red); }
+        .social-links a { font-size: 1.5rem; margin-right: 15px; color: #cccccc; }
+        .social-links a:hover { color: var(--hs-red); }
+        .footer-bottom { border-top: 1px solid #333; padding-top: 20px; margin-top: 20px; text-align: center; }
+
+        /* --- BOUTONS et FORMULAIRES --- */
+        .btn {
+            display: inline-block; padding: 12px 25px; border-radius: 8px;
+            font-weight: 600; text-transform: uppercase; cursor: pointer;
+            transition: all 0.3s ease; border: none; text-align: center;
+        }
+        .btn-primary {
+            background-color: var(--hs-red); color: white;
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.4);
+        }
+        .btn-primary:hover {
+            background-color: #B71C1C;
+            box-shadow: 0 6px 15px rgba(211, 47, 47, 0.6);
+        }
+        .btn-secondary {
+            background-color: var(--hs-blue); color: white;
+            box-shadow: 0 4px 10px rgba(41, 182, 246, 0.4);
+        }
+        .btn-secondary:hover {
+            background-color: #039BE5;
+            box-shadow: 0 6px 15px rgba(41, 182, 246, 0.6);
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 12px; border: 1px solid var(--border-color);
+            border-radius: 6px; background-color: var(--bg-secondary);
+            color: var(--text-main); transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--hs-red); outline: none;
+        }
+        .form-container {
+            max-width: 600px; margin: 40px auto; padding: 30px;
+            background-color: var(--bg-card); border-radius: 12px;
+            box-shadow: var(--shadow-light);
+        }
+
+        /* --- LAYOUT SPÉCIFIQUE À LA PAGE --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+            align-items: flex-start;
+        }
+        .card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card i { font-size: 2.5rem; color: var(--hs-red); margin-bottom: 15px; }
+
+        .job-card {
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .job-card h4 { margin-bottom: 5px; color: var(--hs-blue); font-weight: 600; }
+        .job-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 10px; }
+        .job-card .btn { padding: 8px 15px; font-size: 0.9rem; }
+        
+        /* Message box pour les notifications */
+        #message-box {
+            position: fixed; top: 100px; right: 20px; z-index: 10000;
+            padding: 15px 25px; background-color: var(--hs-red); color: white;
+            border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0; transform: translateX(100%); transition: all 0.5s ease;
+        }
+        #message-box.show { opacity: 1; transform: translateX(0); }
+
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.7rem; }
+            
+            /* Menu mobile */
+            .nav-links {
+                position: absolute; top: var(--header-height); left: 0;
+                width: 100%; background-color: var(--bg-card);
+                flex-direction: column; display: none;
+                box-shadow: var(--shadow-light); padding: 20px 0;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { margin: 10px 0; padding: 10px 20px; width: 100%; }
+            .nav-links a:hover::after, .nav-links a.active::after { display: none; }
+
+            .nav-toggle {
+                display: block; background: none; border: none;
+                font-size: 1.5rem; cursor: pointer; color: var(--text-main);
+            }
+            
+            .grid-2 { grid-template-columns: 1fr; gap: 30px; }
+            .footer-section { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Menu de navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="https://placehold.co/40x40/D32F2F/ffffff?text=HS" alt="Logo House Service">
+                        HOUSE SERVICE
+                    </a>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html">Accueil</a>
+                    <a href="en-savoir-plus-services.html">Services</a>
+                    <a href="recrutement.html" class="active">Carrières & Formation</a>
+                    <a href="tarifs.html">Paiement & Tarifs</a>
+                    <a href="nouvelles.html">Nouvelles</a>
+                </div>
+                <button class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenu Principal -->
+    <main>
+        <section class="section-padding" style="padding-top: 40px;">
+            <div class="container">
+                <h1 class="text-center" style="color: var(--hs-red);">Rejoignez l'Excellence : Recrutement et Formation</h1>
+                <p class="text-center">Chez House Service, nous investissons dans le capital humain. Que vous cherchiez un emploi ou à améliorer vos compétences, vous êtes au bon endroit.</p>
+                
+                <!-- Section Recrutement -->
+                <h2><i class="fas fa-briefcase" style="color: var(--text-main);"></i> Devenez Assistant(e) Professionnel(le)</h2>
+                <div class="grid-2">
+                    <div class="recrutement-info">
+                        <h3>Pourquoi choisir House Service ?</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> **Professionnalisme** : Travaillez dans un cadre structuré et exigeant.</li>
+                            <li><i class="fas fa-check-circle"></i> **Opportunités** : Développez votre carrière dans divers secteurs (Ménage, Commerce, Hôtellerie, etc.).</li>
+                            <li><i class="fas fa-check-circle"></i> **Formation Continue** : Accédez à nos programmes pour rester à la pointe des techniques de service.</li>
+                            <li><i class="fas fa-check-circle"></i> **Stabilité** : Un partenaire fiable et officiellement enregistré (GUCE/RDC).</li>
+                        </ul>
+
+                        <h3>Postes Clés Recherchés (Non-Exhaustif)</h3>
+                        <!-- Basé sur le contenu du PDF -->
+                        <div class="job-card">
+                            <h4>Agents Cleaners & Assistants de Ménage</h4>
+                            <p>Assurer la propreté et l'organisation des ménages et entreprises. Rigueur et discrétion exigées.</p>
+                            <span class="btn btn-secondary">Postuler</span>
+                        </div>
+                        <div class="job-card">
+                            <h4>Agents Commerciaux & Hôtesses d'Accueil</h4>
+                            <p>Représenter House Service, gérer l'accueil client et participer à la conquête de marché. Excellent relationnel requis.</p>
+                            <span class="btn btn-secondary">Postuler</span>
+                        </div>
+                        <div class="job-card">
+                            <h4>Agents Guides Touristiques</h4>
+                            <p>Accompagner et informer les visiteurs à Kisangani et au-delà. Connaissance de la région et langues un atout.</p>
+                            <span class="btn btn-secondary">Postuler</span>
+                        </div>
+                        <p style="font-size: 0.9rem;">*Pour postuler, veuillez remplir le formulaire ci-contre en choisissant l'option "Recrutement" et en détaillant votre profil.</p>
+                    </div>
+
+                    <!-- Section Formation -->
+                    <div class="card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Nos Offres de Formation</h3>
+                        <p>House Service propose des formations courtes et intensives pour professionnaliser les métiers de service en RDC.</p>
+
+                        <h4>Types de Formations :</h4>
+                        <ul>
+                            <li><i class="fas fa-book-open"></i> **Formation de Base pour Assistants de Ménage** : Techniques de nettoyage, hygiène, organisation domestique et protocoles de discrétion.</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i> **Marketing Digital et Stratégies Commerciales** : Pour Agents Commerciaux et Hôtesses désirant maîtriser les outils modernes de vente (basé sur l'expertise du Directeur Général).</li>
+                            <li><i class="fas fa-globe-africa"></i> **Protocoles d'Accueil et Service Client** : Pour Hôtesses et Agents de Protocole.</li>
+                            <li><i class="fas fa-child"></i> **Formation Baby-Sitters** : Sécurité de l'enfant, premiers secours, activités ludo-éducatives.</li>
+                        </ul>
+                        <p>Chaque formation est certifiante et axée sur la pratique professionnelle.</p>
+                    </div>
+                </div>
+
+                <!-- Formulaire unique Recrutement/Formation -->
+                <div class="form-container">
+                    <h2 class="text-center" style="margin-top: 0; border: none;">Postulez ou Inscrivez-vous</h2>
+                    <form id="RecruitForm">
+                        <div class="form-group">
+                            <label for="type_demande">Votre demande concerne :</label>
+                            <select id="type_demande" name="type_demande" required onchange="toggleFormFields()">
+                                <option value="" disabled selected>-- Choisissez une option --</option>
+                                <option value="Recrutement">Recrutement (Candidature à un poste)</option>
+                                <option value="Formation">Inscription à une Formation Professionnelle</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nom">Nom Complet :</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact">Contact Téléphonique (WhatsApp) :</label>
+                            <input type="tel" id="contact" name="contact" required placeholder="+243 ...">
+                        </div>
+                        
+                        <div class="form-group" id="field_formation" style="display:none;">
+                            <label for="formation_choisie">Formation Souhaitée :</label>
+                            <select id="formation_choisie" name="formation_choisie">
+                                <option value="" disabled selected>-- Choisir la formation --</option>
+                                <option value="Base_Menage">Formation de Base pour Assistants de Ménage</option>
+                                <option value="Marketing">Marketing Digital et Stratégies Commerciales</option>
+                                <option value="Protocole">Protocoles d'Accueil et Service Client</option>
+                                <option value="BabySitter">Formation Baby-Sitters</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="field_cv_motiv">
+                            <label for="message">Lettre de motivation / Expériences / Détails :</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Décrivez brièvement votre motivation ou vos expériences..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer ma Demande</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>House Service S.A.S</h3>
+                    <p>Sous-traitance professionnelle & Services spécialisés. Votre partenaire idéal pour la gestion de personnel et des services de qualité en RDC.</p>
+                    <p>Créée à Kisangani le 20 juin 2020.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Liens Rapides</h3>
+                    <a href="index.html">Accueil</a>
+                    <a href="en-savoir-plus-services.html">Nos Services</a>
+                    <a href="recrutement.html">Recrutement & Formation</a>
+                    <a href="tarifs.html">Paiement</a>
+                    <a href="nouvelles.html">Nouvelles (Blog)</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contactez-nous</h3>
+                    <p><i class="fas fa-phone-alt"></i> +243 81 49 10 495</p>
+                    <p><i class="fas fa-phone-alt"></i> +243 85 38 36 804 (WhatsApp)</p>
+                    <p><i class="fas fa-envelope"></i> servicehouse71@gmail.com</p>
+                    <div class="social-links" style="margin-top: 15px;">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 House Service S.A.S. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Message Box -->
+    <div id="message-box" role="alert"></div>
+
+    <!-- Script JS -->
+    <script>
+        // Fonction pour basculer les liens du menu mobile
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            const icon = navToggle.querySelector('i');
+            if (navLinks.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Fonction pour gérer l'affichage du formulaire
+        function toggleFormFields() {
+            const typeDemande = document.getElementById('type_demande').value;
+            const fieldFormation = document.getElementById('field_formation');
+            const messageLabel = document.getElementById('field_cv_motiv').querySelector('label');
+
+            if (typeDemande === 'Formation') {
+                fieldFormation.style.display = 'block';
+                messageLabel.innerText = "Motivation pour la formation / Expériences pertinentes :";
+            } else if (typeDemande === 'Recrutement') {
+                fieldFormation.style.display = 'none';
+                messageLabel.innerText = "Lettre de motivation / Expériences / Détails :";
+            } else {
+                fieldFormation.style.display = 'none';
+            }
+        }
+        
+        // Fonction pour afficher une notification temporaire
+        function showMessage(text, isError = false) {
+            const msgBox = document.getElementById('message-box');
+            msgBox.innerText = text;
+            msgBox.style.backgroundColor = isError ? '#C62828' : 'var(--hs-red)';
+            msgBox.classList.add('show');
+            setTimeout(() => {
+                msgBox.classList.remove('show');
+            }, 5000);
+        }
+
+        // Gestion de la soumission du formulaire
+        document.getElementById('RecruitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simuler l'envoi de données
+            const typeDemande = document.getElementById('type_demande').value;
+            const nom = document.getElementById('nom').value;
+            
+            // Vider le formulaire après simulation
+            document.getElementById('RecruitForm').reset();
+            toggleFormFields(); // Réinitialiser l'affichage
+            
+            showMessage(`Merci ${nom}, votre demande de ${typeDemande.toLowerCase()} a été enregistrée. Nous vous contacterons rapidement au sujet de votre candidature.`);
+        });
+    </script>
+</body>
+</html>
