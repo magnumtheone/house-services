@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Service S.A.S | Excellence & Sous-traitance</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles CSS Modernes -->
+    <style>
+        :root {
+            /* Palette Brand */
+            --hs-blue: #29B6F6;
+            --hs-blue-dark: #0288D1;
+            --hs-yellow: #FBC02D;
+            --hs-red: #D32F2F;
+            --hs-dark: #111827;
+            --hs-gray: #F3F4F6;
+            --hs-white: #FFFFFF;
+            
+            /* UI Variables */
+            --glass: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            
+            --font-main: 'Montserrat', sans-serif;
+            --font-display: 'Outfit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        body {
+            background-color: var(--hs-white);
+            color: var(--hs-dark);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+            cursor: none; /* Custom cursor */
+        }
+
+        /* --- Custom Cursor --- */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--hs-blue);
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--hs-blue);
+            transition: width 0.2s, height 0.2s;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, var(--hs-dark) 0%, var(--hs-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-red { color: var(--hs-red); }
+        .text-blue { color: var(--hs-blue); }
+        
+        /* --- Layout Utils --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+        .section-py { padding: 100px 0; }
+        
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--hs-dark);
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 0%; height: 100%;
+            background: var(--hs-blue);
+            z-index: -1;
+            transition: width 0.3s ease;
+        }
+        .btn-primary:hover::before { width: 100%; }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(41, 182, 246, 0.4); }
+
+        .btn-secondary {
+            background: white;
+            color: var(--hs-dark);
+            border: 1px solid #e5e7eb;
+        }
+        .btn-secondary:hover {
+            border-color: var(--hs-blue);
+            color: var(--hs-blue);
+        }
+
+        /* --- Header / Nav --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 20px 0;
+            transition: 0.3s;
+        }
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--hs-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .logo span { color: var(--hs-red); }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--hs-dark);
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            font-size: 0.95rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 0%; height: 2px;
+            background: var(--hs-blue);
+            transition: 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Dropdown Menu Style Google */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 600px;
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-xl);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(10px);
+        }
+        .drop-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--hs-dark);
+            transition: 0.2s;
+        }
+        .drop-item:hover { background: var(--hs-gray); }
+        .drop-icon {
+            font-size: 1.2rem;
+            color: var(--hs-blue);
+            background: rgba(41, 182, 246, 0.1);
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 8px;
+        }
+        .drop-text h5 { font-weight: 700; margin-bottom: 4px; }
+        .drop-text p { font-size: 0.8rem; color: #666; }
+
+        /* --- Hero Section 3D --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        #hero-canvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(41, 182, 246, 0.1);
+            color: var(--hs-blue-dark);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(41, 182, 246, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        /* --- Bento Grid (About/Gallery) --- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 20px;
+        }
+        .bento-item {
+            background: var(--hs-gray);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid white;
+            transition: transform 0.3s ease;
+        }
+        .bento-item:hover { transform: scale(0.98); }
+        .bento-large { grid-column: span 2; grid-row: span 2; }
+        .bento-wide { grid-column: span 2; }
+        .bento-img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        .bento-item:hover .bento-img { transform: scale(1.1); }
+        .bento-content {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+        }
+
+        /* --- Services Cards with Tilt --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f0f0f0;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--hs-blue);
+        }
+        .service-icon {
+            width: 60px; height: 60px;
+            background: var(--hs-blue);
+            border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: white;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(41, 182, 246, 0.3);
+        }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .service-card ul { list-style: none; color: #666; font-size: 0.95rem; }
+        .service-card ul li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .service-card ul li i { color: var(--hs-yellow); }
+
+        /* --- Payment Section (Accordion/Modal) --- */
+        .payment-section {
+            background: linear-gradient(135deg, var(--hs-dark) 0%, #1e3a8a 100%);
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .payment-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .payment-modal.active { opacity: 1; pointer-events: all; }
+        .payment-box {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            width: 90%;
+            text-align: left;
+            position: relative;
+            color: var(--hs-dark);
+        }
+        .close-modal {
+            position: absolute; top: 20px; right: 20px;
+            font-size: 1.5rem; cursor: pointer; color: #999;
+        }
+
+        /* --- Blog Preview --- */
+        .blog-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .blog-img { height: 200px; width: 100%; object-fit: cover; }
+        .blog-content { padding: 25px; }
+        .blog-tag { font-size: 0.75rem; text-transform: uppercase; color: var(--hs-blue); font-weight: 700; }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--hs-dark);
+            color: #9ca3af;
+            padding-top: 80px;
+            font-size: 0.9rem;
+        }
+        .footer-content {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px; padding-bottom: 60px; border-bottom: 1px solid #374151;
+        }
+        .footer-col h4 { color: white; margin-bottom: 25px; font-size: 1.1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col a { color: #9ca3af; text-decoration: none; transition: 0.3s; }
+        .footer-col a:hover { color: var(--hs-blue); padding-left: 5px; }
+
+        /* Mobile Nav */
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--hs-dark); }
+        
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 80%;
+                background: white; flex-direction: column; padding: 100px 30px;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.4s ease;
+            }
+            .nav-menu.active { right: 0; }
+            .hamburger { display: block; z-index: 101; }
+            .dropdown-menu { position: static; width: 100%; transform: none; box-shadow: none; border: none; padding: 0; display: none; }
+            .dropdown.active .dropdown-menu { display: grid; }
+            .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .bento-item { grid-column: span 1 !important; grid-row: span 1 !important; height: 250px; }
+            h1 { font-size: 2.5rem; }
+        }
+
+        /* Loading */
+        #loader {
+            position: fixed; inset: 0; background: white; z-index: 10000;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+        }
+        .spinner {
+            width: 50px; height: 50px; border: 3px solid rgba(41,182,246,0.3);
+            border-radius: 50%; border-top-color: var(--hs-blue);
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <!-- Preloader -->
+    <div id="loader">
+        <h2 style="font-family: var(--font-display); font-weight: 800; margin-bottom: 10px;">HOUSE <span class="text-red">SERVICE</span></h2>
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="logo">HOUSE <span>SERVICE</span></a>
+            
+            <nav class="nav-menu">
+                <a href="#about" class="nav-link">À Propos</a>
+                
+                <!-- Mega Dropdown -->
+                <div class="dropdown">
+                    <a href="#services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:0.7em; margin-left:5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="drop-item">
+                            <div class="drop-icon"><i class="fas fa-home"></i></div>
+                            <div class="drop-text"><h5>Habitation</h5><p>Ménage, Baby-sitting, Jardin</p></div>
+                        </a>
+                        <a href="#" class="drop-item">
+                            <div class="drop-icon"><i class="fas fa-briefcase"></i></div>
+                            <div class="drop-text"><h5>Entreprise</h5><p>Sécurité, Accueil, Protocole</p></div>
+                        </a>
+                        <a href="#" class="drop-item">
+                            <div class="drop-icon"><i class="fas fa-plane"></i></div>
+                            <div class="drop-text"><h5>Spécialisé</h5><p>Hôtesses de l'air, Tourisme</p></div>
+                        </a>
+                        <a href="#" class="drop-item">
+                            <div class="drop-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="drop-text"><h5>Sur Mesure</h5><p>Personnel administratif</p></div>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <div onclick="openPayment()" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.8rem;">Paiement</div>
+            </nav>
+
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <a href="#contact" class="btn btn-primary">Devis Gratuit</a>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with 3D Canvas -->
+    <section class="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="container hero-content">
+            <span class="hero-badge fade-up">N°1 en RDC - Kisangani, Goma, Kinshasa</span>
+            <h1 class="fade-up">L'Excellence au service des <span class="text-red">Ménages</span> & Entreprises</h1>
+            <p class="fade-up">Une gestion du personnel moderne, humaine et compétente. Simplifiez votre quotidien avec nos experts vérifiés.</p>
+            <div class="fade-up" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="#services" class="btn btn-primary">Explorer les services <i class="fas fa-arrow-right"></i></a>
+                <button onclick="toggleChat()" class="btn btn-secondary"><i class="fas fa-robot"></i> Parler à l'IA</button>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite;">
+            <i class="fas fa-chevron-down" style="color: var(--hs-blue); font-size: 1.5rem;"></i>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div style="background: var(--hs-white); padding: 40px 0; border-bottom: 1px solid #f0f0f0;">
+        <div class="container" style="display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 30px;">
+            <div>
+                <h3 class="text-blue" style="font-size: 2.5rem;">2020</h3>
+                <p style="color: #666; font-size: 0.9rem;">Année de fondation</p>
+            </div>
+            <div>
+                <h3 class="text-blue" style="font-size: 2.5rem;">3+</h3>
+                <p style="color: #666; font-size: 0.9rem;">Villes couvertes</p>
+            </div>
+            <div>
+                <h3 class="text-blue" style="font-size: 2.5rem;">100%</h3>
+                <p style="color: #666; font-size: 0.9rem;">Personnel Formé</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section (Bento Style) -->
+    <section id="about" class="section-py">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h4 class="text-red" style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">Notre Histoire</h4>
+                <h2 style="font-size: 2.5rem;">Pourquoi House Service ?</h2>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-item bento-large">
+                    <img src="images/logo.jpg" alt="House Service Team" class="bento-img">
+                    <div class="bento-content">
+                        <h3>Notre Vision</h3>
+                        <p>Offrir une sous-traitance moderne, humaine et professionnelle en RDC.</p>
+                    </div>
+                </div>
+                <div class="bento-item" style="background: var(--hs-blue); color: white; padding: 30px;">
+                    <i class="fas fa-shield-alt" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                    <h4>Sécurité</h4>
+                    <p style="font-size: 0.9rem;">Personnel identifié et casier judiciaire vérifié.</p>
+                </div>
+                <div class="bento-item" style="background: var(--hs-yellow); color: var(--hs-dark); padding: 30px;">
+                    <i class="fas fa-clock" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                    <h4>Gain de Temps</h4>
+                    <p style="font-size: 0.9rem;">Nous gérons le recrutement et la paie.</p>
+                </div>
+                <div class="bento-item bento-wide">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Training" class="bento-img">
+                    <div class="bento-content">
+                        <h3>Formation Continue</h3>
+                        <p>Nos agents sont formés pour un service 5 étoiles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-py" style="background: var(--hs-gray);">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: end; margin-bottom: 50px;">
+                <div>
+                    <h4 class="text-blue">NOS EXPERTISES</h4>
+                    <h2 class="text-gradient" style="font-size: 2.5rem;">Solutions Professionnelles</h2>
+                </div>
+                <a href="#" class="btn btn-secondary">Voir tout le catalogue</a>
+            </div>
+
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card tilt-card">
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <h3>Habitation</h3>
+                    <p style="margin-bottom: 20px; color: #555;">Pour un foyer impeccable et serein.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Assistants de ménage</li>
+                        <li><i class="fas fa-check-circle"></i> Nounous qualifiées</li>
+                        <li><i class="fas fa-check-circle"></i> Jardiniers paysagistes</li>
+                    </ul>
+                </div>
+                <!-- Card 2 -->
+                <div class="service-card tilt-card">
+                    <div class="service-icon" style="background: var(--hs-red);"><i class="fas fa-briefcase"></i></div>
+                    <h3>Entreprise</h3>
+                    <p style="margin-bottom: 20px; color: #555;">Optimisez vos opérations.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Agents d'entretien</li>
+                        <li><i class="fas fa-check-circle"></i> Sécurité & Gardiennage</li>
+                        <li><i class="fas fa-check-circle"></i> Hôtesses d'accueil</li>
+                    </ul>
+                </div>
+                <!-- Card 3 -->
+                <div class="service-card tilt-card">
+                    <div class="service-icon" style="background: var(--hs-yellow); color:black;"><i class="fas fa-star"></i></div>
+                    <h3>Services Premium</h3>
+                    <p style="margin-bottom: 20px; color: #555;">Prestations sur-mesure.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Protocole VIP</li>
+                        <li><i class="fas fa-check-circle"></i> Chauffeurs privés</li>
+                        <li><i class="fas fa-check-circle"></i> Gestionnaire de maison</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment & Ad Section -->
+    <section class="section-py">
+        <div class="container">
+            <div class="payment-section">
+                <h2>Règlement Simplifié</h2>
+                <p style="max-width: 600px; margin: 20px auto; opacity: 0.9;">Effectuez vos paiements de services en toute sécurité via Mobile Money ou Virement Bancaire.</p>
+                <button onclick="openPayment()" class="btn btn-secondary" style="border:none; color: var(--hs-blue);">Effectuer un paiement <i class="fas fa-lock"></i></button>
+            </div>
+            
+            <!-- Modern Ad Gallery -->
+            <div style="margin-top: 80px;">
+                <h3 style="margin-bottom: 30px;">Galerie & Réalisations</h3>
+                <div class="bento-grid" style="grid-template-rows: 200px;">
+                    <div class="bento-item"><img src="./images/pub1.jpg" class="bento-img"></div>
+                    <div class="bento-item"><img src="./images/pub2.jpg" class="bento-img"></div>
+                    <div class="bento-item"><img src="./images/pub3.jpg" class="bento-img"></div>
+                    <div class="bento-item"><img src="./images/pub4.jpg" class="bento-img"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section (New) -->
+    <section id="blog" class="section-py" style="background: var(--hs-gray);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+                <h2>Actualités & Conseils</h2>
+            </div>
+            <div class="services-grid">
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1581578731117-10d52143b0d8?auto=format&fit=crop&w=500&q=80" class="blog-img" alt="Blog 1">
+                    <div class="blog-content">
+                        <span class="blog-tag">Conseil Maison</span>
+                        <h4 style="margin: 10px 0;">Comment choisir sa nounou ?</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Les critères essentiels pour assurer la sécurité de vos enfants.</p>
+                        <a href="#" style="color: var(--hs-blue); font-size: 0.8rem; font-weight: 700; margin-top: 15px; display: block;">Lire la suite &rarr;</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=500&q=80" class="blog-img" alt="Blog 2">
+                    <div class="blog-content">
+                        <span class="blog-tag">Entreprise</span>
+                        <h4 style="margin: 10px 0;">L'externalisation du nettoyage</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Pourquoi sous-traiter est plus rentable pour votre société.</p>
+                        <a href="#" style="color: var(--hs-blue); font-size: 0.8rem; font-weight: 700; margin-top: 15px; display: block;">Lire la suite &rarr;</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=500&q=80" class="blog-img" alt="Blog 3">
+                    <div class="blog-content">
+                        <span class="blog-tag">House Service</span>
+                        <h4 style="margin: 10px 0;">Ouverture à Goma</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Nous étendons nos activités pour mieux vous servir dans l'Est.</p>
+                        <a href="#" style="color: var(--hs-blue); font-size: 0.8rem; font-weight: 700; margin-top: 15px; display: block;">Lire la suite &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn-primary">Voir tous les articles</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3 style="color: white; font-weight: 800; font-size: 1.5rem; margin-bottom: 20px;">HOUSE <span class="text-red">SERVICE</span></h3>
+                    <p>Votre partenaire de confiance pour la gestion du personnel en RDC.</p>
+                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="#about">À Propos</a></li>
+                        <li><a href="#services">Nos Services</a></li>
+                        <li><a href="#team">Notre Équipe</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone text-blue"></i> +243 81 49 10 495</li>
+                        <li><i class="fas fa-phone text-blue"></i> +243 85 38 36 804</li>
+                        <li><i class="fas fa-envelope text-blue"></i> servicehouse71@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt text-blue"></i> Kisangani, RDC</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p style="margin-bottom: 10px;">Restez informé de nos offres.</p>
+                    <div style="position: relative;">
+                        <input type="email" placeholder="Votre email" style="width: 100%; padding: 12px; border-radius: 8px; border: none; background: #374151; color: white;">
+                        <button style="position: absolute; right: 5px; top: 5px; background: var(--hs-blue); color: white; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer;"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; padding: 20px 0; border-top: 1px solid #374151;">
+                <p>&copy; 2025 House Service S.A.S. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-box">
+            <span class="close-modal" onclick="closePayment()">&times;</span>
+            <h3 class="text-blue" style="margin-bottom: 20px;">Détails de Paiement</h3>
+            
+            <div style="margin-bottom: 20px; padding: 15px; background: #f9fafb; border-radius: 8px;">
+                <h5 style="margin-bottom: 5px;"><i class="fas fa-mobile-alt"></i> Mobile Money (Airtel/M-Pesa/Orange)</h5>
+                <p style="font-size: 1.2rem; font-weight: 700; color: var(--hs-dark);">+243 82 00 00 000</p>
+                <small>Nom de l'agent: House Service Comptabilité</small>
+            </div>
+
+            <div style="margin-bottom: 20px; padding: 15px; background: #f9fafb; border-radius: 8px;">
+                <h5 style="margin-bottom: 5px;"><i class="fas fa-university"></i> Virement Bancaire</h5>
+                <p><strong>Banque:</strong> TMB / Equity</p>
+                <p><strong>Compte:</strong> 0000-1234-5678</p>
+            </div>
+            
+            <p style="font-size: 0.8rem; color: #666;">Veuillez envoyer la preuve de paiement sur WhatsApp au numéro ci-dessus.</p>
+        </div>
+    </div>
+
+    <!-- Chatbot Window (Hidden by default) -->
+    <div style="position: fixed; bottom: 30px; right: 30px; z-index: 999;">
+        <!-- Logic identical to original but styled better can be added here -->
+    </div>
+
+    <!-- Scripts: Three.js & GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        // --- 1. Preloader ---
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 500);
+            initThreeJS(); // Start 3D after load
+        });
+
+        // --- 2. Custom Cursor Logic ---
+        const cursorDot = document.querySelector('[data-cursor-dot]');
+        const cursorOutline = document.querySelector('[data-cursor-outline]');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Delayed animation for outline
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // --- 3. Payment Modal ---
+        function openPayment() {
+            document.getElementById('paymentModal').classList.add('active');
+        }
+        function closePayment() {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
+
+        // --- 4. Mobile Menu ---
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // Toggle dropwdown on mobile click
+            const drops = document.querySelectorAll('.dropdown');
+            drops.forEach(d => d.classList.toggle('active'));
+        });
+
+        // --- 5. Scroll Header ---
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            window.scrollY > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
+        });
+
+        // --- 6. GSAP Animations ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Text Stagger
+        gsap.from(".fade-up", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out",
+            delay: 0.5
+        });
+
+        // Service Cards Hover Effect using Tilt Logic (Simplified)
+        const cards = document.querySelectorAll('.tilt-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.transform = `perspective(1000px) rotateX(${(y - rect.height/2) / 20}deg) rotateY(${-(x - rect.width/2) / 20}deg) translateY(-10px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // Bento Grid Reveal
+        gsap.from(".bento-item", {
+            scrollTrigger: {
+                trigger: ".bento-grid",
+                start: "top 80%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1
+        });
+
+        // --- 7. THREE.JS PARTICLE SYSTEM (Hero Background) ---
+        function initThreeJS() {
+            const canvas = document.getElementById('hero-canvas');
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xffffff); // White bg
+
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 30;
+
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            // Create Particles
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 700;
+            const posArray = new Float32Array(particlesCount * 3);
+            const colorsArray = new Float32Array(particlesCount * 3);
+
+            // Brand Colors
+            const color1 = new THREE.Color(0x29B6F6); // Blue
+            const color2 = new THREE.Color(0xFBC02D); // Yellow
+            const color3 = new THREE.Color(0xD32F2F); // Red
+
+            for(let i = 0; i < particlesCount * 3; i+=3) {
+                // Position
+                posArray[i] = (Math.random() - 0.5) * 60; // x
+                posArray[i+1] = (Math.random() - 0.5) * 60; // y
+                posArray[i+2] = (Math.random() - 0.5) * 60; // z
+
+                // Color Mix
+                const rand = Math.random();
+                let chosenColor = rand > 0.6 ? color1 : (rand > 0.3 ? color2 : color3);
+                
+                colorsArray[i] = chosenColor.r;
+                colorsArray[i+1] = chosenColor.g;
+                colorsArray[i+2] = chosenColor.b;
+            }
+
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorsArray, 3));
+
+            // Material - Circle shape texture
+            const sprite = new THREE.TextureLoader().load('https://threejs.org/examples/textures/sprites/disc.png');
+            const material = new THREE.PointsMaterial({
+                size: 0.5,
+                vertexColors: true,
+                map: sprite,
+                transparent: true,
+                alphaTest: 0.5
+            });
+
+            // Mesh
+            const particlesMesh = new THREE.Points(particlesGeometry, material);
+            scene.add(particlesMesh);
+
+            // Mouse Interaction
+            let mouseX = 0;
+            let mouseY = 0;
+
+            document.addEventListener('mousemove', (event) => {
+                mouseX = event.clientX / window.innerWidth - 0.5;
+                mouseY = event.clientY / window.innerHeight - 0.5;
+            });
+
+            // Animation Loop
+            const clock = new THREE.Clock();
+
+            function animate() {
+                requestAnimationFrame(animate);
+                const elapsedTime = clock.getElapsedTime();
+
+                // Rotate entire system
+                particlesMesh.rotation.y = elapsedTime * 0.05;
+                particlesMesh.rotation.x = mouseY * 0.5;
+                particlesMesh.rotation.y += mouseX * 0.5;
+
+                // Wave effect on individual particles (optional simple wave)
+                // Accessing geometry attributes directly is costly in loop, keeping simple rotation for performance
+
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Resize Handler
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+    </script>
+</body>
+</html>

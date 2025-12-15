@@ -1,186 +1,509 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House service S.A.S | Sous-traitance & Services Professionnels</title>
+    <title>House Service S.A.S | Excellence & Sous-traitance</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="images/logo.jpg" type="image/x-icon">
-    
-    <!-- Font Awesome -->
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Styles CSS -->
+    <!-- Styles CSS Modernes -->
     <style>
         :root {
-            /* --- COULEURS (Mode Clair par défaut) --- */
-            --bg-color: #ffffff;
-            --bg-secondary: #f4f6f8;
-            --bg-card: #ffffff;
-            --text-main: #1a1a1a;
-            --text-light: #555555;
-            --border-color: #eeeeee;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-
-            /* Brand Colors (Fixes) */
-            --hs-red: #D32F2F;
+            /* Palette Brand */
             --hs-blue: #29B6F6;
+            --hs-blue-dark: #0288D1;
             --hs-yellow: #FBC02D;
-            --hs-black: #000000;
-
+            --hs-red: #D32F2F;
+            --hs-dark: #111827;
+            --hs-gray: #F3F4F6;
+            --hs-white: #FFFFFF;
+            
+            
+            /* UI Variables */
+            --glass: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            
             --font-main: 'Montserrat', sans-serif;
-            --chat-width: 320px;
-            --nav-height: 80px;
+            --font-display: 'Outfit', sans-serif;
         }
 
-        /* --- MODE SOMBRE --- */
-        [data-theme="dark"] {
-            --bg-color: #121212;
-            --bg-secondary: #1e1e1e;
-            --bg-card: #252525;
-            --text-main: #f0f0f0;
-            --text-light: #aaaaaa;
-            --border-color: #333333;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        /* Images responsive par défaut */
-        img { max-width: 100%; height: auto; display: block; }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--hs-white);
+            color: var(--hs-dark);
             font-family: var(--font-main);
             overflow-x: hidden;
-            /* Compense la navigation fixe pour éviter que le contenu soit caché */
-            padding-top: var(--nav-height);
-            transition: background-color 0.3s ease, color 0.3s ease;
             line-height: 1.6;
         }
 
-        /* --- Utils --- */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
-        .section-padding { padding: 100px 0; }
+        /* --- Typography --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, var(--hs-dark) 0%, var(--hs-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .text-red { color: var(--hs-red); }
         .text-blue { color: var(--hs-blue); }
-        h1, h2, h3, h4 { font-weight: 700; color: var(--text-main); line-height: 1.2; }
         
-        .section-header { margin-bottom: 60px; text-align: center; }
-        .section-header h4 { color: var(--hs-blue); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
-        .section-header h2 { font-size: 2.5rem; position: relative; display: inline-block; }
-        .section-header h2::after { content: ''; display: block; width: 60px; height: 4px; background: var(--hs-red); margin: 15px auto 0; }
-
-        /* --- Navigation --- */
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 20px 50px;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 100; background: var(--bg-color);
-            transition: all 0.3s ease;
-            border-bottom: 1px solid transparent;
+        /* --- Layout Utils --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
         }
-        nav.scrolled { padding: 15px 50px; box-shadow: var(--shadow); border-bottom: 1px solid var(--border-color); }
+        .section-py { padding: 100px 0; }
         
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 5px; }
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--hs-dark);
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 0%; height: 100%;
+            background: var(--hs-blue);
+            z-index: -1;
+            transition: width 0.3s ease;
+        }
+        .btn-primary:hover::before { width: 100%; }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(41, 182, 246, 0.4); }
+
+        .btn-secondary {
+            background: white;
+            color: var(--hs-dark);
+            border: 1px solid #e5e7eb;
+        }
+        .btn-secondary:hover {
+            border-color: var(--hs-blue);
+            color: var(--hs-blue);
+        }
+
+        /* --- Header / Nav --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 20px 0;
+            transition: 0.3s;
+        }
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: var(--shadow-sm);
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--hs-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
         .logo span { color: var(--hs-red); }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--hs-dark);
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            font-size: 0.95rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 0%; height: 2px;
+            background: var(--hs-blue);
+            transition: 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
 
-        .nav-links { display: flex; gap: 25px; align-items: center; }
-        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--hs-blue); }
+        /* Dropdown Menu Style Google */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 600px;
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-xl);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(10px);
+        }
+        .drop-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--hs-dark);
+            transition: 0.2s;
+        }
+        .drop-item:hover { background: var(--hs-gray); }
+        .drop-icon {
+            font-size: 1.2rem;
+            color: var(--hs-blue);
+            background: rgba(41, 182, 246, 0.1);
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 8px;
+        }
+        .drop-text h5 { font-weight: 700; margin-bottom: 4px; }
+        .drop-text p { font-size: 0.8rem; color: #666; }
 
-        /* Theme Toggle Btn */
-        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--text-main); transition: transform 0.3s; }
-        .theme-toggle:hover { transform: rotate(15deg); color: var(--hs-yellow); }
-
-        /* --- Hero --- */
+        /* --- Hero Section Static --- */
         .hero {
-            height: 90vh; min-height: 60vh; display: flex; align-items: center;
-            background-color: var(--bg-color);
-            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
-            background-size: 30px 30px;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-image: url('/images/aa.JPG');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-        .hero-content { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 25px; }
-        /* Boutons du hero - espacement et comportement mobile */
-        .btn-group { display: flex; gap: 20px; align-items: center; }
-        .btn-group .btn { min-width: 140px; }
-        
-        .btn { padding: 15px 35px; border-radius: 5px; font-weight: 700; text-transform: uppercase; text-decoration: none; transition: 0.3s; display: inline-block; cursor: pointer; border: 2px solid transparent; }
-        .btn-primary { background: var(--hs-red); color: white; }
-        .btn-primary:hover { background: #b71c1c; transform: translateY(-3px); }
-        .btn-secondary { border-color: var(--text-main); color: var(--text-main); }
-        .btn-secondary:hover { background: var(--text-main); color: var(--bg-color); }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 60%, rgba(41,182,246,0.2) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding-top: 60px;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(41, 182, 246, 0.1);
+            color: var(--hs-blue-dark);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(41, 182, 246, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            color: var(--hs-dark);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #444;
+            margin-bottom: 40px;
+            max-width: 600px;
+            font-weight: 500;
+        }
+        .hero-logo-img {
+            max-width: 120px;
+            margin-bottom: 20px;
+            display: block;
+        }
 
-        /* --- Why Choose Us (New) --- */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .feature-item { background: var(--bg-card); padding: 30px; border-radius: 10px; box-shadow: var(--shadow); text-align: center; border-top: 4px solid var(--hs-blue); transition: transform 0.3s; }
-        .feature-item:hover { transform: translateY(-5px); }
-        .feature-icon { font-size: 2.5rem; color: var(--hs-blue); margin-bottom: 20px; }
+        /* --- Bento Grid (About/Gallery) --- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 20px;
+        }
+        .bento-item {
+            background: var(--hs-gray);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid white;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .bento-item:hover { transform: scale(0.98); }
+        .bento-large { grid-column: span 2; grid-row: span 2; }
+        .bento-wide { grid-column: span 2; }
+        .bento-img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        .bento-item:hover .bento-img { transform: scale(1.1); }
+        .bento-content {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+        }
 
-        /* --- Services (Images Fixed) --- */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        /* --- Services Cards with Tilt --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
         .service-card {
-            background: var(--bg-card); border-radius: 12px; overflow: hidden;
-            box-shadow: var(--shadow); transition: all 0.3s ease;
-            display: flex; flex-direction: column;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f0f0f0;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
         }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-        
-        .service-img-holder { height: 220px; width: 100%; position: relative; overflow: hidden; }
-        .service-img-holder img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .service-card:hover .service-img-holder img { transform: scale(1.1); }
-        .service-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
-        .service-icon-float {
-            position: absolute; bottom: -25px; right: 20px; width: 60px; height: 60px;
-            background: var(--hs-red); border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--hs-blue);
+        }
+        .service-icon {
+            width: 60px; height: 60px;
+            background: var(--hs-blue);
+            border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: white;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(41, 182, 246, 0.3);
+        }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .service-card ul { list-style: none; color: #666; font-size: 0.95rem; }
+        .service-card ul li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .service-card ul li i { color: var(--hs-yellow); }
+
+        /* --- AI Section --- */
+        .ai-section {
+            background: radial-gradient(circle at top right, #f0f9ff 0%, #fff 40%);
+            border-top: 1px solid #e0f2fe;
+            border-bottom: 1px solid #e0f2fe;
+        }
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .ai-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid #e0e7ff;
+            position: relative;
+        }
+        .ai-badge {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: inline-block;
         }
 
-        .service-content { padding: 40px 30px 30px; }
-        .service-list { list-style: none; margin-top: 20px; }
-        .service-list li { padding: 8px 0; border-bottom: 1px solid var(--border-color); color: var(--text-light); display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
-        .service-list li i { color: var(--hs-blue); }
-
-        /* --- Team Section (New) --- */
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .team-member { text-align: center; background: var(--bg-card); padding: 30px; border-radius: 15px; box-shadow: var(--shadow); border: 1px solid var(--border-color); }
-        .team-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; border: 3px solid var(--hs-blue); padding: 3px; background: var(--bg-card); }
-        .team-role { color: var(--hs-red); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .team-socials { margin-top: 15px; display: flex; justify-content: center; gap: 10px; }
-        .team-socials a { color: var(--text-light); transition: color 0.3s; }
-        .team-socials a:hover { color: var(--hs-blue); }
-
-        /* --- Founder --- */
-        .founder-card {
-            background: var(--bg-card); padding: 60px; border-radius: 10px; max-width: 900px; margin: 0 auto;
-            box-shadow: var(--shadow); border-top: 5px solid var(--hs-blue); text-align: center;
+        /* --- Payment Section (Accordion/Modal) --- */
+        .payment-section {
+            background: linear-gradient(135deg, var(--hs-dark) 0%, #1e3a8a 100%);
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .payment-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .payment-modal.active { opacity: 1; pointer-events: all; }
+        .payment-box {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            max-width: 500px;
+            width: 90%;
+            text-align: left;
+            position: relative;
+            color: var(--hs-dark);
+        }
+        .close-modal {
+            position: absolute; top: 20px; right: 20px;
+            font-size: 1.5rem; cursor: pointer; color: #999;
         }
 
-        /* --- FAQ Section (New) --- */
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { margin-bottom: 15px; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background: var(--bg-card); }
-        .faq-question {
-            padding: 20px; background: var(--bg-secondary); cursor: pointer; font-weight: 600;
-            display: flex; justify-content: space-between; align-items: center;
+        /* --- Lightbox --- */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 3000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
         }
-        .faq-question:hover { color: var(--hs-blue); }
-        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: var(--text-light); }
-        .faq-item.active .faq-answer { padding: 20px; max-height: 200px; }
-        .faq-item.active .faq-question i { transform: rotate(180deg); }
+        .lightbox.active { opacity: 1; pointer-events: all; }
+        .lightbox img {
+            max-width: 90%; max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+        .lb-close {
+            position: absolute; top: 30px; right: 40px;
+            color: white; font-size: 2rem; cursor: pointer;
+            z-index: 3001;
+        }
+        .lb-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            color: white; font-size: 2rem; cursor: pointer;
+            padding: 20px; background: rgba(255,255,255,0.1);
+            border-radius: 50%; transition: 0.3s;
+        }
+        .lb-nav:hover { background: rgba(255,255,255,0.2); }
+        .lb-prev { left: 30px; }
+        .lb-next { right: 30px; }
+
+        /* --- Blog Preview --- */
+        .blog-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .blog-img { height: 200px; width: 100%; object-fit: cover; }
+        .blog-content { padding: 25px; }
+        .blog-tag { font-size: 0.75rem; text-transform: uppercase; color: var(--hs-blue); font-weight: 700; }
 
         /* --- Footer --- */
-        footer { background: #111; padding-top: 80px; color: #aaa; }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
-        .footer-col h4 { color: #fff; margin-bottom: 25px; border-bottom: 2px solid var(--hs-blue); display: inline-block; padding-bottom: 5px; }
-        .footer-col a { color: #999; text-decoration: none; display: block; margin-bottom: 10px; transition: 0.3s; }
-        .footer-col a:hover { color: #fff; padding-left: 5px; }
-        .footer-bottom { border-top: 1px solid #222; padding: 20px 0; text-align: center; font-size: 0.8rem; }
+        footer {
+            background: var(--hs-dark);
+            color: #9ca3af;
+            padding-top: 80px;
+            font-size: 0.9rem;
+        }
+        .footer-content {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px; padding-bottom: 60px; border-bottom: 1px solid #374151;
+        }
+        .footer-col h4 { color: white; margin-bottom: 25px; font-size: 1.1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col a { color: #9ca3af; text-decoration: none; transition: 0.3s; }
+        .footer-col a:hover { color: var(--hs-blue); padding-left: 5px; }
 
+        /* Mobile Nav */
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--hs-dark); }
+        
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 80%;
+                background: white; flex-direction: column; padding: 100px 30px;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.4s ease;
+            }
+            .nav-menu.active { right: 0; }
+            .hamburger { display: block; z-index: 101; }
+            .dropdown-menu { position: static; width: 100%; transform: none; box-shadow: none; border: none; padding: 0; display: none; }
+            .dropdown.active .dropdown-menu { display: grid; }
+            .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .bento-item { grid-column: span 1 !important; grid-row: span 1 !important; height: 250px; }
+            h1 { font-size: 2.5rem; }
+            .ai-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Loading */
+        #loader {
+            position: fixed; inset: 0; background: white; z-index: 10000;
+            display: flex; align-items: center; justify-content: center; flex-direction: column;
+        }
+        .spinner {
+            width: 50px; height: 50px; border: 3px solid rgba(41,182,246,0.3);
+            border-radius: 50%; border-top-color: var(--hs-blue);
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
+    <style>
         /* --- Chatbot AI (New) --- */
         #chatbot-toggler {
             position: fixed; bottom: 30px; right: 30px;
@@ -223,133 +546,448 @@
         .msg.user { background: var(--hs-blue); color: white; align-self: flex-end; }
         .typing { font-style: italic; font-size: 0.8rem; color: var(--text-light); margin-left: 10px; display: none; }
 
-        /* Preloader */
-        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-color); z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; }
-
-        /* --- Partners / Gallery / Ads --- */
-        .partners-row { display: flex; gap: 18px; overflow-x: auto; padding: 10px 6px; -webkit-overflow-scrolling: touch; }
-        .partner-item { min-width: 150px; background: var(--bg-card); padding: 12px; border-radius: 8px; box-shadow: var(--shadow); text-align: center; border:1px solid var(--border-color); }
-        .partner-item img { width: 100%; height: 80px; object-fit: contain; background: #fff; padding:8px; border-radius:6px; }
-
-        .ad-gallery-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
-        .ad-panel { background: var(--bg-card); border-radius: 10px; padding: 10px; box-shadow: var(--shadow); height: 220px; display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid var(--border-color); }
-        .ad-panel img { width:100%; height:100%; object-fit:cover; border-radius:8px; transition: opacity 0.6s ease; opacity:1; }
-
-        .gallery-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; }
-        .gallery-grid img { width:100%; height:80px; object-fit:cover; border-radius:6px; cursor:pointer; }
-
-        /* Lightbox */
-        #lightbox { position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center; z-index:2000; visibility:hidden; opacity:0; transition:opacity .2s; }
-        #lightbox.active { visibility:visible; opacity:1; }
-        #lightbox img { max-width:90%; max-height:80%; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,.6); }
-        #lightbox .controls { position:absolute; width:100%; display:flex; justify-content:space-between; top:50%; transform:translateY(-50%); padding:0 30px; }
-        #lightbox .controls button { background:rgba(255,255,255,0.1); border:none; color:#fff; font-size:1.5rem; padding:10px 14px; border-radius:50%; cursor:pointer; }
-
-        @media (max-width: 1024px) {
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-        }
-
-        @media (max-width: 768px) {
-            nav { padding: 12px 20px; }
-            .nav-links { display: none; }
-            /* Réductions spécifiques pour mobile afin d'éviter le masquage d'éléments */
-            body { padding-top: 64px; }
-            .hero-content { grid-template-columns: 1fr; text-align: center; }
-            .hero { min-height: 40vh; padding-top: 10px; padding-bottom: 20px; }
-            .section-padding { padding: 60px 0; }
-            .btn-group { justify-content: center; flex-direction: column; gap: 12px; }
-            /* boutons prennent toute la largeur disponible dans le groupe sur mobile */
-            .btn-group .btn { width: 100%; max-width: 360px; }
-            .chat-window { width: 90%; right: 5%; bottom: 90px; }
-            .container { padding: 0 15px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 20px; }
-        }
     </style>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+<style>
+/* --- Styles Spécifiques à la Section Équipe --- */
+.team-grid {
+    display: grid;
+    /* Ajustement responsive: 1 colonne sur petit écran, 3 sur grand */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.team-member {
+    /* Utilise la classe 'card' existante de index.html */
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: default;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.member-photo {
+    width: 100%;
+    /* Ratio 1:1 pour une photo carrée */
+    padding-top: 100%; 
+    background-size: cover;
+    background-position: center;
+    border-bottom: 5px solid var(--hs-blue);
+}
+
+.member-info {
+    padding: 30px 20px;
+}
+
+.member-info h3 {
+    font-size: 1.35rem;
+    margin-bottom: 5px;
+}
+
+.role {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.description {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    min-height: 50px; /* Assure une hauteur minimale pour l'alignement */
+}
+
+.social-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-links a {
+    color: var(--text-light);
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+.social-links a:hover {
+    color: var(--hs-blue);
+    transform: scale(1.1);
+}
+
+/* Ajustement pour les petits écrans */
+@media (max-width: 640px) {
+    .team-grid {
+        /* Une seule colonne sur mobile */
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Styles Nouveaux pour FAQ et Fondateur --- */
+
+/* Style Fondateur */
+.founder-box {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+.founder-text {
+    flex: 3;
+}
+.founder-photo-container {
+    flex: 2;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    border: 5px solid var(--bg-color); /* Bordure pour faire ressortir sur bg-secondary */
+}
+.founder-photo {
+    width: 100%;
+    padding-top: 120%; /* Portrait aspect ratio (4:5) */
+    background-size: cover;
+    background-position: center top;
+}
+.founder-text blockquote {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin: 30px 0;
+    padding-left: 20px;
+    border-left: 4px solid var(--hs-red);
+    font-style: italic;
+    color: var(--text-main);
+}
+.signature {
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+/* Style FAQ */
+.faq-grid {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+.faq-item {
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+.faq-question {
+    width: 100%;
+    background: transparent;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 20px 25px;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+}
+.faq-question:hover {
+    background: var(--bg-secondary);
+}
+.faq-question i {
+    transition: transform 0.3s ease;
+    color: var(--hs-red);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    background: var(--bg-secondary);
+}
+.faq-answer p {
+    padding: 0 25px 25px 25px;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+/* Pour le JavaScript (À ajouter dans le fichier index.html, non inclus ici car ce n'est qu'une section) */
+/* .faq-item.active .faq-question i { transform: rotate(180deg); } */
+/* .faq-item.active .faq-answer { max-height: 200px; padding-top: 10px; } */
+
+
+@media (max-width: 900px) {
+    .founder-box {
+        flex-direction: column-reverse; /* Texte en haut sur mobile */
+    }
+    .founder-photo-container {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    .founder-text blockquote {
+        font-size: 1rem;
+    }
+}
+html {
+    scroll-behavior: smooth;
+}
+</style>
+<style>
+/* NOUVEAUX STYLES AJOUTÉS POUR LA SECTION À PROPOS */
+
+.section-title {
+    font-size: 2.4rem; 
+    font-weight: 700; 
+    line-height: 1.3;
+}
+.about-content {
+    align-items: center;
+}
+.about-image img {
+    width:100%;
+    max-width:450px;
+    border-radius:14px;
+    border:5px solid var(--hs-red);
+    box-shadow:0 15px 35px rgba(0,0,0,0.12);
+}
+.about-paragraph {
+    font-size:1.05rem; 
+    line-height:1.7; 
+    margin-bottom:25px;
+}
+.about-subtitle {
+    font-size:1.2rem; 
+    font-weight:700; 
+    margin-bottom:18px;
+}
+.list-unstyled {
+    list-style:none; 
+    padding:0; 
+    margin:0; 
+    color: var(--text-light);
+}
+.list-icon {
+    margin-right:8px;
+}
+.btn-red {
+    display:inline-block;
+    padding:12px 28px;
+    background: var(--hs-red);
+    color:#fff;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    transition: background 0.3s;
+}
+.btn-red:hover {
+    background: #a92020; /* Rouge légèrement plus foncé */
+}
+/* Ajout d'une media query simple pour gérer les colonnes sur mobile */
+@media (max-width: 768px) {
+    .about-image {
+        order: 1;
+    }
+    .about-text {
+        order: 2;
+    }
+}
+</style>
+<style>
+    /* Conteneur principal du carrousel */
+.logo-slider {
+    /* Cache les parties du défilement */
+    overflow: hidden; 
+    /* Définit la largeur (vous pouvez ajuster) */
+    width: 100%; 
+    /* Ajoute de l'ombre pour un look professionnel */
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125); 
+    border-radius: 12px;
+    background: var(--bg-card);
+    padding: 20px 0;
+}
+
+/* Piste de défilement (contient tous les logos) */
+.logo-slide-track {
+    /* Définit la taille totale pour s'adapter à deux jeux de logos */
+    width: calc(250px * 10); /* 250px (largeur d'un logo + marge) * 10 logos au total (5x2) */
+    display: flex;
+    /* Démarre l'animation de défilement */
+    animation: scroll-left 40s linear infinite;
+}
+
+/* Met en pause l'animation au survol (optionnel, mais agréable) */
+.logo-slider:hover .logo-slide-track {
+    animation-play-state: paused;
+}
+
+/* Styles pour un seul logo */
+.slide {
+    width: 250px; /* Largeur de la "carte" d'un logo */
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+}
+
+.slide img {
+    /* Taille maximale pour le logo dans l'espace alloué */
+    max-width: 150px; 
+    max-height: 80px; 
+    filter: grayscale(100%); /* Logos en niveaux de gris pour l'élégance */
+    opacity: 0.5; /* Légèrement plus transparent pour être "grisé" */
+    transition: filter 0.3s, opacity 0.3s;
+}
+
+.slide img:hover {
+    filter: grayscale(0%); /* Couleur au survol */
+    opacity: 1;
+}
+
+/* Définition de l'animation de défilement */
+@keyframes scroll-left {
+    0% {
+        /* Démarre à la position 0 (début du premier jeu de logos) */
+        transform: translateX(0);
+    }
+    100% {
+        /* Se déplace exactement de la largeur du premier jeu de 5 logos */
+        transform: translateX(calc(-250px * 5)); 
+    }
+}
+
+/* Réactivité pour les petits écrans (pour que le défilement soit plus rapide) */
+@media (max-width: 768px) {
+    .logo-slide-track {
+        /* Accélère l'animation sur mobile */
+        animation: scroll-left 25s linear infinite;
+    }
+}
+</style>
 </head>
 <body>
 
-    <!-- Preloader 
-    <div id="preloader">
-        <h2 style="color:var(--text-main)">HOUSE <span style="color:var(--hs-red)">SERVICE S.A.S </span></h2>
-        <div style="width: 200px; height: 4px; background: #eee; border-radius: 2px; margin-top: 10px;">
-            <div id="progress" style="width: 0%; height: 100%; background: var(--hs-blue); transition: width 0.5s;"></div>
-        </div>
-    </div>-->
+    <!-- Preloader -->
+    <div id="loader">
+        <h2 style="font-family: var(--font-display); font-weight: 800; margin-bottom: 10px;">HOUSE <span class="text-red">SERVICE</span> SAS</h2>
+        <div class="spinner"></div>
+    </div>
 
     <!-- Navigation -->
-    <nav>
-        <a href="#" class="logo">HOUSE <span>SERVICE</span> SAS</a>
-        <div class="nav-links">
-            <a href="#about">À Propos</a>
-            <a href="#services">Services</a>
-            <a href="#team">Équipe</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Contact</a>
-            <!-- Dark Mode Toggle -->
-            <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()">
-                <i class="fas fa-moon"></i>
-            </button>
-            <a href="#contact" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.8rem;">Devis</a>
-        </div>
-    </nav>
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="logo">HOUSE <span>SERVICE</span></a>
+            
+            <nav class="nav-menu">
+                <a href="#about" class="nav-link">À Propos</a>
+                
+                <!-- Mega Dropdown -->
+                <div class="dropdown">
+                    <a href="#services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:0.7em; margin-left:5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="/pages/en-savoir-plus-services.html" class="drop-item">
+                            <div class="drop-icon"><i class="fas fa-home"></i></div>
+                            <div class="drop-text"><h5>Habitation</h5><p>Ménage, Baby-sitting, Jardin</p></div>
+                        </a>
+                        <a href="/pages/en-savoir-plus-services.html" class="drop-item">
+                            <div class="drop-icon"><i class="fas fa-briefcase"></i></div>
+                            <div class="drop-text"><h5>Entreprise</h5><p>Sécurité, Accueil, Protocole</p></div>
+                        </a>
+                        <a href="/pages/en-savoir-plus-services.html" class="drop-item">
+                            <div class="drop-icon"><i class="fas fa-plane"></i></div>
+                            <div class="drop-text"><h5>Spécialisé</h5><p>Hôtesses de l'air, Tourisme</p></div>
+                        </a>
+                        <a href="/pages/en-savoir-plus-services.html" class="drop-item">
+                            <div class="drop-icon"><i class="fas fa-user-tie"></i></div>
+                            <div class="drop-text"><h5>Sur Mesure</h5><p>Personnel administratif</p></div>
+                        </a>
+                    </div>
+                </div>
 
-    <!-- Hero -->
+                <a href="#ai-assistant" class="nav-link">IA Assistant</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <div onclick="openPayment()" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.8rem;">Paiement</div>
+            </nav>
+
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <a href="/pages/en-savoir-plus-services.html" class="btn btn-primary">Devis Gratuit</a>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section Static with Logo -->
     <section class="hero">
         <div class="container hero-content">
-            <div class="animate-hero">
-                <h4 class="text-blue" style="text-transform:uppercase; font-weight:700;">Sous-traitance Professionnelle</h4>
-                <h1>L'Excellence au service des <span class="text-red">Ménages</span> & Entreprises</h1>
-                <p style="color:var(--text-light); margin-bottom:30px; font-size:1.1rem;">De Kisangani à Kinshasa, nous offrons une gestion du personnel moderne, humaine et compétente pour simplifier votre quotidien.</p>
-                <div class="btn-group">
-                    <a href="#services" class="btn btn-primary">Nos Services</a>
-                    <a href="#chatbot-toggler" onclick="toggleChat()" class="btn btn-secondary">Parler à l'IA</a>
-                </div>
-            </div>
-            <div class="hero-visual animate-hero" style="text-align: center;">
-                <img src="./images/logo.jpg" alt="Equipe Professionnelle" style="width: 100%; max-width:500px; border-radius: 20px; box-shadow: var(--shadow);">
+            <!-- Logo Image Added -->
+            <img src="./images/logo.jpg" alt="Logo House Service" class="hero-logo-img fade-up" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            
+            <span class="hero-badge fade-up">N°1 en RDC - Kisangani, Goma, Kinshasa</span>
+            <h1 class="fade-up">L'Excellence au service des <span class="text-red">Ménages</span> & Entreprises</h1>
+            <p class="fade-up">Une gestion du personnel moderne, humaine et compétente. Simplifiez votre quotidien avec nos experts vérifiés.</p>
+            <div class="fade-up" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="#services" class="btn btn-primary">Explorer les services <i class="fas fa-arrow-right"></i></a>
+                <a href="#ai-assistant" class="btn btn-secondary"><i class="fas fa-robot"></i> Découvrir l'IA</a>
             </div>
         </div>
+        
+        <!-- Scroll Indicator -->
+        <div style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite;">
+            <i class="fas fa-chevron-down" style="color: var(--hs-blue); font-size: 1.5rem;"></i>
+        </div>
     </section>
-    <!-- Why Choose Us (Bonus Section) -->
 
-<section id="about" class="section-padding py-20">
+    <!-- Stats Section -->
+    <div style="background: var(--hs-white); padding: 40px 0; border-bottom: 1px solid #f0f0f0;">
+        <div class="container" style="display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 30px;">
+            <div>
+                <h3 class="text-blue" style="font-size: 2.5rem;">2020</h3>
+                <p style="color: #666; font-size: 0.9rem;">Année de fondation</p>
+            </div>
+            <div>
+                <h3 class="text-blue" style="font-size: 2.5rem;">3+</h3>
+                <p style="color: #666; font-size: 0.9rem;">Villes couvertes</p>
+            </div>
+            <div>
+                <h3 class="text-blue" style="font-size: 2.5rem;">100%</h3>
+                <p style="color: #666; font-size: 0.9rem;">Personnel Formé</p>
+            </div>
+        </div>
+    </div>
+
+<section id="about" class="section-padding py-20 bg-color">
     <div class="container">
 
         <!-- Header centré -->
         <div class="section-header text-center mb-12 reveal">
-            <h4 style="color:#D32F2F; font-weight:600; margin-bottom:8px;">
+            <h4 class="text-red" style="font-weight:600; margin-bottom:8px;">
                 Notre Histoire & Notre Engagement
             </h4>
-            <h2 style="font-size:2.4rem; font-weight:700; line-height:1.3;">
+            <h2 class="section-title text-main">
                 HOUSE SERVICE – Sous-traitance Professionnelle en RDC
             </h2>
         </div>
 
-        <div class="row align-items-center reveal" style="display:flex; flex-wrap:wrap; gap:40px;">
+        <div class="row about-content reveal" style="display:flex; flex-wrap:wrap; gap:40px;">
 
             <!-- IMAGE -->
-            <div class="col-lg-6 col-md-12 text-center">
+            <div class="col-lg-6 col-md-12 text-center about-image">
                 <img src="images/logo.jpg"
                      alt="Agent House Service"
                      class="img-fluid"
-                     style="
-                        width:100%;
-                        max-width:450px;
-                        border-radius:14px;
-                        border:5px solid #D32F2F;
-                        box-shadow:0 15px 35px rgba(0,0,0,0.12);
-                     ">
+                >
             </div>
 
             <!-- TEXTE -->
-            <div class="col-lg-6 col-md-12">
+            <div class="col-lg-6 col-md-12 about-text">
 
-                <p style="font-size:1.05rem; line-height:1.7; color:#555; margin-bottom:25px;">
+                <p class="about-paragraph text-light">
                     Fondée à Kisangani en <strong>2020</strong>, House Service est une entreprise 
                     de droit congolais dédiée à l’accompagnement des ménages, entreprises et 
                     institutions dans la gestion du personnel et des services spécialisés.
@@ -357,37 +995,37 @@
                     <strong>fiable, compétent et orienté qualité</strong>.
                 </p>
 
-                <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:18px;">Notre Vision & Mission</h3>
+                <h3 class="about-subtitle text-main">Notre Vision & Mission</h3>
 
-                <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                <div class="vision-mission-list" style="display:flex; gap:20px; flex-wrap:wrap;">
 
                     <!-- Colonne 1 -->
-                    <ul style="list-style:none; padding:0; margin:0; flex:1; color:#555;">
+                    <ul class="list-unstyled flex-1">
                         <li class="mb-3">
-                            <i class="fas fa-check-circle" style="color:#D32F2F; margin-right:8px;"></i>
+                            <i class="fas fa-check-circle text-red list-icon"></i>
                             <strong>Vision :</strong> offrir une sous-traitance moderne, humaine et professionnelle.
                         </li>
                         <li class="mb-3">
-                            <i class="fas fa-check-circle" style="color:#D32F2F; margin-right:8px;"></i>
+                            <i class="fas fa-check-circle text-red list-icon"></i>
                             <strong>Mission :</strong> fournir du personnel qualifié, formé et immédiatement opérationnel.
                         </li>
                     </ul>
 
                     <!-- Colonne 2 -->
-                    <ul style="list-style:none; padding:0; margin:0; flex:1; color:#555;">
+                    <ul class="list-unstyled flex-1">
                         <li class="mb-3">
-                            <i class="fas fa-check-circle" style="color:#D32F2F; margin-right:8px;"></i>
+                            <i class="fas fa-check-circle text-red list-icon"></i>
                             <strong>Impact :</strong> contribuer à l’employabilité durable des jeunes en RDC.
                         </li>
                         <li class="mb-3">
-                            <i class="fas fa-check-circle" style="color:#D32F2F; margin-right:8px;"></i>
+                            <i class="fas fa-check-circle text-red list-icon"></i>
                             <strong>Approche :</strong> valoriser la profession en adoptant les termes 
                             <em>Assistant(e) de ménage</em>.
                         </li>
                     </ul>
                 </div>
 
-                <p style="color:#555; margin-top:25px; line-height:1.7;">
+                <p class="about-paragraph text-light" style="margin-top:25px;">
                     En collaborant avec nous, vous bénéficiez d’une gestion du personnel simplifiée, 
                     d’un gain de temps considérable et d’une qualité de prestation irréprochable.
                 </p>
@@ -397,277 +1035,105 @@
                     nous visons une présence nationale.
                 </p>
 
-                <!-- CTA -->
+                <!-- CTA 
                 <div style="margin-top:30px;">
-                    <a href="./pages/a-propos.html"
-                       style="
-                           display:inline-block;
-                           padding:12px 28px;
-                           background:#D32F2F;
-                           color:#fff;
-                           border-radius:8px;
-                           text-decoration:none;
-                           font-weight:600;
-                       ">
+                    <a href="./pages/a-propos.html" class="btn btn-red">
                         En savoir plus
                     </a>
-                </div>
+                </div>-->
 
             </div>
         </div>
     </div>
 </section>
-
-
-    <!-- Partenaires -->
-    <section id="partners" class="section-padding" style="background: var(--bg-secondary);">
+    
+    <!-- About Section (Bento Style) -->
+    <section id="about" class="section-py">
         <div class="container">
-            <div class="section-header">
-                <h4>Nos Alliés</h4>
-                <h2>Nos Partenaires</h2>
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h4 class="text-red" style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">Notre Histoire</h4>
+                <h2 style="font-size: 2.5rem;">Pourquoi House Service ?</h2>
             </div>
-            <div class="partners-row">
-                <div class="partner-item"><img src="https://via.placeholder.com/300x80?text=Partenaire+1" alt="Partenaire 1"><p style="margin-top:8px; color:var(--text-light); font-weight:700;">Partenaire 1</p></div>
-                <div class="partner-item"><img src="https://via.placeholder.com/300x80?text=Partenaire+2" alt="Partenaire 2"><p style="margin-top:8px; color:var(--text-light); font-weight:700;">Partenaire 2</p></div>
-                <div class="partner-item"><img src="https://via.placeholder.com/300x80?text=Partenaire+3" alt="Partenaire 3"><p style="margin-top:8px; color:var(--text-light); font-weight:700;">Partenaire 3</p></div>
-                <div class="partner-item"><img src="https://via.placeholder.com/300x80?text=Partenaire+4" alt="Partenaire 4"><p style="margin-top:8px; color:var(--text-light); font-weight:700;">Partenaire 4</p></div>
-                <div class="partner-item"><img src="https://via.placeholder.com/300x80?text=Partenaire+5" alt="Partenaire 5"><p style="margin-top:8px; color:var(--text-light); font-weight:700;">Partenaire 5</p></div>
-                <div class="partner-item"><img src="https://via.placeholder.com/300x80?text=Partenaire+6" alt="Partenaire 6"><p style="margin-top:8px; color:var(--text-light); font-weight:700;">Partenaire 6</p></div>
-                <div class="partner-item"><img src="https://via.placeholder.com/300x80?text=Partenaire+7" alt="Partenaire 7"><p style="margin-top:8px; color:var(--text-light); font-weight:700;">Partenaire 7</p></div>
-                <div class="partner-item"><img src="https://via.placeholder.com/300x80?text=Partenaire+8" alt="Partenaire 8"><p style="margin-top:8px; color:var(--text-light); font-weight:700;">Partenaire 8</p></div>
-                <div class="partner-item"><img src="https://via.placeholder.com/300x80?text=Partenaire+9" alt="Partenaire 9"><p style="margin-top:8px; color:var(--text-light); font-weight:700;">Partenaire 9</p></div>
-                <div class="partner-item"><img src="https://via.placeholder.com/300x80?text=Partenaire+10" alt="Partenaire 10"><p style="margin-top:8px; color:var(--text-light); font-weight:700;">Partenaire 10</p></div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Why Choose Us (Bonus Section) -->
-    <section class="section-padding" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header">
-                <h4>Nos Valeurs</h4>
-                <h2>Pourquoi Nous Choisir ?</h2>
-            </div>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <i class="fas fa-shield-alt feature-icon"></i>
-                    <h3>Fiabilité & Sécurité</h3>
-                    <p style="color:var(--text-light); font-size:0.9rem;">Personnel vérifié, formé et suivi rigoureusement pour votre tranquillité.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-clock feature-icon"></i>
-                    <h3>Gain de Temps</h3>
-                    <p style="color:var(--text-light); font-size:0.9rem;">Nous gérons tout : recrutement, paie, administration. Vous profitez.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-graduation-cap feature-icon"></i>
-                    <h3>Formation Continue</h3>
-                    <p style="color:var(--text-light); font-size:0.9rem;">Nos agents sont formés en interne pour un service haut de gamme.</p>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-map-marker-alt feature-icon"></i>
-                    <h3>Proximité</h3>
-                    <p style="color:var(--text-light); font-size:0.9rem;">Présents à Kisangani, Goma et Kinshasa pour être au plus près de vous.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services (Images Added) -->
-    <section id="services" class="section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h4>Nos Domaines</h4>
-                <h2>Nos Services <span class="text-blue">Experts</span></h2>
-            </div>
-            <div class="services-grid">
-                <!-- Habitation -->
-                <div class="service-card">
-                    <div class="service-img-holder">
-                        <img src="https://images.unsplash.com/photo-1581578731117-10d52143b0d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Ménage et Nettoyage">
-                        <div class="service-overlay"></div>
-                        <div class="service-icon-float"><i class="fas fa-home"></i></div>
-                    </div>
-                    <div class="service-content">
-                        <h3>Services d'Habitation</h3>
-                        <ul class="service-list">
-                            <li><i class="fas fa-check"></i> Assistants de ménage</li>
-                            <li><i class="fas fa-check"></i> Cleaners (Nettoyage)</li>
-                            <li><i class="fas fa-check"></i> Jardiniers & Paysagistes</li>
-                            <li><i class="fas fa-check"></i> Baby-sitters Pro</li>
-                        </ul>
+            <div class="bento-grid">
+                <div class="bento-item bento-large">
+                    <img src="images/logo.jpg" alt="House Service Team" class="bento-img">
+                    <div class="bento-content">
+                        <h3>Notre Vision</h3>
+                        <p>Offrir une sous-traitance moderne, humaine et professionnelle en RDC.</p>
                     </div>
                 </div>
-
-                <!-- Commercial -->
-                <div class="service-card">
-                    <div class="service-img-holder">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Business et Sécurité">
-                        <div class="service-overlay"></div>
-                        <div class="service-icon-float"><i class="fas fa-briefcase"></i></div>
-                    </div>
-                    <div class="service-content">
-                        <h3>Services Professionnels</h3>
-                        <ul class="service-list">
-                            <li><i class="fas fa-check"></i> Agents Commerciaux</li>
-                            <li><i class="fas fa-check"></i> Agents de Sécurité</li>
-                            <li><i class="fas fa-check"></i> Hôtesses d'accueil</li>
-                            <li><i class="fas fa-check"></i> Serveurs & Protocole</li>
-                        </ul>
-                    </div>
+                <div class="bento-item" style="background: var(--hs-blue); color: white; padding: 30px;">
+                    <i class="fas fa-shield-alt" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                    <h4>Sécurité</h4>
+                    <p style="font-size: 0.9rem;">Personnel identifié et casier judiciaire vérifié.</p>
                 </div>
-
-                <!-- Spécialisé -->
-                <div class="service-card">
-                    <div class="service-img-holder">
-                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Services Spéciaux">
-                        <div class="service-overlay"></div>
-                        <div class="service-icon-float"><i class="fas fa-plane"></i></div>
-                    </div>
-                    <div class="service-content">
-                        <h3>Services Spécialisés</h3>
-                        <ul class="service-list">
-                            <li><i class="fas fa-check"></i> Hôtesses de l'air</li>
-                            <li><i class="fas fa-check"></i> Guides Touristiques</li>
-                            <li><i class="fas fa-check"></i> Personnel sur mesure</li>
-                            <li><i class="fas fa-check"></i> Gestion Administrative</li>
-                        </ul>
+                <div class="bento-item" style="background: var(--hs-yellow); color: var(--hs-dark); padding: 30px;">
+                    <i class="fas fa-clock" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                    <h4>Gain de Temps</h4>
+                    <p style="font-size: 0.9rem;">Nous gérons le recrutement et la paie.</p>
+                </div>
+                <div class="bento-item bento-wide">
+                    <img src="/images/formation.png" alt="Training" class="bento-img">
+                    <div class="bento-content">
+                        <h3>Formation Continue</h3>
+                        <p>Nos agents sont formés pour un service 5 étoiles.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section (New) -->
-    <section id="team" class="section-padding" style="background: var(--bg-secondary);">
+    <!-- Services Section -->
+    <section id="services" class="section-py" style="background: var(--hs-gray);">
         <div class="container">
-            <div class="section-header">
-                <h4>Notre Force</h4>
-                <h2>L'Équipe de <span class="text-red">Direction</span></h2>
-            </div>
-            <div class="team-grid">
-                <!-- CEO -->
-                <div class="team-member">
-                    <img src="./images/t.jpg" alt="CEO" class="team-photo">
-                    <h3>M. Théophile MUTATAY</h3>
-                    <span class="team-role">Fondateur & DG</span>
-                    <p style="color:var(--text-light); font-size:0.9rem;">Expert en Marketing et Stratégie Commerciale. Visionnaire derrière House Service.</p>
-                </div>
-                <!-- Manager -->
-                <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Manager" class="team-photo">
-                    <h3>Mme. ...</h3>
-                    <span class="team-role">Directrice RH</span>
-                    <p style="color:var(--text-light); font-size:0.9rem;">Spécialiste du recrutement et de la formation du personnel de maison.</p>
-                </div>
-                <!-- Manager Ops -->
-                <div class="team-member">
-                    <img src="./images/sec.png" alt="Manager Ops" class="team-photo">
-                    <h3>M. ...</h3>
-                    <span class="team-role">Sécretaire</span>
-                    <p style="color:var(--text-light); font-size:0.9rem;">Garant de la qualité des services sur le terrain à Kisangani et Goma.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section (New) -->
-    <section id="faq" class="section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h4>Questions Fréquentes</h4>
-                <h2>Besoin d'aide ?</h2>
-            </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        Comment recrutez-vous le personnel ?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Nous sélectionnons rigoureusement nos agents sur base de leurs compétences, casier judiciaire et motivation. Ils suivent ensuite une formation interne obligatoire.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        Dans quelles villes opérez-vous ?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Notre siège est à Kisangani. Nous sommes également actifs à Goma et Kinshasa, avec pour ambition de couvrir toute la RDC.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFaq(this)">
-                        Puis-je changer d'agent si je ne suis pas satisfait ?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolument. Notre garantie de satisfaction vous permet de demander un remplacement rapide sans frais administratifs supplémentaires.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Founder Quote -->
-    <section id="founder" class="section-padding" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="founder-card">
-                <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--hs-yellow); margin-bottom: 20px;"></i>
-                <h3 style="margin-bottom: 20px;">"Ma mission est d'offrir une sous-traitance humaine, digne et hautement professionnelle."</h3>
-                <p class="text-red" style="font-weight: 700;">M. Théophile MUTATAY TSHILOBO</p>
-                <p style="font-size: 0.9rem;">Fondateur House Service S.A.S</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- En savoir plus + Ad panel & Gallery -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="section-header">
-                <h4>En savoir plus</h4>
-                <h2>Informations détaillées</h2>
-            </div>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:20px; margin-bottom:30px;">
-                <a href="pages/en-savoir-plus-services.html" style="text-decoration:none;">
-                    <div class="feature-item">
-                        <h3>Nos Services</h3>
-                        <p style="color:var(--text-light);">Détails sur chaque service proposé et formules.</p>
-                    </div>
-                </a>
-                <a href="pages/en-savoir-plus-recrutement.html" style="text-decoration:none;">
-                    <div class="feature-item">
-                        <h3>Recrutement & Formation</h3>
-                        <p style="color:var(--text-light);">Processus de sélection, garanties et formations.</p>
-                    </div>
-                </a>
-                <a href="pages/en-savoir-plus-tarifs.html" style="text-decoration:none;">
-                    <div class="feature-item">
-                        <h3>Tarifs & Paiement</h3>
-                        <p style="color:var(--text-light);">Modes de paiement, options et numéro agent pour règlement.</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="ad-gallery-wrapper">
-                <div class="ad-panel" id="ad-panel">
-                    <img src="./images/pub1.jpg" alt="Ad">
-                </div>
+            <div style="display: flex; justify-content: space-between; align-items: end; margin-bottom: 50px;">
                 <div>
-                    <div style="margin-bottom:12px;"><strong style="color:var(--hs-blue);">Mini Galerie</strong></div>
-                    <div class="gallery-grid">
-                        <img src="./images/pub2.jpg" alt="photo d'un évenement" onclick="openLightbox(0)">
-                        <img src="./images/pub3.jpg" alt="g2" onclick="openLightbox(1)">
-                        <img src="./images/pub4.jpg" alt="g3" onclick="openLightbox(2)">
-                        <img src="./images/pub5.jpg" alt="g4" onclick="openLightbox(3)">
-                    </div>
+                    <h4 class="text-blue">NOS EXPERTISES</h4>
+                    <h2 class="text-gradient" style="font-size: 2.5rem;">Solutions Professionnelles</h2>
+                </div>
+                <a href="/pages/en-savoir-plus-services.html" class="btn btn-secondary">Voir tout le catalogue</a>
+            </div>
+
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card tilt-card">
+                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                    <h3>Habitation</h3>
+                    <p style="margin-bottom: 20px; color: #555;">Pour un foyer impeccable et serein.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Assistants de ménage</li>
+                        <li><i class="fas fa-check-circle"></i> Nounous qualifiées</li>
+                        <li><i class="fas fa-check-circle"></i> Jardiniers paysagistes</li>
+                    </ul>
+                </div>
+                <!-- Card 2 -->
+                <div class="service-card tilt-card">
+                    <div class="service-icon" style="background: var(--hs-red);"><i class="fas fa-briefcase"></i></div>
+                    <h3>Entreprise</h3>
+                    <p style="margin-bottom: 20px; color: #555;">Optimisez vos opérations.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Agents d'entretien</li>
+                        <li><i class="fas fa-check-circle"></i> Sécurité & Gardiennage</li>
+                        <li><i class="fas fa-check-circle"></i> Hôtesses d'accueil</li>
+                    </ul>
+                </div>
+                <!-- Card 3 -->
+                <div class="service-card tilt-card">
+                    <div class="service-icon" style="background: var(--hs-yellow); color:black;"><i class="fas fa-star"></i></div>
+                    <h3>Services Premium</h3>
+                    <p style="margin-bottom: 20px; color: #555;">Prestations sur-mesure.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Protocole VIP</li>
+                        <li><i class="fas fa-check-circle"></i> Chauffeurs privés</li>
+                        <li><i class="fas fa-check-circle"></i> Gestionnaire de maison</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Chatbot Floating Button & Window -->
+    
+ <!-- Chatbot Floating Button & Window -->
     <button id="chatbot-toggler" onclick="toggleChat()">
         <i class="fas fa-robot" style="font-size: 1.5rem;"></i>
     </button>
@@ -689,216 +1155,560 @@
         </div>
     </div>
 
+
+    <!-- AI Section (New) -->
+    <section id="ai-assistant" class="section-py ai-section">
+        <div class="container">
+            <div class="ai-grid">
+                <div>
+                    <span class="ai-badge"><i class="fas fa-sparkles"></i> Technologie IA</span>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">L'Assistant Intelligent <br>House Service</h2>
+                    <p style="font-size: 1.1rem; color: #555; margin-bottom: 30px;">
+                        Plus besoin d'attendre les heures de bureau. Notre assistant virtuel alimenté par l'IA est disponible 24h/24 et 7j/7 pour répondre à toutes vos questions.
+                    </p>
+                    <ul style="margin-bottom: 30px; list-style: none;">
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check text-blue" style="margin-right: 10px;"></i> Estimation de devis instantanée</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check text-blue" style="margin-right: 10px;"></i> Questions sur le recrutement</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check text-blue" style="margin-right: 10px;"></i> Support client immédiat</li>
+                    </ul>
+                    <button onclick="toggleChat()" class="btn btn-primary"><i class="fas fa-comment-dots"></i> Démarrer la conversation</button>
+                </div>
+                <div class="ai-card tilt-card">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
+                        <div style="width: 50px; height: 50px; background: var(--hs-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0;">House Assistant</h4>
+                            <span style="font-size: 0.8rem; color: #22c55e;">● En ligne</span>
+                        </div>
+                    </div>
+                    <div style="background: #f8fafc; padding: 15px; border-radius: 10px; margin-bottom: 15px; font-size: 0.9rem; color: #475569;">
+                        Bonjour ! Je peux vous aider à trouver une femme de ménage ou un agent de sécurité en quelques secondes. Que recherchez-vous ?
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <div style="height: 10px; width: 10px; background: #cbd5e1; border-radius: 50%; animation: pulse 1s infinite;"></div>
+                        <div style="height: 10px; width: 10px; background: #cbd5e1; border-radius: 50%; animation: pulse 1s infinite 0.2s;"></div>
+                        <div style="height: 10px; width: 10px; background: #cbd5e1; border-radius: 50%; animation: pulse 1s infinite 0.4s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="team" class="section-py bg-color">
+    <div class="container">
+        <!-- Titres de Section -->
+        <div class="section-header">
+            <h2 class="section-title text-main">Notre Équipe de Direction</h2>
+            <p class="section-subtitle text-light">
+                Rencontrez les leaders qui construisent l'excellence et le professionnalisme chez House Service S.A.S.
+            </p>
+        </div>
+
+        <!-- Grille des Membres de l'Équipe -->
+        <div class="team-grid">
+            
+            <!-- Membre 1: Directeur Général -->
+            <div class="team-member card">
+                <div class="member-photo" style="background-image: url('/images/théo.png');">
+                    <!-- Photo de profil -->
+                </div>
+                <div class="member-info">
+                    <h3 class="text-main">M. Théophile MUTATAY</h3>
+                    <p class="role text-blue">Directeur Général (DG)</p>
+                    <p class="description text-light">
+                        Expert en Marketing et Stratégie Commerciale. Visionnaire derrière House Service.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Membre 2: Directrice des Opérations -->
+            <div class="team-member card">
+                <div class="member-photo" style="background-image: url('/images/sec.png');">
+                    <!-- Photo de profil -->
+                </div>
+                <div class="member-info">
+                    <h3 class="text-main">M. Cicéron ...</h3>
+                    <p class="role text-blue">Sécretaire</p>
+                    <p class="description text-light">
+                        Garant de l'efficacité opérationnelle et de la bonne coordination des équipes de terrain pour chaque mission.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Membre 3: Responsable Commercial 
+            <div class="team-member card">
+                <div class="member-photo" style="background-image: url('https://placehold.co/400x400/1a1a1a/ffffff?text=Commercial');">
+                     Photo de profil 
+                </div>
+                <div class="member-info">
+                    <h3 class="text-main">M. Patrick Kasongo</h3>
+                    <p class="role text-blue">Responsable Commercial & Clientèle</p>
+                    <p class="description text-light">
+                        Notre expert en relations clients, il veille à ce que nos offres correspondent parfaitement aux attentes de nos partenaires.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div> -->
+            
+        </div>
+    </div>
+</section>
+
+<section id="founder-message" class="section-py bg-secondary">
+    <div class="container">
+        <div class="founder-box">
+            <div class="founder-text">
+                <p class="text-red" style="font-weight: 700; text-transform: uppercase;">Notre engagement</p>
+                <h2 class="section-title text-main" style="font-size: 2.5rem;">Un mot du Créateur de House Service S.A.S</h2>
+                <blockquote class="text-light">
+                    "Ma mission est d'offrir une sous-traitance humaine, digne et hautement professionnelle."
+                </blockquote>
+                <p class="signature text-main">
+                    <span style="font-weight: 800; display: block; margin-bottom: 5px;">M. Théophile MUTATAY</span>
+                    <span class="role text-blue">Fondateur & Président</span>
+                </p>
+            </div>
+            <div class="founder-photo-container">
+                <div class="founder-photo" style="background-image: url('/images/t.jpg');"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Payment & Ad Section -->
+    <section class="section-py">
+        <div class="container">
+            <div class="payment-section">
+                <h2>Règlement Simplifié</h2>
+                <p style="max-width: 600px; margin: 20px auto; opacity: 0.9;">Effectuez vos paiements de services en toute sécurité via Mobile Money ou Virement Bancaire.</p>
+                <button onclick="openPayment()" class="btn btn-secondary" style="border:none; color: var(--hs-blue);">Effectuer un paiement <i class="fas fa-lock"></i></button>
+            </div>
+            
+            <!-- Modern Interactive Gallery -->
+            <div style="margin-top: 80px;">
+                <h3 style="margin-bottom: 30px;">Galerie & Réalisations</h3>
+                <p style="margin-bottom: 20px; color: #666;">Cliquez sur une image pour l'agrandir.</p>
+                
+                <div class="bento-grid" style="grid-template-rows: 200px;">
+                    <div class="bento-item" onclick="openLightbox(0)">
+                        <img src="./images/pub1.jpg" class="bento-img" alt="Gallery 1">
+                        <div class="bento-content"><i class="fas fa-expand"></i></div>
+                    </div>
+                    <div class="bento-item" onclick="openLightbox(1)">
+                        <img src="./images/pub2.jpg" class="bento-img" alt="Gallery 2">
+                        <div class="bento-content"><i class="fas fa-expand"></i></div>
+                    </div>
+                    <div class="bento-item" onclick="openLightbox(2)">
+                        <img src="./images/pub3.jpg" class="bento-img" alt="Gallery 3">
+                        <div class="bento-content"><i class="fas fa-expand"></i></div>
+                    </div>
+                    <div class="bento-item" onclick="openLightbox(3)">
+                        <img src="./images/pub4.jpg" class="bento-img" alt="Gallery 4">
+                        <div class="bento-content"><i class="fas fa-expand"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section-py" style="background: var(--hs-gray);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+                <h2>Actualités & Conseils</h2>
+            </div>
+            <div class="services-grid">
+                <div class="blog-card">
+                    <img src="/images/nounou.png" class="blog-img" alt="Blog 1">
+                    <div class="blog-content">
+                        <span class="blog-tag">Conseil Maison</span>
+                        <h4 style="margin: 10px 0;">Comment choisir sa nounou ?</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Les critères essentiels pour assurer la sécurité de vos enfants.</p>
+                        <a href="#" style="color: var(--hs-blue); font-size: 0.8rem; font-weight: 700; margin-top: 15px; display: block;">Lire la suite &rarr;</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="/images/solutions.png" class="blog-img" alt="Blog 2">
+                    <div class="blog-content">
+                        <span class="blog-tag">Entreprise</span>
+                        <h4 style="margin: 10px 0;">L'externalisation du nettoyage</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Pourquoi sous-traiter est plus rentable pour votre société.</p>
+                        <a href="#" style="color: var(--hs-blue); font-size: 0.8rem; font-weight: 700; margin-top: 15px; display: block;">Lire la suite &rarr;</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="/images/goma.png" class="blog-img" alt="Blog 3">
+                    <div class="blog-content">
+                        <span class="blog-tag">House Service</span>
+                        <h4 style="margin: 10px 0;">Ouverture à Goma</h4>
+                        <p style="font-size: 0.9rem; color: #666;">Nous étendons nos activités pour mieux vous servir dans l'Est.</p>
+                        <a href="#" style="color: var(--hs-blue); font-size: 0.8rem; font-weight: 700; margin-top: 15px; display: block;">Lire la suite &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn-primary">Voir tous les articles</button>
+            </div>
+        </div>
+    </section>
+
+
+<section id="partners" class="partner-section section-padding py-20 bg-secondary">
+    <div class="container">
+        <!-- Header centré -->
+        <div class="section-header text-center mb-12 reveal">
+            <h4 class="text-red" style="font-weight:600; margin-bottom:8px;">
+                
+            </h4>
+            <h2 class="section-title text-main" style="font-size:2rem; font-weight:700;">
+                Nos Partenaires de Confiance
+            </h2>
+        </div>
+
+        <!-- Carrousel de logos -->
+        <div class="logo-slider">
+            <!-- Répéter les logos deux fois pour créer l'effet de boucle infinie -->
+            <div class="logo-slide-track">
+                
+                <!-- Début des logos (1ère instance) -->
+                <div class="slide">
+                    <img src="https://placehold.co/150x80/29B6F6/ffffff?text=Logo+A" alt="Logo Partenaire A" loading="lazy">
+                </div>
+                <div class="slide">
+                    <img src="https://placehold.co/150x80/D32F2F/ffffff?text=Logo+B" alt="Logo Partenaire B" loading="lazy">
+                </div>
+                <div class="slide">
+                    <img src="https://placehold.co/150x80/1a1a1a/ffffff?text=Logo+C" alt="Logo Partenaire C" loading="lazy">
+                </div>
+                <div class="slide">
+                    <img src="https://placehold.co/150x80/555555/ffffff?text=Logo+D" alt="Logo Partenaire D" loading="lazy">
+                </div>
+                <div class="slide">
+                    <img src="https://placehold.co/150x80/29B6F6/ffffff?text=Logo+E" alt="Logo Partenaire E" loading="lazy">
+                </div>
+                <!-- Fin des logos (1ère instance) -->
+
+                <!-- Début des logos (2ème instance - Pour la boucle) -->
+                <div class="slide">
+                    <img src="https://placehold.co/150x80/29B6F6/ffffff?text=Logo+A" alt="Logo Partenaire A" loading="lazy">
+                </div>
+                <div class="slide">
+                    <img src="https://placehold.co/150x80/D32F2F/ffffff?text=Logo+B" alt="Logo Partenaire B" loading="lazy">
+                </div>
+                <div class="slide">
+                    <img src="https://placehold.co/150x80/1a1a1a/ffffff?text=Logo+C" alt="Logo Partenaire C" loading="lazy">
+                </div>
+                <div class="slide">
+                    <img src="https://placehold.co/150x80/555555/ffffff?text=Logo+D" alt="Logo Partenaire D" loading="lazy">
+                </div>
+                <div class="slide">
+                    <img src="https://placehold.co/150x80/29B6F6/ffffff?text=Logo+E" alt="Logo Partenaire E" loading="lazy">
+                </div>
+                <!-- Fin des logos (2ème instance) -->
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<section id="faq" class="section-py bg-color">
+    <div class="container">
+        <!-- Titres de Section -->
+        <div class="section-header">
+            <h2 class="section-title text-main">Questions Fréquentes</h2>
+            <p class="section-subtitle text-light">
+                Trouvez rapidement des réponses aux questions les plus courantes concernant nos services.
+            </p>
+        </div>
+
+        <!-- Grille FAQ -->
+        <div class="faq-grid">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Quel est le processus pour demander du personnel ? <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Le processus est simple : vous remplissez notre formulaire de demande de devis en ligne (ou nous contactez directement). Nous évaluons vos besoins spécifiques, puis nous vous proposons un profil adapté et un contrat clair.</p>
+                </div>
+            </div>
+            
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Le personnel est-il formé et vérifié ? <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Absolument. Tout notre personnel subit un processus de vérification approfondi (antécédents) et suit des formations régulières pour garantir un niveau de compétence et de professionnalisme élevé, conforme aux standards de House Service.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Quelle est la durée minimale d'un contrat de sous-traitance ? <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Nous offrons des contrats flexibles, allant de missions ponctuelles (événements, nettoyage après-chantier) à des engagements de longue durée (contrats annuels pour le personnel de maison ou commercial). La durée minimale varie selon le service.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Que faire en cas d'insatisfaction ou de problème avec le personnel ? <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Votre satisfaction est notre priorité. Si un problème survient, contactez immédiatement votre responsable de compte dédié. Nous nous engageons à résoudre le problème rapidement, y compris en remplaçant le personnel si nécessaire, sans frais supplémentaires.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-content">
                 <div class="footer-col">
-                    <h4 style="border:none; color:white;">HOUSE <span style="color:var(--hs-red)">SERVICE</span></h4>
-                    <p>La solution aux problèmes des ménages et des entreprises en RDC.</p>
-                    <div style="margin-top: 20px;">
-                        <a href="#" style="display:inline; margin-right:10px;"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="#" style="display:inline; margin-right:10px;"><i class="fab fa-linkedin fa-lg"></i></a>
-                        <a href="#" style="display:inline;"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    <h3 style="color: white; font-weight: 800; font-size: 1.5rem; margin-bottom: 20px;">HOUSE <span class="text-red">SERVICE</span></h3>
+                    <p>Votre partenaire de confiance pour la gestion du personnel en RDC.</p>
+                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp fa-lg"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
-                    <h4>Contacts</h4>
-                    <a href="tel:+243814910495">+243 81 49 10 495</a>
-                    <a href="tel:+243853836804">+243 85 38 36 804</a>
-                    <a href="mailto:servicehouse71@gmail.com">servicehouse71@gmail.com</a>
-                    <a href="tel:+243820000000">Numéro agent (Paiement): +243 82 00 00 000</a>
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="#about">À Propos</a></li>
+                        <li><a href="#services">Nos Services</a></li>
+                        <li><a href="#team">Notre Équipe</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Siège</h4>
-                    <p style="color:#999">Kisangani, RDC</p>
-                    <p style="color:#666; font-size:0.8rem;">RCCM: CD/KIS/RCCM/20-B-00055</p>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone text-blue"></i> +243 81 49 10 495</li>
+                        <li><i class="fas fa-phone text-blue"></i> +243 85 38 36 804</li>
+                        <li><i class="fas fa-envelope text-blue"></i> servicehouse71@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt text-blue"></i> Kisangani, RDC</li>
+                    </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Newsletter</h4>
-                    <input type="email" placeholder="Email..." style="width:100%; padding:10px; border-radius:4px; border:none; margin-bottom:10px;">
-                    <button class="btn-primary" style="width:100%; padding:10px; border:none; border-radius:4px;">S'inscrire</button>
+                    <p style="margin-bottom: 10px;">Restez informé de nos offres.</p>
+                    <div style="position: relative;">
+                        <input type="email" placeholder="Votre email" style="width: 100%; padding: 12px; border-radius: 8px; border: none; background: #374151; color: white;">
+                        <button style="position: absolute; right: 5px; top: 5px; background: var(--hs-blue); color: white; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer;"><i class="fas fa-paper-plane"></i></button>
+                    </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                &copy; 2025 House Service S.A.S. Tous droits réservés. Desing by <a href="https://portfoliodavidwawina.vercel.app" style="text-decoration: none;">David Wawina </a>
+            <div style="text-align: center; padding: 20px 0; border-top: 1px solid #374151;">
+                <p>&copy; 2025 House Service S.A.S. Tous droits réservés. Design by Optimum Entreprise.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script>
-        // --- Preloader ---
-        window.addEventListener('load', () => {
-            document.getElementById('progress').style.width = '100%';
-            setTimeout(() => {
-                gsap.to('#preloader', { yPercent: -100, duration: 0.8, ease: "power2.inOut" });
-            }, 600);
-        });
-
-        // --- Dark Mode Logic ---
-        function toggleTheme() {
-            const html = document.documentElement;
-            const btnIcon = document.querySelector('#theme-btn i');
+    <!-- Payment Modal -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-box">
+            <span class="close-modal" onclick="closePayment()">&times;</span>
+            <h3 class="text-blue" style="margin-bottom: 20px;">Détails de Paiement</h3>
             
-            if (html.getAttribute('data-theme') === 'light') {
-                html.setAttribute('data-theme', 'dark');
-                btnIcon.classList.remove('fa-moon');
-                btnIcon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                html.setAttribute('data-theme', 'light');
-                btnIcon.classList.remove('fa-sun');
-                btnIcon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'light');
-            }
-        }
+            <div style="margin-bottom: 20px; padding: 15px; background: #f9fafb; border-radius: 8px;">
+                <h5 style="margin-bottom: 5px;"><i class="fas fa-mobile-alt"></i> Mobile Money (Airtel/M-Pesa/Orange)</h5>
+                <p style="font-size: 1.2rem; font-weight: 700; color: var(--hs-dark);">+243 82 00 00 000</p>
+                <small>Nom de l'agent: House Service Comptabilité</small>
+            </div>
 
-        // --- FAQ Logic ---
-        function toggleFaq(element) {
-            const item = element.parentElement;
-            item.classList.toggle('active');
-        }
+            <div style="margin-bottom: 20px; padding: 15px; background: #f9fafb; border-radius: 8px;">
+                <h5 style="margin-bottom: 5px;"><i class="fas fa-university"></i> Virement Bancaire</h5>
+                <p><strong>Banque:</strong> TMB / Equity</p>
+                <p><strong>Compte:</strong> 0000-1234-5678</p>
+            </div>
+            
+            <p style="font-size: 0.8rem; color: #666;">Veuillez envoyer la preuve de paiement sur WhatsApp au numéro ci-dessus.</p>
+        </div>
+    </div>
 
-        // --- Chatbot Logic (Gemini API Integration) ---
-        const chatWindow = document.getElementById('chat-window');
-        const chatBody = document.getElementById('chat-body');
-        const userInput = document.getElementById('user-input');
-        const typingIndicator = document.getElementById('typing-indicator');
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="lb-close" onclick="closeLightbox()">&times;</span>
+        <div class="lb-nav lb-prev" onclick="changeImage(-1)"><i class="fas fa-chevron-left"></i></div>
+        <div class="lb-nav lb-next" onclick="changeImage(1)"><i class="fas fa-chevron-right"></i></div>
+        <img id="lightbox-img" src="" alt="Full Gallery">
+    </div>
 
-        // IMPORTANT: Insérez votre clé API Gemini ici pour que cela fonctionne réellement
-        // Attention : En production, ne jamais exposer la clé côté client. Ceci est pour la démo.
-        const GEMINI_API_KEY = "INSEREZ_VOTRE_API_KEY_ICI"; 
+    <!-- Chatbot Window Dummy (for toggle effect) -->
+    <div id="chat-window-dummy" style="display:none;"></div>
 
-        function toggleChat() {
-            chatWindow.classList.toggle('active');
-        }
+    <!-- Scripts: GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-        function handleEnter(e) {
-            if (e.key === 'Enter') sendMessage();
-        }
-
-        async function sendMessage() {
-            const text = userInput.value.trim();
-            if (!text) return;
-
-            // 1. Add User Message
-            appendMessage(text, 'user');
-            userInput.value = '';
-
-            // 2. Show Typing
-            typingIndicator.style.display = 'block';
-            chatBody.scrollTop = chatBody.scrollHeight;
-
-            // 3. Call API (Simulated if no key, Real if key present)
-            let responseText = "";
-
-            if (GEMINI_API_KEY === "INSEREZ_VOTRE_API_KEY_ICI") {
-                // Simulation mode
-                await new Promise(r => setTimeout(r, 1500));
-                responseText = "Ceci est une démo. Pour que l'IA réponde vraiment, veuillez ajouter votre clé API Gemini dans le code (ligne 468). En attendant : Je peux vous aider à trouver une femme de ménage ou un agent de sécurité !";
-            } else {
-                // Real Gemini Call
-                try {
-                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            contents: [{
-                                parts: [{
-                                    text: `Tu es l'assistant virtuel de l'entreprise House Service SAS en RDC. Tu réponds poliment aux clients potentiels. Contexte: Entreprise de sous-traitance (ménage, sécurité, hôtesses). Question: ${text}`
-                                }]
-                            }]
-                        })
-                    });
-                    const data = await response.json();
-                    responseText = data.candidates[0].content.parts[0].text;
-                } catch (error) {
-                    responseText = "Désolé, je rencontre une erreur de connexion. Veuillez réessayer.";
-                    console.error(error);
-                }
-            }
-
-            // 4. Add Bot Message
-            typingIndicator.style.display = 'none';
-            appendMessage(responseText, 'bot');
-        }
-
-        function appendMessage(text, sender) {
-            const div = document.createElement('div');
-            div.classList.add('msg', sender);
-            div.innerText = text;
-            chatBody.appendChild(div);
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }
-
-        // --- Navbar Scroll ---
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            window.scrollY > 30 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
+    <script>
+        // --- 1. Preloader ---
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 500);
         });
 
-        // --- Partners auto-scroll (gentle) ---
-        (function(){
-            const row = document.querySelector('.partners-row');
-            if(!row) return;
-            let pos = 0; let dir = 1;
-            setInterval(()=>{
-                if(row.scrollWidth <= row.clientWidth) return;
-                pos += dir * 1;
-                if(pos < 0) { pos = 0; dir = 1; }
-                if(pos > row.scrollWidth - row.clientWidth) { pos = row.scrollWidth - row.clientWidth; dir = -1; }
-                row.scrollTo({ left: pos, behavior: 'smooth' });
-            }, 80);
-        })();
+        // --- 2. Payment Modal ---
+        function openPayment() {
+            document.getElementById('paymentModal').classList.add('active');
+        }
+        function closePayment() {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
 
-        // --- Ad panel rotation ---
-        (function(){
-            const imgs = [
-                './images/pub1.jpg',
-                './images/pub2.jpg',
-                './images/pub3.jpg',
-                './images/pub4.jpg',
-                './images/pub5.jpg'
-            ];
-            const el = document.getElementById('ad-panel');
-            if(!el) return;
-            const img = el.querySelector('img');
-            img.style.transition = 'opacity 0.6s ease';
-            let i=0;
-            setInterval(()=>{
-                img.style.opacity = 0;
-                setTimeout(()=>{
-                    i = (i+1) % imgs.length;
-                    img.src = imgs[i];
-                    img.style.opacity = 1;
-                }, 600);
-            }, 3500);
-        })();
+        // --- 3. Chatbot Logic (Simplified) ---
+        function toggleChat() {
+            alert("L'interface de chat IA s'ouvrirait ici. (Intégration API requise)");
+        }
 
-        // --- Lightbox for gallery ---
-        const galleryImgs = [
+        // --- 4. Lightbox Logic (Gallery) ---
+        const galleryImages = [
+            './images/pub1.jpg',
             './images/pub2.jpg',
             './images/pub3.jpg',
-            './images/pub4.jpg',
-            './images/pub5.jpg'
+            './images/pub4.jpg'
         ];
-        function openLightbox(idx){
-            let lb = document.getElementById('lightbox');
-            if(!lb){
-                lb = document.createElement('div'); lb.id='lightbox';
-                lb.innerHTML = '<div class="controls"><button onclick="prevLight()">◀</button><button onclick="nextLight()">▶</button></div><img src="" alt="lb"><button style="position:absolute;top:20px;right:30px;background:transparent;border:none;color:#fff;font-size:28px;cursor:pointer;" onclick="closeLightbox()">✕</button>';
-                document.body.appendChild(lb);
-            }
-            lb.querySelector('img').src = galleryImgs[idx];
-            lb.classList.add('active'); lb.setAttribute('data-idx', idx);
-        }
-        function closeLightbox(){ const lb=document.getElementById('lightbox'); if(lb) lb.classList.remove('active'); }
-        function nextLight(){ const lb=document.getElementById('lightbox'); if(!lb) return; let i=parseInt(lb.getAttribute('data-idx')||0,10); i=(i+1)%galleryImgs.length; openLightbox(i); }
-        function prevLight(){ const lb=document.getElementById('lightbox'); if(!lb) return; let i=parseInt(lb.getAttribute('data-idx')||0,10); i=(i-1+galleryImgs.length)%galleryImgs.length; openLightbox(i); }
+        let currentImageIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
 
-        document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowRight') nextLight(); if(e.key==='ArrowLeft') prevLight(); });
+        function openLightbox(index) {
+            currentImageIndex = index;
+            lightboxImg.src = galleryImages[index];
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
+            if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
+            lightboxImg.src = galleryImages[currentImageIndex];
+        }
+
+        // Close on outside click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // --- 5. Mobile Menu ---
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const drops = document.querySelectorAll('.dropdown');
+            drops.forEach(d => d.classList.toggle('active'));
+        });
+
+        // --- 6. Scroll Header ---
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            window.scrollY > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
+        });
+
+        // --- 7. GSAP Animations ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Text Stagger
+        gsap.from(".fade-up", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out",
+            delay: 0.5
+        });
+
+        // Service Cards Hover Effect using Tilt Logic
+        const cards = document.querySelectorAll('.tilt-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.transform = `perspective(1000px) rotateX(${(y - rect.height/2) / 20}deg) rotateY(${-(x - rect.width/2) / 20}deg) translateY(-10px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // Bento Grid Reveal
+        gsap.from(".bento-item", {
+            scrollTrigger: {
+                trigger: ".bento-grid",
+                start: "top 80%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1
+        });
     </script>
+    <script>
+    // Le script ci-dessous est nécessaire pour rendre la FAQ interactive.
+    // Il doit être copié DANS la balise <script> finale de votre fichier index.html.
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Fermer toutes les autres réponses
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                        otherItem.querySelector('.faq-question i').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                // Basculer l'état de l'élément cliqué
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('.faq-question i');
+
+                if (item.classList.contains('active')) {
+                    // Fermer
+                    item.classList.remove('active');
+                    answer.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    // Ouvrir
+                    item.classList.add('active');
+                    // Utiliser scrollHeight pour une hauteur dynamique
+                    answer.style.maxHeight = answer.scrollHeight + "px"; 
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

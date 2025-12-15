@@ -1,699 +1,499 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Services Détaillés | House service S.A.S</title>
+    <title>Catalogue Services | House Service S.A.S</title>
     
-    <!-- Fonts - Correspondance avec index.html -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="/images/logo.jpg" type="image/x-icon">
-    
-    <!-- Font Awesome -->
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Styles CSS (Cohérence avec index.html) -->
+    <!-- Styles CSS Modernes et Robustes -->
     <style>
-        /* --- COULEURS (Variables Globales pour Cohérence) --- */
         :root {
-            --hs-red: #D32F2F; /* Couleur principale (Rouge) */
-            --hs-blue: #29B6F6; /* Couleur secondaire (Bleu Ciel) */
-            --bg-color: #ffffff;
-            --bg-secondary: #f4f6f8;
-            --bg-card: #ffffff;
-            --text-main: #1a1a1a;
-            --text-light: #555555;
-            --border-color: #eeeeee;
-            --shadow: 0 8px 25px rgba(0,0,0,0.06);
+            /* Palette Brand (Rouge/Bleu) */
+            --hs-blue: #29B6F6;
+            --hs-red: #D32F2F;
+            --hs-dark: #111827;
+            --hs-gray: #F3F4F6;
+            --hs-white: #FFFFFF;
+            
+            /* UI Variables */
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-lg: 24px;
+            
+            --font-main: 'Montserrat', sans-serif;
+            --font-display: 'Outfit', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        body { 
+            background-color: var(--hs-gray); 
+            color: var(--hs-dark); 
+            font-family: var(--font-main); 
+            line-height: 1.6; 
+            min-height: 100vh; /* S'assure que le corps prend toute la hauteur */
+        }
+
+        /* --- Typography & Colors --- */
+        h1, h2, h3, h4, h5 { font-family: var(--font-display); font-weight: 700; line-height: 1.1; }
+        .text-red { color: var(--hs-red); }
+        .text-blue { color: var(--hs-blue); }
+        
+        /* --- Layout Utils --- */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+        .section-py { padding: 80px 0; }
+        
+        /* --- Buttons --- */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 28px; border-radius: 50px; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none; }
+        
+        .btn-primary { 
+            background: var(--hs-dark); color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+            position: relative; overflow: hidden; 
+        }
+        .btn-primary::before { 
+            content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%; 
+            background: var(--hs-blue); z-index: 1; transition: width 0.3s ease; 
+        }
+        .btn-primary span { position: relative; z-index: 2; }
+        .btn-primary:hover::before { width: 100%; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(41, 182, 246, 0.3); }
+
+        .btn-secondary { background: white; color: var(--hs-dark); border: 1px solid #e5e7eb; }
+        .btn-secondary:hover { border-color: var(--hs-blue); color: var(--hs-blue); }
+
+        /* --- Header / Nav --- */
+        header { 
+            position: fixed; top: 0; width: 100%; z-index: 100; padding: 15px 0; transition: 0.3s; 
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+        }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { 
+            font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; 
+            color: var(--hs-dark); text-decoration: none; 
+        }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--hs-dark); font-weight: 600; font-size: 0.9rem; transition: 0.2s; }
+        .nav-links a:hover { color: var(--hs-blue); }
+
+        /* --- Page Hero --- */
+        .page-hero {
+            position: relative; padding: 160px 0 80px;
+            background-color: var(--hs-white); text-align: center;
+        }
+        .page-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at top right, rgba(41,182,246,0.1) 0%, transparent 60%);
+        }
+        .page-hero h1 { font-size: 3rem; margin-bottom: 15px; }
+        .page-hero p { font-size: 1.1rem; color: #666; max-width: 700px; margin: 0 auto; }
+
+        /* --- Categories & Cards --- */
+        .category-block { margin-bottom: 80px; }
+        .category-header { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb; }
+        .cat-icon { 
+            width: 50px; height: 50px; background: var(--hs-blue); border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; 
         }
         
-        /* UTILITAIRES */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .py-20 { padding: 80px 0; }
-        .section-heading { text-align: center; margin-bottom: 40px; }
-        .section-heading h2 { font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 10px; }
-        .section-heading p { color: var(--text-light); max-width: 800px; margin: 0 auto; }
-        .text-hs-red { color: var(--hs-red); }
-        .bg-hs-red { background-color: var(--hs-red); }
-        .text-hs-blue { color: var(--hs-blue); }
-        .bg-hs-blue { background-color: var(--hs-blue); }
-        .cta { background: var(--hs-red); color: #fff; padding: 8px 15px; border-radius: 6px; font-weight: 700; transition: background-color 0.3s; }
-        .cta:hover { background: #A52121; color: #fff; }
-        
-        /* Responsive Utilities */
-        .md\:hidden { display: none; }
-        .md\:block { display: block; }
-
-        /* BASE */
-        * { box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: var(--bg-secondary); color: var(--text-main); line-height: 1.6; }
-        a { text-decoration: none; color: var(--hs-red); transition: color 0.3s; }
-        a:hover { color: #A52121; }
-
-        /* HEADER (Repris de index.html) */
-        header.site-header { background: var(--bg-color); padding: 15px 0; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 100; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-        .header-content .brand { display: flex; align-items: center; gap: 12px; }
-        .header-content img { height: 50px; border-radius: 6px; }
-        .header-content .brand-text { font-weight: 800; font-size: 1.2rem; }
-        nav a { margin-left: 25px; color: var(--text-light); font-weight: 600; }
-
-        /* HERO SECTION (SPECIFIQUE A LA PAGE SERVICES) */
-        .page-hero { 
-            /* URL D'IMAGE AJOUTÉE ICI */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/graff.png');
-            background-size: cover; 
-            background-position: center; 
-            color: #fff; 
-            padding: 100px 0 60px; 
-            text-align: center; 
-            margin-bottom: 40px;
-        }
-        .page-hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 15px; }
-        .page-hero p { font-size: 1.1rem; max-width: 900px; margin: 0 auto; opacity: 0.9; }
-
-        /* CONTENT GRID */
-        .service-category { margin-bottom: 60px; padding: 30px; background: var(--bg-color); border-radius: 12px; box-shadow: var(--shadow); }
-        .service-category h3 { 
-            font-size: 1.8rem; font-weight: 700; margin-top: 0; 
-            border-bottom: 3px solid var(--hs-red); 
-            padding-bottom: 10px; margin-bottom: 25px; 
-            display: inline-block;
-        }
-        .service-grid { 
+        .services-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adapté pour mobile */
             gap: 30px; 
         }
         
         .service-card {
-            background: var(--bg-card);
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-left: 5px solid var(--hs-blue);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: white; border-radius: var(--radius-lg); padding: 35px;
+            box-shadow: var(--shadow-sm); border: 1px solid transparent; transition: all 0.4s ease;
+            position: relative; height: 100%; display: flex; flex-direction: column;
         }
-        .service-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        /* Retrait du tilt-card pour la robustesse */
+        .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); border-color: rgba(41,182,246,0.3); }
+        .service-card h4 { font-size: 1.3rem; margin-bottom: 10px; color: var(--hs-dark); }
+        .service-card p { color: #666; font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
+        .service-features { 
+            list-style: none; margin-bottom: 25px; background: var(--hs-gray); padding: 15px; 
+            border-radius: 12px; 
         }
+        .service-features li { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; margin-bottom: 8px; color: #444; }
+        .service-features i { color: var(--hs-blue); font-size: 0.8rem; }
 
-        .service-card h4 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--hs-red);
-            margin-top: 0;
-            margin-bottom: 10px;
+        /* --- CTA Section --- */
+        .cta-section {
+            background: linear-gradient(135deg, var(--hs-dark) 0%, #1e3a8a 100%);
+            border-radius: var(--radius-lg); padding: 60px; text-align: center; color: white;
+            margin-top: 40px;
         }
-        .service-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 15px;
-        }
-        .service-card ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 10px;
-        }
-        .service-card ul li {
-            font-size: 0.9rem;
-            color: var(--text-main);
-            margin-bottom: 5px;
-        }
-        .service-card ul li i {
-            color: var(--hs-blue);
-            margin-right: 8px;
-        }
+        .cta-section h2 { font-size: 2.2rem; margin-bottom: 15px; }
 
-        /* CONTACT CTA BANNER */
-        .contact-cta-banner {
-            background-color: var(--hs-blue);
-            color: #fff;
-            padding: 50px 0;
-            text-align: center;
+        /* --- Modal Devis --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 2000;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s;
         }
-        .contact-cta-banner h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 15px;
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-box {
+            background: white; width: 90%; max-width: 500px; padding: 40px;
+            border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);
+            position: relative; transition: transform 0.3s;
         }
-        .contact-cta-banner p {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-        }
-        .contact-cta-banner .cta-button {
-            background: #fff;
-            color: var(--hs-blue);
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1.05rem;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .contact-cta-banner .cta-button:hover {
-            background: var(--hs-red);
-            color: #fff;
-        }
-
-        /* FOOTER (Repris de index.html) */
-        footer { background-color: #1a1a1a; color: #ffffff; padding: 60px 0 30px; }
-        footer .footer-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
-        footer .brand-text { font-size: 1.8rem; font-weight: 800; }
-        footer h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; color: var(--hs-blue); }
-        footer ul { list-style: none; padding: 0; }
-        footer ul li { margin-bottom: 10px; color: #aaa; font-size: 0.95rem; }
-        footer ul li i { color: var(--hs-red); margin-right: 10px; }
-        footer a { color: #aaa; }
-        footer a:hover { color: var(--hs-red); }
-        .footer-bottom { border-top: 1px solid #333; margin-top: 30px; padding-top: 20px; text-align: center; font-size: 0.85rem; color: #777; }
+        .modal-overlay.active .modal-box { transform: scale(1); }
+        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #999; }
         
-        /* Modal - Repris de index.html */
-        #devisModal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, .7); display: none; align-items: center; justify-content: center; z-index: 1000; overflow: auto; padding: 20px 16px; }
-        #devisModal.active { display: flex; }
-        #devisModal .modal { background: #fff; border-radius: 12px; padding: 22px; max-width: 500px; width: 100%; position: relative; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); max-height: 90vh; overflow-y: auto; margin: auto; }
-        #devisModal .modal .close { position: absolute; right: 14px; top: 10px; border: none; background: transparent; font-size: 26px; cursor: pointer; }
-        #serviceDetails { background: #fbfbfb; border-radius: 8px; padding: 12px; margin-bottom: 12px; color: #333; font-size: 0.9rem; }
-        button.primary { background: var(--hs-red); color: #fff; border: none; padding: 10px 14px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: background-color 0.2s; }
-        button.primary:hover { background-color: #A52121; }
-        #devisForm input, #devisForm textarea { font-size: 16px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; color: var(--hs-dark); }
+        .form-input { width: 100%; padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px; font-family: var(--font-main); transition: 0.3s; }
+        .service-tag { display: inline-block; background: #eff6ff; color: var(--hs-blue); padding: 5px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; margin-bottom: 20px; }
 
-        /* --- Chatbot styles (copied from index for consistency) --- */
-        #chatbot-toggler {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%;
-            background: var(--hs-blue); color: #fff; border: none; cursor: pointer; box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            z-index: 999; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
-        #chatbot-toggler:hover { transform: scale(1.08); }
+         /* --- Footer --- */
+        footer {
+            background: var(--hs-dark);
+            color: #9ca3af;
+            padding-top: 80px;
+            font-size: 0.9rem;
+        }
+        .footer-content {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px; padding-bottom: 60px; border-bottom: 1px solid #374151;
+        }
+        .footer-col h4 { color: white; margin-bottom: 25px; font-size: 1.1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col a { color: #9ca3af; text-decoration: none; transition: 0.3s; }
+        .footer-col a:hover { color: var(--hs-blue); padding-left: 5px; }
 
-        .chat-window { position: fixed; bottom: 100px; right: 30px; width: 320px; background: var(--bg-card); border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 998; overflow: hidden; transform: scale(0); transform-origin: bottom right; opacity: 0; transition: all 0.25s ease; border: 1px solid var(--border-color); display:flex; flex-direction:column; height:460px; max-height: 80vh; }
-        .chat-window.active { transform: scale(1); opacity: 1; }
-        .chat-header { background: var(--hs-blue); color: white; padding: 12px; display:flex; justify-content:space-between; align-items:center; font-size: 0.95rem; }
-        .chat-body { flex:1; padding:12px; overflow-y:auto; display:flex; flex-direction:column; gap:8px; background:var(--bg-secondary); }
-        .chat-footer { padding:8px; border-top:1px solid var(--border-color); display:flex; gap:6px; background:var(--bg-card); }
-        .chat-input { flex:1; padding:8px 10px; border:1px solid var(--border-color); border-radius:20px; background:var(--bg-secondary); color:var(--text-main); font-size: 0.9rem; }
-        .chat-send { background:var(--hs-blue); color:#fff; border:none; width:40px; height:36px; border-radius:50%; cursor:pointer; display: flex; align-items: center; justify-content: center; }
-        .msg{ padding:8px 12px; border-radius:10px; max-width:80%; font-size:0.9rem; word-wrap: break-word; }
-        .msg.bot{ background:var(--bg-card); border:1px solid var(--border-color); align-self:flex-start; color:var(--text-main); }
-        .msg.user{ background:var(--hs-blue); color:#fff; align-self:flex-end; }
-        .typing { font-style:italic; font-size:0.85rem; color:var(--text-light); display:none; }
-
-        /* Media Queries */
-        @media (max-width: 900px) {
-            .page-hero h1 { font-size: 2.2rem; }
-            .page-hero { padding: 60px 0 40px; }
-            .contact-cta-banner h2 { font-size: 1.6rem; }
-            .contact-cta-banner p { font-size: 1rem; }
-            footer .footer-content { grid-template-columns: repeat(2, 1fr); }
-            .service-category { padding: 20px; margin-bottom: 40px; }
-            .service-card { padding: 20px; }
-            .service-card h4 { font-size: 1.1rem; }
-            .service-card p { font-size: 0.9rem; }
-        }
-        @media (max-width: 768px) {
-            .md\:hidden { display: block; }
-            .md\:block { display: none; }
-            nav a.cta { display: none; }
-            .header-content { flex-wrap: wrap; gap: 10px; }
-            .header-content .brand { gap: 8px; }
-            .header-content img { height: 40px; }
-            .header-content .brand-text { font-size: 1rem; }
-            .header-content nav { margin-left: auto; }
-            nav a { margin-left: 15px; font-size: 0.9rem; }
-            #chatbot-toggler { width: 50px; height: 50px; bottom: 20px; right: 20px; }
-            .chat-window { width: 280px; height: 400px; bottom: 75px; right: 20px; }
-        }
-        @media (max-width: 600px) {
-            .md\:hidden { display: none; }
-            #devisModal { padding: 12px 16px; align-items: center; justify-content: center; }
-            /* Remonte légèrement le modal sur mobile pour éviter qu'il paraisse trop bas */
-            #devisModal .modal { max-height: calc(85vh + 2px); transform: translateY(-8px); }
-            .page-hero h1 { font-size: 1.8rem; }
-            .page-hero p { font-size: 1rem; }
-            .page-hero { padding: 40px 0 30px; margin-bottom: 20px; }
-            .container { padding: 0 15px; }
-            .header-content { flex-direction: column; align-items: flex-start; }
-            .header-content nav { display: none; }
-            .header-content .brand { width: 100%; gap: 10px; flex-wrap: wrap; }
-            .header-content img { height: 35px; }
-            .header-content .brand-text { font-size: 0.95rem; }
-            .brand-text + div { font-size: 0.75rem; }
-            .py-20 { padding: 40px 0; }
-            .service-category { padding: 15px; margin-bottom: 30px; }
-            .service-category h3 { font-size: 1.4rem; margin-bottom: 15px; }
-            .service-grid { grid-template-columns: 1fr; gap: 15px; }
-            .service-card { padding: 15px; }
-            .service-card h4 { font-size: 1rem; margin-bottom: 8px; }
-            .service-card p { font-size: 0.85rem; margin-bottom: 10px; }
-            .service-card ul li { font-size: 0.8rem; }
-            button.primary { padding: 8px 12px; font-size: 0.85rem; width: 100%; }
-            .contact-cta-banner { padding: 30px 0; }
-            .contact-cta-banner h2 { font-size: 1.3rem; margin-bottom: 10px; }
-            .contact-cta-banner p { font-size: 0.9rem; margin-bottom: 15px; }
-            .contact-cta-banner .cta-button { padding: 10px 18px; font-size: 0.9rem; }
-            footer .footer-content { grid-template-columns: 1fr; gap: 25px; }
-            footer .container { padding: 0 15px; }
-            footer .brand-text { font-size: 1.4rem; }
-            footer h4 { font-size: 1rem; }
-            footer ul li { font-size: 0.85rem; }
-            #devisModal .modal { padding: 18px; max-width: 95vw; }
-            #devisModal .modal .close { font-size: 22px; right: 10px; top: 8px; }
-            .modal form input, .modal form textarea { font-size: 16px; }
-            #chatbot-toggler { width: 45px; height: 45px; bottom: 15px; right: 15px; }
-            #chatbot-toggler i { font-size: 1rem; }
-            .chat-window { width: 260px; height: 380px; bottom: 65px; right: 15px; }
-            .chat-header { padding: 10px; font-size: 0.9rem; }
-            .chat-body { padding: 10px; }
-            .msg { max-width: 85%; font-size: 0.85rem; padding: 6px 10px; }
-            .chat-input { padding: 6px 8px; font-size: 0.85rem; }
-            .chat-send { width: 35px; height: 32px; font-size: 0.8rem; }
-        }
-        @media (max-width: 400px) {
-            .page-hero h1 { font-size: 1.5rem; }
-            .section-heading h2 { font-size: 1.5rem; }
-            .container { padding: 0 12px; }
-            .py-20 { padding: 30px 0; }
-            .service-category { padding: 12px; }
-            .service-category h3 { font-size: 1.2rem; }
-            .service-card { padding: 12px; }
-            .service-card h4 { font-size: 0.95rem; }
-            .cta-button { padding: 8px 12px; font-size: 0.8rem; }
-            #chatbot-toggler { width: 42px; height: 42px; }
-            .chat-window { width: 240px; height: 360px; }
-        }
     </style>
 </head>
-
 <body>
+ <!-- Preloader -->
+    <div id="loader">
+        <h2 style="font-family: var(--font-display); font-weight: 800; margin-bottom: 10px;">HOUSE <span class="text-red">SERVICE</span> SAS</h2>
+        <div class="spinner"></div>
+    </div>
 
-    <!-- HEADER LOGO & NAVIGATION (Repris de index.html) -->
-    <header class="site-header">
-        <div class="container header-content">
-            <div class="brand">
-                <img src="/images/logo.jpg" alt="House Service">
-                <div>
-                    <div class="brand-text">HOUSE <span class="text-hs-red">SERVICE</span> S.A.S</div>
-                    <div style="font-size:0.85rem;color:var(--text-light)">Sous-traitance & Services Professionnels</div>
-                </div>
-                <!-- Chatbot Floating Button & Window (copied from index.html) -->
-                <button id="chatbot-toggler" onclick="toggleChat()" aria-label="Ouvrir le chat IA">
-                    <i class="fas fa-robot" style="font-size:1.2rem;color:#fff"></i>
-                </button>
 
-                <div class="chat-window" id="chat-window">
-                    <div class="chat-header">
-                        <div><i class="fas fa-robot"></i> House Service AI</div>
-                        <i class="fas fa-times" style="cursor:pointer" onclick="toggleChat()"></i>
-                    </div>
-                    <div class="chat-body" id="chat-body">
-                        <div class="msg bot">Bonjour ! Je suis l'IA de House Service. Comment puis-je vous aider aujourd'hui ? (Services, Tarifs, Recrutement...)</div>
-                    </div>
-                    <div class="typing" id="typing-indicator">House AI écrit...</div>
-                    <div class="chat-footer">
-                        <input type="text" id="user-input" class="chat-input" placeholder="Posez votre question..." onkeypress="handleEnter(event)">
-                        <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Navigation -->
-            <nav>
+    <!-- Header -->
+    <header>
+        <div class="container nav-inner">
+            <!-- Logo textuel fiable -->
+            <a href="/index.html" class="logo">
+                HOUSE <span class="text-blue">SERVICE</span>
+            </a>
+            <div class="nav-links">
                 <a href="/index.html">Accueil</a>
-                <a href="/index.html#gallery">Galerie</a>
-                <a href="#catalogue">Catalogue</a>
-                <a onclick="openForm('Demande Générale')" class="cta cursor-pointer">Demander un Devis</a>
-            </nav>
-
-            <!-- CTA Mobile/Fallback -->
-            <a onclick="openForm('Demande Générale')" class="cta md:hidden cursor-pointer">Devis</a>
+                <a href="/index.html.html#services">Retour</a>
+                <button onclick="openForm('Demande Générale')" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.8rem;">
+                    <span>Demander un Devis</span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- HERO SECTION DE LA PAGE -->
+    <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <h1>Le Catalogue Complet des Services Professionnels</h1>
+            <span class="text-blue" style="font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;">Expertise & Professionnalisme</span>
+            <h1>Catalogue des Services</h1>
             <p>Découvrez notre gamme étendue de solutions de sous-traitance, conçues pour optimiser votre productivité et la gestion de votre quotidien.</p>
         </div>
     </section>
 
-    <!-- SECTION DE CONTENU DETAILLE DES SERVICES -->
-    <section id="catalogue" class="py-20">
-        <div class="container">
-            
-            <!-- CATEGORIE 1: SERVICES DOMESTIQUES ET D'ENTRETIEN -->
-            <div class="service-category">
-                <h3 class="text-hs-blue"><i class="fas fa-house-chimney mr-3"></i> Services Domestiques & Entretien</h3>
-                <p>Pour un environnement de vie sain et géré sans effort. Notre personnel est formé aux standards d'hygiène les plus stricts.</p>
-                
-                <div class="service-grid">
-                    <div class="service-card">
-                        <h4>Assistant(e)s de Ménage</h4>
-                        <p>Gère le nettoyage quotidien, la lessive, et l'organisation du domicile. Personnel fiable et discret.</p>
-                        <ul>
-                            <li><i class="fas fa-dot-circle"></i> Entretien quotidien</li>
-                            <li><i class="fas fa-dot-circle"></i> Nettoyage en profondeur</li>
-                            <li><i class="fas fa-dot-circle"></i> Gestion de la lessive</li>
-                        </ul>
-                        <button onclick="openForm('Assistant(e) de Ménage')" class="primary mt-3 w-full">Demander ce service</button>
-                    </div>
-
-                    <div class="service-card">
-                        <h4>Agents Cleaners</h4>
-                        <p>Spécialistes du nettoyage de bureaux, institutions, et après-chantier. Propreté assurée pour les professionnels.</p>
-                        <ul>
-                            <li><i class="fas fa-dot-circle"></i> Nettoyage de bureaux</li>
-                            <li><i class="fas fa-dot-circle"></i> Nettoyage industriel</li>
-                            <li><i class="fas fa-dot-circle"></i> Vitres et façades</li>
-                        </ul>
-                        <button onclick="openForm('Agent Cleaner')" class="primary mt-3 w-full">Demander ce service</button>
-                    </div>
-
-                    <div class="service-card">
-                        <h4>Jardiniers et Paysagistes</h4>
-                        <p>Entretien des espaces verts, taille, arrosage, et création paysagère. Pour un jardin toujours impeccable.</p>
-                        <ul>
-                            <li><i class="fas fa-dot-circle"></i> Taille et tonte</li>
-                            <li><i class="fas fa-dot-circle"></i> Entretien des plantes</li>
-                            <li><i class="fas fa-dot-circle"></i> Aménagement paysager</li>
-                        </ul>
-                        <button onclick="openForm('Jardinier / Paysagiste')" class="primary mt-3 w-full">Demander ce service</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CATEGORIE 2: SUPPORT ENTREPRISE ET COMMERCIAL -->
-            <div class="service-category">
-                <h3 class="text-hs-blue"><i class="fas fa-user-tie mr-3"></i> Support Entreprise & Commercial</h3>
-                <p>Améliorez votre image de marque et votre efficacité opérationnelle avec du personnel qualifié pour l'accueil et la vente.</p>
-                
-                <div class="service-grid">
-                    <div class="service-card">
-                        <h4>Agents Commerciaux</h4>
-                        <p>Personnel formé aux techniques de vente et de communication pour la prospection et la fidélisation client.</p>
-                        <ul>
-                            <li><i class="fas fa-dot-circle"></i> Démarchage et vente</li>
-                            <li><i class="fas fa-dot-circle"></i> Promotion des produits</li>
-                            <li><i class="fas fa-dot-circle"></i> Gestion du portefeuille</li>
-                        </ul>
-                        <button onclick="openForm('Agent Commercial')" class="primary mt-3 w-full">Demander ce service</button>
-                    </div>
-
-                    <div class="service-card">
-                        <h4>Hôtesses d'Accueil & Secrétaires</h4>
-                        <p>Garantit un accueil chaleureux et professionnel. Gestion des appels, courrier et organisation de réunions.</p>
-                        <ul>
-                            <li><i class="fas fa-dot-circle"></i> Gestion de l'accueil</li>
-                            <li><i class="fas fa-dot-circle"></i> Support administratif</li>
-                            <li><i class="fas fa-dot-circle"></i> Organisation d'événements</li>
-                        </ul>
-                        <button onclick="openForm('Hôtesse d\'Accueil')" class="primary mt-3 w-full">Demander ce service</button>
-                    </div>
-
-                    <div class="service-card">
-                        <h4>Serveurs & Baristas</h4>
-                        <p>Personnel qualifié pour la restauration, les événements, les cafés. Service rapide, courtois et impeccable.</p>
-                        <ul>
-                            <li><i class="fas fa-dot-circle"></i> Service à table</li>
-                            <li><i class="fas fa-dot-circle"></i> Préparation de boissons</li>
-                            <li><i class="fas fa-dot-circle"></i> Gestion des commandes</li>
-                        </ul>
-                        <button onclick="openForm('Serveur / Barista')" class="primary mt-3 w-full">Demander ce service</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CATEGORIE 3: SÉCURITÉ ET PROTOCOLE -->
-            <div class="service-category">
-                <h3 class="text-hs-blue"><i class="fas fa-shield-alt mr-3"></i> Sécurité, Gardiennage & Protocole</h3>
-                <p>Assurez la protection de vos biens et la bonne tenue de vos événements grâce à notre personnel formé en sûreté et en étiquette.</p>
-                
-                <div class="service-grid">
-                    <div class="service-card">
-                        <h4>Agents de Sécurité / Gardiennage</h4>
-                        <p>Surveillance de vos locaux résidentiels ou professionnels 24/7. Personnel formé à la prévention et à l'intervention.</p>
-                        <ul>
-                            <li><i class="fas fa-dot-circle"></i> Surveillance physique</li>
-                            <li><i class="fas fa-dot-circle"></i> Contrôle d'accès</li>
-                            <li><i class="fas fa-dot-circle"></i> Patrouilles régulières</li>
-                        </ul>
-                        <button onclick="openForm('Agent de Sécurité')" class="primary mt-3 w-full">Demander ce service</button>
-                    </div>
-
-                    <div class="service-card">
-                        <h4>Agents de Protocole</h4>
-                        <p>Gestion de l'étiquette et du déroulement des cérémonies, conférences, et événements officiels.</p>
-                        <ul>
-                            <li><i class="fas fa-dot-circle"></i> Accueil VIP</li>
-                            <li><i class="fas fa-dot-circle"></i> Placement et guidance</li>
-                            <li><i class="fas fa-dot-circle"></i> Gestion des flux</li>
-                        </ul>
-                        <button onclick="openForm('Agent de Protocole')" class="primary mt-3 w-full">Demander ce service</button>
-                    </div>
-
-                    <div class="service-card">
-                        <h4>Baby-Sitters / Nounous</h4>
-                        <p>Personnel de confiance et expérimenté pour la garde et l'éducation des enfants à domicile, en toute sécurité.</p>
-                        <ul>
-                            <li><i class="fas fa-dot-circle"></i> Garde d'enfants</li>
-                            <li><i class="fas fa-dot-circle"></i> Activités éducatives</li>
-                            <li><i class="fas fa-dot-circle"></i> Premiers secours</li>
-                        </ul>
-                        <button onclick="openForm('Baby-Sitter / Nounou')" class="primary mt-3 w-full">Demander ce service</button>
-                    </div>
+    <!-- Main Content -->
+    <section class="container section-py" id="main-content">
+        
+        <!-- Category 1: Domestiques -->
+        <div class="category-block">
+            <div class="category-header">
+                <div class="cat-icon"><i class="fas fa-home"></i></div>
+                <div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 5px;">Services Domestiques</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Entretien et gestion du foyer</p>
                 </div>
             </div>
             
+            <div class="services-grid">
+                <!-- Card Assistant(e)s de Ménage -->
+                <div class="service-card">
+                    <h4>Assistant(e)s de Ménage</h4>
+                    <p>Gère le nettoyage quotidien, la lessive, et l'organisation du domicile. Personnel fiable et discret.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Entretien quotidien</li>
+                        <li><i class="fas fa-check-circle"></i> Nettoyage en profondeur</li>
+                        <li><i class="fas fa-check-circle"></i> Gestion du linge</li>
+                    </ul>
+                    <button onclick="openForm('Assistant(e) de Ménage')" class="btn btn-secondary" style="width: 100%;">Sélectionner</button>
+                </div>
+
+                <!-- Card Agents Cleaners -->
+                <div class="service-card">
+                    <h4>Agents Cleaners</h4>
+                    <p>Spécialistes du nettoyage de bureaux, institutions, et après-chantier. Propreté assurée.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Bureaux & Locaux</li>
+                        <li><i class="fas fa-check-circle"></i> Nettoyage industriel</li>
+                        <li><i class="fas fa-check-circle"></i> Vitres et façades</li>
+                    </ul>
+                    <button onclick="openForm('Agent Cleaner')" class="btn btn-secondary" style="width: 100%;">Sélectionner</button>
+                </div>
+
+                <!-- Card Jardiniers & Paysagistes -->
+                <div class="service-card">
+                    <h4>Jardiniers & Paysagistes</h4>
+                    <p>Entretien des espaces verts, taille, arrosage, et création paysagère.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Taille et tonte</li>
+                        <li><i class="fas fa-check-circle"></i> Entretien plantes</li>
+                        <li><i class="fas fa-check-circle"></i> Aménagement</li>
+                    </ul>
+                    <button onclick="openForm('Jardinier')" class="btn btn-secondary" style="width: 100%;">Sélectionner</button>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <!-- BANNIERE CTA CONTACT -->
-    <section class="contact-cta-banner">
-        <div class="container">
+        <!-- Category 2: Support Entreprise -->
+        <div class="category-block">
+            <div class="category-header">
+                <div class="cat-icon" style="background: var(--hs-red);"><i class="fas fa-briefcase"></i></div>
+                <div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 5px;">Support Entreprise</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Efficacité et image de marque</p>
+                </div>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h4>Agents Commerciaux</h4>
+                    <p>Personnel formé aux techniques de vente et de communication pour la prospection.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Démarchage</li>
+                        <li><i class="fas fa-check-circle"></i> Promotion produits</li>
+                        <li><i class="fas fa-check-circle"></i> Gestion portefeuille</li>
+                    </ul>
+                    <button onclick="openForm('Agent Commercial')" class="btn btn-secondary" style="width: 100%;">Sélectionner</button>
+                </div>
+
+                <div class="service-card">
+                    <h4>Hôtesses & Secrétaires</h4>
+                    <p>Garantit un accueil chaleureux et professionnel. Gestion administrative.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Accueil physique</li>
+                        <li><i class="fas fa-check-circle"></i> Support admin</li>
+                        <li><i class="fas fa-check-circle"></i> Événementiel</li>
+                    </ul>
+                    <button onclick="openForm('Hôtesse')" class="btn btn-secondary" style="width: 100%;">Sélectionner</button>
+                </div>
+
+                <div class="service-card">
+                    <h4>Serveurs & Baristas</h4>
+                    <p>Personnel qualifié pour la restauration et les événements.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Service à table</li>
+                        <li><i class="fas fa-check-circle"></i> Boissons & Café</li>
+                        <li><i class="fas fa-check-circle"></i> Commandes</li>
+                    </ul>
+                    <button onclick="openForm('Serveur')" class="btn btn-secondary" style="width: 100%;">Sélectionner</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category 3: Sécurité & Protocole -->
+        <div class="category-block">
+            <div class="category-header">
+                <div class="cat-icon" style="background: var(--hs-yellow); color:black;"><i class="fas fa-shield-alt"></i></div>
+                <div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 5px;">Sécurité & Protocole</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Protection et sérénité</p>
+                </div>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h4>Sécurité / Gardiennage</h4>
+                    <p>Surveillance de vos locaux 24/7. Personnel formé à la prévention.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Surveillance</li>
+                        <li><i class="fas fa-check-circle"></i> Contrôle accès</li>
+                        <li><i class="fas fa-check-circle"></i> Rondes</li>
+                    </ul>
+                    <button onclick="openForm('Agent de Sécurité')" class="btn btn-secondary" style="width: 100%;">Sélectionner</button>
+                </div>
+
+                <div class="service-card">
+                    <h4>Agents de Protocole</h4>
+                    <p>Gestion de l'étiquette et du déroulement des cérémonies et conférences.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Accueil VIP</li>
+                        <li><i class="fas fa-check-circle"></i> Placement</li>
+                        <li><i class="fas fa-check-circle"></i> Gestion de foule</li>
+                    </ul>
+                    <button onclick="openForm('Protocole')" class="btn btn-secondary" style="width: 100%;">Sélectionner</button>
+                </div>
+
+                <div class="service-card">
+                    <h4>Baby-Sitters Pro</h4>
+                    <p>Personnel de confiance pour la garde et l'éducation des enfants.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Garde d'enfants</li>
+                        <li><i class="fas fa-check-circle"></i> Éveil & Jeux</li>
+                        <li><i class="fas fa-check-circle"></i> Sécurité</li>
+                    </ul>
+                    <button onclick="openForm('Baby-Sitter')" class="btn btn-secondary" style="width: 100%;">Sélectionner</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Banner -->
+        <div class="cta-section">
             <h2>Prêt à Simplifier la Gestion de Votre Personnel ?</h2>
-            <p>House Service est votre solution. Contactez-nous pour une offre personnalisée.</p>
-            <a onclick="openForm('Demande Générale')" class="cta-button cursor-pointer">
-                Obtenir un Devis Gratuit Aujourd'hui <i class="fas fa-angle-right ml-2"></i>
-            </a>
+            <p style="opacity: 0.9; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                House Service est votre solution clé en main. Contactez-nous pour une offre personnalisée adaptée à vos besoins.
+            </p>
+            <button onclick="openForm('Demande Générale')" class="btn btn-secondary" style="border:none; color: var(--hs-dark);">
+                Obtenir un devis gratuit
+            </button>
         </div>
+
     </section>
 
-    <!-- FOOTER (Repris de index.html) -->
-    <footer>
-        <div class="container footer-content">
-            
-            <!-- Colonne 1: Marque -->
-            <div>
-                <div class="brand-text">HOUSE <span class="text-hs-red">SERVICE</span></div>
-                <p class="text-sm mt-3" style="color:#aaa;">Sous-traitance professionnelle et services spécialisés. Qualité, professionnalisme et fiabilité en RDC.</p>
-                <div style="margin-top:20px;">
-                    <a href="#" style="margin-right:15px; font-size:1.5rem;"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" style="margin-right:15px; font-size:1.5rem;"><i class="fab fa-twitter"></i></a>
-                    <a href="#" style="margin-right:15px; font-size:1.5rem;"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" style="margin-right:15px; font-size:1.5rem;"><i class="fab fa-whatsapp"></i></a>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3 style="color: white; font-weight: 800; font-size: 1.5rem; margin-bottom: 20px;">HOUSE <span class="text-red">SERVICE</span></h3>
+                    <p>Votre partenaire de confiance pour la gestion du personnel en RDC.</p>
+                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="#"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="/index.html#about">À Propos</a></li>
+                        <li><a href="/index.html#services">Nos Services</a></li>
+                        <li><a href="/index.html#team">Notre Équipe</a></li>
+                        <li><a href="/index.html#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone text-blue"></i> +243 81 49 10 495</li>
+                        <li><i class="fas fa-phone text-blue"></i> +243 85 38 36 804</li>
+                        <li><i class="fas fa-envelope text-blue"></i> servicehouse71@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt text-blue"></i> Kisangani, RDC</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p style="margin-bottom: 10px;">Restez informé de nos offres.</p>
+                    <div style="position: relative;">
+                        <input type="email" placeholder="Votre email" style="width: 100%; padding: 12px; border-radius: 8px; border: none; background: #374151; color: white;">
+                        <button style="position: absolute; right: 5px; top: 5px; background: var(--hs-blue); color: white; border: none; padding: 7px 12px; border-radius: 6px; cursor: pointer;"><i class="fas fa-paper-plane"></i></button>
+                    </div>
                 </div>
             </div>
-
-            <!-- Colonne 2: Navigation Rapide -->
-            <div>
-                <h4>Navigation</h4>
-                <ul>
-                    <li><i class="fas fa-arrow-right"></i> <a href="index.html#about">À Propos de Nous</a></li>
-                    <li><i class="fas fa-arrow-right"></i> <a href="#catalogue">Catalogue Complet</a></li>
-                    <li><i class="fas fa-arrow-right"></i> <a href="index.html#gallery">Galerie</a></li>
-                    <li><i class="fas fa-arrow-right"></i> <a href="#">Politique de Confidentialité</a></li>
-                </ul>
+            <div style="text-align: center; padding: 20px 0; border-top: 1px solid #374151;">
+                <p>&copy; 2025 House Service S.A.S. Tous droits réservés. Design by Optimum Entreprise.</p>
             </div>
-
-            <!-- Colonne 3: Nos Implantations -->
-            <div>
-                <h4>Implantations</h4>
-                <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> Kisangani (Siège social)</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Goma</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Kinshasa</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Autres villes (Sur demande)</li>
-                </ul>
-            </div>
-
-            <!-- Colonne 4: Contactez-nous -->
-            <div>
-                <h4>Contact</h4>
-                <ul>
-                    <li><i class="fas fa-phone-alt"></i> +243 81 49 10 495</li>
-                    <li><i class="fas fa-phone-alt"></i> +243 85 38 36 804</li>
-                    <li><i class="fas fa-envelope"></i> servicehouse71@gmail.com</li>
-                    <li><i class="fas fa-clock"></i> Lun - Sam: 8h00 - 17h00</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            &copy; 2025 House service S.A.S. Tous droits réservés.
         </div>
     </footer>
+    <!-- Modal Devis -->
+    <div class="modal-overlay" id="devisModal">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closeForm()">&times;</span>
+            <h3 style="margin-bottom: 10px; color: var(--hs-dark);">Demande de Devis</h3>
+            <p style="color: #666; font-size: 0.9rem; margin-bottom: 20px;">Remplissez ce formulaire pour recevoir une estimation rapide.</p>
+            
+            <div id="serviceTagContainer"></div>
 
-    <!-- MODAL DE DEVIS (Repris de index.html) -->
-    <div id="devisModal">
-        <div class="modal">
-            <button class="close" onclick="closeForm()">✕</button>
-            <h3 class="text-hs-red" style="font-weight:700;margin-top:0;">Demande de Devis</h3>
-            <div id="serviceDetails"></div>
             <form id="devisForm">
                 <input type="hidden" id="serviceRequested" name="serviceRequested">
-                <div style="margin-bottom:15px;">
-                    <label for="name" style="display:block;margin-bottom:5px;font-weight:600;">Votre Nom / Société *</label>
-                    <input type="text" id="name" name="name" required style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;">
+                
+                <div class="form-group">
+                    <label>Nom ou Société</label>
+                    <input type="text" class="form-input" required placeholder="Votre nom">
                 </div>
-                <div style="margin-bottom:15px;">
-                    <label for="phone" style="display:block;margin-bottom:5px;font-weight:600;">Téléphone (WhatsApp de préférence) *</label>
-                    <input type="tel" id="phone" name="phone" required style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;">
+                
+                <div class="form-group">
+                    <label>Téléphone (WhatsApp)</label>
+                    <input type="tel" class="form-input" required placeholder="+243 ...">
                 </div>
-                <div style="margin-bottom:15px;">
-                    <label for="email" style="display:block;margin-bottom:5px;font-weight:600;">Votre E-mail</label>
-                    <input type="email" id="email" name="email" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;">
+
+                <div class="form-group">
+                    <label>Message (Facultatif)</label>
+                    <textarea class="form-input" rows="3" placeholder="Précisez votre besoin..."></textarea>
                 </div>
-                <div style="margin-bottom:15px;">
-                    <label for="message" style="display:block;margin-bottom:5px;font-weight:600;">Détails de votre besoin *</label>
-                    <textarea id="message" name="message" rows="4" required style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;resize:vertical;"></textarea>
-                </div>
-                <button type="submit" class="primary w-full">Envoyer la Demande <i class="fas fa-paper-plane ml-2"></i></button>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: 8px;">
+                    <span>Envoyer la demande</span>
+                </button>
             </form>
-            <p id="formMessage" style="margin-top:15px; text-align:center; font-weight:600;"></p>
         </div>
     </div>
 
-    <!-- SCRIPT DE GESTION DU MODAL ET DE L'ENVOI (Adapté pour ne pas utiliser alert()) -->
+    <!-- Scripts (GSAP retiré pour assurer l'affichage immédiat du contenu) -->
     <script>
-        /**
-         * Ouvre le modal de devis en pré-remplissant le service demandé.
-         * @param {string} service - Le nom du service pour lequel l'utilisateur demande un devis.
-         */
+        // --- 1. Preloader ---
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 500);
+        });
+        // Logique de la Modale (Formulaire de Devis)
         function openForm(service) {
             const modal = document.getElementById('devisModal');
-            const serviceDetails = document.getElementById('serviceDetails');
-            const serviceRequested = document.getElementById('serviceRequested');
-            const formMessage = document.getElementById('formMessage');
-
-            // Mise à jour des champs du modal
-            serviceRequested.value = service;
-            serviceDetails.innerHTML = `<i class="fas fa-tag mr-2 text-hs-blue"></i> <strong>Service ciblé:</strong> ${service}`;
-            formMessage.textContent = ''; // Réinitialise le message
-            formMessage.style.color = 'initial';
+            const input = document.getElementById('serviceRequested');
+            const tagContainer = document.getElementById('serviceTagContainer');
             
+            input.value = service;
+            tagContainer.innerHTML = `<span class="service-tag">${service}</span>`;
             modal.classList.add('active');
-            // Empêche le défilement du corps de la page
             document.body.style.overflow = 'hidden'; 
         }
 
-        /**
-         * Ferme le modal de devis.
-         */
         function closeForm() {
-            const modal = document.getElementById('devisModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = ''; // Rétablit le défilement
+            document.getElementById('devisModal').classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        // Gestion de l'envoi du formulaire
-        document.getElementById('devisForm').addEventListener('submit', function(e) {
+        // Fermer la modale en cliquant en dehors
+        document.getElementById('devisModal').addEventListener('click', (e) => {
+            if (e.target.id === 'devisModal') closeForm();
+        });
+
+        // Simulation de l'envoi du formulaire
+        document.getElementById('devisForm').addEventListener('submit', (e) => {
             e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
             
-            const service = document.getElementById('serviceRequested').value;
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            const formMessage = document.getElementById('formMessage');
+            btn.innerHTML = '<span>Envoi en cours...</span>';
+            btn.style.opacity = '0.8';
 
-            // --- Logique d'envoi (SIMULATION) ---
-            // Dans une application réelle, vous feriez ici un appel fetch() à un serveur pour envoyer l'e-mail.
-            
-            console.log("Demande de devis soumise:");
-            console.log(`Service: ${service}`);
-            console.log(`Nom: ${name}`);
-            console.log(`Téléphone: ${phone}`);
-            console.log(`Email: ${email}`);
-            console.log(`Message: ${message}`);
-
-            // Affiche un message de succès (remplace l'alerte)
-            formMessage.textContent = "✅ Votre demande a été envoyée avec succès ! Nous vous recontacterons très vite.";
-            formMessage.style.color = 'green';
-            
-            // Efface le formulaire après un court délai
             setTimeout(() => {
-                document.getElementById('devisForm').reset();
-                //closeForm(); // Optionnel: fermer automatiquement après l'envoi
-            }, 3000); 
+                btn.innerHTML = '<span>✅ Envoyé !</span>';
+                btn.style.background = '#22c55e'; // Vert
+                setTimeout(() => {
+                    closeForm();
+                    e.target.reset();
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.style.opacity = '1';
+                }, 1500);
+            }, 1000);
         });
-
-        // Fermer le modal en cliquant en dehors
-        document.getElementById('devisModal').addEventListener('click', function(e) {
-            if (e.target.id === 'devisModal') {
-                closeForm();
-            }
-        });
-
-        // Fermer avec la touche ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === "Escape" && document.getElementById('devisModal').classList.contains('active')) {
-                closeForm();
-            }
-        });
-    
-        // --- Chatbot Logic (copied/adapted from index.html) ---
-        const chatWindow = document.getElementById('chat-window');
-        const chatBody = document.getElementById('chat-body');
-        const userInput = document.getElementById('user-input');
-        const typingIndicator = document.getElementById('typing-indicator');
-
-        const GEMINI_API_KEY = "INSEREZ_VOTRE_API_KEY_ICI"; // Remplacez pour production
-
-        function toggleChat(){
-            if(!chatWindow) return;
-            chatWindow.classList.toggle('active');
-        }
-
-        function handleEnter(e){ if(e.key === 'Enter') sendMessage(); }
-
-        async function sendMessage(){
-            const text = userInput && userInput.value.trim();
-            if(!text) return;
-            appendMessage(text, 'user');
-            if(userInput) userInput.value = '';
-            typingIndicator.style.display = 'block';
-            chatBody.scrollTop = chatBody.scrollHeight;
-
-            let responseText = '';
-            if(GEMINI_API_KEY === "INSEREZ_VOTRE_API_KEY_ICI"){
-                await new Promise(r=>setTimeout(r,1200));
-                responseText = "Ceci est une démo. Ajoutez votre clé Gemini dans le code pour des réponses réelles.";
-            } else {
-                try{
-                    const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`,{
-                        method:'POST', headers:{'Content-Type':'application/json'},
-                        body: JSON.stringify({ contents:[{ parts:[{ text:`Tu es l'assistant de House Service. Question: ${text}` }] }] })
-                    });
-                    const data = await resp.json();
-                    responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Désolé, erreur de réponse.";
-                }catch(err){ console.error(err); responseText = "Désolé, une erreur est survenue."; }
-            }
-
-            typingIndicator.style.display = 'none';
-            appendMessage(responseText, 'bot');
-        }
-
-        function appendMessage(text, sender){
-            const div = document.createElement('div');
-            div.classList.add('msg', sender);
-            div.innerText = text;
-            chatBody.appendChild(div);
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }
-
-        // Close chat on ESC when open
-        document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && chatWindow && chatWindow.classList.contains('active')) toggleChat(); });
     </script>
 </body>
 </html>
