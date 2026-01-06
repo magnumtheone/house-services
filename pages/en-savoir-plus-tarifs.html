@@ -1,16 +1,526 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>En savoir plus — Tarifs & Paiement</title>
-    <style>body{font-family:Montserrat, sans-serif;padding:30px;line-height:1.6}a{color:#29B6F6}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifs & Paiement | House Service S.A.S</title>
+    
+    <!-- Fonts: Outfit (Titres) & Roboto (Texte) - Style Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/logo.jpg" type="image/x-icon">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Page Styles -->
+    <style>
+        main {
+            padding-top: 40px;
+        }
+
+        /* Section Tarifs */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin: 60px 0;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: var(--bg-primary);
+            border: 2px solid var(--hs-gray-border);
+            border-radius: 16px;
+            padding: 40px 28px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--hs-red);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--hs-red);
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+            transform: scale(1.02);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.02) translateY(-8px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--hs-red);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .pricing-card h3 {
+            margin-bottom: 8px;
+            font-size: 1.4rem;
+        }
+
+        .pricing-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .pricing-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--hs-red);
+            margin: 20px 0;
+        }
+
+        .pricing-period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin-bottom: 24px;
+            padding: 24px 0;
+            border-top: 1px solid var(--hs-gray-border);
+            border-bottom: 1px solid var(--hs-gray-border);
+            flex-grow: 1;
+            list-style: none;
+        }
+
+        .pricing-features li {
+            margin-bottom: 14px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li i {
+            color: #10B981;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .pricing-card .btn {
+            margin-top: auto;
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Responsive Tablet */
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 640px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .pricing-card {
+                padding: 32px 24px;
+            }
+            
+            .pricing-amount {
+                font-size: 2rem;
+            }
+            
+            .pricing-card h3 {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Section Paiement */
+        .payment-section {
+            background: var(--bg-secondary);
+            padding: 80px 0;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin: 60px 0;
+        }
+
+        .payment-method {
+            background: var(--bg-primary);
+            border: 1px solid var(--hs-gray-border);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .payment-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--hs-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 24px;
+        }
+
+        .payment-method h4 {
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .payment-method p {
+            color: var(--text-secondary);
+            margin: 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .payment-contact {
+            background: var(--hs-blue);
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFF3E0 100%);
+            border-left: 4px solid #FBC02D;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 40px 0;
+        }
+
+        .info-box h4 {
+            color: var(--hs-dark);
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            color: #666;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Tarifs & Paiement</h1>
-    <p>Informations sur les formules, modes de paiement acceptés et instructions pour régler via le numéro agent.</p>
-    <h3>Numéro agent (Paiement)</h3>
-    <p>Mobile money / Paiement : +243 82 00 00 000</p>
-    <p><a href="../index.html">← Retour au site</a></p>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="container nav-inner">
+            <a href="../index.html" class="logo">HOUSE <span>SERVICE</span></a>
+            <div class="nav-overlay" id="navOverlay"></div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">Accueil</a>
+                <a href="en-savoir-plus-services.html" class="nav-link">Services</a>
+                <a href="en-savoir-plus-recrutement.html" class="nav-link">Talents</a>
+                <a href="en-savoir-plus-tarifs.html" class="nav-link" style="color: var(--hs-red);">Tarifs</a>
+                <a href="devis.html" class="btn btn-sm btn-primary">Devis</a>
+            </nav>
+            <div class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero hero-tarifs">
+        <div class="container">
+            <span class="section-header-tag">Transparence & Clarté</span>
+            <h1>Tarifs & Paiement</h1>
+            <p>Découvrez nos formules de services claires et compétitives. Paiement sécurisé et flexible selon vos besoins.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Section Tarifs -->
+        <section class="section-main">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Nos Formules de Services</h2>
+                    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 16px auto;">Sélectionnez la formule adaptée à vos besoins. Tous nos services incluent le professionnalisme et la rigueur House Service.</p>
+                </div>
+
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Ménage Standard</h3>
+                        <p class="pricing-desc">Pour ménages résidentiels</p>
+                        <div class="pricing-amount">À définir</div>
+                        <p class="pricing-period">par visite (4h)</p>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Nettoyage complet</li>
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Organisation des espaces</li>
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Produits fournis</li>
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Discrétion assurée</li>
+                        </ul>
+                        <a href="devis.html" class="btn btn-secondary">Devis Gratuit</a>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <div class="pricing-badge">Populaire</div>
+                        <h3>Ménage Professionnel</h3>
+                        <p class="pricing-desc">Pour entreprises & locaux commerciaux</p>
+                        <div class="pricing-amount">À définir</div>
+                        <p class="pricing-period">par visite (4h)</p>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Nettoyage professionnel</li>
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Sanitisation</li>
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Conformité normes</li>
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Support 24/7</li>
+                        </ul>
+                        <a href="devis.html" class="btn btn-primary">Demander Devis</a>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Services Personnalisés</h3>
+                        <p class="pricing-desc">Formule sur mesure</p>
+                        <div class="pricing-amount">À définir</div>
+                        <p class="pricing-period">devis personnalisé</p>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Consultation gratuite</li>
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Adaptation complète</li>
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Contrat flexible</li>
+                            <li><i class="fas fa-check" style="color: var(--hs-green); margin-right: 12px;"></i> Support dédié</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-ghost">Consulter</a>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4><i class="fas fa-lightbulb"></i> Information Importante</h4>
+                    <p>Les tarifs mentionnés sont hors taxes. Réductions possibles pour contrats mensuels ou annuels. Devis gratuit fourni après évaluation de vos besoins.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Paiement -->
+        <section class="payment-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Modes de Paiement</h2>
+                    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 16px auto;">Flexible, sécurisé, transparent. Choisissez le mode de paiement qui vous convient.</p>
+                </div>
+
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Mobile Money</h4>
+                        <p>Paiement par téléphone mobile. Rapide, pratique et sécurisé.</p>
+                        <div class="payment-contact">+243 82 00 00 000</div>
+                    </div>
+
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-bank"></i>
+                        </div>
+                        <h4>Virement Bancaire</h4>
+                        <p>Pour les montants importants ou contrats entreprise.</p>
+                        <div class="payment-contact">Sur devis</div>
+                    </div>
+
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Espèces</h4>
+                        <p>Paiement en liquide à la signature ou fin de service.</p>
+                        <div class="payment-contact">Sur accord</div>
+                    </div>
+
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h4>Plan de Paiement</h4>
+                        <p>Échelonnement possible pour contrats annuels.</p>
+                        <div class="payment-contact">À discuter</div>
+                    </div>
+
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h4>Carte Bancaire</h4>
+                        <p>Via plateforme de paiement sécurisée. Disponible bientôt.</p>
+                        <div class="payment-contact">Février 2025</div>
+                    </div>
+
+                    <div class="payment-method">
+                        <div class="payment-icon">
+                            <i class="fas fa-chat"></i>
+                        </div>
+                        <h4>WhatsApp Pay</h4>
+                        <p>Paiement direct via WhatsApp. Pratique pour petits montants.</p>
+                        <div class="payment-contact">+243 82 00 00 000</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Paiement -->
+        <section class="section-main">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Questions Fréquentes</h2>
+                </div>
+
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div style="background: var(--bg-primary); border: 1px solid var(--hs-gray-border); border-radius: 8px; padding: 24px; margin-bottom: 16px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 8px;">Offrez-vous des réductions pour contrats long terme ?</h4>
+                        <p style="margin: 0; color: var(--text-secondary);">Oui, à partir de 3 mois de services réguliers, une réduction de 5-10% est appliquée. Consultez-nous pour un tarif personnalisé.</p>
+                    </div>
+
+                    <div style="background: var(--bg-primary); border: 1px solid var(--hs-gray-border); border-radius: 8px; padding: 24px; margin-bottom: 16px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 8px;">Les frais de déplacement sont-ils inclus ?</h4>
+                        <p style="margin: 0; color: var(--text-secondary);">Pour Kisangani centre : oui, inclus. Au-delà : frais de déplacement additionnels négociés au cas par cas.</p>
+                    </div>
+
+                    <div style="background: var(--bg-primary); border: 1px solid var(--hs-gray-border); border-radius: 8px; padding: 24px; margin-bottom: 16px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 8px;">Puis-je payer après la prestation ?</h4>
+                        <p style="margin: 0; color: var(--text-secondary);">Pour clients réguliers : oui. Pour premiers clients : paiement à l'avance ou sur accord du responsable commercial.</p>
+                    </div>
+
+                    <div style="background: var(--bg-primary); border: 1px solid var(--hs-gray-border); border-radius: 8px; padding: 24px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 8px;">Proposez-vous un contrat écrit ?</h4>
+                        <p style="margin: 0; color: var(--text-secondary);">Absolument. Tous nos services incluent un contrat détaillant les prestations, tarifs et conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>House Service</h4>
+                    <p>Excellence & Sous-traitance au Service de Votre Entreprise</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="en-savoir-plus-services.html">Nos Services</a></li>
+                        <li><a href="en-savoir-plus-tarifs.html">Tarifs & Paiement</a></li>
+                        <li><a href="#">Témoignages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Talents</h4>
+                    <ul>
+                        <li><a href="en-savoir-plus-recrutement.html">Carrières</a></li>
+                        <li><a href="en-savoir-plus-recrutement.html">Formations</a></li>
+                        <li><a href="#">Ressources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:contact@houseservice.cd">contact@houseservice.cd</a></li>
+                        <li><a href="tel:+243820000000">+243 82 00 00 000</a></li>
+                        <li><a href="#">Kisangani, RDC</a></li>
+                    </ul>
+                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://wa.me/243820000000" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 House Service S.A.S | Tous droits réservés</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Design by <a href="https://portfoliodavidwawina.vercel.app/" target="_blank" style="color: var(--hs-blue); text-decoration: none; font-weight: 600; transition: color 0.2s;">David Wawina</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const hamburger = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+        const hamburgerIcon = hamburger.querySelector('i');
+        
+        function toggleMobileMenu() {
+            navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            if (navMenu.classList.contains('active')) {
+                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.add('fa-times');
+            } else {
+                hamburgerIcon.classList.remove('fa-times');
+                hamburgerIcon.classList.add('fa-bars');
+            }
+        }
+        
+        function closeMobileMenu() {
+            navMenu.classList.remove('active');
+            navOverlay.classList.remove('active');
+            hamburgerIcon.classList.remove('fa-times');
+            hamburgerIcon.classList.add('fa-bars');
+        }
+        
+        hamburger.addEventListener('click', toggleMobileMenu);
+        navOverlay.addEventListener('click', closeMobileMenu);
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 992) closeMobileMenu();
+            });
+        });
+    </script>
 </body>
 </html>

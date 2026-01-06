@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demander un Devis | House Service S.A.S</title>
+    
+    <!-- Fonts: Outfit (Titres) & Roboto (Texte) - Style Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/logo.jpg" type="image/x-icon">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Page Styles -->
+    <style>
+        body {
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Logo en arrière-plan */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: url('../images/logo.jpg') center/contain no-repeat;
+            opacity: 0.04;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        main {
+            padding-top: 40px;
+            padding-bottom: 80px;
+        }
+
+        /* Form Container */
+        .devis-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .devis-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .devis-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .devis-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Form Card */
+        .devis-form-card {
+            background: var(--bg-primary);
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--hs-gray-border);
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+        }
+
+        .form-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--hs-gray-border);
+        }
+
+        .form-section-title i {
+            width: 40px;
+            height: 40px;
+            background: var(--hs-blue);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .form-section-title h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        /* Form Fields */
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row.single {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .form-group label .required {
+            color: var(--hs-red);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 14px 16px;
+            border: 1px solid var(--hs-gray-border);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--hs-blue);
+            box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.15);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        /* Services Checkboxes */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .service-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--hs-gray-border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .service-checkbox:hover {
+            border-color: var(--hs-blue);
+            background: rgba(41, 182, 246, 0.05);
+        }
+
+        .service-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--hs-blue);
+            cursor: pointer;
+        }
+
+        .service-checkbox span {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .service-checkbox.checked {
+            border-color: var(--hs-blue);
+            background: rgba(41, 182, 246, 0.1);
+        }
+
+        /* Category Labels */
+        .category-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .category-label.habitation {
+            background: rgba(41, 182, 246, 0.1);
+            color: var(--hs-blue);
+        }
+
+        .category-label.entreprise {
+            background: rgba(211, 47, 47, 0.1);
+            color: var(--hs-red);
+        }
+
+        .category-label.premium {
+            background: rgba(255, 193, 7, 0.2);
+            color: #B8860B;
+        }
+
+        /* Submit Button */
+        .form-submit {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .form-submit .btn {
+            min-width: 280px;
+            padding: 16px 32px;
+            font-size: 1.05rem;
+        }
+
+        .form-note {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .form-note i {
+            margin-right: 6px;
+            color: var(--hs-blue);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #10B981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .success-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .success-message h2 {
+            font-size: 1.75rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .success-message p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                padding-top: 80px;
+            }
+
+            .devis-form-card {
+                padding: 32px 24px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .devis-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-submit .btn {
+                width: 100%;
+            }
+
+            body::before {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="container nav-inner">
+            <a href="../index.html" class="logo">HOUSE <span>SERVICE</span></a>
+            <div class="nav-overlay" id="navOverlay"></div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">Accueil</a>
+                <a href="en-savoir-plus-services.html" class="nav-link">Services</a>
+                <a href="en-savoir-plus-recrutement.html" class="nav-link">Talents</a>
+                <a href="en-savoir-plus-tarifs.html" class="nav-link">Tarifs</a>
+                <a href="devis.html" class="nav-link" style="color: var(--hs-red);">Devis</a>
+            </nav>
+            <div class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero hero-devis">
+        <div class="container">
+            <span class="section-header-tag">Gratuit & Sans Engagement</span>
+            <h1>Demander un <span class="text-blue">Devis</span></h1>
+            <p>Remplissez ce formulaire et recevez une estimation personnalisée dans les 24h. Notre équipe vous contactera pour affiner vos besoins.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="devis-container">
+                <!-- Form Card -->
+                <div class="devis-form-card" id="formCard">
+                    <form id="devisForm">
+                        <!-- Section 1: Informations Personnelles -->
+                        <div class="form-section">
+                            <div class="form-section-title">
+                                <i class="fas fa-user"></i>
+                                <h3>Vos Informations</h3>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Nom complet <span class="required">*</span></label>
+                                    <input type="text" name="nom" placeholder="Ex: Jean Kabongo" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email <span class="required">*</span></label>
+                                    <input type="email" name="email" placeholder="votre@email.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Téléphone <span class="required">*</span></label>
+                                    <input type="tel" name="telephone" placeholder="+243 XXX XXX XXX" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ville <span class="required">*</span></label>
+                                    <select name="ville" required>
+                                        <option value="">Sélectionnez votre ville</option>
+                                        <option value="kisangani">Kisangani</option>
+                                        <option value="kinshasa">Kinshasa</option>
+                                        <option value="goma">Goma</option>
+                                        <option value="autre">Autre ville</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: Type de Client -->
+                        <div class="form-section">
+                            <div class="form-section-title">
+                                <i class="fas fa-building"></i>
+                                <h3>Type de Client</h3>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Vous êtes <span class="required">*</span></label>
+                                    <select name="type_client" required>
+                                        <option value="">Sélectionnez</option>
+                                        <option value="particulier">Particulier / Ménage</option>
+                                        <option value="entreprise">Entreprise / Organisation</option>
+                                        <option value="ong">ONG / Organisme International</option>
+                                        <option value="hotel">Hôtel / Restaurant</option>
+                                        <option value="autre">Autre</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nom de l'entreprise (si applicable)</label>
+                                    <input type="text" name="entreprise" placeholder="Nom de votre entreprise">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 3: Services Demandés -->
+                        <div class="form-section">
+                            <div class="form-section-title">
+                                <i class="fas fa-concierge-bell"></i>
+                                <h3>Services Demandés</h3>
+                            </div>
+                            
+                            <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;">Cochez les services qui vous intéressent (plusieurs choix possibles) :</p>
+                            
+                            <!-- Habitation -->
+                            <div class="category-label habitation">
+                                <i class="fas fa-home"></i> Habitation
+                            </div>
+                            <div class="services-grid" style="margin-bottom: 24px;">
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="menage">
+                                    <span>Ménage résidentiel</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="blanchisserie">
+                                    <span>Blanchisserie & Repassage</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="garde_enfants">
+                                    <span>Garde d'enfants</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="courses">
+                                    <span>Courses & Commissions</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="cuisine">
+                                    <span>Préparation de repas</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="jardinage">
+                                    <span>Jardinage & Entretien</span>
+                                </label>
+                            </div>
+
+                            <!-- Entreprise -->
+                            <div class="category-label entreprise">
+                                <i class="fas fa-briefcase"></i> Entreprise
+                            </div>
+                            <div class="services-grid" style="margin-bottom: 24px;">
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="menage_entreprise">
+                                    <span>Ménage d'entreprise</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="agentage">
+                                    <span>Agentage commercial</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="accueil">
+                                    <span>Accueil & Réception</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="securite">
+                                    <span>Sécurité & Gardiennage</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="admin">
+                                    <span>Support administratif</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="logistique">
+                                    <span>Logistique & Transport</span>
+                                </label>
+                            </div>
+
+                            <!-- Premium -->
+                            <div class="category-label premium">
+                                <i class="fas fa-star"></i> Premium
+                            </div>
+                            <div class="services-grid">
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="chauffeur">
+                                    <span>Chauffeur privé</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="protocole_vip">
+                                    <span>Protocole VIP</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="guide_touristique">
+                                    <span>Guide touristique</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="event">
+                                    <span>Event Management</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="gestionnaire">
+                                    <span>Gestionnaire de maison</span>
+                                </label>
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="maintenance">
+                                    <span>Maintenance technique</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Section 4: Détails du Besoin -->
+                        <div class="form-section">
+                            <div class="form-section-title">
+                                <i class="fas fa-calendar-alt"></i>
+                                <h3>Détails de votre Besoin</h3>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Durée souhaitée</label>
+                                    <select name="duree">
+                                        <option value="">Sélectionnez</option>
+                                        <option value="ponctuel">Ponctuel / Événement</option>
+                                        <option value="hebdo">Quelques jours par semaine</option>
+                                        <option value="mensuel">Contrat mensuel</option>
+                                        <option value="annuel">Contrat annuel</option>
+                                        <option value="permanent">Personnel permanent</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date de début souhaitée</label>
+                                    <input type="date" name="date_debut">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Nombre de personnes requises</label>
+                                    <select name="nb_personnes">
+                                        <option value="">Sélectionnez</option>
+                                        <option value="1">1 personne</option>
+                                        <option value="2-3">2-3 personnes</option>
+                                        <option value="4-5">4-5 personnes</option>
+                                        <option value="6-10">6-10 personnes</option>
+                                        <option value="10+">Plus de 10 personnes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Budget estimé (USD/mois)</label>
+                                    <select name="budget">
+                                        <option value="">Sélectionnez</option>
+                                        <option value="50-100">50 - 100 $</option>
+                                        <option value="100-250">100 - 250 $</option>
+                                        <option value="250-500">250 - 500 $</option>
+                                        <option value="500-1000">500 - 1000 $</option>
+                                        <option value="1000+">Plus de 1000 $</option>
+                                        <option value="discussion">À discuter</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row single">
+                                <div class="form-group">
+                                    <label>Précisions supplémentaires</label>
+                                    <textarea name="message" placeholder="Décrivez vos besoins spécifiques, horaires préférés, exigences particulières..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>
+                                Envoyer ma Demande de Devis
+                            </button>
+                            <p class="form-note">
+                                <i class="fas fa-shield-alt"></i>
+                                Vos données sont sécurisées et ne seront jamais partagées.
+                            </p>
+                        </div>
+                    </form>
+
+                    <!-- Success Message -->
+                    <div class="success-message" id="successMessage">
+                        <div class="success-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h2>Demande Envoyée avec Succès !</h2>
+                        <p>Merci pour votre confiance. Notre équipe vous contactera dans les 24 heures pour discuter de vos besoins et vous proposer une offre personnalisée.</p>
+                        <a href="../index.html" class="btn btn-secondary">
+                            <i class="fas fa-home" style="margin-right: 8px;"></i>
+                            Retour à l'Accueil
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: var(--hs-dark); color: #9ca3af; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <a href="../index.html" class="logo" style="color: white; margin-bottom: 20px; display: inline-block;">HOUSE <span style="color: var(--hs-red);">SERVICE</span></a>
+            <p style="margin-bottom: 20px;">Excellence & Sous-traitance au Service de Votre Entreprise</p>
+            <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px;">
+                <a href="#" style="color: #9ca3af; font-size: 1.3rem; transition: color 0.2s;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color: #9ca3af; font-size: 1.3rem; transition: color 0.2s;" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" style="color: #9ca3af; font-size: 1.3rem; transition: color 0.2s;" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p style="font-size: 0.85rem; opacity: 0.7;">© 2024 House Service S.A.S - Tous droits réservés.</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">Design by <a href="https://portfoliodavidwawina.vercel.app/" target="_blank" style="color: var(--hs-blue); text-decoration: none; font-weight: 600; transition: color 0.2s;">David Wawina</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navOverlay.classList.toggle('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+        }
+        
+        if (navOverlay) {
+            navOverlay.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navOverlay.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        }
+
+        // Checkbox styling
+        const checkboxes = document.querySelectorAll('.service-checkbox input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                this.closest('.service-checkbox').classList.toggle('checked', this.checked);
+            });
+        });
+
+        // Form Submission
+        document.getElementById('devisForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Hide form, show success
+            document.getElementById('devisForm').style.display = 'none';
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Scroll to top of card
+            document.getElementById('formCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

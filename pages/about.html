@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos & Notre Histoire | House Service S.A.S</title>
+    
+    <!-- Fonts: Outfit (Titres) & Roboto (Texte) - Style Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/logo.jpg" type="image/x-icon">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <style>
+        main { padding-top: 80px; }
+        
+        .history-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 60px auto;
+            padding-left: 40px;
+            border-left: 4px solid var(--hs-border);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -54px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--hs-blue);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--hs-blue);
+        }
+        
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--hs-red);
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .timeline-content h3 { font-size: 1.25rem; margin-bottom: 10px; }
+        .timeline-content p { color: var(--text-secondary); line-height: 1.6; }
+
+        .leader-card-large {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+            background: var(--bg-primary);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 60px;
+            border: 1px solid var(--hs-gray-border);
+        }
+
+        .leader-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .leader-bio h2 { font-size: 2rem; margin-bottom: 8px; }
+        .leader-role { color: var(--hs-blue); font-weight: 700; font-size: 1.1rem; margin-bottom: 24px; display: block; }
+        .leader-desc { color: var(--text-secondary); margin-bottom: 20px; line-height: 1.8; font-size: 1.05rem; }
+
+        @media(max-width: 768px) {
+            .leader-card-large { grid-template-columns: 1fr; }
+            .leader-img { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="container nav-inner">
+            <a href="../index.html" class="logo">HOUSE <span>SERVICE</span></a>
+            <div class="nav-overlay" id="navOverlay"></div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">Accueil</a>
+                <a href="en-savoir-plus-services.html" class="nav-link">Services</a>
+                <a href="en-savoir-plus-recrutement.html" class="nav-link">Talents</a>
+                <a href="en-savoir-plus-tarifs.html" class="nav-link">Tarifs</a>
+                <a href="devis.html" class="btn btn-sm btn-primary">Devis</a>
+            </nav>
+            <div class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero hero-about">
+        <div class="container">
+            <span class="section-header-tag">Notre ADN</span>
+            <h1>Une Histoire d'Engagement</h1>
+            <p>Découvrez comment House Service a transformé le paysage de la sous-traitance en RDC, passant d'une vision locale à un leader national.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Story Section -->
+        <section class="section-main">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Notre Parcours</h2>
+                    <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 16px auto;">Une croissance constante guidée par des valeurs fortes d'excellence et d'intégrité.</p>
+                </div>
+
+                <div class="history-timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-year">20 Juin 2020</span>
+                        <div class="timeline-content">
+                            <h3>Fondation à Kisangani</h3>
+                            <p>En pleine crise sanitaire mondiale, M. Théophile MUTATAY fonde House Service S.A.S pour répondre au besoin crucial de sécurité sanitaire et de gestion professionnelle du personnel de maison dans la province de la Tshopo.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-year">2022</span>
+                        <div class="timeline-content">
+                            <h3>Expansion Régionale</h3>
+                            <p>Fort de son succès local, l'entreprise ouvre ses premières antennes à Goma, introduisant ses standards de formation rigoureux dans l'Est de la RDC.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-year">2024</span>
+                        <div class="timeline-content">
+                            <h3>Cap sur la Capitale</h3>
+                            <p>Lancement des opérations stratégiques à Kinshasa. House Service devient un partenaire privilégié pour les grandes entreprises et les institutions internationales.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-year">2026</span>
+                        <div class="timeline-content">
+                            <h3>Leader National</h3>
+                            <p>Aujourd'hui, House Service coordonne des centaines de collaborateurs à travers 3 villes clés, avec une vision claire : devenir la référence absolue de la sous-traitance multisectorielle en Afrique Centrale.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Section -->
+        <section class="section-main" style="background: var(--bg-secondary);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Direction Générale</h2>
+                </div>
+
+                <div class="leader-card-large">
+                    <img src="../images/théo.png" alt="M. Théophile MUTATAY" class="leader-img">
+                    <div class="leader-bio">
+                        <h2>M. Théophile MUTATAY</h2>
+                        <span class="leader-role">Directeur Général & Fondateur</span>
+                        <p class="leader-desc">Diplômé en Marketing et Gestion d'Entreprise, M. MUTATAY possède plus de 10 ans d'expérience dans le management stratégique. Sa vision est de professionnaliser le secteur informel des services en RDC en offrant un cadre légal et social protecteur aux travailleurs tout en garantissant une qualité irréprochable aux clients.</p>
+                        <p class="leader-desc">Il supervise personnellement la coordination entre les antennes de Kisangani, Goma et Kinshasa, veillant à ce que chaque mission reflète les valeurs de House Service.</p>
+                        <div style="margin-top: 24px;">
+                            <a href="#" style="color: var(--hs-blue); font-size: 1.5rem; margin-right: 20px;"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" style="color: var(--hs-blue); font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section style="padding: 100px 0; background: linear-gradient(135deg, var(--hs-dark) 0%, #1a237e 100%); color: white; text-align: center;">
+            <div class="container">
+                <h2 style="font-size: 2.5rem; margin-bottom: 24px; color: white;">Prêt à collaborer avec l'élite ?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 40px; color: rgba(255,255,255,0.8);">Rejoignez les centaines de partenaires qui nous font confiance.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="devis.html" class="btn btn-primary btn-lg">Demander un Devis</a>
+                    <a href="en-savoir-plus-recrutement.html" class="btn btn-outline-white btn-lg" style="border: 2px solid white; color: white; padding: 14px 32px; border-radius: 8px;">Nous Rejoindre</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>House Service</h4>
+                    <p>Excellence & Sous-traitance au Service de Votre Entreprise</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="en-savoir-plus-services.html">Nos Services</a></li>
+                        <li><a href="en-savoir-plus-tarifs.html">Tarifs & Paiement</a></li>
+                        <li><a href="#">Témoignages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Talents</h4>
+                    <ul>
+                        <li><a href="en-savoir-plus-recrutement.html">Carrières</a></li>
+                        <li><a href="en-savoir-plus-recrutement.html">Formations</a></li>
+                        <li><a href="#">Ressources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:contact@houseservice.cd">contact@houseservice.cd</a></li>
+                        <li><a href="tel:+243820000000">+243 82 00 00 000</a></li>
+                        <li><a href="#">Kisangani, RDC</a></li>
+                    </ul>
+                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://whatsapp.com" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 House Service S.A.S | Tous droits réservés</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Design by <a href="https://portfoliodavidwawina.vercel.app/" target="_blank" style="color: var(--hs-blue); text-decoration: none; font-weight: 600; transition: color 0.2s;">David Wawina</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const hamburger = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+        const hamburgerIcon = hamburger.querySelector('i');
+        
+        function toggleMobileMenu() {
+            navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            if (navMenu.classList.contains('active')) {
+                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.add('fa-times');
+            } else {
+                hamburgerIcon.classList.remove('fa-times');
+                hamburgerIcon.classList.add('fa-bars');
+            }
+        }
+        
+        function closeMobileMenu() {
+            navMenu.classList.remove('active');
+            navOverlay.classList.remove('active');
+            hamburgerIcon.classList.remove('fa-times');
+            hamburgerIcon.classList.add('fa-bars');
+        }
+        
+        hamburger.addEventListener('click', toggleMobileMenu);
+        navOverlay.addEventListener('click', closeMobileMenu);
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 992) closeMobileMenu();
+            });
+        });
+    </script>
+</body>
+</html>
