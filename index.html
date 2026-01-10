@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House Service S.A.S | Excellence & Sous-traitance</title>
+    <title>House Service S.A.S | Excellence & Sous-traitance en RDC</title>
+    <meta name="description" content="House Service S.A.S - Leader de la sous-traitance et gestion du personnel en RDC. Services de ménage, garde d'enfants, sécurité, chauffeurs et plus à Kisangani, Goma et Kinshasa.">
+    <meta name="keywords" content="House Service, sous-traitance RDC, ménage, garde enfants, sécurité, Kisangani, Goma, Kinshasa">
+    <meta name="author" content="House Service S.A.S">
+    <meta name="robots" content="index, follow">
     
-    <!-- Fonts: Outfit (Titres) & Roboto (Texte) - Style Google -->
+    <!-- Fonts: Preload pour performances -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"></noscript>
     <link rel="icon" href="images/logo.webp" type="image/x-icon">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Icons - chargement différé -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
@@ -1327,16 +1335,19 @@ html {
 
             <div style="display: flex; gap: 15px; align-items: center;">
                 <a href="pages/devis.html" class="btn btn-primary btn-devis-desktop">Devis Gratuit</a>
-                <div class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></div>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Ouvrir le menu de navigation" aria-expanded="false"><i class="fas fa-bars" aria-hidden="true"></i></button>
             </div>
         </div>
     </header>
 
+    <!-- Main Content -->
+    <main role="main">
+
     <!-- Hero Section Static with Logo -->
-    <section class="hero">
+    <section class="hero" aria-label="Présentation House Service">
         <div class="container hero-content">
             <!-- Logo Image Added -->
-            <img src="./images/logo.webp" alt="Logo House Service" class="hero-logo-img fade-up" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <img src="./images/logo.webp" alt="Logo House Service - Leader de la sous-traitance en RDC" class="hero-logo-img fade-up" width="200" height="157" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
             
             <span class="hero-badge fade-up">N°1 en RDC - Kisangani, Goma, Kinshasa</span>
             <h1 class="fade-up">L'Excellence au service des <span class="text-red">Ménages</span> & Entreprises</h1>
@@ -1638,21 +1649,21 @@ html {
                 <p style="margin-bottom: 20px; color: #666;">Cliquez sur une image pour l'agrandir.</p>
                 
                 <div class="bento-grid" style="grid-template-rows: 200px;">
-                    <div class="bento-item" onclick="openLightbox(0)">
-                        <img src="./images/pub1.webp" class="bento-img" alt="Gallery 1">
-                        <div class="bento-content"><i class="fas fa-expand"></i></div>
+                    <div class="bento-item" onclick="openLightbox(0)" role="button" tabindex="0" aria-label="Voir l'image de l'équipe House Service">
+                        <img src="./images/pub1.webp" class="bento-img" alt="Équipe House Service en action" width="300" height="200" loading="lazy">
+                        <div class="bento-content"><i class="fas fa-expand" aria-hidden="true"></i></div>
                     </div>
-                    <div class="bento-item" onclick="openLightbox(1)">
-                        <img src="./images/pub2.webp" class="bento-img" alt="Gallery 2">
-                        <div class="bento-content"><i class="fas fa-expand"></i></div>
+                    <div class="bento-item" onclick="openLightbox(1)" role="button" tabindex="0" aria-label="Voir l'image événement corporate">
+                        <img src="./images/pub2.webp" class="bento-img" alt="Événement corporate House Service" width="300" height="200" loading="lazy">
+                        <div class="bento-content"><i class="fas fa-expand" aria-hidden="true"></i></div>
                     </div>
-                    <div class="bento-item" onclick="openLightbox(2)">
-                        <img src="./images/pub3.webp" class="bento-img" alt="Gallery 3">
-                        <div class="bento-content"><i class="fas fa-expand"></i></div>
+                    <div class="bento-item" onclick="openLightbox(2)" role="button" tabindex="0" aria-label="Voir l'image campagne publicitaire">
+                        <img src="./images/pub3.webp" class="bento-img" alt="Campagne publicitaire House Service" width="300" height="200" loading="lazy">
+                        <div class="bento-content"><i class="fas fa-expand" aria-hidden="true"></i></div>
                     </div>
-                    <div class="bento-item" onclick="openLightbox(3)">
-                        <img src="./images/pub4.webp" class="bento-img" alt="Gallery 4">
-                        <div class="bento-content"><i class="fas fa-expand"></i></div>
+                    <div class="bento-item" onclick="openLightbox(3)" role="button" tabindex="0" aria-label="Voir l'image activités promotionnelles">
+                        <img src="./images/pub4.webp" class="bento-img" alt="Activités promotionnelles House Service" width="300" height="200" loading="lazy">
+                        <div class="bento-content"><i class="fas fa-expand" aria-hidden="true"></i></div>
                     </div>
                 </div>
                 
@@ -1673,29 +1684,29 @@ html {
                 <h2>Actualités & Conseils</h2>
             </div>
             <div class="services-grid">
-                <div class="blog-card">
-                    <img src="/images/nounou.webp" class="blog-img" alt="Blog 1">
+                <article class="blog-card">
+                    <img src="/images/nounou.webp" class="blog-img" alt="Conseil pour choisir une nounou" width="400" height="250" loading="lazy">
                     <div class="blog-content">
                         <span class="blog-tag">Conseil Maison</span>
-                        <h4 style="margin: 10px 0;">Comment choisir sa nounou ?</h4>
+                        <h3 style="margin: 10px 0; font-size: 1.1rem;">Comment choisir sa nounou ?</h3>
                         <p style="font-size: 0.9rem; color: #666;">Les critères essentiels pour assurer la sécurité de vos enfants.</p>
                         <a href="#" style="color: var(--hs-blue); font-size: 0.8rem; font-weight: 700; margin-top: 15px; display: block;">Lire la suite &rarr;</a>
                     </div>
-                </div>
-                <div class="blog-card">
-                    <img src="/images/solutions.webp" class="blog-img" alt="Blog 2">
+                </article>
+                <article class="blog-card">
+                    <img src="/images/solutions.webp" class="blog-img" alt="Solutions d'externalisation pour entreprises" width="400" height="250" loading="lazy">
                     <div class="blog-content">
                         <span class="blog-tag">Entreprise</span>
-                        <h4 style="margin: 10px 0;">L'externalisation du nettoyage</h4>
+                        <h3 style="margin: 10px 0; font-size: 1.1rem;">L'externalisation du nettoyage</h3>
                         <p style="font-size: 0.9rem; color: #666;">Pourquoi sous-traiter est plus rentable pour votre société.</p>
                         <a href="#" style="color: var(--hs-blue); font-size: 0.8rem; font-weight: 700; margin-top: 15px; display: block;">Lire la suite &rarr;</a>
                     </div>
-                </div>
-                <div class="blog-card">
-                    <img src="/images/goma.webp" class="blog-img" alt="Blog 3">
+                </article>
+                <article class="blog-card">
+                    <img src="/images/goma.webp" class="blog-img" alt="Ouverture House Service à Goma" width="400" height="250" loading="lazy">
                     <div class="blog-content">
                         <span class="blog-tag">House Service</span>
-                        <h4 style="margin: 10px 0;">Ouverture à Goma</h4>
+                        <h3 style="margin: 10px 0; font-size: 1.1rem;">Ouverture à Goma</h3>
                         <p style="font-size: 0.9rem; color: #666;">Nous étendons nos activités pour mieux vous servir dans l'Est.</p>
                         <a href="#" style="color: var(--hs-blue); font-size: 0.8rem; font-weight: 700; margin-top: 15px; display: block;">Lire la suite &rarr;</a>
                     </div>
@@ -1861,8 +1872,10 @@ html {
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
-    <footer id="contact">
+    <footer id="contact" role="contentinfo">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">

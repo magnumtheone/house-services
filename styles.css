@@ -660,6 +660,7 @@ footer {
     padding: 10px;
     z-index: 1001;
     background: var(--hs-red);
+    border: none;
     border-radius: 8px;
     width: 44px;
     height: 44px;
@@ -670,8 +671,11 @@ footer {
     transition: all 0.3s ease;
 }
 
-.hamburger:hover {
+.hamburger:hover,
+.hamburger:focus {
     background: #B71C1C;
+    outline: 2px solid var(--hs-blue);
+    outline-offset: 2px;
 }
 
 /* Navigation Overlay */
