@@ -1306,6 +1306,22 @@ html {
 
                 <a href="#ai-assistant" class="nav-link">IA Assistant</a>
                 <a href="#blog" class="nav-link">Blog</a>
+                
+                <!-- Dropdown Galerie -->
+                <div class="dropdown">
+                    <a href="pages/galerie.html" class="nav-link">Galerie <i class="fas fa-chevron-down" style="font-size:0.7em; margin-left:5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="pages/galerie.html" class="drop-item">
+                            <div class="drop-icon"><i class="fas fa-images"></i></div>
+                            <div class="drop-text"><h5>Photos</h5><p>Notre portfolio complet</p></div>
+                        </a>
+                        <a href="pages/nos-villes.html" class="drop-item">
+                            <div class="drop-icon"><i class="fas fa-city"></i></div>
+                            <div class="drop-text"><h5>Nos Villes</h5><p>Kisangani, Goma, Kinshasa</p></div>
+                        </a>
+                    </div>
+                </div>
+                
                 <div onclick="openPayment()" class="btn btn-secondary nav-btn-mobile" style="padding: 10px 20px; font-size: 0.8rem;">Paiement</div>
             </nav>
 
@@ -1639,6 +1655,13 @@ html {
                         <div class="bento-content"><i class="fas fa-expand"></i></div>
                     </div>
                 </div>
+                
+                <!-- Bouton En savoir plus -->
+                <div style="text-align: center; margin-top: 60px;">
+                    <a href="pages/galerie.html" class="btn btn-primary">
+                        <i class="fas fa-images"></i> En savoir plus
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1922,11 +1945,15 @@ html {
 
     <script>
         // --- 1. Preloader ---
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            setTimeout(() => { loader.style.display = 'none'; }, 500);
-        });
+        // Attendre que la page soit complètement chargée
+        // window.addEventListener('load', () => {
+        //     // Récupérer l'élément du préchargement (loader)
+        //     const loader = document.getElementById('loader');
+        //     // Rendre le loader transparent (disparition progressive)
+        //     loader.style.opacity = '0';
+        //     // Après 500ms, masquer complètement le loader
+        //     setTimeout(() => { loader.style.display = 'none'; }, 500);
+        // });
 
         // --- 2. Payment Modal ---
         function openPayment() {

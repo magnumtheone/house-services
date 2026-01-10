@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Villes | House Service S.A.S</title>
+    
+    <!-- Fonts: Outfit (Titres) & Roboto (Texte) - Style Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../images/logo.jpg" type="image/x-icon">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Page Styles -->
+    <style>
+        main {
+            padding-top: 80px;
+        }
+
+        /* Hero Section */
+        .cities-hero {
+            background: linear-gradient(135deg, var(--hs-dark) 0%, #1a1a2e 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cities-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('../images/logo.jpg') center/300px no-repeat;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .cities-hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .cities-hero p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .cities-hero .section-header-tag {
+            background: rgba(41, 182, 246, 0.2);
+            color: var(--hs-blue);
+        }
+
+        /* City Section */
+        .city-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .city-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .city-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .city-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .city-header h2 i {
+            color: var(--hs-red);
+            font-size: 1.8rem;
+        }
+
+        .city-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .city-badge {
+            display: inline-block;
+            background: var(--hs-blue);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        /* City Gallery Grid */
+        .city-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .city-gallery.layout-featured {
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: repeat(2, 200px);
+        }
+
+        .city-gallery.layout-featured .city-img:first-child {
+            grid-row: span 2;
+        }
+
+        .city-img {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+        }
+
+        .city-img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .city-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .city-img:hover img {
+            transform: scale(1.1);
+        }
+
+        .city-img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .city-img:hover .city-img-overlay {
+            opacity: 1;
+        }
+
+        .city-img-overlay span {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* City Info Cards */
+        .city-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .city-info-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--hs-gray-border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .city-info-card:hover {
+            border-color: var(--hs-blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .city-info-card i {
+            font-size: 2rem;
+            color: var(--hs-red);
+            margin-bottom: 12px;
+        }
+
+        .city-info-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .city-info-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Stats Banner */
+        .city-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 30px;
+            background: var(--hs-dark);
+            border-radius: 16px;
+            margin-top: 40px;
+        }
+
+        .city-stat {
+            text-align: center;
+        }
+
+        .city-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--hs-blue);
+            display: block;
+        }
+
+        .city-stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* CTA Section */
+        .cities-cta {
+            background: linear-gradient(135deg, var(--hs-red) 0%, #b71c1c 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cities-cta h2 {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .cities-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .cities-cta .btn-primary {
+            background: white;
+            color: var(--hs-dark);
+        }
+
+        .cities-cta .btn-primary:hover {
+            background: var(--hs-blue);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .cities-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .city-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .city-gallery.layout-featured {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .city-gallery.layout-featured .city-img:first-child {
+                grid-row: span 1;
+            }
+
+            .city-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .city-stats {
+                gap: 40px;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cities-hero {
+                padding: 80px 0 60px;
+            }
+
+            .cities-hero h1 {
+                font-size: 2rem;
+            }
+
+            .city-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .city-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .city-img {
+                height: 220px;
+            }
+
+            .city-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .city-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .city-stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-inner">
+            <a href="../index.html" class="logo">HOUSE <span>SERVICE S.A.S</span></a>
+            <div class="nav-overlay" id="navOverlay"></div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">Accueil</a>
+                <a href="en-savoir-plus-services.html" class="nav-link">Services</a>
+                <a href="en-savoir-plus-recrutement.html" class="nav-link">Talents</a>
+                <a href="en-savoir-plus-tarifs.html" class="nav-link">Tarifs</a>
+                
+                <!-- Dropdown Galerie -->
+                <div class="dropdown">
+                    <a href="galerie.html" class="nav-link">Galerie <i class="fas fa-chevron-down" style="font-size:0.7em; margin-left:5px;"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="galerie.html" class="drop-item">
+                            <div class="drop-icon"><i class="fas fa-images"></i></div>
+                            <div class="drop-text"><h5>Photos</h5><p>Notre portfolio complet</p></div>
+                        </a>
+                        <a href="nos-villes.html" class="drop-item" style="border-left: 3px solid var(--hs-red);">
+                            <div class="drop-icon"><i class="fas fa-city"></i></div>
+                            <div class="drop-text"><h5>Nos Villes</h5><p>Kisangani, Goma, Kinshasa</p></div>
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="devis.html" class="btn btn-sm btn-primary">Devis</a>
+            </nav>
+            <div class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="cities-hero">
+        <div class="container">
+            <span class="section-header-tag">Présence Nationale</span>
+            <h1>Nos <span style="color: var(--hs-blue);">Villes</span></h1>
+            <p>Découvrez les trois grandes villes où House Service S.A.S opère avec excellence et professionnalisme.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Kisangani Section -->
+        <section class="city-section" id="kisangani">
+            <div class="container">
+                <div class="city-header">
+                    <span class="city-badge"><i class="fas fa-star"></i> Siège Social</span>
+                    <h2><i class="fas fa-map-marker-alt"></i> Kisangani</h2>
+                    <p>Capitale de la Province de la Tshopo, berceau de House Service S.A.S. C'est ici que tout a commencé en 2020.</p>
+                </div>
+
+                <div class="city-gallery layout-featured">
+                    <div class="city-img" style="height: 420px;">
+                        <img src="../images/pub1.jpg" alt="Kisangani - Équipe House Service">
+                        <div class="city-img-overlay">
+                            <span><i class="fas fa-users"></i> Notre équipe principale</span>
+                        </div>
+                    </div>
+                    <div class="city-img">
+                        <img src="../images/pub3.jpg" alt="Kisangani - Activités">
+                        <div class="city-img-overlay">
+                            <span><i class="fas fa-briefcase"></i> Nos activités</span>
+                        </div>
+                    </div>
+                    <div class="city-img">
+                        <img src="../images/graff.png" alt="Kisangani - Collaboration">
+                        <div class="city-img-overlay">
+                            <span><i class="fas fa-handshake"></i> Collaboration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="city-info-grid">
+                    <div class="city-info-card">
+                        <i class="fas fa-building"></i>
+                        <h4>Siège Principal</h4>
+                        <p>Bureau central et direction générale de l'entreprise</p>
+                    </div>
+                    <div class="city-info-card">
+                        <i class="fas fa-users"></i>
+                        <h4>+50 Employés</h4>
+                        <p>Une équipe dédiée et professionnelle</p>
+                    </div>
+                    <div class="city-info-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>Depuis 2020</h4>
+                        <p>Première ville d'implantation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goma Section -->
+        <section class="city-section" id="goma">
+            <div class="container">
+                <div class="city-header">
+                    <span class="city-badge" style="background: var(--hs-red);"><i class="fas fa-mountain"></i> Est de la RDC</span>
+                    <h2><i class="fas fa-map-marker-alt"></i> Goma</h2>
+                    <p>Capitale du Nord-Kivu, ville dynamique au bord du lac Kivu. Notre deuxième antenne ouverte en 2022.</p>
+                </div>
+
+                <div class="city-gallery">
+                    <div class="city-img" style="height: 280px;">
+                        <img src="../images/goma.png" alt="Goma - Équipe terrain">
+                        <div class="city-img-overlay">
+                            <span><i class="fas fa-users"></i> Équipe Goma</span>
+                        </div>
+                    </div>
+                    <div class="city-img" style="height: 280px;">
+                        <img src="../images/formation.png" alt="Goma - Formation">
+                        <div class="city-img-overlay">
+                            <span><i class="fas fa-graduation-cap"></i> Centre de formation</span>
+                        </div>
+                    </div>
+                    <div class="city-img" style="height: 280px;">
+                        <img src="../images/pub2.jpg" alt="Goma - Événements">
+                        <div class="city-img-overlay">
+                            <span><i class="fas fa-calendar-alt"></i> Événements</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="city-info-grid">
+                    <div class="city-info-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Centre de Formation</h4>
+                        <p>Formation professionnelle certifiée</p>
+                    </div>
+                    <div class="city-info-card">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>+30 Employés</h4>
+                        <p>Personnel qualifié et formé</p>
+                    </div>
+                    <div class="city-info-card">
+                        <i class="fas fa-rocket"></i>
+                        <h4>Expansion 2022</h4>
+                        <p>Croissance régionale Est</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kinshasa Section -->
+        <section class="city-section" id="kinshasa">
+            <div class="container">
+                <div class="city-header">
+                    <span class="city-badge" style="background: #1a1a2e;"><i class="fas fa-crown"></i> Capitale</span>
+                    <h2><i class="fas fa-map-marker-alt"></i> Kinshasa</h2>
+                    <p>Capitale de la République Démocratique du Congo. Notre expansion stratégique en 2024 pour servir les grandes entreprises.</p>
+                </div>
+
+                <div class="city-gallery">
+                    <div class="city-img" style="height: 280px;">
+                        <img src="../images/solutions.png" alt="Kinshasa - Solutions">
+                        <div class="city-img-overlay">
+                            <span><i class="fas fa-briefcase"></i> Solutions B2B</span>
+                        </div>
+                    </div>
+                    <div class="city-img" style="height: 280px;">
+                        <img src="../images/sec.png" alt="Kinshasa - Sécurité">
+                        <div class="city-img-overlay">
+                            <span><i class="fas fa-shield-alt"></i> Services de sécurité</span>
+                        </div>
+                    </div>
+                    <div class="city-img" style="height: 280px;">
+                        <img src="../images/pub5.jpg" alt="Kinshasa - Services">
+                        <div class="city-img-overlay">
+                            <span><i class="fas fa-concierge-bell"></i> Services premium</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="city-stats">
+                    <div class="city-stat">
+                        <span class="city-stat-number">15M+</span>
+                        <span class="city-stat-label">Habitants</span>
+                    </div>
+                    <div class="city-stat">
+                        <span class="city-stat-number">2024</span>
+                        <span class="city-stat-label">Lancement</span>
+                    </div>
+                    <div class="city-stat">
+                        <span class="city-stat-number">B2B</span>
+                        <span class="city-stat-label">Focus Entreprises</span>
+                    </div>
+                    <div class="city-stat">
+                        <span class="city-stat-number">24/7</span>
+                        <span class="city-stat-label">Disponibilité</span>
+                    </div>
+                </div>
+
+                <div class="city-info-grid">
+                    <div class="city-info-card">
+                        <i class="fas fa-landmark"></i>
+                        <h4>Partenariats Institutionnels</h4>
+                        <p>Collaboration avec les grandes entreprises</p>
+                    </div>
+                    <div class="city-info-card">
+                        <i class="fas fa-globe-africa"></i>
+                        <h4>Rayonnement National</h4>
+                        <p>Présence dans la capitale économique</p>
+                    </div>
+                    <div class="city-info-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Croissance Rapide</h4>
+                        <p>Développement stratégique 2024-2025</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cities-cta">
+            <div class="container">
+                <h2>Besoin de nos services ?</h2>
+                <p>Nous sommes présents dans les trois plus grandes villes de la RDC. Contactez-nous pour un devis gratuit.</p>
+                <a href="devis.html" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Demander un Devis
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>House Service S.A.S</h4>
+                    <p>Excellence & Sous-traitance au Service de Votre Entreprise</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="../index.html#services">Nos Services</a></li>
+                        <li><a href="en-savoir-plus-tarifs.html">Tarifs & Paiement</a></li>
+                        <li><a href="../index.html#team">Notre Équipe</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Talents</h4>
+                    <ul>
+                        <li><a href="en-savoir-plus-recrutement.html">Carrières</a></li>
+                        <li><a href="en-savoir-plus-recrutement.html">Formations</a></li>
+                        <li><a href="galerie.html">Galerie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:contact@houseservice.cd">contact@houseservice.cd</a></li>
+                        <li><a href="tel:+243810000000">+243 81 00 00 000</a></li>
+                        <li><a href="#">Kisangani, RDC</a></li>
+                    </ul>
+                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://wa.me/243810000000" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 House Service S.A.S | Tous droits réservés</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Design by <a href="https://portfoliodavidwawina.vercel.app/" target="_blank" style="color: var(--hs-blue); text-decoration: none; font-weight: 600; transition: color 0.2s;">David Wawina</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu
+        const hamburger = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+        });
+
+        navOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navOverlay.classList.remove('active');
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle dropdown on mobile
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const trigger = dropdown.querySelector('.nav-link');
+            trigger.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+        
+        // Close dropdown items and menu
+        document.querySelectorAll('.drop-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    closeMobileMenu();
+                    dropdowns.forEach(d => d.classList.remove('active'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
