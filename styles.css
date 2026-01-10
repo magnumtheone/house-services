@@ -417,27 +417,27 @@ header {
 
 /* Services Page Hero */
 .page-hero.hero-services::before {
-    background-image: url('../images/solutions.png');
+    background-image: url('../images/solutions.webp');
 }
 
 /* Recrutement/Talents Page Hero */
 .page-hero.hero-talents::before {
-    background-image: url('../images/formation.png');
+    background-image: url('../images/formation.webp');
 }
 
 /* Tarifs Page Hero */
 .page-hero.hero-tarifs::before {
-    background-image: url('../images/pub1.jpg');
+    background-image: url('../images/pub1.webp');
 }
 
 /* About Page Hero */
 .page-hero.hero-about::before {
-    background-image: url('../images/aa.JPG');
+    background-image: url('../images/aa.webp');
 }
 
 /* Devis Page Hero */
 .page-hero.hero-devis::before {
-    background-image: url('../images/pub3.jpg');
+    background-image: url('../images/pub3.webp');
 }
 
 .page-hero h1 {
