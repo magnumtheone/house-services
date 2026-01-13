@@ -1312,7 +1312,7 @@ html {
                     </div>
                 </div>
 
-                <a href="#ai-assistant" class="nav-link">IA Assistant</a>
+                <a href="#verifier-agent" class="nav-link">Vérifier un Agent</a>
                 <a href="#blog" class="nav-link">Blog</a>
                 
                 <!-- Dropdown Galerie -->
@@ -1354,7 +1354,7 @@ html {
             <p class="fade-up">Une gestion du personnel moderne, humaine et compétente. Simplifiez votre quotidien avec nos experts vérifiés.</p>
             <div class="fade-up" style="display: flex; gap: 15px; flex-wrap: wrap;">
                 <a href="#services" class="btn btn-primary">Explorer les services <i class="fas fa-arrow-right"></i></a>
-                <a href="#ai-assistant" class="btn btn-secondary"><i class="fas fa-robot"></i> Découvrir l'IA</a>
+                <a href="#verifier-agent" class="btn btn-secondary"><i class="fas fa-user-check"></i> Vérifier un Agent</a>
             </div>
         </div>
         
@@ -1833,39 +1833,54 @@ html {
 </section>
 
     <!-- AI Section (New) -->
-    <section id="ai-assistant" class="section-py ai-section">
+    <!-- Section Vérification d'Agents -->
+    <section id="verifier-agent" class="section-py ai-section">
         <div class="container">
             <div class="ai-grid">
                 <div>
-                    <span class="ai-badge"><i class="fas fa-sparkles"></i> Technologie IA</span>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">L'Assistant Intelligent <br>House Service</h2>
+                    <span class="ai-badge"><i class="fas fa-shield-alt"></i> Vérification Sécurisée</span>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Vérifiez l'Authenticité <br>de Nos Agents</h2>
                     <p style="font-size: 1.1rem; color: #555; margin-bottom: 30px;">
-                        Plus besoin d'attendre les heures de bureau. Notre assistant virtuel alimenté par l'IA est disponible 24h/24 et 7j/7 pour répondre à toutes vos questions.
+                        Protégez-vous contre les imposteurs. Recherchez le nom d'un agent pour confirmer qu'il fait bien partie de notre équipe certifiée House Service.
                     </p>
                     <ul style="margin-bottom: 30px; list-style: none;">
-                        <li style="margin-bottom: 10px;"><i class="fas fa-check text-blue" style="margin-right: 10px;"></i> Estimation de devis instantanée</li>
-                        <li style="margin-bottom: 10px;"><i class="fas fa-check text-blue" style="margin-right: 10px;"></i> Questions sur le recrutement</li>
-                        <li style="margin-bottom: 10px;"><i class="fas fa-check text-blue" style="margin-right: 10px;"></i> Support client immédiat</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check text-blue" style="margin-right: 10px;"></i> Vérification instantanée</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check text-blue" style="margin-right: 10px;"></i> Informations sur le statut actuel</li>
+                        <li style="margin-bottom: 10px;"><i class="fas fa-check text-blue" style="margin-right: 10px;"></i> Base de données mise à jour régulièrement</li>
                     </ul>
-                    <button onclick="toggleChat()" class="btn btn-primary"><i class="fas fa-comment-dots"></i> Démarrer la conversation</button>
+                    <p style="font-size: 0.9rem; color: #888;"><i class="fas fa-info-circle" style="margin-right: 8px;"></i> En cas de doute, contactez-nous directement.</p>
                 </div>
-                <div class="ai-card tilt-card">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
+                <div class="ai-card" style="padding: 30px;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;">
                         <div style="width: 50px; height: 50px; background: var(--hs-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
-                            <i class="fas fa-robot"></i>
+                            <i class="fas fa-user-check"></i>
                         </div>
                         <div>
-                            <h4 style="margin: 0;">House Assistant</h4>
-                            <span style="font-size: 0.8rem; color: #22c55e;">● En ligne</span>
+                            <h4 style="margin: 0;">Recherche d'Agent</h4>
+                            <span style="font-size: 0.8rem; color: var(--hs-blue);">Base de données officielle</span>
                         </div>
                     </div>
-                    <div style="background: #f8fafc; padding: 15px; border-radius: 10px; margin-bottom: 15px; font-size: 0.9rem; color: #475569;">
-                        Bonjour ! Je peux vous aider à trouver une femme de ménage ou un agent de sécurité en quelques secondes. Que recherchez-vous ?
+                    
+                    <!-- Formulaire de recherche -->
+                    <div style="margin-bottom: 20px;">
+                        <label for="agentSearch" style="display: block; margin-bottom: 8px; font-weight: 600; color: #333;">Nom de l'agent</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="agentSearch" placeholder="Ex: KABONGO, MUTOMBO..." 
+                                   style="flex: 1; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 10px; font-size: 1rem; transition: border-color 0.3s;"
+                                   onfocus="this.style.borderColor='var(--hs-blue)'" 
+                                   onblur="this.style.borderColor='#e5e7eb'">
+                            <button onclick="rechercherAgent()" class="btn btn-primary" style="padding: 12px 20px;">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div style="display: flex; gap: 10px;">
-                        <div style="height: 10px; width: 10px; background: #cbd5e1; border-radius: 50%; animation: pulse 1s infinite;"></div>
-                        <div style="height: 10px; width: 10px; background: #cbd5e1; border-radius: 50%; animation: pulse 1s infinite 0.2s;"></div>
-                        <div style="height: 10px; width: 10px; background: #cbd5e1; border-radius: 50%; animation: pulse 1s infinite 0.4s;"></div>
+                    
+                    <!-- Zone de résultats -->
+                    <div id="agentResult" style="min-height: 120px;">
+                        <div style="background: #f8fafc; padding: 20px; border-radius: 10px; text-align: center; color: #64748b;">
+                            <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 10px; opacity: 0.5;"></i>
+                            <p style="margin: 0;">Entrez le nom d'un agent pour vérifier son statut</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1980,6 +1995,108 @@ html {
         function toggleChat() {
             alert("L'interface de chat IA s'ouvrirait ici. (Intégration API requise)");
         }
+
+        // --- 3bis. Vérification d'Agents ---
+        let agentsData = [];
+
+        // Charger les données des agents au démarrage
+        fetch('./data/agents.json')
+            .then(response => response.json())
+            .then(data => {
+                agentsData = data.agents;
+                console.log('Base des agents chargée:', agentsData.length, 'agents');
+            })
+            .catch(error => {
+                console.error('Erreur de chargement des agents:', error);
+            });
+
+        function rechercherAgent() {
+            const searchInput = document.getElementById('agentSearch');
+            const resultDiv = document.getElementById('agentResult');
+            const searchTerm = searchInput.value.trim().toUpperCase();
+
+            if (!searchTerm) {
+                resultDiv.innerHTML = `
+                    <div style="background: #fef3c7; padding: 15px; border-radius: 10px; border-left: 4px solid #f59e0b;">
+                        <i class="fas fa-exclamation-triangle" style="color: #f59e0b; margin-right: 8px;"></i>
+                        <span style="color: #92400e;">Veuillez entrer un nom à rechercher.</span>
+                    </div>`;
+                return;
+            }
+
+            // Rechercher dans les agents
+            const resultats = agentsData.filter(agent => 
+                agent.nom.toUpperCase().includes(searchTerm) ||
+                (agent.postNom && agent.postNom.toUpperCase().includes(searchTerm)) ||
+                (agent.prenom && agent.prenom.toUpperCase().includes(searchTerm))
+            );
+
+            if (resultats.length === 0) {
+                resultDiv.innerHTML = `
+                    <div style="background: #fee2e2; padding: 20px; border-radius: 10px; border-left: 4px solid #ef4444;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <i class="fas fa-times-circle" style="color: #ef4444; font-size: 1.5rem;"></i>
+                            <strong style="color: #991b1b;">Agent non trouvé</strong>
+                        </div>
+                        <p style="color: #7f1d1d; margin: 0; font-size: 0.9rem;">
+                            Aucun agent ne correspond à "<strong>${searchTerm}</strong>" dans notre base de données.
+                            <br><br>
+                            <i class="fas fa-phone" style="margin-right: 5px;"></i> En cas de doute, contactez-nous : <a href="tel:+243810000000" style="color: #991b1b; font-weight: 600;">+243 81 00 00 000</a>
+                        </p>
+                    </div>`;
+            } else {
+                let html = '';
+                resultats.forEach(agent => {
+                    const nomComplet = [agent.nom, agent.postNom, agent.prenom].filter(n => n).join(' ');
+                    const sexeIcon = agent.sexe === 'M' ? 'fa-mars' : 'fa-venus';
+                    const sexeColor = agent.sexe === 'M' ? '#3b82f6' : '#ec4899';
+                    const statutColor = agent.statut === 'libre' ? '#22c55e' : '#f59e0b';
+                    const statutIcon = agent.statut === 'libre' ? 'fa-check-circle' : 'fa-briefcase';
+                    const statutText = agent.statut === 'libre' ? 'Disponible' : agent.affectation;
+
+                    html += `
+                        <div style="background: #ecfdf5; padding: 20px; border-radius: 10px; border-left: 4px solid #22c55e; margin-bottom: 10px;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                                <i class="fas fa-user-check" style="color: #22c55e; font-size: 1.5rem;"></i>
+                                <strong style="color: #166534; font-size: 1.1rem;">Agent Certifié House Service</strong>
+                            </div>
+                            <div style="background: white; padding: 15px; border-radius: 8px;">
+                                <div style="display: grid; gap: 10px;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <i class="fas fa-id-card" style="color: var(--hs-blue); width: 20px;"></i>
+                                        <span><strong>ID:</strong> ${agent.id}</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <i class="fas fa-user" style="color: var(--hs-blue); width: 20px;"></i>
+                                        <span><strong>Nom complet:</strong> ${nomComplet}</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <i class="fas ${sexeIcon}" style="color: ${sexeColor}; width: 20px;"></i>
+                                        <span><strong>Sexe:</strong> ${agent.sexe === 'M' ? 'Masculin' : 'Féminin'}</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <i class="fas ${statutIcon}" style="color: ${statutColor}; width: 20px;"></i>
+                                        <span><strong>Statut:</strong> <span style="color: ${statutColor}; font-weight: 600;">${statutText}</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                });
+                resultDiv.innerHTML = html;
+            }
+        }
+
+        // Permettre la recherche avec Enter
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('agentSearch');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        rechercherAgent();
+                    }
+                });
+            }
+        });
 
         // --- 4. Lightbox Logic (Gallery) ---
         const galleryImages = [

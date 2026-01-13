@@ -1,0 +1,248 @@
+{
+  "agents": [
+    {
+      "id": "LBM001",
+      "nom": "TEZIENNE ELEME",
+      "postNom": "",
+      "prenom": "Sandia",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent au Lycée Bilingue Malikhiah (LBM)"
+    },
+    {
+      "id": "LBM002",
+      "nom": "BANGUME OBOTELA",
+      "postNom": "",
+      "prenom": "Marina",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent au Lycée Bilingue Malikhiah (LBM)"
+    },
+    {
+      "id": "LBM003",
+      "nom": "OLOME EKANGA",
+      "postNom": "",
+      "prenom": "Sephora",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent au Lycée Bilingue Malikhiah (LBM)"
+    },
+    {
+      "id": "LBM004",
+      "nom": "ATUAINA MUINYI",
+      "postNom": "",
+      "prenom": "Élisée",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent au Lycée Bilingue Malikhiah (LBM)"
+    },
+    {
+      "id": "DISSA001",
+      "nom": "MAFENDA MWANOKWE",
+      "postNom": "",
+      "prenom": "Jean",
+      "sexe": "M",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel DISSA"
+    },
+    {
+      "id": "DISSA002",
+      "nom": "MPUNGWE MWABILWA",
+      "postNom": "",
+      "prenom": "Patience",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel DISSA"
+    },
+    {
+      "id": "DISSA003",
+      "nom": "YENGA KELEKELE",
+      "postNom": "",
+      "prenom": "Alphie",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel DISSA"
+    },
+    {
+      "id": "DISSA004",
+      "nom": "MONIKAYOKO MUPE",
+      "postNom": "",
+      "prenom": "Patrick",
+      "sexe": "M",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel DISSA"
+    },
+    {
+      "id": "DISSA005",
+      "nom": "ALESI AUZIKU",
+      "postNom": "",
+      "prenom": "Julia",
+      "sexe": "M",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel DISSA"
+    },
+    {
+      "id": "DISSA006",
+      "nom": "AILOMWI ATILAWASI",
+      "postNom": "",
+      "prenom": "Pascaline",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel DISSA"
+    },
+    {
+      "id": "DISSA007",
+      "nom": "BANGBE MALETA",
+      "postNom": "",
+      "prenom": "Pascaline",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel DISSA"
+    },
+    {
+      "id": "DISSA008",
+      "nom": "KAMANDJI BAENGENGA",
+      "postNom": "",
+      "prenom": "Miriam",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel DISSA"
+    },
+    {
+      "id": "DISSA009",
+      "nom": "LOFUTI IKONDI",
+      "postNom": "",
+      "prenom": "Élysée",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel DISSA"
+    },
+    {
+      "id": "DISSA010",
+      "nom": "AMBOKO ESALO",
+      "postNom": "",
+      "prenom": "Joséphine",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel DISSA"
+    },
+    {
+      "id": "DISSA011",
+      "nom": "BAELONGANDI WANATILOMOI",
+      "postNom": "",
+      "prenom": "Winnie",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel DISSA"
+    },
+    {
+      "id": "MEN001",
+      "nom": "FATOU MARTINE",
+      "postNom": "",
+      "prenom": "Marie",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent de ménage (particulier)"
+    },
+    {
+      "id": "MEN002",
+      "nom": "MATALA",
+      "postNom": "",
+      "prenom": "Judith",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent de ménage (particulier)"
+    },
+    {
+      "id": "MEN003",
+      "nom": "KISASI",
+      "postNom": "",
+      "prenom": "Niclette",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent de ménage (particulier)"
+    },
+    {
+      "id": "MEN004",
+      "nom": "GEMBO NIRA",
+      "postNom": "",
+      "prenom": "Bébé",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent de ménage (particulier)"
+    },
+    {
+      "id": "MEN005",
+      "nom": "LOKONDA KUKYA",
+      "postNom": "",
+      "prenom": "Aimé",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent de ménage (particulier)"
+    },
+    {
+      "id": "MEN006",
+      "nom": "NDOLO KUKIA",
+      "postNom": "",
+      "prenom": "Ruth",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent de ménage (particulier)"
+    },
+    {
+      "id": "MEN007",
+      "nom": "KINGOMBE OKOLOLO",
+      "postNom": "",
+      "prenom": "Théo",
+      "sexe": "M",
+      "statut": "occupé",
+      "affectation": "Agent de ménage (particulier)"
+    },
+    {
+      "id": "MEN008",
+      "nom": "BASOMBOLI LOSUMA",
+      "postNom": "",
+      "prenom": "Rebecca",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent de ménage (particulier)"
+    },
+    {
+      "id": "MEN009",
+      "nom": "NDONDA KOMBOZI",
+      "postNom": "",
+      "prenom": "Prince",
+      "sexe": "M",
+      "statut": "occupé",
+      "affectation": "Agent de ménage (particulier)"
+    },
+    {
+      "id": "MEN010",
+      "nom": "MARIE-JEANNE",
+      "postNom": "",
+      "prenom": "",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent de ménage (particulier)"
+    },
+    {
+      "id": "MEN011",
+      "nom": "ANASTASIE",
+      "postNom": "",
+      "prenom": "",
+      "sexe": "F",
+      "statut": "occupé",
+      "affectation": "Agent de ménage (particulier)"
+    },
+    {
+      "id": "NINIVE001",
+      "nom": "ANGBELE NGBINGBI",
+      "postNom": "",
+      "prenom": "Justin",
+      "sexe": "M",
+      "statut": "occupé",
+      "affectation": "Agent à l'Hôtel NINIVE"
+    }
+  ],
+  "lastUpdated": "2026-01-13"
+}
