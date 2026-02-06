@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.houseservice.com/sitemap.xml
+
+# Bloquer les ressources internes
+Disallow: /cloudflare-worker/
+Disallow: /data/
+Disallow: /js/chatbot.js

@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie Photos | House Service S.A.S</title>
-    <meta name="description" content="Découvrez notre galerie photos : équipe House Service, formations, événements et réalisations à Kisangani, Goma et Kinshasa en RDC.">
+    <title>Galerie Photos & Réalisations | House Service S.A.S en RDC</title>
+    <meta name="description" content="Galerie photos de House Service S.A.S : équipe, formations, événements et réalisations à Kisangani, Goma et Kinshasa en République Démocratique du Congo.">
+    <meta name="keywords" content="galerie House Service, photos équipe RDC, formations Kisangani, événements Congo, House Service photos">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.houseservice.com/pages/galerie.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Galerie Photos | House Service S.A.S">
+    <meta property="og:description" content="Découvrez notre équipe, formations et réalisations en photos.">
+    <meta property="og:url" content="https://www.houseservice.com/pages/galerie.html">
+    <meta property="og:image" content="https://www.houseservice.com/images/logo.webp">
+    <meta property="og:locale" content="fr_CD">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Galerie Photos | House Service S.A.S">
+    <meta name="twitter:description" content="Photos de notre équipe et réalisations en RDC.">
+    <meta name="twitter:image" content="https://www.houseservice.com/images/logo.webp">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.houseservice.com/"},{"@type":"ListItem","position":2,"name":"Galerie","item":"https://www.houseservice.com/pages/galerie.html"}]}</script>
     
     <!-- Fonts: Outfit (Titres) & Roboto (Texte) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -510,11 +524,11 @@
                     <div class="dropdown-menu">
                         <a href="galerie.html" class="drop-item" style="border-left: 3px solid var(--hs-red);">
                             <div class="drop-icon"><i class="fas fa-images"></i></div>
-                            <div class="drop-text"><h5>Photos</h5><p>Notre portfolio complet</p></div>
+                            <div class="drop-text"><strong>Photos</strong><p>Notre portfolio complet</p></div>
                         </a>
                         <a href="nos-villes.html" class="drop-item">
                             <div class="drop-icon"><i class="fas fa-city"></i></div>
-                            <div class="drop-text"><h5>Nos Villes</h5><p>Kisangani, Goma, Kinshasa</p></div>
+                            <div class="drop-text"><strong>Nos Villes</strong><p>Kisangani, Goma, Kinshasa</p></div>
                         </a>
                     </div>
                 </div>
@@ -750,15 +764,15 @@
                         <li><a href="#">Kisangani, RDC</a></li>
                     </ul>
                     <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
-                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="https://wa.me/243840665620" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp fa-lg"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://wa.me/243840665620" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp fa-lg"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; <span id="footer-year"></span> House Service S.A.S | Tous droits réservés</p>
-                <p style="margin-top: 10px; font-size: 0.85rem;">Design by <a href="https://portfoliodavidwawina.vercel.app/" target="_blank" style="color: var(--hs-blue); text-decoration: none; font-weight: 600; transition: color 0.2s;">David Wawina</a></p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Design by <a href="https://portfoliodavidwawina.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--hs-blue); text-decoration: none; font-weight: 600; transition: color 0.2s;">David Wawina</a></p>
             </div>
         </div>
     <script>document.getElementById("footer-year").textContent=new Date().getFullYear();</script>
@@ -907,22 +921,22 @@
     </script>
 
     <!-- Chatbot Floating Button & Window -->
-    <button id="chatbot-toggler" onclick="toggleChat()">
+    <button id="chatbot-toggler" onclick="toggleChat()" aria-label="Ouvrir le chatbot">
         <i class="fas fa-robot" style="font-size: 1.5rem;"></i>
     </button>
 
     <div class="chat-window" id="chat-window">
         <div class="chat-header">
             <div><i class="fas fa-robot"></i> House Service AI</div>
-            <i class="fas fa-times" onclick="toggleChat()" style="cursor: pointer;"></i>
+            <button onclick="toggleChat()" aria-label="Fermer le chatbot" style="cursor:pointer;background:none;border:none;color:inherit;font-size:inherit;"><i class="fas fa-times"></i></button>
         </div>
         <div class="chat-body" id="chat-body">
             <div class="msg bot">Bonjour ! Je suis l'IA de House Service. Comment puis-je vous aider aujourd'hui ? (Services, Tarifs, Recrutement...)</div>
         </div>
         <div class="typing" id="typing-indicator">House AI écrit...</div>
         <div class="chat-footer">
-            <input type="text" id="user-input" class="chat-input" placeholder="Posez votre question..." onkeypress="handleEnter(event)">
-            <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            <input type="text" id="user-input" class="chat-input" aria-label="Message pour le chatbot" placeholder="Posez votre question..." onkeypress="handleEnter(event)">
+            <button class="chat-send" onclick="sendMessage()" aria-label="Envoyer le message"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 

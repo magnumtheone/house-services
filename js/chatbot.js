@@ -155,7 +155,7 @@ async function sendMessage() {
 
         const errorMsg = document.createElement('div');
         errorMsg.className = 'msg bot';
-        errorMsg.innerHTML = 'Désolé, une erreur est survenue. Vous pouvez nous contacter directement sur <a href="https://wa.me/243840665620" target="_blank" style="color:#25D366;font-weight:600;text-decoration:none;"><i class="fab fa-whatsapp" style="font-size:1.1em;"></i> WhatsApp</a> ou par email à <a href="mailto:contact@houseservice.com" style="color:#c8102e;font-weight:600;">contact@houseservice.com</a>.';
+        errorMsg.innerHTML = 'Désolé, une erreur est survenue. Vous pouvez nous contacter directement sur <a href="https://wa.me/243840665620" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:600;text-decoration:none;"><i class="fab fa-whatsapp" style="font-size:1.1em;"></i> WhatsApp</a> ou par email à <a href="mailto:contact@houseservice.com" style="color:#c8102e;font-weight:600;">contact@houseservice.com</a>.';
         chatBody.appendChild(errorMsg);
     }
 
@@ -217,7 +217,7 @@ function formatBotResponse(text) {
         // Convertir les liens wa.me en bouton WhatsApp avec logo
         .replace(
             /https:\/\/wa\.me\/243840665620/g,
-            '<a href="https://wa.me/243840665620" target="_blank" style="color:#25D366;font-weight:600;text-decoration:none;"><i class="fab fa-whatsapp" style="font-size:1.1em;"></i> WhatsApp</a>'
+            '<a href="https://wa.me/243840665620" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:600;text-decoration:none;"><i class="fab fa-whatsapp" style="font-size:1.1em;"></i> WhatsApp</a>'
         )
         // Convertir les emails en liens cliquables
         .replace(

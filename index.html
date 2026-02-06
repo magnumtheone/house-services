@@ -3,11 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House Service S.A.S | Excellence & Sous-traitance en RDC</title>
-    <meta name="description" content="House Service S.A.S - Leader de la sous-traitance et gestion du personnel en RDC. Services de ménage, garde d'enfants, sécurité, chauffeurs et plus à Kisangani, Goma et Kinshasa.">
-    <meta name="keywords" content="House Service, sous-traitance RDC, ménage, garde enfants, sécurité, Kisangani, Goma, Kinshasa">
+    <title>House Service S.A.S | Sous-traitance, Ménage, Sécurité & Personnel en RDC</title>
+    <meta name="description" content="House Service S.A.S — N°1 de la sous-traitance en RDC. Ménage, garde d'enfants, sécurité, chauffeurs privés à Kisangani, Goma et Kinshasa. Devis gratuit, personnel formé et vérifié.">
+    <meta name="keywords" content="House Service, sous-traitance RDC, ménage Kisangani, garde enfants Congo, sécurité gardiennage, chauffeur privé, personnel maison, nettoyage entreprise, Goma, Kinshasa, externalisation RDC">
     <meta name="author" content="House Service S.A.S">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://www.houseservice.com/">
+    <meta name="geo.region" content="CD-TO">
+    <meta name="geo.placename" content="Kisangani">
+    <meta name="geo.position" content="0.5145;25.1910">
+    <meta name="ICBM" content="0.5145, 25.1910">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="House Service S.A.S">
+    <meta property="og:title" content="House Service S.A.S | Sous-traitance & Personnel en RDC">
+    <meta property="og:description" content="N°1 de la sous-traitance en RDC. Ménage, sécurité, garde d'enfants. Devis gratuit.">
+    <meta property="og:url" content="https://www.houseservice.com/">
+    <meta property="og:image" content="https://www.houseservice.com/images/logo.webp">
+    <meta property="og:locale" content="fr_CD">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="House Service S.A.S | Sous-traitance en RDC">
+    <meta name="twitter:description" content="Ménage, sécurité, garde d'enfants à Kisangani, Goma, Kinshasa. Devis gratuit.">
+    <meta name="twitter:image" content="https://www.houseservice.com/images/logo.webp">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"House Service S.A.S","description":"Leader de la sous-traitance et gestion du personnel en République Démocratique du Congo","url":"https://www.houseservice.com","telephone":"+243840665620","email":"contact@houseservice.com","address":{"@type":"PostalAddress","addressLocality":"Kisangani","addressRegion":"Tshopo","addressCountry":"CD"},"geo":{"@type":"GeoCoordinates","latitude":"0.5145","longitude":"25.1910"},"founder":{"@type":"Person","name":"Théophile MUTATAY"},"foundingDate":"2020-06-20","openingHours":"Mo-Sa 07:00-18:00","areaServed":["Kisangani","Goma","Kinshasa"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Services","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Ménage & Entretien"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Garde d'Enfants"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Sécurité & Gardiennage"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Chauffeur Privé"}}]}}</script>
     
     <!-- Fonts: Preload pour performances -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1263,6 +1280,116 @@ html {
     }
 }
 </style>
+
+<style>
+/* ======= SECTION TÉMOIGNAGES - Carrousel défilant ======= */
+.testimonial-slider {
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.testimonial-slide-track {
+    display: flex;
+    width: calc(420px * 12);
+    animation: testimonial-scroll 60s linear infinite;
+}
+
+.testimonial-slider:hover .testimonial-slide-track {
+    animation-play-state: paused;
+}
+
+.testimonial-card {
+    width: 380px;
+    flex-shrink: 0;
+    margin: 0 20px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.testimonial-stars {
+    display: flex;
+    gap: 3px;
+    color: #FFB800;
+    font-size: 1rem;
+}
+
+.testimonial-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+    font-style: italic;
+    flex: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.testimonial-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--hs-blue), var(--hs-red));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.testimonial-author strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--hs-dark);
+}
+
+.testimonial-author span {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+@keyframes testimonial-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-420px * 6)); }
+}
+
+@media (max-width: 768px) {
+    .testimonial-card {
+        width: 300px;
+        padding: 24px;
+        margin: 0 12px;
+    }
+    .testimonial-slide-track {
+        width: calc(324px * 12);
+        animation: testimonial-scroll-mobile 45s linear infinite;
+    }
+    @keyframes testimonial-scroll-mobile {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-324px * 6)); }
+    }
+}
+</style>
+
 </head>
 <body>
 
@@ -1289,19 +1416,19 @@ html {
                     <div class="dropdown-menu">
                         <a href="/pages/en-savoir-plus-services.html" class="drop-item">
                             <div class="drop-icon"><i class="fas fa-home"></i></div>
-                            <div class="drop-text"><h5>Habitation</h5><p>Ménage, Baby-sitting, Jardin</p></div>
+                            <div class="drop-text"><strong>Habitation</strong><p>Ménage, Baby-sitting, Jardin</p></div>
                         </a>
                         <a href="/pages/en-savoir-plus-services.html" class="drop-item">
                             <div class="drop-icon"><i class="fas fa-briefcase"></i></div>
-                            <div class="drop-text"><h5>Entreprise</h5><p>Sécurité, Accueil, Protocole</p></div>
+                            <div class="drop-text"><strong>Entreprise</strong><p>Sécurité, Accueil, Protocole</p></div>
                         </a>
                         <a href="/pages/en-savoir-plus-services.html" class="drop-item">
                             <div class="drop-icon"><i class="fas fa-plane"></i></div>
-                            <div class="drop-text"><h5>Spécialisé</h5><p>Hôtesses de l'air, Tourisme</p></div>
+                            <div class="drop-text"><strong>Spécialisé</strong><p>Hôtesses de l'air, Tourisme</p></div>
                         </a>
                         <a href="/pages/en-savoir-plus-services.html" class="drop-item">
                             <div class="drop-icon"><i class="fas fa-user-tie"></i></div>
-                            <div class="drop-text"><h5>Sur Mesure</h5><p>Personnel administratif</p></div>
+                            <div class="drop-text"><strong>Sur Mesure</strong><p>Personnel administratif</p></div>
                         </a>
                     </div>
                 </div>
@@ -1315,11 +1442,11 @@ html {
                     <div class="dropdown-menu">
                         <a href="pages/galerie.html" class="drop-item">
                             <div class="drop-icon"><i class="fas fa-images"></i></div>
-                            <div class="drop-text"><h5>Photos</h5><p>Notre portfolio complet</p></div>
+                            <div class="drop-text"><strong>Photos</strong><p>Notre portfolio complet</p></div>
                         </a>
                         <a href="pages/nos-villes.html" class="drop-item">
                             <div class="drop-icon"><i class="fas fa-city"></i></div>
-                            <div class="drop-text"><h5>Nos Villes</h5><p>Kisangani, Goma, Kinshasa</p></div>
+                            <div class="drop-text"><strong>Nos Villes</strong><p>Kisangani, Goma, Kinshasa</p></div>
                         </a>
                     </div>
                 </div>
@@ -1439,7 +1566,7 @@ html {
         <div class="container">
             <div class="services-header" style="display: flex; justify-content: space-between; align-items: end; margin-bottom: 50px; flex-wrap: wrap; gap: 20px;">
                 <div>
-                    <h4 class="text-blue">NOS EXPERTISES</h4>
+                    <span class="text-blue" style="display:block;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-size:0.95rem;margin-bottom:8px;">NOS EXPERTISES</span>
                     <h2 class="text-gradient" style="font-size: 2.5rem;">Solutions Professionnelles</h2>
                 </div>
                 <a href="/pages/en-savoir-plus-services.html" class="btn btn-secondary btn-catalogue">Voir tout le catalogue</a>
@@ -1487,7 +1614,7 @@ html {
     </section>
     
  <!-- Chatbot Floating Button & Window -->
-    <button id="chatbot-toggler" onclick="toggleChat()">
+    <button id="chatbot-toggler" onclick="toggleChat()" aria-label="Ouvrir le chatbot">
         <i class="fas fa-robot" style="font-size: 1.5rem;"></i>
     </button>
 
@@ -1496,15 +1623,15 @@ html {
             <div>
                 <i class="fas fa-robot"></i> House Service AI
             </div>
-            <i class="fas fa-times" onclick="toggleChat()" style="cursor: pointer;"></i>
+            <button onclick="toggleChat()" aria-label="Fermer le chatbot" style="cursor:pointer;background:none;border:none;color:inherit;font-size:inherit;"><i class="fas fa-times"></i></button>
         </div>
         <div class="chat-body" id="chat-body">
             <div class="msg bot">Bonjour ! Je suis l'IA de House Service. Comment puis-je vous aider aujourd'hui ? (Services, Tarifs, Recrutement...)</div>
         </div>
         <div class="typing" id="typing-indicator">House AI écrit...</div>
         <div class="chat-footer">
-            <input type="text" id="user-input" class="chat-input" placeholder="Posez votre question..." onkeypress="handleEnter(event)">
-            <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            <input type="text" id="user-input" class="chat-input" aria-label="Message pour le chatbot" placeholder="Posez votre question..." onkeypress="handleEnter(event)">
+            <button class="chat-send" onclick="sendMessage()" aria-label="Envoyer le message"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
@@ -1580,7 +1707,7 @@ html {
 <section id="mission" class="section-py bg-secondary">
     <div class="container">
         <div class="section-header text-center" style="margin-bottom: 50px;">
-            <h4 class="text-red" style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Ce qui nous anime</h4>
+            <span class="text-red" style="display:block;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-size:0.95rem;margin-bottom:8px;">Ce qui nous anime</span>
             <h2 class="section-title text-main" style="font-size: 2.5rem;">Notre Mission</h2>
         </div>
         
@@ -1765,6 +1892,143 @@ html {
 </section>
 -->
 
+    <!-- ===================== SECTION TÉMOIGNAGES ===================== -->
+    <section id="temoignages" class="section-py" style="background: var(--hs-gray);">
+        <div class="container">
+            <div class="section-header text-center" style="margin-bottom: 50px;">
+                <span class="text-blue" style="display:block;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-size:0.95rem;margin-bottom:8px;">Témoignages</span>
+                <h2 class="section-title text-main" style="font-size: 2.5rem;">Ce Que Disent Nos Clients</h2>
+                <p class="section-subtitle text-light" style="max-width:600px;margin:10px auto 0;">La satisfaction de nos clients est notre plus grande fierté. Découvrez leurs retours d'expérience.</p>
+            </div>
+
+            <div class="testimonial-slider">
+                <div class="testimonial-slide-track">
+                    <!-- Témoignage 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"House Service a transformé notre quotidien. Notre employée de maison est ponctuelle, professionnelle et d'une gentillesse rare. Je recommande à 100% !"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+                            <div>
+                                <strong>Marie-Claire K.</strong>
+                                <span>Cliente particulière — Kisangani</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Nous avons externalisé notre sécurité avec House Service. Le personnel est formé, sérieux et toujours en poste. Un vrai partenaire de confiance pour notre entreprise."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"><i class="fas fa-user-tie"></i></div>
+                            <div>
+                                <strong>Jean-Pierre M.</strong>
+                                <span>Directeur Général — Goma</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">"La baby-sitter envoyée par House Service est exceptionnelle. Mes enfants l'adorent et je pars travailler l'esprit tranquille. Service rapide et prix abordable."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+                            <div>
+                                <strong>Esther B.</strong>
+                                <span>Maman de 3 enfants — Kisangani</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 4 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"En tant qu'hôtel, avoir un personnel d'accueil qualifié est crucial. House Service nous fournit des hôtesses irréprochables qui représentent parfaitement notre établissement."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"><i class="fas fa-hotel"></i></div>
+                            <div>
+                                <strong>Patrick L.</strong>
+                                <span>Gérant d'hôtel — Kinshasa</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 5 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Le chauffeur privé mis à disposition est d'une ponctualité exemplaire. Il connaît parfaitement la ville et assure mes déplacements en toute sécurité. Merci House Service !"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"><i class="fas fa-user-tie"></i></div>
+                            <div>
+                                <strong>David N.</strong>
+                                <span>Homme d'affaires — Goma</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 6 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">"Nous faisons appel à House Service pour le nettoyage de nos bureaux depuis un an. Résultat impeccable, équipe respectueuse et tarifs compétitifs. Très satisfaits !"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"><i class="fas fa-building"></i></div>
+                            <div>
+                                <strong>Grâce T.</strong>
+                                <span>DRH — Kisangani</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === DUPLICATAS pour boucle infinie === -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="testimonial-text">"House Service a transformé notre quotidien. Notre employée de maison est ponctuelle, professionnelle et d'une gentillesse rare. Je recommande à 100% !"</p>
+                        <div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><strong>Marie-Claire K.</strong><span>Cliente particulière — Kisangani</span></div></div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="testimonial-text">"Nous avons externalisé notre sécurité avec House Service. Le personnel est formé, sérieux et toujours en poste. Un vrai partenaire de confiance pour notre entreprise."</p>
+                        <div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user-tie"></i></div><div><strong>Jean-Pierre M.</strong><span>Directeur Général — Goma</span></div></div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <p class="testimonial-text">"La baby-sitter envoyée par House Service est exceptionnelle. Mes enfants l'adorent et je pars travailler l'esprit tranquille. Service rapide et prix abordable."</p>
+                        <div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user"></i></div><div><strong>Esther B.</strong><span>Maman de 3 enfants — Kisangani</span></div></div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="testimonial-text">"En tant qu'hôtel, avoir un personnel d'accueil qualifié est crucial. House Service nous fournit des hôtesses irréprochables qui représentent parfaitement notre établissement."</p>
+                        <div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-hotel"></i></div><div><strong>Patrick L.</strong><span>Gérant d'hôtel — Kinshasa</span></div></div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="testimonial-text">"Le chauffeur privé mis à disposition est d'une ponctualité exemplaire. Il connaît parfaitement la ville et assure mes déplacements en toute sécurité. Merci House Service !"</p>
+                        <div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-user-tie"></i></div><div><strong>David N.</strong><span>Homme d'affaires — Goma</span></div></div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <p class="testimonial-text">"Nous faisons appel à House Service pour le nettoyage de nos bureaux depuis un an. Résultat impeccable, équipe respectueuse et tarifs compétitifs. Très satisfaits !"</p>
+                        <div class="testimonial-author"><div class="testimonial-avatar"><i class="fas fa-building"></i></div><div><strong>Grâce T.</strong><span>DRH — Kisangani</span></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 <section id="faq" class="section-py bg-color">
     <div class="container">
         <!-- Titres de Section -->
@@ -1909,15 +2173,15 @@ html {
                         <li><a href="#">Kisangani, RDC</a></li>
                     </ul>
                     <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
-                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="https://wa.me/243840665620" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp fa-lg"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="https://wa.me/243840665620" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp fa-lg"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; <span id="footer-year"></span> House Service S.A.S | Tous droits réservés</p>
-                <p style="margin-top: 10px; font-size: 0.85rem;">Design by <a href="https://portfoliodavidwawina.vercel.app/" target="_blank" style="color: var(--hs-blue); text-decoration: none; font-weight: 600; transition: color 0.2s;">David Wawina</a></p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Design by <a href="https://portfoliodavidwawina.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--hs-blue); text-decoration: none; font-weight: 600; transition: color 0.2s;">David Wawina</a></p>
             </div>
         </div>
     <script>document.getElementById("footer-year").textContent=new Date().getFullYear();</script>
@@ -1930,13 +2194,13 @@ html {
             <h3 class="text-blue" style="margin-bottom: 20px;">Détails de Paiement</h3>
             
             <div style="margin-bottom: 20px; padding: 15px; background: #f9fafb; border-radius: 8px;">
-                <h5 style="margin-bottom: 5px;"><i class="fas fa-mobile-alt"></i> Mobile Money (Airtel/M-Pesa/Orange)</h5>
+                <p style="margin-bottom: 5px; font-weight:700;"><i class="fas fa-mobile-alt"></i> Mobile Money (Airtel/M-Pesa/Orange)</p>
                 <p style="font-size: 1.2rem; font-weight: 700; color: var(--hs-dark);">+243 840665620</p>
                 <small>Nom de l'agent: House Service Comptabilité</small>
             </div>
 
             <div style="margin-bottom: 20px; padding: 15px; background: #f9fafb; border-radius: 8px;">
-                <h5 style="margin-bottom: 5px;"><i class="fas fa-university"></i> Virement Bancaire</h5>
+                <p style="margin-bottom: 5px; font-weight:700;"><i class="fas fa-university"></i> Virement Bancaire</p>
                 <p><strong>Banque:</strong> TMB / Equity</p>
                 <p><strong>Compte:</strong> 0000-1234-5678</p>
             </div>
