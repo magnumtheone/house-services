@@ -576,7 +576,7 @@
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:contact@houseservice.cd">contact@houseservice.cd</a></li>
+                        <li><a href="mailto:contact@houseservice.com">contact@houseservice.com</a></li>
                         <li><a href="tel:+243840665620">+243 840665620</a></li>
                         <li><a href="#">Kisangani, RDC</a></li>
                     </ul>
@@ -588,11 +588,12 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 House Service S.A.S | Tous droits réservés</p>
+                <p>&copy; <span id="footer-year"></span> House Service S.A.S | Tous droits réservés</p>
                 <p style="margin-top: 10px; font-size: 0.85rem;">Design by <a href="https://portfoliodavidwawina.vercel.app/" target="_blank" style="color: var(--hs-blue); text-decoration: none; font-weight: 600; transition: color 0.2s;">David Wawina</a></p>
             </div>
         </div>
-    </footer>
+    <script>document.getElementById("footer-year").textContent=new Date().getFullYear();</script>
+</footer>
 
     <!-- Notification Message -->
     <div id="message-box" role="alert"></div>
@@ -732,39 +733,7 @@
         </div>
     </div>
 
-    <script>
-        function toggleChat() {
-            const chatWindow = document.getElementById('chat-window');
-            chatWindow.classList.toggle('active');
-        }
-        
-        function handleEnter(e) {
-            if (e.key === 'Enter') sendMessage();
-        }
-        
-        function sendMessage() {
-            const input = document.getElementById('user-input');
-            const chatBody = document.getElementById('chat-body');
-            const text = input.value.trim();
-            if (!text) return;
-            
-            // Add user message
-            const userMsg = document.createElement('div');
-            userMsg.className = 'msg user';
-            userMsg.textContent = text;
-            chatBody.appendChild(userMsg);
-            input.value = '';
-            chatBody.scrollTop = chatBody.scrollHeight;
-            
-            // Simulate bot response
-            setTimeout(() => {
-                const botMsg = document.createElement('div');
-                botMsg.className = 'msg bot';
-                botMsg.textContent = "Merci pour votre message ! Pour une assistance personnalisée, veuillez nous contacter au +243 840665620 ou via notre formulaire de devis.";
-                chatBody.appendChild(botMsg);
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 1000);
-        }
-    </script>
+    <!-- Chatbot AI — Gemini -->
+    <script src="../js/chatbot.js"></script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+name = "house-service-chatbot-proxy"
+main = "src/worker.js"
+compatibility_date = "2025-01-01"
+
+# La clé API est stockée dans une variable d'environnement secrète.
+# Pour la configurer, exécutez :
+#   npx wrangler secret put GEMINI_API_KEY
+# puis collez votre clé quand demandé.
+
+[vars]
+# Domaines autorisés (séparés par des virgules) — à adapter à votre domaine de production
+ALLOWED_ORIGINS = "https://houseservice.cd,https://www.houseservice.cd"

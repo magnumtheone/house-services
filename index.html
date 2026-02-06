@@ -747,48 +747,42 @@
         @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
     <style>
-        /* --- Chatbot AI (New) --- */
+        /* --- Chatbot AI --- */
         #chatbot-toggler {
-            position: fixed; bottom: 30px; right: 30px;
-            width: 60px; height: 60px; border-radius: 50%;
-            background: var(--hs-blue); color: #fff; border: none;
-            cursor: pointer; box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            z-index: 999; display: flex; align-items: center; justify-content: center;
-            transition: transform 0.3s;
-        }
-        #chatbot-toggler:hover { transform: scale(1.1); }
-
-         #chatbot-toggler {
             position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%;
             background: var(--hs-blue); color: #fff; border: none; cursor: pointer; box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             z-index: 999; display: flex; align-items: center; justify-content: center; transition: transform 0.3s;
             animation: pulse 2s infinite;
         }
+        #chatbot-toggler:hover { transform: scale(1.1); }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(41, 182, 246, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(41, 182, 246, 0); } 100% { box-shadow: 0 0 0 0 rgba(41, 182, 246, 0); } }
         
-        
         .chat-window {
-            position: fixed; bottom: 100px; right: 30px; width: var(--chat-width);
-            background: var(--bg-card); border-radius: 15px;
+            position: fixed; bottom: 100px; right: 30px; width: 350px;
+            background: #fff; border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             z-index: 998; overflow: hidden;
             transform: scale(0); transform-origin: bottom right; opacity: 0;
-            transition: all 0.3s ease; border: 1px solid var(--border-color);
+            transition: all 0.3s ease; border: 1px solid #e5e7eb;
             display: flex; flex-direction: column; height: 500px;
         }
         .chat-window.active { transform: scale(1); opacity: 1; }
         
         .chat-header { background: var(--hs-blue); color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
-        .chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: var(--bg-secondary); }
-        .chat-footer { padding: 10px; border-top: 1px solid var(--border-color); display: flex; gap: 5px; background: var(--bg-card); }
-        .chat-input { flex: 1; padding: 10px; border: 1px solid var(--border-color); border-radius: 20px; background: var(--bg-secondary); color: var(--text-main); }
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #f8fafc; }
+        .chat-footer { padding: 10px; border-top: 1px solid #e5e7eb; display: flex; gap: 5px; background: #fff; }
+        .chat-input { flex: 1; padding: 10px; border: 1px solid #e5e7eb; border-radius: 20px; background: #f8fafc; color: #1a1a1a; }
         .chat-send { background: var(--hs-blue); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; }
         
         .msg { padding: 10px 15px; border-radius: 10px; max-width: 80%; font-size: 0.9rem; }
-        .msg.bot { background: var(--bg-card); border: 1px solid var(--border-color); align-self: flex-start; color: var(--text-main); }
+        .msg.bot { background: #fff; border: 1px solid #e5e7eb; align-self: flex-start; color: #1a1a1a; }
         .msg.user { background: var(--hs-blue); color: white; align-self: flex-end; }
-        .typing { font-style: italic; font-size: 0.8rem; color: var(--text-light); margin-left: 10px; display: none; }
-
+        .typing { font-style: italic; font-size: 0.8rem; color: #666; margin-left: 10px; display: none; }
+        
+        @media (max-width: 480px) {
+            .chat-window { width: 90%; right: 5%; bottom: 100px; height: 400px; }
+            #chatbot-toggler { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+        }
     </style>
 <style>
 /* --- About Section Styles --- */
@@ -1910,7 +1904,7 @@ html {
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:contact@houseservice.cd">contact@houseservice.cd</a></li>
+                        <li><a href="mailto:contact@houseservice.com">contact@houseservice.com</a></li>
                         <li><a href="tel:+243840665620">+243 840665620</a></li>
                         <li><a href="#">Kisangani, RDC</a></li>
                     </ul>
@@ -1922,11 +1916,12 @@ html {
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 House Service S.A.S | Tous droits réservés</p>
+                <p>&copy; <span id="footer-year"></span> House Service S.A.S | Tous droits réservés</p>
                 <p style="margin-top: 10px; font-size: 0.85rem;">Design by <a href="https://portfoliodavidwawina.vercel.app/" target="_blank" style="color: var(--hs-blue); text-decoration: none; font-weight: 600; transition: color 0.2s;">David Wawina</a></p>
             </div>
         </div>
-    </footer>
+    <script>document.getElementById("footer-year").textContent=new Date().getFullYear();</script>
+</footer>
 
     <!-- Payment Modal -->
     <div class="payment-modal" id="paymentModal">
@@ -1985,10 +1980,8 @@ html {
             document.getElementById('paymentModal').classList.remove('active');
         }
 
-        // --- 3. Chatbot Logic (Simplified) ---
-        function toggleChat() {
-            alert("L'interface de chat IA s'ouvrirait ici. (Intégration API requise)");
-        }
+        // --- 3. Chatbot Logic — Propulsé par Gemini AI ---
+        // (Chargé via js/chatbot.js)
 
         // --- 3bis. Vérification d'Agents ---
         let agentsData = [];
@@ -2333,5 +2326,8 @@ html {
         });
     });
     </script>
+
+    <!-- Chatbot AI — Gemini -->
+    <script src="js/chatbot.js"></script>
 </body>
 </html>

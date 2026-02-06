@@ -1,0 +1,7 @@
+{
+  "name": "house-service-chatbot-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Proxy Cloudflare Worker pour l'API Gemini — House Service S.A.S",
+  "main": "src/worker.js"
+}
