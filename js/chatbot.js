@@ -153,10 +153,18 @@ async function sendMessage() {
         console.error('Erreur Chatbot:', error);
         typingIndicator.style.display = 'none';
 
-        const errorMsg = document.createElement('div');
-        errorMsg.className = 'msg bot';
-        errorMsg.innerHTML = 'Désolé, une erreur est survenue. Vous pouvez nous contacter directement sur <a href="https://wa.me/243840665620" target="_blank" rel="noopener noreferrer" style="color:#25D366;font-weight:600;text-decoration:none;"><i class="fab fa-whatsapp" style="font-size:1.1em;"></i> WhatsApp</a> ou par email à <a href="mailto:contact@houseservice.com" style="color:#c8102e;font-weight:600;">contact@houseservice.com</a>.';
-        chatBody.appendChild(errorMsg);
+        // Fallback: générer une réponse automatique utile lorsque l'API est indisponible
+        const fallbackText = "Désolé, je n'arrive pas à contacter le service pour le moment. \nVoici une réponse automatique :\n- Pour demander un devis, indiquez le type de service, la durée (heures/jours) et la ville.\n- Pour rejoindre notre équipe, envoyez votre CV via email.\nVous pouvez aussi nous contacter via https://wa.me/243840665620 ou par email à contact@houseservice.com.\nSouhaitez-vous que j'envoie un rappel pour que l'équipe vous recontacte ?";
+
+        // Ajouter la réponse de secours à l'historique
+        conversationHistory.push({ role: 'model', parts: [{ text: fallbackText }] });
+
+        // Afficher la réponse via l'effet typewriter pour garder l'expérience utilisateur
+        const botMsg = document.createElement('div');
+        botMsg.className = 'msg bot';
+        chatBody.appendChild(botMsg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        await typewriterEffect(botMsg, fallbackText, chatBody);
     }
 
     // Réactiver l'input
