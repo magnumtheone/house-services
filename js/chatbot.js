@@ -20,7 +20,7 @@ INFORMATIONS CLÉS SUR L'ENTREPRISE :
 - Nom : House Service S.A.S
 - Fondée le : 20 Juin 2020 à Kisangani
 - Fondateur & DG : M. Théophile MUTATAY (Doctorat en Marketing et Gestion d'Entreprise)
-- Siège social : Kisangani, Province de la Tshopo, RDC
+- Siège social : Avenue Munyororo N°02, Bloc Météo. Q/ Plateau Médical. C/ Makiso. Kisangani, RDC
 - Villes d'opération : Kisangani, Goma, Kinshasa
 - Téléphone : +243 840665620
 - Email : contact@houseservice.com
