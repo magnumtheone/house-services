@@ -128,21 +128,16 @@ async function sendMessage() {
         console.log('📨 API Response:', response.status);
 
         if (!response.ok) {
-            let errorDetails = `Erreur API: ${response.status} ${response.statusText}`;
+            // Logger les détails SEULEMENT en console (pour le débogage)
             try {
                 const errorData = await response.json();
-                console.error("Détails de l'erreur API (JSON):", errorData);
-                if (errorData.error && errorData.error.message) {
-                    errorDetails += ` - ${errorData.error.message}`;
-                } else {
-                    errorDetails += ` - ${JSON.stringify(errorData)}`;
-                }
+                console.error("❌ Erreur API détails:", errorData);
             } catch (e) {
                 const errorText = await response.text();
-                console.error("Détails de l'erreur API (Texte):", errorText);
-                errorDetails += ` - ${errorText}`;
+                console.error("❌ Erreur API réponse:", errorText);
             }
-            throw new Error(errorDetails);
+            // Throw une erreur générique (pas le détail technique)
+            throw new Error(`API_ERROR_${response.status}`);
         }
 
         const data = await response.json();
@@ -174,8 +169,8 @@ async function sendMessage() {
         
         typingIndicator.style.display = 'none';
 
-        // Fallback: générer une réponse automatique utile lorsque l'API est indisponible
-        const fallbackText = `⚠️ Erreur: ${error.message}\n\nDésolé, une erreur est survenue. Veuillez réessayer.\n\nVous pouvez aussi nous contacter:\n• WhatsApp: https://wa.me/243840665620\n• Email: contact@houseservice.com`;
+        // Message générique et sympathique (ne pas exposer les erreurs techniques)
+        const fallbackText = `Désolé, j'ai momentanément rencontré un problème technique.\n\nVeuillez réessayer dans quelques instants ou contactez-nous :\n• WhatsApp: https://wa.me/243840665620\n• Email: contact@houseservice.com\n\nNous sommes là pour vous aider ! 😊`;
 
         // Ajouter la réponse de secours à l'historique
         conversationHistory.push({ role: 'model', parts: [{ text: fallbackText }] });

@@ -67,6 +67,18 @@ export default {
             // Retourner la réponse de Gemini au client
             const responseBody = await geminiResponse.text();
             
+            // Si l'API Gemini a une erreur, masquer les détails techniques
+            if (!geminiResponse.ok) {
+                console.error('Erreur Gemini:', geminiResponse.status, responseBody);
+                return new Response(JSON.stringify({ 
+                    error: 'Erreur API', 
+                    status: geminiResponse.status 
+                }), {
+                    status: geminiResponse.status,
+                    headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+                });
+            }
+            
             return new Response(responseBody, {
                 status: geminiResponse.status,
                 headers: {
