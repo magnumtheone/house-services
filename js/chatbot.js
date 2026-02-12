@@ -157,15 +157,16 @@ async function sendMessage() {
             conversationHistory = conversationHistory.slice(-20);
         }
 
-        // Afficher la réponse du bot avec effet typewriter
+        // Afficher la réponse du bot
         typingIndicator.style.display = 'none';
         const botMsg = document.createElement('div');
         botMsg.className = 'msg bot';
         chatBody.appendChild(botMsg);
         chatBody.scrollTop = chatBody.scrollHeight;
 
-        // Lancer l'animation d'écriture
-        await typewriterEffect(botMsg, botText, chatBody);
+        // Afficher le message formaté directement (plus rapide et fiable)
+        const formattedHTML = formatBotResponse(botText);
+        botMsg.innerHTML = formattedHTML;
 
     } catch (error) {
         console.error('❌ Erreur Chatbot:', error.message);
@@ -179,12 +180,14 @@ async function sendMessage() {
         // Ajouter la réponse de secours à l'historique
         conversationHistory.push({ role: 'model', parts: [{ text: fallbackText }] });
 
-        // Afficher la réponse via l'effet typewriter pour garder l'expérience utilisateur
+        // Afficher la réponse de secours
         const botMsg = document.createElement('div');
         botMsg.className = 'msg bot';
         chatBody.appendChild(botMsg);
         chatBody.scrollTop = chatBody.scrollHeight;
-        await typewriterEffect(botMsg, fallbackText, chatBody);
+        
+        const formattedHTML = formatBotResponse(fallbackText);
+        botMsg.innerHTML = formattedHTML;
     }
 
     // Réactiver l'input
@@ -192,47 +195,6 @@ async function sendMessage() {
     sendBtn.disabled = false;
     input.focus();
     chatBody.scrollTop = chatBody.scrollHeight;
-}
-
-// Effet typewriter : affiche le texte caractère par caractère
-function typewriterEffect(element, rawText, chatBody) {
-    return new Promise((resolve) => {
-        const formattedHTML = formatBotResponse(rawText);
-        // On crée un élément temporaire pour parser le HTML
-        const temp = document.createElement('div');
-        temp.innerHTML = formattedHTML;
-        const fullText = temp.innerHTML;
-
-        let i = 0;
-        let insideTag = false;
-        let buffer = '';
-        const speed = 12; // ms par caractère (rapide mais visible)
-
-        function type() {
-            if (i < fullText.length) {
-                const char = fullText[i];
-                // Si on entre dans une balise HTML, on l'ajoute d'un coup
-                if (char === '<') {
-                    insideTag = true;
-                }
-                buffer += char;
-                if (insideTag && char === '>') {
-                    insideTag = false;
-                    element.innerHTML = buffer;
-                } else if (!insideTag) {
-                    element.innerHTML = buffer;
-                }
-                i++;
-                chatBody.scrollTop = chatBody.scrollHeight;
-                requestAnimationFrame(() => setTimeout(type, insideTag ? 0 : speed));
-            } else {
-                element.innerHTML = formattedHTML; // S'assurer que le HTML final est complet
-                chatBody.scrollTop = chatBody.scrollHeight;
-                resolve();
-            }
-        }
-        type();
-    });
 }
 
 // Formatage basique du texte (gras, listes, liens)
