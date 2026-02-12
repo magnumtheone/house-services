@@ -14,11 +14,16 @@ export default {
         const origin = request.headers.get('Origin') || '';
         const allowedOrigins = (env.ALLOWED_ORIGINS || '').split(',').map(o => o.trim());
 
+        console.log('🔍 Origine reçue:', origin);
+        console.log('✅ Origines autorisées:', allowedOrigins);
+
         // En développement local, autoriser localhost
         const isAllowed = allowedOrigins.includes(origin)
             || origin.startsWith('http://localhost')
             || origin.startsWith('http://127.0.0.1')
             || origin === '';
+
+        console.log('🚦 Origine autorisée?', isAllowed);
 
         const corsHeaders = {
             'Access-Control-Allow-Origin': isAllowed ? origin : allowedOrigins[0],

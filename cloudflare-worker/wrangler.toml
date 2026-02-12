@@ -9,4 +9,4 @@ compatibility_date = "2025-01-01"
 
 [vars]
 # Domaines autorisés pour la production et tests (séparés par des virgules)
-ALLOWED_ORIGINS = "https://houseservice.cd,https://www.houseservice.cd,http://localhost,http://127.0.0.1,https://localhost,https://127.0.0.1"
+ALLOWED_ORIGINS = "https://houseservice.cd,https://www.houseservice.cd,https://house-service-1omn.onrender.com,http://localhost,http://127.0.0.1,https://localhost,https://127.0.0.1"
