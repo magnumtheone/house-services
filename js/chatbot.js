@@ -70,6 +70,8 @@ async function sendMessage() {
     const sendBtn = document.querySelector('.chat-send');
     const text = input.value.trim();
     if (!text) return;
+    
+    console.log('🚀 Envoi du message');
 
     // Désactiver l'input pendant le chargement
     input.disabled = true;
@@ -123,12 +125,28 @@ async function sendMessage() {
             body: requestBody
         });
 
+        console.log('📨 API Response:', response.status);
+
         if (!response.ok) {
-            throw new Error(`Erreur API: ${response.status}`);
+            let errorDetails = `Erreur API: ${response.status} ${response.statusText}`;
+            try {
+                const errorData = await response.json();
+                console.error("Détails de l'erreur API (JSON):", errorData);
+                if (errorData.error && errorData.error.message) {
+                    errorDetails += ` - ${errorData.error.message}`;
+                } else {
+                    errorDetails += ` - ${JSON.stringify(errorData)}`;
+                }
+            } catch (e) {
+                const errorText = await response.text();
+                console.error("Détails de l'erreur API (Texte):", errorText);
+                errorDetails += ` - ${errorText}`;
+            }
+            throw new Error(errorDetails);
         }
 
         const data = await response.json();
-        const botText = data.candidates?.[0]?.content?.parts?.[0]?.text 
+        const botText = data.candidates?.[0]?.content?.parts?.[0]?.text
             || "Désolé, je n'ai pas pu traiter votre demande. Veuillez réessayer.";
 
         // Ajouter la réponse à l'historique
@@ -150,11 +168,13 @@ async function sendMessage() {
         await typewriterEffect(botMsg, botText, chatBody);
 
     } catch (error) {
-        console.error('Erreur Chatbot:', error);
+        console.error('❌ Erreur Chatbot:', error.message);
+        console.error('Stack:', error.stack);
+        
         typingIndicator.style.display = 'none';
 
         // Fallback: générer une réponse automatique utile lorsque l'API est indisponible
-        const fallbackText = "Désolé, je n'arrive pas à contacter le service pour le moment. \nVoici une réponse automatique :\n- Pour demander un devis, indiquez le type de service, la durée (heures/jours) et la ville.\n- Pour rejoindre notre équipe, envoyez votre CV via email.\nVous pouvez aussi nous contacter via https://wa.me/243840665620 ou par email à contact@houseservice.com.\nSouhaitez-vous que j'envoie un rappel pour que l'équipe vous recontacte ?";
+        const fallbackText = `⚠️ Erreur: ${error.message}\n\nDésolé, une erreur est survenue. Veuillez réessayer.\n\nVous pouvez aussi nous contacter:\n• WhatsApp: https://wa.me/243840665620\n• Email: contact@houseservice.com`;
 
         // Ajouter la réponse de secours à l'historique
         conversationHistory.push({ role: 'model', parts: [{ text: fallbackText }] });

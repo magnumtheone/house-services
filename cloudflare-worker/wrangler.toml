@@ -8,5 +8,5 @@ compatibility_date = "2025-01-01"
 # puis collez votre clé quand demandé.
 
 [vars]
-# Domaines autorisés (séparés par des virgules) — à adapter à votre domaine de production
-ALLOWED_ORIGINS = "https://houseservice.cd,https://www.houseservice.cd"
+# Domaines autorisés pour la production et tests (séparés par des virgules)
+ALLOWED_ORIGINS = "https://houseservice.cd,https://www.houseservice.cd,http://localhost,http://127.0.0.1,https://localhost,https://127.0.0.1"

@@ -61,6 +61,7 @@ export default {
 
             // Retourner la réponse de Gemini au client
             const responseBody = await geminiResponse.text();
+            
             return new Response(responseBody, {
                 status: geminiResponse.status,
                 headers: {
@@ -70,7 +71,11 @@ export default {
             });
 
         } catch (error) {
-            return new Response(JSON.stringify({ error: 'Erreur interne du proxy' }), {
+            console.error('Erreur proxy:', error.message);
+            return new Response(JSON.stringify({ 
+                error: 'Erreur interne du proxy',
+                details: error.message 
+            }), {
                 status: 500,
                 headers: { ...corsHeaders, 'Content-Type': 'application/json' }
             });
