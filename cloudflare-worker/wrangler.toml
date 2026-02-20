@@ -8,5 +8,7 @@ compatibility_date = "2025-01-01"
 # puis collez votre clé quand demandé.
 
 [vars]
-# Domaines autorisés pour la production et tests (séparés par des virgules)
-ALLOWED_ORIGINS = "https://houseservice.cd,https://www.houseservice.cd,https://house-service-1omn.onrender.com,http://localhost,http://127.0.0.1,https://localhost,https://127.0.0.1"
+# Domaines autorisés pour la production, tests et redirects
+# Format: https://domaine1.com,https://domaine2.com
+# Inclus: nouveau domaine + anciens domaines + environnements locaux
+ALLOWED_ORIGINS = "https://house-servicerdc.com,https://www.house-servicerdc.com,https://houseservice.com,https://www.houseservice.com,https://houseservice.cd,https://www.houseservice.cd,https://house-service.cd,https://www.house-service.cd,https://house-service-1omn.onrender.com,http://localhost,http://127.0.0.1,https://localhost,https://127.0.0.1"

@@ -631,6 +631,218 @@ footer {
 }
 
 /* ============================================
+   MISE EN ÉVIDENCE DES LIENS IMPORTANTS (SEO)
+   ============================================ */
+
+/* Liens importants dans le contenu */
+a {
+    color: var(--hs-red);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+a:hover,
+a:focus {
+    color: var(--hs-blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Liens de navigation principaux */
+.nav-link {
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-link:focus {
+    outline: 2px solid var(--hs-blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Boutons CTA (Appels à l'action) */
+.btn {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(211, 47, 47, 0.4);
+}
+
+.btn-primary:focus {
+    outline: 2px solid var(--hs-blue);
+    outline-offset: 2px;
+}
+
+.btn-secondary {
+    box-shadow: 0 6px 20px rgba(41, 182, 246, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(41, 182, 246, 0.4);
+}
+
+.btn-secondary:focus {
+    outline: 2px solid var(--hs-red);
+    outline-offset: 2px;
+}
+
+/* Liens importants des services */
+.service-link,
+.card a,
+.drop-item {
+    position: relative;
+    font-weight: 600;
+}
+
+.service-link::after,
+.card a::after {
+    content: ' →';
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.service-link:hover::after,
+.card a:hover::after {
+    transform: translateX(4px);
+}
+
+/* Liens en footer */
+.footer-col a {
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-col a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--hs-red);
+    transition: width 0.3s ease;
+}
+
+.footer-col a:hover::before {
+    width: 100%;
+}
+
+/* Liens du breadcrumb (JSON-LD) */
+.breadcrumb {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--text-secondary);
+}
+
+.breadcrumb a {
+    color: var(--hs-blue);
+    font-weight: 600;
+}
+
+.breadcrumb a:hover {
+    color: var(--hs-red);
+}
+
+/* Liens du menu déroulant */
+.drop-item {
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.drop-item:hover {
+    background: #f0f7ff;
+    border-left: 3px solid var(--hs-blue);
+    padding-left: 9px;
+}
+
+/* Liens CTA dans sections */
+.cta-link {
+    color: var(--hs-red);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--hs-red);
+    transition: all 0.3s ease;
+}
+
+.cta-link:hover {
+    color: var(--hs-blue);
+    border-bottom-color: var(--hs-blue);
+}
+
+/* Mise en avant des liens dans le contenu */
+p > a,
+li > a,
+div > a {
+    font-weight: 600;
+    position: relative;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+p > a::before,
+li > a::before,
+div > a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(41, 182, 246, 0.1);
+    border-radius: 3px;
+    z-index: -1;
+    transition: all 0.2s ease;
+}
+
+p > a:hover::before,
+li > a:hover::before,
+div > a:hover::before {
+    background: rgba(41, 182, 246, 0.2);
+}
+
+/* ============================================
    UTILITAIRES
    ============================================ */
 

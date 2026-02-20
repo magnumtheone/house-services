@@ -1,0 +1,45 @@
+# Redirects Configuration pour Netlify/Vercel
+# Ce fichier contient les règles de redirection 301 pour SEO
+# Format: https://docs.netlify.com/routing/redirects/
+
+# ============================================================
+# REDIRECTS 301 - SEO FRIENDLY
+# Ancien domaine → Nouveau domaine
+# ============================================================
+
+# Redirection générique du domaine houseservice.com
+https://houseservice.com/*  https://house-servicerdc.com/:splat  301!
+https://www.houseservice.com/*  https://house-servicerdc.com/:splat  301!
+
+# Redirection depuis l'ancien domaine .cd
+https://houseservice.cd/*  https://house-servicerdc.com/:splat  301!
+https://www.houseservice.cd/*  https://house-servicerdc.com/:splat  301!
+https://house-service.cd/*  https://house-servicerdc.com/:splat  301!
+https://www.house-service.cd/*  https://house-servicerdc.com/:splat  301!
+
+# ============================================================
+# REDIRECTS INTERNES (optionnel)
+# Pages déplacées ou renommées
+# ============================================================
+
+# Exemple: /old-page → /new-page
+# /ancienne-page /nouvelle-page 301
+
+# ============================================================
+# NOTES IMPORTANTES:
+# ============================================================
+# 1. Ces redirects s'appliquent SEULEMENT si vous hébergez sur
+#    Netlify, Vercel, ou un service similaire.
+#
+# 2. Pour Apache (.htaccess), voir le fichier .htaccess à la
+#    racine du projet.
+#
+# 3. Pour Cloudflare Worker, voir cloudflare-worker/src/worker.js
+#    qui gère les redirects nativement.
+#
+# 4. Les redirects 301 sont permanentes et passent l'autorité
+#    du domaine (PageRank) à la nouvelle URL.
+#
+# 5. Google peut mettre 6+ mois pour complètement migrer
+#    les anciennes URLs. Patience recommandée!
+# ============================================================

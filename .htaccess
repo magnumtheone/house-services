@@ -1,0 +1,92 @@
+# ============================================================
+# REDIRECTS 301 - House Service S.A.S
+# Ancien domaine vers nouveau domaine (SEO-friendly)
+# ============================================================
+# Ce fichier .htaccess gère les redirects permanents
+# depuis les anciens domaines vers le nouveau domaine.
+# ============================================================
+
+# Activer mod_rewrite
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # ============================================================
+    # REDIRECTS 301 - Ancien domaine → Nouveau domaine
+    # ============================================================
+    
+    # Redirect www.houseservice.com → house-servicerdc.com
+    RewriteCond %{HTTP_HOST} ^(www\.)?houseservice\.com$ [NC]
+    RewriteRule ^(.*)$ https://house-servicerdc.com/$1 [L,R=301]
+    
+    # Redirect houseservice.cd → house-servicerdc.com (ancien .cd)
+    RewriteCond %{HTTP_HOST} ^(www\.)?houseservice\.cd$ [NC]
+    RewriteRule ^(.*)$ https://house-servicerdc.com/$1 [L,R=301]
+    
+    # Redirect house-service.cd → house-servicerdc.com
+    RewriteCond %{HTTP_HOST} ^(www\.)?house-service\.cd$ [NC]
+    RewriteRule ^(.*)$ https://house-servicerdc.com/$1 [L,R=301]
+    
+    # ============================================================
+    # CONFIGURATION DU SITE
+    # ============================================================
+    
+    # Rediriger les requêtes sans www vers avec www (ou vice-versa)
+    RewriteCond %{HTTP_HOST} ^house-servicerdc\.com$ [NC]
+    RewriteRule ^(.*)$ https://www.house-servicerdc.com/$1 [L,R=301]
+    
+    # Supprimer le .html des URLs (optionnel)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^([^\.]+)$ $1.html [NC,L]
+</IfModule>
+
+# ============================================================
+# COMPRESSION ET CACHING
+# ============================================================
+
+# Compression GZIP
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Browser Caching
+<IfModule mod_headers.c>
+    # Fichiers statiques (images, CSS, JS)
+    <FilesMatch "\.(jpg|jpeg|png|gif|ico|css|js|svg|webp)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+    
+    # Fichiers HTML (moins de temps de cache)
+    <FilesMatch "\.html$">
+        Header set Cache-Control "max-age=86400, public"
+    </FilesMatch>
+    
+    # Polices web
+    <FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>
+
+# ============================================================
+# SÉCURITÉ
+# ============================================================
+
+# Empêcher l'accès direct à certains fichiers
+<FilesMatch "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
+# Empêcher l'accès au fichier .htaccess lui-même
+<Files .htaccess>
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</Files>
+
+# Désactiver l'indexage des répertoires
+Options -Indexes
