@@ -440,7 +440,10 @@
             <div class="devis-container">
                 <!-- Form Card -->
                 <div class="devis-form-card" id="formCard">
-                    <form id="devisForm">
+                    <form id="devisForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="671f2ae1-9b9d-41ec-a26a-c088c4712aaa">
+                        <input type="hidden" name="subject" value="Nouvelle demande de devis - House Service">
+                        <input type="hidden" name="from_name" value="House Service Devis">
                         <!-- Section 1: Informations Personnelles -->
                         <div class="form-section">
                             <div class="form-section-title">
@@ -722,7 +725,7 @@
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:contact@houseservice.com">contact@houseservice.com</a></li>
+                        <li><a href="mailto:contact@house-servicerdc.com">contact@house-servicerdc.com</a></li>
                         <li><a href="tel:+243840665620">+243 840665620</a></li>
                         <li><a href="#">Avenue Munyororo N°02, Bloc Météo. Q/ Plateau Médical. C/ Makiso. Kisangani, RDC</a></li>
                     </ul>
@@ -808,16 +811,35 @@
             });
         });
 
-        // Form Submission
+        // Form Submission with Web3Forms
         document.getElementById('devisForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Hide form, show success
-            document.getElementById('devisForm').style.display = 'none';
-            document.getElementById('successMessage').classList.add('show');
+            const form = this;
+            const formData = new FormData(form);
             
-            // Scroll to top of card
-            document.getElementById('formCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Submit to web3forms
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Hide form, show success
+                    form.style.display = 'none';
+                    document.getElementById('successMessage').classList.add('show');
+                    
+                    // Scroll to top of card
+                    document.getElementById('formCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    alert('Erreur lors de l\'envoi du formulaire. Veuillez réessayer.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Erreur lors de l\'envoi du formulaire. Veuillez réessayer.');
+            });
         });
 
         // Header scroll effect

@@ -501,7 +501,10 @@
                     <h2 class="text-center">Rejoignez-Nous</h2>
                     <p class="text-center" style="color: var(--text-secondary); margin-bottom: 32px;">Candidatez pour un poste ou inscrivez-vous à une formation. Complétez le formulaire ci-dessous.</p>
 
-                    <form id="RecruitForm">
+                    <form id="RecruitForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="671f2ae1-9b9d-41ec-a26a-c088c4712aaa">
+                        <input type="hidden" name="subject" value="Nouvelle candidature - House Service">
+                        <input type="hidden" name="from_name" value="House Service Recrutement">
                         <div class="form-group">
                             <label for="type_demande">Je souhaite :</label>
                             <select id="type_demande" name="type_demande" class="form-select" required onchange="toggleFormFields()">
@@ -590,7 +593,7 @@
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:contact@houseservice.com">contact@houseservice.com</a></li>
+                        <li><a href="mailto:contact@house-servicerdc.com">contact@house-servicerdc.com</a></li>
                         <li><a href="tel:+243840665620">+243 840665620</a></li>
                         <li><a href="#">Avenue Munyororo N°02, Bloc Météo. Q/ Plateau Médical. C/ Makiso. Kisangani, RDC</a></li>
                     </ul>
@@ -642,22 +645,40 @@
             }, 5000);
         }
 
-        // Gestion de la soumission du formulaire
+        // Gestion de la soumission du formulaire avec Web3Forms
         document.getElementById('RecruitForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const typeDemande = document.getElementById('type_demande').value;
-            const nom = document.getElementById('nom').value;
+            const form = this;
+            const formData = new FormData(form);
+            
+            // Submit to web3forms
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const typeDemande = document.getElementById('type_demande').value;
+                    const nom = document.getElementById('nom').value;
 
-            // Simulation de l'envoi
-            this.reset();
-            toggleFormFields();
+                    form.reset();
+                    toggleFormFields();
 
-            const message = typeDemande === 'Recrutement'
-                ? `Merci ${nom}, votre candidature a été reçue. Nous vous contactons très bientôt.`
-                : `Bienvenue ${nom}, votre inscription a été enregistrée. Consultez vos e-mails pour les détails.`;
+                    const message = typeDemande === 'Recrutement'
+                        ? `Merci ${nom}, votre candidature a été reçue. Nous vous contactons très bientôt.`
+                        : `Bienvenue ${nom}, votre inscription a été enregistrée. Consultez vos e-mails pour les détails.`;
 
-            showMessage(message);
+                    showMessage(message);
+                } else {
+                    showMessage('Erreur lors de l\'envoi du formulaire. Veuillez réessayer.', true);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showMessage('Erreur lors de l\'envoi du formulaire. Veuillez réessayer.', true);
+            });
         });
 
         // Mobile Menu

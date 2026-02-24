@@ -23,7 +23,7 @@ INFORMATIONS CLÉS SUR L'ENTREPRISE :
 - Siège social : Avenue Munyororo N°02, Bloc Météo. Q/ Plateau Médical. C/ Makiso. Kisangani, RDC
 - Villes d'opération : Kisangani, Goma, Kinshasa
 - Téléphone : +243 840665620
-- Email : contact@houseservice.com
+- Email : contact@house-servicerdc.com
 - WhatsApp : https://wa.me/243840665620
 
 SERVICES PROPOSÉS :
@@ -170,7 +170,7 @@ async function sendMessage() {
         typingIndicator.style.display = 'none';
 
         // Message générique et sympathique (ne pas exposer les erreurs techniques)
-        const fallbackText = `Désolé, j'ai momentanément rencontré un problème technique.\n\nVeuillez réessayer dans quelques instants ou contactez-nous :\n• WhatsApp: https://wa.me/243840665620\n• Email: contact@houseservice.com\n\nNous sommes là pour vous aider ! 😊`;
+        const fallbackText = `Désolé, j'ai momentanément rencontré un problème technique.\n\nVeuillez réessayer dans quelques instants ou contactez-nous :\n• WhatsApp: https://wa.me/243840665620\n• Email: contact@house-servicerdc.com\n\nNous sommes là pour vous aider ! 😊`;
 
         // Ajouter la réponse de secours à l'historique
         conversationHistory.push({ role: 'model', parts: [{ text: fallbackText }] });
@@ -206,7 +206,7 @@ function formatBotResponse(text) {
         )
         // Convertir les emails en liens cliquables
         .replace(
-            /contact@houseservice\.com/g,
-            '<a href="mailto:contact@houseservice.com" style="color:#c8102e;font-weight:600;">contact@houseservice.com</a>'
+            /contact@house-servicerdc\.com/g,
+            '<a href="mailto:contact@house-servicerdc.com" style="color:#c8102e;font-weight:600;">contact@house-servicerdc.com</a>'
         );
 }
