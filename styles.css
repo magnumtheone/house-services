@@ -136,6 +136,66 @@ a:hover {
     color: var(--hs-blue);
 }
 
+/* Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--hs-red) 0%, #C41C3B 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(211, 47, 47, 0.3);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--hs-red);
+    border: 2px solid var(--hs-red);
+}
+
+.btn-secondary:hover {
+    background: var(--hs-red);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-sm {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+}
+
+/* Section Styling */
+section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--hs-dark);
+    line-height: 1.3;
+}
+
+section h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--hs-dark);
+    margin-bottom: 8px;
+}
+
 /* ============================================
    CONTENEUR & GRILLE
    ============================================ */
@@ -1085,5 +1145,211 @@ div > a:hover::before {
         width: 100%;
         max-width: 100%;
         padding: 90px 20px 30px;
+    }
+}
+/* ============================================
+   COMMENTS SYSTEM - GLOBAL STYLES
+   ============================================ */
+
+#comments-button {
+    position: fixed;
+    bottom: 120px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--hs-red) 0%, #C41C3B 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(211, 47, 47, 0.4);
+    z-index: 995;
+    animation: pulse 2s infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+#comments-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(211, 47, 47, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(211, 47, 47, 0);
+    }
+}
+
+.comments-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: var(--hs-gray-light);
+    color: var(--hs-red);
+}
+
+.modal-content h2 {
+    color: var(--hs-dark);
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+}
+
+.modal-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--hs-dark);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--hs-gray-border);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--hs-blue);
+    box-shadow: 0 0 0 3px rgba(41, 182, 246, 0.1);
+}
+
+.star-rating {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.star-rating i {
+    font-size: 1.5rem;
+    color: #FBC02D;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.star-rating i.far {
+    color: #DDD;
+}
+
+.star-rating i:hover {
+    transform: scale(1.2);
+}
+
+.form-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.form-success i {
+    font-size: 3rem;
+    color: #4CAF50;
+    margin-bottom: 16px;
+}
+
+.form-success h3 {
+    color: var(--hs-dark);
+    margin-bottom: 8px;
+}
+
+.form-success p {
+    color: var(--text-secondary);
+}
+
+@media (max-width: 480px) {
+    #comments-button {
+        width: 50px;
+        height: 50px;
+        bottom: 80px;
+        right: 20px;
+    }
+    
+    .modal-content {
+        padding: 30px 20px;
+        width: 95%;
+    }
+    
+    .form-group {
+        margin-bottom: 16px;
     }
 }

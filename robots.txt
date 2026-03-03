@@ -1,10 +1,37 @@
 User-agent: *
 Allow: /
+Allow: /images/
+Allow: /js/
+Allow: /pages/
+
+# Priorités
+User-agent: Googlebot
+Allow: /
 
 # Sitemap
-Sitemap: https://www.houseservice.com/sitemap.xml
+Sitemap: https://house-servicerdc.com/sitemap.xml
 
-# Bloquer les ressources internes
+# Bloquer les ressources internes et patterns inutiles
 Disallow: /cloudflare-worker/
 Disallow: /data/
-Disallow: /js/chatbot.js
+Disallow: /*.json$
+Disallow: /admin/
+Disallow: /?*
+Disallow: /*?*=
+Disallow: /*&*=
+Disallow: /*sort=
+Disallow: /*filter=
+Disallow: /search/
+Disallow: /cart/
+Disallow: */checkout/
+Disallow: */thank-you
+Disallow: */pdf/
+Disallow: *?format=
+Disallow: *?page=*
+
+# Crawl Delay
+Crawl-delay: 5
+Request-rate: 1/5s
+
+# Cache-Control pour les crawlers
+Cache-control: public, max-age=31536000

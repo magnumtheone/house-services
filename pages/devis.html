@@ -17,7 +17,26 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Devis Gratuit | House Service S.A.S">
     <meta name="twitter:description" content="Demandez un devis gratuit pour tous nos services en RDC.">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://house-servicerdc.com/"},{"@type":"ListItem","position":2,"name":"Devis","item":"https://house-servicerdc.com/pages/devis.html"}]}</script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://house-servicerdc.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Devis Gratuit",
+          "item": "https://house-servicerdc.com/pages/devis.html"
+        }
+      ]
+    }
+    </script>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -853,6 +872,64 @@
         });
     </script>
 
+    <!-- Floating Comments Button -->
+    <button id="comments-button" onclick="openCommentsModal()" aria-label="Laisser un commentaire" title="Laisser un commentaire">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Comments Modal -->
+    <div class="comments-modal" id="commentsModal">
+        <div class="modal-overlay" onclick="closeCommentsModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCommentsModal()"><i class="fas fa-times"></i></button>
+            <h2><i class="fas fa-star"></i> Partagez Votre Avis</h2>
+            <p class="modal-subtitle">Votre retour nous aide à nous améliorer</p>
+
+            <!-- Comments Form -->
+            <form id="commentFormDevis" onsubmit="submitCommentForm(event)">
+                <!-- Star Rating -->
+                <div class="form-group">
+                    <label>Note (0-5 stars)</label>
+                    <div class="star-rating" id="starRating">
+                        <i class="far fa-star" onclick="setRating(this, 1)" data-rating="1"></i>
+                        <i class="far fa-star" onclick="setRating(this, 2)" data-rating="2"></i>
+                        <i class="far fa-star" onclick="setRating(this, 3)" data-rating="3"></i>
+                        <i class="far fa-star" onclick="setRating(this, 4)" data-rating="4"></i>
+                        <i class="far fa-star" onclick="setRating(this, 5)" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="commentRating" name="rating" value="0">
+                </div>
+
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="commentName">Nom*</label>
+                    <input type="text" id="commentName" name="name" required>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="commentEmail">Email*</label>
+                    <input type="email" id="commentEmail" name="email" required>
+                </div>
+
+                <!-- Message -->
+                <div class="form-group">
+                    <label for="commentText">Votre commentaire*</label>
+                    <textarea id="commentText" name="message" rows="4" required placeholder="Partagez vos impressions..." style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-family: inherit;"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer</button>
+            </form>
+
+            <!-- Success Message -->
+            <div id="commentSuccess" class="form-success" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                <h3>Merci !</h3>
+                <p>Votre commentaire a été envoyé avec succès.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Chatbot Floating Button & Window -->
     <button id="chatbot-toggler" onclick="toggleChat()" aria-label="Ouvrir le chatbot">
         <i class="fas fa-robot" style="font-size: 1.5rem;"></i>
@@ -875,5 +952,95 @@
 
     <!-- Chatbot AI — Gemini -->
     <script src="../js/chatbot.js"></script>
+
+    <!-- Comments Modal Script -->
+    <script>
+        function openCommentsModal() {
+            const modal = document.getElementById('commentsModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCommentsModal() {
+            const modal = document.getElementById('commentsModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function setRating(element, rating) {
+            const stars = document.querySelectorAll('.star-rating i');
+            document.getElementById('commentRating').value = rating;
+            
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('far');
+                    star.classList.add('fas');
+                } else {
+                    star.classList.remove('fas');
+                    star.classList.add('far');
+                }
+            });
+        }
+
+        function submitCommentForm(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('commentName').value;
+            const email = document.getElementById('commentEmail').value;
+            const rating = document.getElementById('commentRating').value;
+            const message = document.getElementById('commentText').value;
+
+            const formData = new FormData();
+            formData.append('access_key', '671f2ae1-9b9d-41ec-a26a-c088c4712aaa');
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('rating', rating);
+            formData.append('message', message);
+            formData.append('subject', 'Nouveau commentaire - Devis');
+            formData.append('from_name', 'House Service - Commentaires'); 
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('commentFormDevis').style.display = 'none';
+                    document.getElementById('commentSuccess').style.display = 'flex';
+                    
+                    setTimeout(() => {
+                        document.getElementById('commentFormDevis').reset();
+                        document.getElementById('commentRating').value = '0';
+                        document.querySelectorAll('.star-rating i').forEach(star => {
+                            star.classList.remove('fas');
+                            star.classList.add('far');
+                        });
+                        document.getElementById('commentFormDevis').style.display = 'block';
+                        document.getElementById('commentSuccess').style.display = 'none';
+                        closeCommentsModal();
+                    }, 2000);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('commentsModal');
+            if (event.target === modal) {
+                closeCommentsModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeCommentsModal();
+            }
+        });
+    </script>
 </body>
 </html>

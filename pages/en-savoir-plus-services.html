@@ -18,7 +18,87 @@
     <meta name="twitter:title" content="Catalogue Services | House Service RDC">
     <meta name="twitter:description" content="Ménage, sécurité, garde d'enfants et plus en RDC. Catalogue complet.">
     <meta name="twitter:image" content="https://house-servicerdc.com/images/logo.webp">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://house-servicerdc.com/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://house-servicerdc.com/pages/en-savoir-plus-services.html"}]}</script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Accueil",
+              "item": "https://house-servicerdc.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Services",
+              "item": "https://house-servicerdc.com/pages/en-savoir-plus-services.html"
+            }
+          ]
+        },
+        {
+          "@type": "Service",
+          "name": "Services de Sous-traitance - House Service S.A.S",
+          "description": "Catalogue complet de services : ménage résidentiel, garde d'enfants, sécurité, chauffeur privé, nettoyage entreprise",
+          "provider": {
+            "@type": "Organization",
+            "name": "House Service S.A.S",
+            "url": "https://house-servicerdc.com"
+          },
+          "areaServed": ["Kisangani", "Goma", "Kinshasa"],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Catalogue de Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Ménage Résidentiel",
+                  "description": "Nettoyage en profondeur, organisation, produits écologiques, horaires flexibles"
+                },
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Garde d'Enfants Professionnelle",
+                  "description": "Baby-sitting qualifié, sécurité, activités ludiques, repas préparés"
+                },
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Sécurité & Gardiennage",
+                  "description": "Agents de sécurité formés, surveillance 24/7, protocoles stricts"
+                },
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Chauffeur Privé Professionnel",
+                  "description": "Conducteurs expérimentés, véhicules entretenus, discrétion et professionnalisme"
+                },
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -181,6 +261,513 @@
         #chatbot-toggler:hover { transform: scale(1.1); }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(41, 182, 246, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(41, 182, 246, 0); } 100% { box-shadow: 0 0 0 0 rgba(41, 182, 246, 0); } }
         
+        /* Bouton flottant Commentaires */
+        #comments-button {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--hs-red) 0%, #C41C3B 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(211, 47, 47, 0.4);
+            z-index: 995;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse-comments 2s infinite;
+        }
+        
+        #comments-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
+        }
+        
+        @keyframes pulse-comments {
+            0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(211, 47, 47, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+        }
+        
+        /* Modal Commentaires */
+        .comments-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .comments-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .comments-modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .comments-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #F3F4F6;
+        }
+        
+        .comments-modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: var(--hs-dark);
+        }
+        
+        .comments-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .comments-close-btn:hover {
+            color: var(--hs-red);
+        }
+        
+        .comments-form-group {
+            margin-bottom: 20px;
+        }
+        
+        .comments-form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--hs-dark);
+            margin-bottom: 8px;
+        }
+        
+        .comments-form-group input,
+        .comments-form-group textarea,
+        .comments-form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #E5E7EB;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+        
+        .comments-form-group input:focus,
+        .comments-form-group textarea:focus,
+        .comments-form-group select:focus {
+            outline: none;
+            border-color: var(--hs-red);
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.15);
+        }
+        
+        .comments-form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .comments-rating {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        
+        .star-input {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.2rem;
+            color: #FBC02D;
+        }
+        
+        .star-input:hover,
+        .star-input.active {
+            border-color: #FBC02D;
+            background: rgba(251, 192, 45, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .comments-submit-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--hs-red) 0%, #C41C3B 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .comments-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(211, 47, 47, 0.3);
+        }
+        
+        .comments-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .comments-success {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .comments-success.show {
+            display: block;
+        }
+        
+        .comments-success-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--hs-red), #C41C3B);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        
+        .comments-success-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .comments-success h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--hs-dark);
+        }
+        
+        .comments-success p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .comments-modal-content {
+                padding: 24px;
+            }
+            
+            .comments-modal-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            #comments-button {
+                width: 50px;
+                height: 50px;
+                bottom: 100px;
+            }
+        }
+        
+        /* Carousel Services Section */
+        .services-carousel-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f4f8 100%);
+            padding: 80px 0;
+            margin-bottom: 60px;
+        }
+        
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            margin-top: 50px;
+        }
+        
+        .services-carousel {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .carousel-service {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+        
+        .service-image-wrapper {
+            position: relative;
+            height: 480px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .service-image-wrapper:hover .service-image {
+            transform: scale(1.05);
+        }
+        
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(41, 182, 246, 0.8) 0%, rgba(211, 47, 47, 0.6) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .service-image-wrapper:hover .service-overlay {
+            opacity: 0.3;
+        }
+        
+        .service-icon {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: var(--hs-blue);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            z-index: 10;
+        }
+        
+        .service-image-wrapper:hover .service-icon {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-content {
+            padding: 20px 0;
+        }
+        
+        .carousel-service h3 {
+            font-size: 2.2rem;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            color: var(--hs-dark);
+            line-height: 1.3;
+        }
+        
+        .service-subtitle {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--hs-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px !important;
+        }
+        
+        .service-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 24px !important;
+        }
+        
+        .carousel-features {
+            list-style: none;
+            margin: 28px 0 !important;
+            padding: 0 !important;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .carousel-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #555;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .carousel-features i {
+            color: var(--hs-red);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        
+        .service-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        
+        .service-actions .btn {
+            flex: 1;
+            padding: 14px 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 2px solid transparent;
+        }
+        
+        .service-actions .btn-primary {
+            background: linear-gradient(135deg, var(--hs-red) 0%, #C41C3B 100%);
+            color: white;
+        }
+        
+        .service-actions .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(211, 47, 47, 0.3);
+        }
+        
+        .service-actions .btn-secondary {
+            background: white;
+            color: var(--hs-red);
+            border: 2px solid var(--hs-red);
+        }
+        
+        .service-actions .btn-secondary:hover {
+            background: var(--hs-red);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .carousel-nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .carousel-btn {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(211, 47, 47, 0.3);
+            border: 2px solid var(--hs-red);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .carousel-btn:hover {
+            background: var(--hs-red);
+            width: 18px;
+            height: 18px;
+        }
+        
+        .carousel-btn.active {
+            background: var(--hs-red);
+            width: 40px;
+            border-radius: 7px;
+        }
+        
+        @media (max-width: 992px) {
+            .carousel-service {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .service-image-wrapper {
+                height: 400px;
+            }
+            
+            .carousel-service h3 {
+                font-size: 1.8rem;
+            }
+            
+            .carousel-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .services-carousel-section {
+                padding: 60px 0;
+            }
+            
+            .carousel-service {
+                padding: 0;
+            }
+            
+            .service-image-wrapper {
+                height: 320px;
+            }
+            
+            .carousel-service h3 {
+                font-size: 1.5rem;
+            }
+            
+            .service-content {
+                padding: 0;
+            }
+            
+            .service-actions {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
         .chat-window {
             position: fixed; bottom: 100px; right: 30px; width: 350px;
             background: #fff; border-radius: 15px;
@@ -254,6 +841,175 @@
 
     <!-- Main Content -->
     <main>
+        <!-- Services Carousel Section -->
+        <section class="services-carousel-section">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 12px; font-weight: 700;">Découvrez Nos Principaux Services</h2>
+                    <p style="color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Explorez nos 4 catégories principales de services professionnels de sous-traitance</p>
+                </div>
+                
+                <!-- Carousel -->
+                <div class="carousel-container">
+                    <div class="services-carousel" id="servicesCarousel">
+                        <!-- Service 1: Habitation -->
+                        <div class="carousel-service">
+                            <div class="service-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Services de ménage résidentiel et garde d'enfants - House Service RDC" class="service-image" loading="lazy">
+                                <div class="service-overlay"></div>
+                                <div class="service-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Services Domestiques</h3>
+                                <p class="service-subtitle">Habitation & Foyer</p>
+                                <p class="service-description">Créez un environnement impeccable et confortable pour votre foyer avec nos services domestiques professionnels et fiables.</p>
+                                <ul class="carousel-features">
+                                    <li><i class="fas fa-check-circle"></i> Ménage résidentiel complet</li>
+                                    <li><i class="fas fa-check-circle"></i> Garde d'enfants qualifiée</li>
+                                    <li><i class="fas fa-check-circle"></i> Blanchisserie & Repassage</li>
+                                    <li><i class="fas fa-check-circle"></i> Entretien extérieur</li>
+                                </ul>
+                                <div class="service-actions">
+                                    <a href="#habitation" class="btn btn-primary" title="Voir les services domestiques détaillés">Voir Détails</a>
+                                    <a href="devis.html" class="btn btn-secondary" title="Demander un devis pour services domestiques">Devis Gratuit</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 2: Entreprise -->
+                        <div class="carousel-service">
+                            <div class="service-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Services professionnels et sécurité pour entreprises - House Service RDC" class="service-image" loading="lazy">
+                                <div class="service-overlay"></div>
+                                <div class="service-icon" style="background: var(--hs-red);">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Services Professionnels</h3>
+                                <p class="service-subtitle">Entreprise & B2B</p>
+                                <p class="service-description">Optimisez vos opérations avec nos services professionnels adaptés aux besoins spécifiques des entreprises modernes.</p>
+                                <ul class="carousel-features">
+                                    <li><i class="fas fa-check-circle"></i> Ménage d'entreprise</li>
+                                    <li><i class="fas fa-check-circle"></i> Sécurité & Gardiennage</li>
+                                    <li><i class="fas fa-check-circle"></i> Accueil & Réception</li>
+                                    <li><i class="fas fa-check-circle"></i> Support administratif</li>
+                                </ul>
+                                <div class="service-actions">
+                                    <a href="#entreprise" class="btn btn-primary" title="Voir les services professionnels détaillés">Voir Détails</a>
+                                    <a href="devis.html" class="btn btn-secondary" title="Demander un devis pour services B2B">Devis Gratuit</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 3: Spécialisé -->
+                        <div class="carousel-service">
+                            <div class="service-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Services spécialisés, event management et consulting - House Service RDC" class="service-image" loading="lazy">
+                                <div class="service-overlay"></div>
+                                <div class="service-icon" style="background: #10B981;">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Services Spécialisés</h3>
+                                <p class="service-subtitle">Hauts de Gamme Premium</p>
+                                <p class="service-description">Bénéficiez de services spécialisés et sur-mesure pour vos besoins les plus exigeants avec expertise reconnue.</p>
+                                <ul class="carousel-features">
+                                    <li><i class="fas fa-check-circle"></i> Event Management</li>
+                                    <li><i class="fas fa-check-circle"></i> Formations professionnelles</li>
+                                    <li><i class="fas fa-check-circle"></i> Recrutement spécialisé</li>
+                                    <li><i class="fas fa-check-circle"></i> Consulting & Conseil</li>
+                                </ul>
+                                <div class="service-actions">
+                                    <a href="#premium" class="btn btn-primary" title="Voir les services spécialisés détaillés">Voir Détails</a>
+                                    <a href="devis.html" class="btn btn-secondary" title="Demander un devis pour services premium">Devis Gratuit</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 4: Combo -->
+                        <div class="carousel-service">
+                            <div class="service-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Packages combinés et solutions sur-mesure - House Service RDC" class="service-image" loading="lazy">
+                                <div class="service-overlay"></div>
+                                <div class="service-icon" style="background: #F59E0B;">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                            </div>
+                            <div class="service-content">
+                                <h3>Packages Complets</h3>
+                                <p class="service-subtitle">Solutions Combinées</p>
+                                <p class="service-description">Combinez plusieurs services pour une solution globale et adaptée à votre situation avec tarifs préférentiels.</p>
+                                <ul class="carousel-features">
+                                    <li><i class="fas fa-check-circle"></i> Forfaits personnalisés</li>
+                                    <li><i class="fas fa-check-circle"></i> Tarifs préférentiels</li>
+                                    <li><i class="fas fa-check-circle"></i> Suivi continu</li>
+                                    <li><i class="fas fa-check-circle"></i> Support dédié 24/7</li>
+                                </ul>
+                                <div class="service-actions">
+                                    <a href="devis.html" class="btn btn-primary" title="Personnaliser votre package de services">Créer Mon Package</a>
+                                    <a href="devis.html" class="btn btn-secondary" title="Demander tarif personnalisé">Devis Gratuit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Carousel -->
+                <div class="carousel-nav">
+                    <button class="carousel-btn active" onclick="goToSlide(0)" aria-label="Service Habitation - Services Domestiques"></button>
+                    <button class="carousel-btn" onclick="goToSlide(1)" aria-label="Service Entreprise - Services Professionnels"></button>
+                    <button class="carousel-btn" onclick="goToSlide(2)" aria-label="Service Spécialisé - Services Premium"></button>
+                    <button class="carousel-btn" onclick="goToSlide(3)" aria-label="Packages Complets - Solutions Combinées"></button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEO Schema Markup for Services -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Services Domestiques",
+              "description": "Ménage résidentiel, garde d'enfants, blanchisserie et entretien extérieur",
+              "url": "https://house-servicerdc.com/pages/en-savoir-plus-services.html#habitation",
+              "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Services Professionnels",
+              "description": "Ménage d'entreprise, sécurité, accueil et support administratif",
+              "url": "https://house-servicerdc.com/pages/en-savoir-plus-services.html#entreprise",
+              "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Services Spécialisés",
+              "description": "Event management, formations, recrutement spécialisé et consulting",
+              "url": "https://house-servicerdc.com/pages/en-savoir-plus-services.html#premium",
+              "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Packages Complets",
+              "description": "Solutions combinées avec forfaits personnalisés et support dédié",
+              "url": "https://house-servicerdc.com/pages/en-savoir-plus-services.html#devis",
+              "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            }
+          ]
+        }
+        </script>
+        
         <!-- Services Domestiques -->
         <section id="habitation" class="section-main">
             <div class="container">
@@ -626,6 +1382,79 @@
         });
     </script>
 
+    <!-- Floating Comments Button -->
+    <button id="comments-button" onclick="openCommentsModal()" aria-label="Laisser un commentaire" title="Laisser un commentaire">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Comments Modal -->
+    <div class="comments-modal" id="commentsModal">
+        <div class="comments-modal-content">
+            <button class="comments-close-btn" onclick="closeCommentsModal()"><i class="fas fa-times"></i></button>
+            
+            <!-- Comments Form -->
+            <div id="commentFormServices">
+                <div class="comments-modal-header">
+                    <h2><i class="fas fa-star" style="margin-right: 10px; color: var(--hs-red);"></i>Vos Commentaires</h2>
+                </div>
+
+                <form id="commentForm" onsubmit="submitCommentForm(event)">
+                    <!-- Star Rating -->
+                    <div class="comments-form-group">
+                        <label>Note (0-5 stars)</label>
+                        <div class="star-rating" id="starRating" style="display: flex; gap: 12px; margin-top: 8px;">
+                            <i class="far fa-star" onclick="setRating(this, 1)" data-rating="1" style="font-size: 1.5rem; color: #FBC02D; cursor: pointer;"></i>
+                            <i class="far fa-star" onclick="setRating(this, 2)" data-rating="2" style="font-size: 1.5rem; color: #FBC02D; cursor: pointer;"></i>
+                            <i class="far fa-star" onclick="setRating(this, 3)" data-rating="3" style="font-size: 1.5rem; color: #FBC02D; cursor: pointer;"></i>
+                            <i class="far fa-star" onclick="setRating(this, 4)" data-rating="4" style="font-size: 1.5rem; color: #FBC02D; cursor: pointer;"></i>
+                            <i class="far fa-star" onclick="setRating(this, 5)" data-rating="5" style="font-size: 1.5rem; color: #FBC02D; cursor: pointer;"></i>
+                        </div>
+                        <input type="hidden" id="commentRating" name="rating" value="0">
+                    </div>
+
+                    <!-- Service Selection -->
+                    <div class="comments-form-group">
+                        <label for="serviceSelect">Service concerné*</label>
+                        <select id="serviceSelect" name="service" required>
+                            <option value="">Sélectionnez un service...</option>
+                            <option value="Habitation">Habitation (Services Domestiques)</option>
+                            <option value="Entreprise">Entreprise (Services Professionnels)</option>
+                            <option value="Specialise">Spécialisé (Services Hauts de Gamme)</option>
+                            <option value="Packages">Packages Complets</option>
+                        </select>
+                    </div>
+
+                    <!-- Name -->
+                    <div class="comments-form-group">
+                        <label for="commentName">Nom*</label>
+                        <input type="text" id="commentName" name="name" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="comments-form-group">
+                        <label for="commentEmail">Email*</label>
+                        <input type="email" id="commentEmail" name="email" required>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="comments-form-group">
+                        <label for="commentText">Votre commentaire*</label>
+                        <textarea id="commentText" name="message" rows="4" required placeholder="Partagez votre expérience..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Envoyer</button>
+                </form>
+            </div>
+
+            <!-- Success Message -->
+            <div id="commentSuccess" style="display: none; text-align: center; padding: 40px 20px;">
+                <i class="fas fa-check-circle" style="font-size: 3rem; color: #4CAF50; margin-bottom: 16px;"></i>
+                <h3 style="color: var(--hs-dark); margin-bottom: 8px;">Merci !</h3>
+                <p style="color: #5F6368;">Votre commentaire a été envoyé avec succès.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Chatbot Floating Button & Window -->
     <button id="chatbot-toggler" onclick="toggleChat()" aria-label="Ouvrir le chatbot">
         <i class="fas fa-robot" style="font-size: 1.5rem;"></i>
@@ -648,5 +1477,167 @@
 
     <!-- Chatbot AI — Gemini -->
     <script src="../js/chatbot.js"></script>
+
+    <!-- Services Carousel Script -->
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 4;
+        let autoRotateInterval;
+
+        function showSlide(n) {
+            const carousel = document.getElementById('servicesCarousel');
+            if (carousel) {
+                carousel.style.transform = `translateX(-${n * 100}%)`;
+                
+                // Update active button
+                const buttons = document.querySelectorAll('.carousel-btn');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                buttons[n].classList.add('active');
+            }
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            showSlide(currentSlide);
+            // Restart auto-rotation when user clicks
+            clearInterval(autoRotateInterval);
+            startAutoRotate();
+        }
+
+        function startAutoRotate() {
+            autoRotateInterval = setInterval(() => {
+                nextSlide();
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        // Initialize carousel on load
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlide(0);
+            startAutoRotate();
+            
+            // Pause on hover
+            const carousel = document.getElementById('servicesCarousel');
+            if (carousel) {
+                carousel.parentElement.addEventListener('mouseenter', () => {
+                    clearInterval(autoRotateInterval);
+                });
+                carousel.parentElement.addEventListener('mouseleave', () => {
+                    startAutoRotate();
+                });
+            }
+        });
+    </script>
+
+    <!-- Comments Modal Script -->
+    <script>
+        function openCommentsModal() {
+            const modal = document.getElementById('commentsModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCommentsModal() {
+            const modal = document.getElementById('commentsModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function setRating(element, rating) {
+            const stars = document.querySelectorAll('.star-rating i');
+            document.getElementById('commentRating').value = rating;
+            
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('far');
+                    star.classList.add('fas');
+                } else {
+                    star.classList.remove('fas');
+                    star.classList.add('far');
+                }
+            });
+        }
+
+        function submitCommentForm(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('commentName').value;
+            const email = document.getElementById('commentEmail').value;
+            const rating = document.getElementById('commentRating').value;
+            const service = document.getElementById('serviceSelect').value;
+            const message = document.getElementById('commentText').value;
+
+            // Submit to Web3Forms
+            const formData = new FormData();
+            formData.append('access_key', '671f2ae1-9b9d-41ec-a26a-c088c4712aaa');
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('rating', rating);
+            formData.append('service', service);
+            formData.append('message', message);
+            formData.append('subject', 'Nouveau commentaire sur Services');
+            formData.append('from_name', 'House Service - Commentaires'); 
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    document.getElementById('commentFormServices').style.display = 'none';
+                    document.getElementById('commentSuccess').style.display = 'block';
+                    
+                    // Reset form and close after delay
+                    setTimeout(() => {
+                        document.getElementById('commentForm').reset();
+                        document.getElementById('commentRating').value = '0';
+                        document.querySelectorAll('.star-rating i').forEach(star => {
+                            star.classList.remove('fas');
+                            star.classList.add('far');
+                        });
+                        document.getElementById('commentFormServices').style.display = 'block';
+                        document.getElementById('commentSuccess').style.display = 'none';
+                        closeCommentsModal();
+                    }, 2000);
+                } else {
+                    alert('Erreur lors de l\'envoi du commentaire. Veuillez réessayer.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Une erreur est survenue. Veuillez réessayer.');
+            });
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('commentsModal');
+            if (event.target === modal) {
+                closeCommentsModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeCommentsModal();
+            }
+        });
+    </script>
 </body>
 </html>
