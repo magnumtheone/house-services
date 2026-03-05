@@ -282,6 +282,11 @@
             color: #B8860B;
         }
 
+        .category-label.specialise {
+            background: rgba(46, 125, 50, 0.1);
+            color: #2E7D32;
+        }
+
         /* Submit Button */
         .form-submit {
             margin-top: 40px;
@@ -642,6 +647,17 @@
                                 <label class="service-checkbox">
                                     <input type="checkbox" name="services[]" value="maintenance">
                                     <span>Maintenance technique</span>
+                                </label>
+                            </div>
+
+                            <!-- Spécialisé -->
+                            <div class="category-label specialise">
+                                <i class="fas fa-droplet-slash"></i> Spécialisé
+                            </div>
+                            <div class="services-grid" style="margin-bottom: 24px;">
+                                <label class="service-checkbox">
+                                    <input type="checkbox" name="services[]" value="vidange">
+                                    <span id="vidange">Vidange & Assainissement</span>
                                 </label>
                             </div>
                         </div>
