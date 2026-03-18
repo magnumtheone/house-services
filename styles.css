@@ -371,6 +371,74 @@ header {
     width: 100%;
 }
 
+/*header import*/
+header-import {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hs-gray-border);
+    z-index: 1000;
+    padding: var(--spacing-md) 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.logo {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: var(--hs-red);
+}
+
+.nav-menu {
+    display: flex;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    position: relative;
+    padding: var(--spacing-sm) 0;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--hs-red);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--hs-red);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+/*-fin-*/
+
 /* ============================================
    DROPDOWN MENU - Style Google
    ============================================ */
