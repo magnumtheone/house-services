@@ -372,6 +372,340 @@
             #chatbot-toggler { width: 50px; height: 50px; bottom: 20px; right: 20px; }
         }
     </style>
+
+      <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #facc15;
+      --accent-dark: #eab308;
+      --white: #ffffff;
+      --text: #1f2937;
+      --muted: #64748b;
+      --bg: #f8fafc;
+      --success: #16a34a;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .recruitment-section {
+      padding: 70px 20px;
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)),
+        url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+    }
+
+    .recruitment-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .recruitment-content {
+      color: var(--white);
+      animation: fadeUp 0.8s ease;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #111827;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 0.4px;
+    }
+
+    .recruitment-content h2 {
+      font-size: 2.6rem;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .recruitment-content h2 span {
+      color: var(--accent);
+    }
+
+    .recruitment-content p {
+      font-size: 1.05rem;
+      color: #e2e8f0;
+      margin-bottom: 18px;
+      max-width: 650px;
+    }
+
+    .highlight-line {
+      display: inline-block;
+      background: rgba(250, 204, 21, 0.14);
+      border-left: 4px solid var(--accent);
+      color: #fef08a;
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin: 10px 0 24px;
+      font-weight: 700;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(180px, 1fr));
+      gap: 14px;
+      margin: 25px 0 30px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 18px;
+      border-radius: 14px;
+      backdrop-filter: blur(6px);
+      transition: 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .feature-card h4 {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #e5e7eb;
+      margin: 0;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #111827;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .recruitment-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      animation: fadeUp 1s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .recruitment-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, var(--accent), #38bdf8);
+    }
+
+    .recruitment-card h3 {
+      font-size: 1.55rem;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .info-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .info-item strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+
+    .info-item span {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .conditions-box {
+      background: #fffbea;
+      border: 1px solid #fde68a;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 22px;
+    }
+
+    .conditions-box h4 {
+      margin-bottom: 10px;
+      color: #92400e;
+      font-size: 1.05rem;
+    }
+
+    .conditions-box ul {
+      padding-left: 18px;
+    }
+
+    .conditions-box li {
+      margin-bottom: 8px;
+      color: #78350f;
+      font-size: 0.96rem;
+    }
+
+    .countdown-box {
+      background: var(--secondary);
+      color: var(--white);
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .countdown-box h4 {
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .countdown div {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 12px 8px;
+      border-radius: 12px;
+    }
+
+    .countdown span {
+      display: block;
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    .countdown small {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+    }
+
+    .pulse {
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 16px rgba(250, 204, 21, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .recruitment-container {
+        grid-template-columns: 1fr;
+      }
+
+      .recruitment-content h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .recruitment-section {
+        padding: 50px 15px;
+      }
+
+      .recruitment-content h2 {
+        font-size: 1.75rem;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -576,6 +910,130 @@
                 </div>
             </div>
         </section>
+
+          <section class="recruitment-section" id="recrutement">
+    <div class="recruitment-container">
+
+      <div class="recruitment-content">
+        <span class="badge">RECRUTEMENT OUVERT À KISANGANI</span>
+
+        <h2>
+          Rejoignez <span>House Service</span> comme assistant(e) de ménage
+        </h2>
+
+        <p>
+          House Service S.A.S lance une campagne de recrutement pour les assistantes et assistants
+          de ménage à Kisangani, avec affectation dans différents ménages et structures partenaires.
+        </p>
+
+        <div class="highlight-line">
+          Formation professionnelle gratuite avant mise en fonction.
+        </div>
+
+        <div class="features">
+          <div class="feature-card">
+            <h4>Formation gratuite</h4>
+            <p>Un accompagnement professionnel avant votre prise de poste.</p>
+          </div>
+
+          <div class="feature-card">
+            <h4>Emploi sérieux</h4>
+            <p>Une opportunité concrète dans des ménages et structures partenaires.</p>
+          </div>
+
+          <div class="feature-card">
+            <h4>Encadrement humain</h4>
+            <p>Une sélection rigoureuse et un cadre de travail plus professionnel.</p>
+          </div>
+
+          <div class="feature-card">
+            <h4>Postulez vite</h4>
+            <p>Les candidatures sont reçues dès maintenant au bureau de Kisangani.</p>
+          </div>
+        </div>
+
+        <div class="cta-group">
+          <a
+            class="btn btn-primary pulse"
+            href="https://wa.me/243840665620?text=Bonjour%20House%20Service,%20je%20souhaite%20postuler%20pour%20le%20recrutement%20des%20agents%20de%20ménage."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Postuler sur WhatsApp
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="tel:+243840665620"
+          >
+            Appeler maintenant
+          </a>
+        </div>
+      </div>
+
+      <div class="recruitment-card">
+        <h3>Détails de l’annonce</h3>
+
+        <div class="info-list">
+          <div class="info-item">
+            <strong>Poste recherché</strong>
+            <span>Assistantes et Assistants de ménage</span>
+          </div>
+
+          <div class="info-item">
+            <strong>Lieu</strong>
+            <span>Kisangani</span>
+          </div>
+
+          <div class="info-item">
+            <strong>Date de début de formation</strong>
+            <span>Lundi 30 mars 2026 de 14h30 à 17h00</span>
+          </div>
+
+          <div class="info-item">
+            <strong>Adresse de dépôt</strong>
+            <span>
+              Bureau House Service, Quartier Plateau Médical, Bloc Météo,
+              en parallèle de l’Aéroport de SIMI-SIMI, avant l’église « Viens et Vois ».
+            </span>
+          </div>
+        </div>
+
+        <div class="conditions-box">
+          <h4>Conditions de candidature</h4>
+          <ul>
+            <li>Être âgé(e) de 30 à 45 ans</li>
+            <li>Être de sexe masculin ou féminin</li>
+            <li>Justifier d’une expérience dans les travaux de ménage</li>
+            <li>Être apte physiquement à exécuter les tâches ménagères</li>
+          </ul>
+        </div>
+
+        <div class="countdown-box">
+          <h4>Temps restant avant le début de la formation</h4>
+          <div class="countdown" id="countdown">
+            <div>
+              <span id="days">00</span>
+              <small>Jours</small>
+            </div>
+            <div>
+              <span id="hours">00</span>
+              <small>Heures</small>
+            </div>
+            <div>
+              <span id="minutes">00</span>
+              <small>Minutes</small>
+            </div>
+            <div>
+              <span id="seconds">00</span>
+              <small>Secondes</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
         <!-- Formulaire de Candidature -->
         <section class="section-main" style="background: var(--bg-secondary);">
@@ -1001,5 +1459,39 @@
             }
         });
     </script>
+      <script>
+    const targetDate = new Date("2026-03-30T14:30:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+
+      if (diff <= 0) {
+        daysEl.textContent = "00";
+        hoursEl.textContent = "00";
+        minutesEl.textContent = "00";
+        secondsEl.textContent = "00";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      daysEl.textContent = String(days).padStart(2, "0");
+      hoursEl.textContent = String(hours).padStart(2, "0");
+      minutesEl.textContent = String(minutes).padStart(2, "0");
+      secondsEl.textContent = String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
