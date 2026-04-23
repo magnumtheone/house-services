@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page non trouvée | House Service</title>
+    <meta name="description" content="La page que vous recherchez n'existe pas. Retournez à l'accueil de House Service.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/favicon.ico">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fef2f2',
+                            600: '#dc2626',
+                            900: '#7f1d1d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .text-gradient { 
+            background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+    </style>
+</head>
+<body class="font-sans bg-white antialiased">
+
+    <!-- Header importée -->
+    <header class="header-import">
+        <div class="container nav-inner">
+            <a href="/index.html" class="logo">HOUSE <span>SERVICE S.A.S</span></a>
+            <div class="nav-overlay" id="navOverlay"></div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="/index.html" class="nav-link">Accueil</a>
+                <a href="/index.html#services" class="nav-link">Services</a>
+                <a href="/index.html#blog" class="nav-link">Blog</a>
+                <a href="/index.html#section-py" class="nav-link">Contact</a>
+                <a href="/pages/devis.html" class="btn btn-sm btn-primary">Devis</a>
+            </nav>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="max-w-2xl w-full text-center">
+            <!-- Error Code -->
+            <div class="mb-8">
+                <h1 class="text-9xl md:text-[150px] font-heading font-extrabold text-brand-600">404</h1>
+            </div>
+
+            <!-- Error Message -->
+            <div class="mb-8">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 mb-4">
+                    Oups ! Page non trouvée
+                </h2>
+                <p class="text-xl text-gray-600 mb-6">
+                    La page que vous recherchez n'existe pas ou a été déplacée. Ne vous inquiétez pas, nous sommes là pour vous aider.
+                </p>
+            </div>
+
+            <!-- Error Icon -->
+            <div class="mb-12">
+                <div class="inline-flex items-center justify-center w-24 h-24 bg-brand-50 rounded-full">
+                    <i class="fas fa-search text-brand-600 text-4xl"></i>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <a href="/index.html" class="inline-flex items-center justify-center px-8 py-3 bg-brand-600 text-white font-bold rounded-full hover:bg-brand-900 transition-colors">
+                    <i class="fas fa-home mr-2"></i>
+                    Retour à l'accueil
+                </a>
+                <a href="/index.html#blog" class="inline-flex items-center justify-center px-8 py-3 border-2 border-brand-600 text-brand-600 font-bold rounded-full hover:bg-brand-50 transition-colors">
+                    <i class="fas fa-newspaper mr-2"></i>
+                    Consulter le blog
+                </a>
+            </div>
+
+            <!-- Helpful Links -->
+            <div class="bg-brand-50 p-8 rounded-2xl border border-brand-100">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Pages utiles :</h3>
+                <ul class="space-y-2 text-left">
+                    <li><a href="/index.html#services" class="text-brand-600 hover:text-brand-900 font-semibold">Nos services</a></li>
+                    <li><a href="/pages/devis.html" class="text-brand-600 hover:text-brand-900 font-semibold">Demander un devis</a></li>
+                    <li><a href="/index.html#section-py" class="text-brand-600 hover:text-brand-900 font-semibold">Nous contacter</a></li>
+                    <li><a href="/pages/nos-villes.html" class="text-brand-600 hover:text-brand-900 font-semibold">Nos villes</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="bg-gray-50 py-12 mt-20 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400 text-sm">&copy; 2026 <a href="/index.html" class="text-gray-400 hover:text-brand-600">House Service RDC</a>. Expertise by Théophile Mutatay.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                navOverlay.classList.toggle('active');
+                this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
+            });
+
+            navOverlay.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                navOverlay.classList.remove('active');
+                hamburgerBtn.setAttribute('aria-expanded', 'false');
+            });
+        }
+    </script>
+</body>
+</html>
