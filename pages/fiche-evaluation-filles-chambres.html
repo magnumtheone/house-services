@@ -27,38 +27,7 @@
     </script>
     <style>
         @media print{.no-print{display:none}}
-        
-        /* Mobile responsiveness improvements */
-        @media (max-width: 640px) {
-            main { padding: 12px 8px; }
-            article { padding: 16px 12px; border-radius: 12px; }
-            h1 { font-size: 1.5rem !important; }
-            h2 { font-size: 1.1rem !important; margin-top: 1.5rem !important; margin-bottom: 0.75rem !important; }
-            h3 { font-size: 1rem !important; }
-            
-            /* Table improvements */
-            table { font-size: 0.8rem; }
-            th, td { padding: 6px 4px !important; }
-            
-            /* Form inputs */
-            input[type="text"],
-            input[type="date"],
-            textarea { font-size: 16px; padding: 10px !important; }
-            
-            /* Buttons */
-            .btn { font-size: 0.9rem; padding: 10px 16px !important; }
-            
-            /* Flex buttons should stack */
-            .flex.gap-3 { flex-direction: column; }
-            .flex.gap-4 { flex-wrap: wrap; }
-        }
-        
-        @media (max-width: 480px) {
-            article { padding: 12px 8px; }
-            h1 { font-size: 1.25rem !important; }
-            table { font-size: 0.75rem; }
-            th, td { padding: 4px 2px !important; }
-        }
+        @media (max-width: 640px) { main { padding: 12px 8px; } article { padding: 16px 12px; border-radius: 12px; } h1 { font-size: 1.5rem !important; } }
     </style>
 </head>
 <body class="font-sans bg-white antialiased">
@@ -77,24 +46,21 @@
     <main class="max-w-4xl mx-auto px-4 py-16">
         <article class="prose max-w-none bg-white p-6 sm:p-8 rounded-lg sm:rounded-2xl shadow-sm sm:shadow-md">
             <h1 class="text-xl sm:text-2xl md:text-3xl font-heading font-extrabold text-gray-900 text-center">FICHE D'APPRÉCIATION DE LA QUALITÉ DE SERVICE</h1>
-            <p class="text-center text-sm font-semibold text-brand-600 mt-2">Service Restaurant – Bar </p>
+            <p class="text-center text-sm font-semibold text-brand-600 mt-2">Service Filles de chambres</p>
 
-            <p class="mt-6">Cher(e) Client(e),<br>Nous vous remercions de bien vouloir évaluer la qualité du service offert par notre personnel du restaurant et du bar. Vos remarques contribuent à l’amélioration de nos prestations.</p>
+            <p class="mt-6">Cher(e) Client(e),<br>Nous vous remercions de bien vouloir évaluer la qualité du service offert par notre personnel d'entretien. Vos remarques contribuent à l’amélioration de nos prestations.</p>
 
             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6">
                 <label class="flex-1 min-w-0"><span class="font-medium text-sm sm:text-base">Nom / Prénom</span><br><input class="mt-1 w-full border rounded-full px-3 sm:px-4 py-2 text-sm sm:text-base" type="text" name="client_name" placeholder="(optionnel)"></label>
                 <label class="sm:flex-none"><span class="font-medium text-sm sm:text-base">Date</span><br><input class="mt-1 w-full sm:w-44 border rounded-full px-3 sm:px-4 py-2 text-sm sm:text-base" type="date" name="date"></label>
-                <label class="sm:flex-none"><span class="font-medium text-sm sm:text-base">Réf / N° table</span><br><input class="mt-1 w-full sm:w-44 border rounded-full px-3 sm:px-4 py-2 text-sm sm:text-base" type="text" name="table_number" placeholder="(optionnel)"></label>
+                <label class="sm:flex-none"><span class="font-medium text-sm sm:text-base">Réf / N° chambre</span><br><input class="mt-1 w-full sm:w-44 border rounded-full px-3 sm:px-4 py-2 text-sm sm:text-base" type="text" name="room_number" placeholder="(optionnel)"></label>
             </div>
 
             <h2 class="mt-8 sm:mt-8 text-lg font-bold">Barème d'évaluation</h2>
             <div class="overflow-x-auto mt-2 -mx-4 sm:mx-0 px-4 sm:px-0">
                 <table class="w-full text-sm border-collapse">
                     <thead>
-                        <tr class="bg-gray-50">
-                            <th class="p-3 text-left">Note</th>
-                            <th class="p-3 text-left">Signification</th>
-                        </tr>
+                        <tr class="bg-gray-50"><th class="p-3 text-left">Note</th><th class="p-3 text-left">Signification</th></tr>
                     </thead>
                     <tbody>
                         <tr class="border-t"><td class="p-3">1</td><td class="p-3">Insuffisant</td></tr>
@@ -120,61 +86,54 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y">
-                        <tr><td class="p-3">Accueil et disponibilité du personnel</td>
+                        <tr><td class="p-3">Accueil et disponibilité</td>
                             <td class="p-3 text-center"><input type="radio" name="accueil" value="1"></td>
                             <td class="p-3 text-center"><input type="radio" name="accueil" value="2"></td>
                             <td class="p-3 text-center"><input type="radio" name="accueil" value="3"></td>
                             <td class="p-3 text-center"><input type="radio" name="accueil" value="4"></td>
                             <td class="p-3 text-center"><input type="radio" name="accueil" value="5"></td>
                         </tr>
-                        <tr><td class="p-3">Présentation et tenue de l’agent</td>
+                        <tr><td class="p-3">Présentation et tenue</td>
                             <td class="p-3 text-center"><input type="radio" name="tenue" value="1"></td>
                             <td class="p-3 text-center"><input type="radio" name="tenue" value="2"></td>
                             <td class="p-3 text-center"><input type="radio" name="tenue" value="3"></td>
                             <td class="p-3 text-center"><input type="radio" name="tenue" value="4"></td>
                             <td class="p-3 text-center"><input type="radio" name="tenue" value="5"></td>
                         </tr>
-                        <tr><td class="p-3">Rapidité de prise de commande</td>
-                            <td class="p-3 text-center"><input type="radio" name="prise_commande" value="1"></td>
-                            <td class="p-3 text-center"><input type="radio" name="prise_commande" value="2"></td>
-                            <td class="p-3 text-center"><input type="radio" name="prise_commande" value="3"></td>
-                            <td class="p-3 text-center"><input type="radio" name="prise_commande" value="4"></td>
-                            <td class="p-3 text-center"><input type="radio" name="prise_commande" value="5"></td>
+                        <tr><td class="p-3">Ponctualité</td>
+                            <td class="p-3 text-center"><input type="radio" name="ponctualite" value="1"></td>
+                            <td class="p-3 text-center"><input type="radio" name="ponctualite" value="2"></td>
+                            <td class="p-3 text-center"><input type="radio" name="ponctualite" value="3"></td>
+                            <td class="p-3 text-center"><input type="radio" name="ponctualite" value="4"></td>
+                            <td class="p-3 text-center"><input type="radio" name="ponctualite" value="5"></td>
                         </tr>
-                        <tr><td class="p-3">Rapidité du service</td>
-                            <td class="p-3 text-center"><input type="radio" name="rapidite_service" value="1"></td>
-                            <td class="p-3 text-center"><input type="radio" name="rapidite_service" value="2"></td>
-                            <td class="p-3 text-center"><input type="radio" name="rapidite_service" value="3"></td>
-                            <td class="p-3 text-center"><input type="radio" name="rapidite_service" value="4"></td>
-                            <td class="p-3 text-center"><input type="radio" name="rapidite_service" value="5"></td>
+                        <tr><td class="p-3">Qualité du ménage</td>
+                            <td class="p-3 text-center"><input type="radio" name="qualite_menage" value="1"></td>
+                            <td class="p-3 text-center"><input type="radio" name="qualite_menage" value="2"></td>
+                            <td class="p-3 text-center"><input type="radio" name="qualite_menage" value="3"></td>
+                            <td class="p-3 text-center"><input type="radio" name="qualite_menage" value="4"></td>
+                            <td class="p-3 text-center"><input type="radio" name="qualite_menage" value="5"></td>
                         </tr>
-                        <tr><td class="p-3">Courtoisie et respect envers les clients</td>
-                            <td class="p-3 text-center"><input type="radio" name="courtoisie" value="1"></td>
-                            <td class="p-3 text-center"><input type="radio" name="courtoisie" value="2"></td>
-                            <td class="p-3 text-center"><input type="radio" name="courtoisie" value="3"></td>
-                            <td class="p-3 text-center"><input type="radio" name="courtoisie" value="4"></td>
-                            <td class="p-3 text-center"><input type="radio" name="courtoisie" value="5"></td>
+                        <tr><td class="p-3">Respect des consignes</td>
+                            <td class="p-3 text-center"><input type="radio" name="respect_consigne" value="1"></td>
+                            <td class="p-3 text-center"><input type="radio" name="respect_consigne" value="2"></td>
+                            <td class="p-3 text-center"><input type="radio" name="respect_consigne" value="3"></td>
+                            <td class="p-3 text-center"><input type="radio" name="respect_consigne" value="4"></td>
+                            <td class="p-3 text-center"><input type="radio" name="respect_consigne" value="5"></td>
                         </tr>
-                        <tr><td class="p-3">Maîtrise du menu et conseils donnés</td>
-                            <td class="p-3 text-center"><input type="radio" name="maitrise_menu" value="1"></td>
-                            <td class="p-3 text-center"><input type="radio" name="maitrise_menu" value="2"></td>
-                            <td class="p-3 text-center"><input type="radio" name="maitrise_menu" value="3"></td>
-                            <td class="p-3 text-center"><input type="radio" name="maitrise_menu" value="4"></td>
-                            <td class="p-3 text-center"><input type="radio" name="maitrise_menu" value="5"></td>
+                        <tr><td class="p-3">Discrétion</td>
+                            <td class="p-3 text-center"><input type="radio" name="discretion" value="1"></td>
+                            <td class="p-3 text-center"><input type="radio" name="discretion" value="2"></td>
+                            <td class="p-3 text-center"><input type="radio" name="discretion" value="3"></td>
+                            <td class="p-3 text-center"><input type="radio" name="discretion" value="4"></td>
+                            <td class="p-3 text-center"><input type="radio" name="discretion" value="5"></td>
                         </tr>
-                        <tr><td class="p-3">Propreté des tables et du cadre</td>
-                            <td class="p-3 text-center"><input type="radio" name="proprete" value="1"></td>
-                            <td class="p-3 text-center"><input type="radio" name="proprete" value="2"></td>
-                            <td class="p-3 text-center"><input type="radio" name="proprete" value="3"></td>
-                            <td class="p-3 text-center"><input type="radio" name="proprete" value="4"></td>
-                            <td class="p-3 text-center"><input type="radio" name="proprete" value="5"></td>
-                        </tr>
-                        <tr><td class="p-3">Qualité des mets et boissons servis</td>
-                            <td class="p-3 text-center"><input type="radio" name="qualite_met" value="1"></td>
-                            <td class="p-3 text-center"><input type="radio" name="qualite_met" value="2"></td>
-                            <td class="p-3 text-center"><input type="radio" name="qualite_met" value="3"></td>
-                            <td class="p-3 text-center"><input type="radio" name="qualite_met" value="4"></td>
-                            <td class="p-3 text-center"><input type="radio" name="qualite_met" value="5"></td>
+                        <tr><td class="p-3">Respect des biens du client</td>
+                            <td class="p-3 text-center"><input type="radio" name="respect_biens" value="1"></td>
+                            <td class="p-3 text-center"><input type="radio" name="respect_biens" value="2"></td>
+                            <td class="p-3 text-center"><input type="radio" name="respect_biens" value="3"></td>
+                            <td class="p-3 text-center"><input type="radio" name="respect_biens" value="4"></td>
+                            <td class="p-3 text-center"><input type="radio" name="respect_biens" value="5"></td>
                         </tr>
                         <tr><td class="p-3">Gestion des réclamations</td>
                             <td class="p-3 text-center"><input type="radio" name="reclamations" value="1"></td>
@@ -223,9 +182,7 @@
     </footer>
 
     <script>
-        // Configuration: mettez votre clé Web3Forms ici
         const WEB3FORMS_ACCESS_KEY = '671f2ae1-9b9d-41ec-a26a-c088c4712aaa';
-        // Optionnel: URL d'un endpoint HTTP (Power Automate / Zapier / Make) pour écrire directement dans Excel
         const OPTIONAL_WEBHOOK = '';
 
         const form = document.getElementById('feedbackForm');
@@ -235,9 +192,9 @@
             const data = {};
             data.client_name = document.querySelector('input[name="client_name"]').value || '';
             data.date = document.querySelector('input[name="date"]').value || '';
-            data.table_number = document.querySelector('input[name="table_number"]').value || '';
+            data.room_number = document.querySelector('input[name="room_number"]').value || '';
 
-            const fields = ['accueil','tenue','prise_commande','rapidite_service','courtoisie','maitrise_menu','proprete','qualite_met','reclamations','satisfaction'];
+            const fields = ['accueil','tenue','ponctualite','qualite_menage','respect_consigne','discretion','respect_biens','reclamations','satisfaction'];
             fields.forEach(name => {
                 const el = document.querySelector(`input[name="${name}"]:checked`);
                 data[name] = el ? el.value : '';
@@ -252,7 +209,7 @@
         async function postToWeb3Forms(formDataObj) {
             const fd = new FormData();
             fd.append('access_key', WEB3FORMS_ACCESS_KEY);
-            fd.append('subject', 'Fiche appréciation service restaurant');
+            fd.append('subject', 'Fiche appréciation service filles de chambres');
             fd.append('from_name', formDataObj.client_name || 'Invité');
             Object.keys(formDataObj).forEach(k => fd.append(k, formDataObj[k]));
 
@@ -276,9 +233,7 @@
             try {
                 const w3 = await postToWeb3Forms(data);
                 if (w3.success) {
-                    // Optionnel: envoyer aussi vers votre webhook pour alimenter Excel via Power Automate/Zapier
                     await postToWebhook(data);
-
                     const thanks = document.createElement('div');
                     thanks.className = 'mt-6 p-6 bg-green-50 border border-green-100 rounded-lg text-green-800';
                     thanks.innerHTML = '<strong>Merci !</strong> Votre appréciation a bien été envoyée.';
