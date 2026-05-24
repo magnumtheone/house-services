@@ -27,6 +27,38 @@
     </script>
     <style>
         @media print{.no-print{display:none}}
+        
+        /* Mobile responsiveness improvements */
+        @media (max-width: 640px) {
+            main { padding: 12px 8px; }
+            article { padding: 16px 12px; border-radius: 12px; }
+            h1 { font-size: 1.5rem !important; }
+            h2 { font-size: 1.1rem !important; margin-top: 1.5rem !important; margin-bottom: 0.75rem !important; }
+            h3 { font-size: 1rem !important; }
+            
+            /* Table improvements */
+            table { font-size: 0.8rem; }
+            th, td { padding: 6px 4px !important; }
+            
+            /* Form inputs */
+            input[type="text"],
+            input[type="date"],
+            textarea { font-size: 16px; padding: 10px !important; }
+            
+            /* Buttons */
+            .btn { font-size: 0.9rem; padding: 10px 16px !important; }
+            
+            /* Flex buttons should stack */
+            .flex.gap-3 { flex-direction: column; }
+            .flex.gap-4 { flex-wrap: wrap; }
+        }
+        
+        @media (max-width: 480px) {
+            article { padding: 12px 8px; }
+            h1 { font-size: 1.25rem !important; }
+            table { font-size: 0.75rem; }
+            th, td { padding: 4px 2px !important; }
+        }
     </style>
 </head>
 <body class="font-sans bg-white antialiased">
@@ -43,20 +75,20 @@
     </header>
 
     <main class="max-w-4xl mx-auto px-4 py-16">
-        <article class="prose max-w-none bg-white p-8 rounded-2xl shadow-md">
-            <h1 class="text-2xl md:text-3xl font-heading font-extrabold text-gray-900 text-center">FICHE D’APPRÉCIATION DE LA QUALITÉ DE SERVICE</h1>
+        <article class="prose max-w-none bg-white p-6 sm:p-8 rounded-lg sm:rounded-2xl shadow-sm sm:shadow-md">
+            <h1 class="text-xl sm:text-2xl md:text-3xl font-heading font-extrabold text-gray-900 text-center">FICHE D'APPRÉCIATION DE LA QUALITÉ DE SERVICE</h1>
             <p class="text-center text-sm font-semibold text-brand-600 mt-2">Service Restaurant – Bar — HOTEL DISSA</p>
 
             <p class="mt-6">Cher(e) Client(e),<br>Nous vous remercions de bien vouloir évaluer la qualité du service offert par notre personnel du restaurant et du bar. Vos remarques contribuent à l’amélioration de nos prestations.</p>
 
-            <div class="flex flex-col sm:flex-row gap-4 mt-6">
-                <label class="flex-1"><span class="font-medium">Nom / Prénom</span><br><input class="mt-1 w-full border rounded-full px-4 py-2" type="text" name="client_name" placeholder="(optionnel)"></label>
-                <label><span class="font-medium">Date</span><br><input class="mt-1 w-44 border rounded-full px-4 py-2" type="date" name="date"></label>
-                <label><span class="font-medium">Réf / N° table</span><br><input class="mt-1 w-44 border rounded-full px-4 py-2" type="text" name="table_number" placeholder="(optionnel)"></label>
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6">
+                <label class="flex-1 min-w-0"><span class="font-medium text-sm sm:text-base">Nom / Prénom</span><br><input class="mt-1 w-full border rounded-full px-3 sm:px-4 py-2 text-sm sm:text-base" type="text" name="client_name" placeholder="(optionnel)"></label>
+                <label class="sm:flex-none"><span class="font-medium text-sm sm:text-base">Date</span><br><input class="mt-1 w-full sm:w-44 border rounded-full px-3 sm:px-4 py-2 text-sm sm:text-base" type="date" name="date"></label>
+                <label class="sm:flex-none"><span class="font-medium text-sm sm:text-base">Réf / N° table</span><br><input class="mt-1 w-full sm:w-44 border rounded-full px-3 sm:px-4 py-2 text-sm sm:text-base" type="text" name="table_number" placeholder="(optionnel)"></label>
             </div>
 
-            <h2 class="mt-8 text-lg font-bold">Barème d’évaluation</h2>
-            <div class="overflow-x-auto mt-2">
+            <h2 class="mt-8 sm:mt-8 text-lg font-bold">Barème d'évaluation</h2>
+            <div class="overflow-x-auto mt-2 -mx-4 sm:mx-0 px-4 sm:px-0">
                 <table class="w-full text-sm border-collapse">
                     <thead>
                         <tr class="bg-gray-50">
@@ -75,7 +107,7 @@
             </div>
 
             <h2 class="mt-8 text-lg font-bold">Critères d’évaluation</h2>
-            <div class="overflow-x-auto mt-2">
+            <div class="overflow-x-auto mt-2 -mx-4 sm:mx-0 px-4 sm:px-0">
                 <table class="w-full text-sm border-collapse">
                     <thead>
                         <tr class="bg-gray-50">
@@ -162,25 +194,25 @@
                 </table>
             </div>
 
-            <div class="mt-8">
-                <h3 class="font-bold">Commentaires et suggestions</h3>
-                <textarea class="w-full mt-2 p-4 border rounded-lg" placeholder="Écrivez ici vos remarques et suggestions..."></textarea>
+            <div class="mt-6 sm:mt-8">
+                <h3 class="font-bold text-base sm:text-lg">Commentaires et suggestions</h3>
+                <textarea name="comments" class="w-full mt-2 p-3 sm:p-4 border rounded-lg text-sm sm:text-base" placeholder="Écrivez ici vos remarques et suggestions..." rows="5"></textarea>
             </div>
 
-            <div class="mt-6">
-                <h3 class="font-bold">Quelle est votre appréciation globale du service ?</h3>
-                <div class="flex gap-4 mt-2">
-                    <label class="flex items-center gap-2"><input type="radio" name="global_appreciation" value="excellent"> Excellent</label>
-                    <label class="flex items-center gap-2"><input type="radio" name="global_appreciation" value="tres_satisfaisant"> Très satisfaisant</label>
-                    <label class="flex items-center gap-2"><input type="radio" name="global_appreciation" value="satisfaisant"> Satisfaisant</label>
-                    <label class="flex items-center gap-2"><input type="radio" name="global_appreciation" value="a_ameliorer"> À améliorer</label>
+            <div class="mt-6 sm:mt-8">
+                <h3 class="font-bold text-base sm:text-lg">Quelle est votre appréciation globale du service ?</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+                    <label class="flex items-center gap-2 text-sm sm:text-base"><input type="radio" name="global_appreciation" value="excellent"> Excellent</label>
+                    <label class="flex items-center gap-2 text-sm sm:text-base"><input type="radio" name="global_appreciation" value="tres_satisfaisant"> Très satisfaisant</label>
+                    <label class="flex items-center gap-2 text-sm sm:text-base"><input type="radio" name="global_appreciation" value="satisfaisant"> Satisfaisant</label>
+                    <label class="flex items-center gap-2 text-sm sm:text-base"><input type="radio" name="global_appreciation" value="a_ameliorer"> À améliorer</label>
                 </div>
             </div>
 
-            <form id="feedbackForm" class="mt-6 no-print">
-                <div class="flex gap-3">
-                    <button type="button" class="btn btn-secondary" onclick="window.print()">Imprimer</button>
-                    <button id="submitBtn" type="submit" class="btn btn-primary">Envoyer</button>
+            <form id="feedbackForm" class="mt-6 sm:mt-8 no-print">
+                <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    <button type="button" class="btn btn-secondary flex-1 sm:flex-none text-sm sm:text-base" onclick="window.print()">Imprimer</button>
+                    <button id="submitBtn" type="submit" class="btn btn-primary flex-1 sm:flex-none text-sm sm:text-base">Envoyer</button>
                 </div>
             </form>
         </article>
