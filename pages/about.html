@@ -223,6 +223,26 @@
             display: inline-block;
         }
 
+        .about-card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            margin-top: 40px;
+        }
+
+        .about-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .about-card-grid .leader-card-large,
+        .about-stats-grid .leader-card-large {
+            min-width: 0;
+            margin-bottom: 0;
+        }
+
         @media(max-width: 992px) {
             .team-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -232,6 +252,12 @@
         @media(max-width: 768px) {
             .leader-card-large { grid-template-columns: 1fr; }
             .leader-img { height: 300px; }
+            .about-card-grid,
+            .about-stats-grid { grid-template-columns: 1fr; }
+        }
+
+        @media(max-width: 992px) {
+            body { overflow-x: hidden; }
         }
 
         @media(max-width: 640px) {
@@ -343,7 +369,7 @@
                     <h2>Mission, Vision & Valeurs</h2>
                     <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 620px; margin: 16px auto;">Notre ambition : professionnaliser le secteur des services, protéger les talents et garantir une expérience client sécurisée et performante.</p>
                 </div>
-                <div style="display:grid; grid-template-columns:repeat(3, minmax(220px,1fr)); gap:28px; margin-top: 40px;">
+                <div class="about-card-grid">
                     <div class="leader-card-large" style="padding: 28px; box-shadow: var(--shadow-sm);">
                         <h3>Mission</h3>
                         <p class="leader-desc">Mettre à disposition des talents qualifiés, fiables et engagés, pour des missions de ménage, restauration, accueil et entretien.</p>
@@ -366,7 +392,7 @@
                     <h2>Nos services clés</h2>
                     <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 640px; margin: 16px auto;">Des offres claires et modulables pour répondre aux besoins des particuliers et des professionnels.</p>
                 </div>
-                <div style="display:grid; grid-template-columns:repeat(3, minmax(220px,1fr)); gap:28px; margin-top: 40px;">
+                <div class="about-card-grid">
                     <div class="leader-card-large" style="padding: 28px; box-shadow: var(--shadow-sm);">
                         <h3>Recrutement & Staffing</h3>
                         <p class="leader-desc">Sélection rigoureuse et placement rapide de personnel qualifié pour les maisons, hôtels et restaurants.</p>
@@ -389,7 +415,7 @@
                     <h2>Nos chiffres clés</h2>
                     <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 620px; margin: 16px auto;">Des faits qui montrent notre capacité à produire des résultats durables et fiables.</p>
                 </div>
-                <div style="display:grid; grid-template-columns:repeat(4, minmax(180px,1fr)); gap:24px; margin-top: 40px;">
+                <div class="about-stats-grid">
                     <div class="leader-card-large" style="padding: 24px; text-align:center; box-shadow: var(--shadow-sm); border-radius: 18px;">
                         <h3>3</h3>
                         <p>Villes desservies</p>
@@ -501,7 +527,7 @@
                         <article class="team-card" itemscope itemtype="https://schema.org/Person">
                             <img src="../images/webmaster.jpg" alt="David Wawina MBULA - Webmaster, consultant digital et chargé de communication House Service S.A.S" class="team-card-img" itemprop="image">
                             <div class="team-card-body">
-                                <h3 itemprop="name">David Wawina MBULA</h3>
+                                <h3 itemprop="name">David MBULA WAWINA</h3>
                                 <span class="team-card-role" itemprop="jobTitle">Webmaster, consultant digital et chargé de communication</span>
                                 <span class="team-card-location" itemprop="workLocation"><i class="fas fa-building"></i> <span itemprop="addressLocality">Siège Social - Kisangani</span></span>
                                 <p class="team-card-seo" itemprop="description">David Wawina, également connu sous le nom de David MBULA ou MBULA WAWINA David, pilote la communication digitale et la présence web de House Service S.A.S à Kisangani.</p>

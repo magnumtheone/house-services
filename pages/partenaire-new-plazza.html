@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hôtel New Plazza | Partenaire House Service à Kisangani</title>
+    <meta name="description" content="Découvrez l'Hôtel New Plazza, partenaire de House Service à Kisangani : hébergement, restauration et réceptions.">
+    <link rel="canonical" href="https://house-servicerdc.com/pages/partenaire-new-plazza.html">
+    <meta property="og:title" content="Hôtel New Plazza | Partenaire House Service">
+    <meta property="og:description" content="Un cadre partenaire de House Service pour vos séjours, repas et événements à Kisangani.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-inner">
+            <a href="../index.html" class="logo">HOUSE <span>SERVICE S.A.S</span></a>
+            <nav class="nav-menu" aria-label="Navigation principale">
+                <a href="../index.html#about" class="nav-link">À Propos</a>
+                <a href="../index.html#services" class="nav-link">Services</a>
+                <a href="partenaires.html" class="nav-link" aria-current="page">Partenaires</a>
+                <a href="../index.html#blog" class="nav-link">Blog</a>
+            </nav>
+            <div class="partner-nav-actions">
+                <a href="partenaires.html" class="btn btn-secondary btn-devis-desktop">Tous les partenaires</a>
+                <button class="hamburger" type="button" aria-label="Ouvrir le menu de navigation" aria-expanded="false"><i class="fas fa-bars" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="page-hero hero-partners">
+            <div class="container">
+                <span class="section-header-tag">Partenaire de confiance</span>
+                <h1>Hôtel New Plazza</h1>
+                <p>Un cadre élégant à Kisangani pour vos séjours, vos repas et vos moments de célébration.</p>
+                <div class="partner-hero-actions"><a href="mailto:contact@house-servicerdc.com?subject=Informations%20Hôtel%20New%20Plazza" class="btn btn-primary"><i class="fas fa-envelope" aria-hidden="true"></i> Demander des informations</a><a href="partenaires.html" class="btn btn-secondary">Voir tous les partenaires</a></div>
+            </div>
+        </section>
+        <section class="section-py partner-detail-section">
+            <div class="container partner-detail-grid">
+                <div class="partner-detail-gallery">
+                    <img src="../images/partenaires/plazza-1%20(1).jpeg" alt="Hôtel New Plazza à Kisangani" loading="lazy">
+                    <img src="../images/partenaires/plazza-1%20(2).jpeg" alt="Espaces de l'Hôtel New Plazza" loading="lazy">
+                </div>
+                <div class="partner-detail-copy">
+                    <span class="section-header-tag">Kisangani · Tshopo</span>
+                    <h2>Un cadre pour vos séjours et vos événements</h2>
+                    <p>L'Hôtel New Plazza accueille ses visiteurs dans un cadre confortable et propose des services d'hébergement, de restauration et de réception.</p>
+                    <div class="partner-detail-facts"><span><i class="fas fa-location-dot" aria-hidden="true"></i><strong>Localisation</strong>Kisangani, RDC</span><span><i class="fas fa-handshake" aria-hidden="true"></i><strong>Réseau</strong>Partenaire House Service</span></div>
+                </div>
+            </div>
+        </section>
+        <section class="section-py partner-services" aria-labelledby="plazza-services-title">
+            <div class="container">
+                <div class="partner-section-heading"><span class="section-header-tag">Les points forts</span><h2 id="plazza-services-title">Tout pour un séjour réussi</h2><p>Une adresse complémentaire pour vos nuits, vos repas et vos événements à Kisangani.</p></div>
+                <div class="partner-activity-grid">
+                    <article><i class="fas fa-bed" aria-hidden="true"></i><h3>Hébergement</h3><p>Des chambres pensées pour vous offrir confort et tranquillité pendant votre séjour.</p></article>
+                    <article><i class="fas fa-utensils" aria-hidden="true"></i><h3>Restauration</h3><p>Un espace convivial pour découvrir une cuisine variée et partager vos repas.</p></article>
+                    <article><i class="fas fa-champagne-glasses" aria-hidden="true"></i><h3>Réceptions</h3><p>Des espaces adaptés à vos célébrations, rencontres et événements importants.</p></article>
+                </div>
+            </div>
+        </section>
+        <section class="partner-join section-py">
+            <div class="container partner-join-inner">
+                <div><span class="section-header-tag">Une question sur l'établissement ?</span><h2>House Service vous met en relation.</h2><p>Écrivez-nous pour obtenir plus d'informations sur l'Hôtel New Plazza ou découvrir les autres partenaires de notre réseau.</p></div>
+                <div class="partner-join-actions"><a href="mailto:contact@house-servicerdc.com?subject=Contact%20Hôtel%20New%20Plazza" class="btn btn-primary"><i class="fas fa-envelope" aria-hidden="true"></i> Nous contacter</a><a href="partenaires.html" class="partner-phone"><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour aux partenaires</a></div>
+            </div>
+        </section>
+    </main>
+    <footer><div class="container footer-bottom"><p>&copy; 2026 House Service S.A.S. Tous droits réservés.</p></div></footer>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const closeMobileMenu = () => {
+            navMenu.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+        };
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = !navMenu.classList.contains('active');
+            navMenu.classList.toggle('active', isOpen);
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+            hamburger.setAttribute('aria-label', isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation');
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileMenu));
+
+        document.addEventListener('click', event => {
+            if (window.innerWidth <= 992 && navMenu.classList.contains('active') && !navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeMobileMenu();
+        });
+    </script>
+</body>
+</html>
