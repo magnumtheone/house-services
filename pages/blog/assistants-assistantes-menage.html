@@ -8,44 +8,48 @@
     <meta name="keywords" content="assistants de ménage, assistantes de ménage, ménage RDC, nettoyage Kisangani, House Service">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://house-servicerdc.com/pages/blog/assistants-assistantes-menage.html">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../../styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            600: '#dc2626',
+                            900: '#7f1d1d'
+                        }
+                    }
+                }
+            }
+        };
+    </script>
     <style>
-        :root { --hs-dark: #0F172A; --hs-blue: #29B6F6; --hs-yellow: #FFB800; --text-secondary: #4B5563; --bg-secondary: #F8FAFC; --border-color: #E5E7EB; }
-        main { padding-top: 80px; min-height: 100vh; }
-        .article-hero { background: linear-gradient(135deg, var(--hs-dark), #1a1a2e); padding: 80px 0 60px; text-align: center; }
-        .article-hero h1 { color: white; font-size: 2.8rem; margin: 0 0 20px; line-height: 1.3; }
-        .article-hero .meta { color: rgba(255,255,255,.8); display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .article-hero .meta span { display: flex; align-items: center; gap: 8px; }
-        .article-hero .meta i { color: var(--hs-blue); }
-        .article-container { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
-        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--hs-blue); text-decoration: none; font-weight: 600; margin-bottom: 30px; }
-        .article-featured-img { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,.1); }
-        .article-content { background: white; border-radius: 12px; padding: 40px; box-shadow: 0 4px 15px rgba(0,0,0,.05); }
-        .article-content h2 { color: var(--hs-dark); font-size: 1.8rem; margin: 40px 0 20px; border-left: 4px solid var(--hs-blue); padding-left: 15px; }
-        .article-content h2:first-child { margin-top: 0; }
-        .article-content h3 { color: var(--hs-dark); font-size: 1.3rem; margin: 30px 0 15px; }
-        .article-content p, .article-content ul, .article-content ol { font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary); }
-        .article-content p { margin-bottom: 20px; }
-        .article-content ul, .article-content ol { margin: 20px 0 20px 30px; }
-        .article-content li { margin-bottom: 12px; }
-        .article-content strong { color: var(--hs-dark); }
-        .highlight-box, .tip-box { padding: 20px; margin: 30px 0; border-radius: 8px; }
-        .highlight-box { background: rgba(41,182,246,.1); border-left: 4px solid var(--hs-blue); }
-        .highlight-box p, .tip-box p { margin: 0; color: var(--hs-dark); }
-        .tip-box { background: rgba(255,184,0,.12); border-left: 4px solid var(--hs-yellow); }
-        .article-footer { margin-top: 60px; padding-top: 30px; border-top: 2px solid var(--border-color); }
-        .article-category { display: inline-block; background: var(--hs-blue); color: white; padding: 8px 16px; border-radius: 50px; font-size: .8rem; font-weight: 700; text-transform: uppercase; }
-        .article-nav { display: flex; gap: 20px; margin-top: 40px; }
-        .article-nav a { flex: 1; padding: 20px; background: var(--bg-secondary); border-radius: 8px; text-decoration: none; text-align: center; }
-        @media (max-width: 768px) { .article-hero h1 { font-size: 2rem; } .article-featured-img { height: 250px; } .article-content { padding: 25px; } .article-nav { flex-direction: column; } }
+        .prose p { margin-bottom: 1.5rem; line-height: 1.8; color: #4b5563; font-size: 1.125rem; }
+        .prose h2 { font-family: 'Poppins', sans-serif; font-weight: 700; color: #111827; font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem; }
+        .prose h3 { font-family: 'Poppins', sans-serif; font-weight: 700; color: #111827; font-size: 1.35rem; margin-top: 2rem; margin-bottom: 1rem; }
+        .prose ul, .prose ol { color: #4b5563; font-size: 1.125rem; line-height: 1.8; margin: 1.5rem 0; padding-left: 1.5rem; }
+        .prose li { margin-bottom: .75rem; }
+        .prose strong { color: #111827; }
+        .article-featured-img { display: block; width: 100%; height: auto; max-height: 650px; object-fit: contain; object-position: center; background: #fff; }
+        .article-nav { display: flex; gap: 1rem; }
+        .article-nav a { flex: 1; }
+        @media (max-width: 768px) {
+            .article-featured-img { max-height: none; }
+            .article-nav { flex-direction: column; }
+        }
     </style>
 </head>
-<body>
+<body class="font-sans bg-white antialiased">
     <header>
         <div class="container nav-inner">
             <a href="../../index.html" class="logo">HOUSE <span>SERVICE S.A.S</span></a>
@@ -61,22 +65,32 @@
         </div>
     </header>
 
-    <section class="article-hero">
-        <div class="container">
-            <h1>Assistants et assistantes de ménage : pour un intérieur propre et serein</h1>
-            <div class="meta">
-                <span><i class="fas fa-calendar"></i> 22 août 2026</span>
-                <span><i class="fas fa-clock"></i> 5 min de lecture</span>
-                <span><i class="fas fa-tag"></i> Services de ménage</span>
+    <header class="relative pt-32 pb-16 overflow-hidden">
+        <div class="absolute inset-0 bg-brand-50/50 -z-10"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div data-aos="fade-up">
+                <span class="px-4 py-1.5 rounded-full bg-white border border-brand-100 text-brand-600 font-semibold text-sm mb-6 inline-block shadow-sm">SERVICES DE MÉNAGE</span>
+                <h1 class="text-4xl md:text-6xl font-heading font-extrabold text-gray-900 leading-tight mb-6">Assistants et assistantes de ménage : pour un intérieur propre et serein</h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-8">Une aide organisée et discrète pour entretenir votre maison, votre bureau ou votre résidence en toute sérénité.</p>
+                <div class="flex items-center justify-center gap-4 text-gray-500 mb-10 flex-wrap">
+                    <img class="w-12 h-12 rounded-full border-2 border-brand-100" src="../../images/webmaster.jpg" alt="David MBULA WAWINA, auteur de l'article">
+                    <div class="text-left">
+                        <p class="font-bold text-gray-900 text-sm">David MBULA WAWINA</p>
+                        <p class="text-xs italic">House Service S.A.S</p>
+                    </div>
+                    <span class="h-4 w-px bg-gray-300 hidden sm:block"></span>
+                    <p class="text-sm"><i class="fas fa-calendar mr-1"></i> 22 août 2026</p>
+                    <p class="text-sm"><i class="fas fa-clock mr-1"></i> 5 min de lecture</p>
+                </div>
             </div>
+            <img src="../../images/blog/menage/menage.jpeg" alt="Assistants et assistantes de ménage House Service en intervention" class="article-featured-img rounded-[2.5rem] shadow-2xl w-full" width="800" height="450" data-aos="zoom-in" data-aos-delay="200">
         </div>
-    </section>
+    </header>
 
-    <main>
-        <div class="article-container">
-            <a href="../../index.html#blog" class="back-link"><i class="fas fa-arrow-left"></i> Retour aux articles</a>
-            <img src="../../images/house_service_2.webp" alt="Assistants et assistantes de ménage House Service en intervention" class="article-featured-img" width="800" height="400">
-            <article class="article-content">
+    <main class="max-w-3xl mx-auto px-4 py-16">
+        <article class="prose max-w-none" data-aos="fade-up">
+                <p class="text-xl font-medium text-gray-900 italic border-l-4 border-brand-600 pl-6 mb-12">Un intérieur propre contribue au bien-être quotidien. Avec une organisation adaptée, l'aide d'un assistant ou d'une assistante de ménage permet de préserver son cadre de vie sans négliger ses priorités.</p>
+
                 <h2>Pourquoi faire appel à un assistant ou une assistante de ménage ?</h2>
                 <p>Entre les obligations professionnelles, la vie familiale et les imprévus du quotidien, maintenir un intérieur propre demande du temps et une organisation régulière. Un assistant ou une assistante de ménage apporte une aide concrète pour entretenir votre maison, votre bureau ou votre résidence avec méthode et discrétion.</p>
                 <p>Cette assistance ne se limite pas à rendre les pièces propres. Elle contribue aussi à créer un environnement plus agréable, plus sain et mieux organisé pour les occupants comme pour les visiteurs.</p>
@@ -111,15 +125,14 @@
                 <p>House Service S.A.S met à disposition des assistants et assistantes de ménage pour contribuer à l'entretien des maisons, bureaux et résidences. Notre approche privilégie un personnel encadré, des consignes claires et une prestation adaptée à chaque environnement.</p>
                 <p>Vous souhaitez organiser un service de ménage pour votre foyer ou votre structure ? <a href="../devis.html">Demandez un devis</a> afin d'échanger sur vos besoins et les modalités possibles.</p>
 
-                <div class="article-footer">
+                <div class="article-footer mt-16 pt-8 border-t border-gray-100">
                     <span class="article-category">Services de ménage</span>
-                    <div class="article-nav">
+                    <div class="article-nav mt-10">
                         <a href="../../index.html#blog"><i class="fas fa-arrow-left"></i><br>Retour aux articles</a>
                         <a href="../devis.html">Demander un devis<br><i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-            </article>
-        </div>
+        </article>
     </main>
 
     <footer id="contact">
@@ -132,7 +145,9 @@
             <div class="footer-bottom"><p>&copy; <span id="footer-year"></span> House Service S.A.S | Tous droits réservés</p></div>
         </div>
     </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        AOS.init({ once: true, duration: 1000, offset: 100 });
         const hamburger = document.getElementById('hamburgerBtn');
         const navMenu = document.getElementById('navMenu');
         const navOverlay = document.getElementById('navOverlay');

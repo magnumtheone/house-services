@@ -12,6 +12,30 @@ disable-model-invocation: false
 
 Créer un article de blog complet, utile et publiable dans le site statique House Service S.A.S. Le résultat doit respecter le ton professionnel du site, ses conventions HTML et son arborescence.
 
+## Direction artistique de référence
+
+S'inspirer de `pages/blog/visibilite-en-ligne-rdc.html` pour produire une page éditoriale moderne, aérée et cohérente avec House Service :
+
+- construire un hero éditorial en haut de page, avec un fond clair discret, un badge de catégorie, un titre centré, un sous-titre facultatif, les informations d'auteur et la durée de lecture ;
+- afficher une image principale large sous le hero, avec un `alt` descriptif, un recadrage maîtrisé, des coins fortement arrondis et une ombre légère ;
+- conserver une colonne de lecture étroite et centrée, avec des paragraphes espacés, des intertitres `h2` visibles et des listes faciles à parcourir ;
+- mettre en valeur l'introduction ou les messages importants avec une bordure latérale ou un encadré gris très clair, sans multiplier les cartes décoratives ;
+- terminer par un appel à l'action clair, puis un bloc d'inscription ou de contact et un footer sobre, lorsque ces éléments sont présents dans le template ;
+- privilégier la palette existante rouge House Service, gris neutre et blanc, les typographies `Inter` pour le texte et `Poppins` pour les titres, sans créer de nouvelle direction visuelle ;
+- conserver les dépendances déjà utilisées par la page de référence (`styles.css`, Tailwind CDN, Font Awesome et AOS) et leurs comportements responsives ; ne pas ajouter de dépendance sans nécessité.
+
+Le design doit servir la lecture : le titre reste dominant sans être interminable, les informations ne se chevauchent pas sur mobile et l'image, les encadrés et les formulaires restent fluides sur petits écrans.
+
+### Règles de mise en œuvre à respecter
+
+- examiner les dimensions et l'orientation de l'image choisie avant de définir son affichage ; pour une affiche ou une image verticale contenant du texte, conserver toute l'image avec `height: auto` et `object-fit: contain`, sans hauteur fixe qui provoquerait un recadrage ;
+- utiliser `width` et `height` correspondant au ratio réel de l'image, puis prévoir uniquement une `max-height` raisonnable sur grand écran ; laisser la hauteur redevenir automatique sur mobile ;
+- ne pas dupliquer l'image principale dans le contenu et ne pas répéter mot pour mot l'introduction dans le premier paragraphe ;
+- si AOS est utilisé, charger `https://unpkg.com/aos@2.3.1/dist/aos.js` avant tout appel à `AOS.init()` ; vérifier également que chaque élément animé possède bien l'attribut `data-aos` attendu ;
+- conserver les chemins relatifs adaptés à `pages/blog/` pour toutes les images, y compris l'image de l'auteur, et vérifier que chaque fichier référencé existe réellement ;
+- lorsqu'une image principale est ajoutée ou remplacée, rechercher l'ancienne référence dans la carte correspondante de `index.html` et la remplacer par exactement la même image que dans l'article, avec un chemin, un `alt`, un titre et des dimensions cohérents ;
+- pour une image verticale ou une affiche, vérifier également que le style de la carte d'accueil ne la recadre pas de façon destructive ; conserver le contenu complet ou utiliser un cadrage maîtrisé adapté à la grille.
+
 ## Quand utiliser cette skill
 
 - L'utilisateur demande de créer, rédiger ou publier un article de blog.
@@ -35,7 +59,7 @@ Si le contexte permet de déduire une valeur raisonnable, la déduire et la sign
 
 ## Procédure
 
-1. Lire `pages/blog/article-template.html` et au moins un article publié proche du sujet avant toute modification.
+1. Lire `pages/blog/article-template.html`, `pages/blog/visibilite-en-ligne-rdc.html` et au moins un article publié proche du sujet avant toute modification. Utiliser la page de référence pour la composition visuelle et le template pour les composants officiellement réutilisables.
 2. Rechercher le nom de fichier, le slug, les mots-clés et les images déjà utilisés pour éviter les doublons.
 3. Définir un slug ASCII en minuscules avec des tirets, sans accents ni caractères spéciaux.
 4. Rédiger un titre précis et naturel, une introduction utile, des sections hiérarchisées avec `h2` et `h3`, des paragraphes courts, des listes lorsque cela facilite la lecture, une conclusion et un CTA cohérent avec House Service.
@@ -45,12 +69,12 @@ Si le contexte permet de déduire une valeur raisonnable, la déduire et la sign
    - mots-clés réellement présents dans le contenu ;
    - `canonical` correspondant à l'URL publique réelle ;
    - titre visible et attribut `alt` descriptif pour l'image principale.
-6. Créer `pages/blog/<slug>.html` à partir du template. Conserver les liens CDN, les classes existantes, le header, le footer et le comportement du menu, sauf nécessité explicite.
+6. Créer `pages/blog/<slug>.html` à partir du template. Reproduire la composition de la page de référence : hero centré, badge, titre, sous-titre si utile, auteur, durée de lecture, image principale, colonne de contenu, encadrés, CTA et footer. Conserver les liens CDN, les classes existantes et le comportement du menu, sauf nécessité explicite. Appliquer les règles de cadrage et de chargement JavaScript ci-dessus.
 7. Adapter les chemins relatifs au fait que la page est dans `pages/blog/` : les liens vers la racine utilisent `../../`, les liens vers `pages/` utilisent `../`, et les images utilisent `../../images/`.
-8. Utiliser seulement les composants éditoriaux existants, notamment `.highlight-box`, `.tip-box`, `.article-footer` et `.article-nav`. Ne pas introduire de nouvelle dépendance ou de style global sans nécessité.
-9. Mettre à jour la section Blog de `index.html` si l'article doit apparaître sur l'accueil. Vérifier simultanément le lien, le titre, la catégorie, l'image, l'attribut `alt` et les dimensions de l'image.
+8. Utiliser seulement les composants éditoriaux existants, notamment `.highlight-box`, `.tip-box`, `.article-footer` et `.article-nav`. Pour les pages qui suivent la référence, conserver aussi les conventions `prose`, `glass`, `text-gradient`, les encadrés gris sobres et les animations AOS déjà utilisées. Ne pas introduire de nouvelle dépendance ou de style global sans nécessité.
+9. Mettre à jour la section Blog de `index.html` si l'article doit apparaître sur l'accueil. Cette synchronisation est obligatoire dès que l'image principale est ajoutée ou modifiée : reprendre exactement le même fichier image, puis vérifier le lien, le titre, la catégorie, l'attribut `alt` et les dimensions dans l'article et dans sa carte d'accueil.
 10. Ajouter l'URL dans `sitemap.xml` si les autres articles y sont référencés, en respectant son format et la date disponible.
-11. Vérifier toutes les références avec une recherche ciblée : placeholders restants (`[TITRE`, `[IMAGE`, `[CATÉGORIE`, etc.), liens cassés évidents, image inexistante, canonical incohérent, doublon de slug et erreurs HTML manifestes.
+11. Vérifier toutes les références avec une recherche ciblée : placeholders restants (`[TITRE`, `[IMAGE`, `[CATÉGORIE`, etc.), liens cassés évidents, image inexistante, canonical incohérent, doublon de slug, image principale recadrée ou répétée, introduction dupliquée, ordre de chargement d'AOS et erreurs HTML manifestes.
 12. Exécuter le contrôle disponible dans le projet. Pour un site statique, utiliser au minimum une recherche des placeholders et des chemins, puis vérifier les diagnostics du fichier modifié. Ne pas signaler une validation comme réussie si aucun contrôle n'a pu être exécuté.
 
 ## Règles éditoriales
@@ -73,7 +97,12 @@ Confirmer que :
 - aucun placeholder du template ne subsiste ;
 - les liens relatifs fonctionnent depuis `pages/blog/` ;
 - l'accueil et le sitemap sont synchronisés lorsque requis ;
-- le rendu mobile reste couvert par les styles existants ;
+- si l'image de l'article a été ajoutée ou modifiée, la carte correspondante de `index.html` utilise exactement la même image, le même `alt` et des dimensions cohérentes ;
+- le hero, l'image, les métadonnées auteur, les encadrés, le formulaire et le footer restent lisibles et non chevauchants sur mobile ;
+- l'image principale conserve son ratio réel, son contenu complet et des attributs `width`/`height` cohérents avec ses dimensions ;
+- AOS est chargé avant `AOS.init()` lorsque les animations sont utilisées ;
+- l'image principale et l'introduction ne sont pas dupliquées inutilement ;
+- les classes et dépendances de la direction artistique restent cohérentes avec `visibilite-en-ligne-rdc.html` ;
 - le contrôle exécuté ne révèle pas de nouvelle erreur pertinente.
 
 ## Sortie attendue
