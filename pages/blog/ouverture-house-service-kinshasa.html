@@ -47,8 +47,98 @@
         .prose ul { margin: 1.5rem 0 1.5rem 1.25rem; color: #4b5563; line-height: 1.8; }
         .prose li { margin-bottom: 0.75rem; }
         .article-image { width: 100%; max-height: 600px; object-fit: cover; border-radius: 2rem; box-shadow: 0 30px 60px rgba(17, 24, 39, 0.12); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 2.5rem 0; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 1.4rem; border: 1px solid rgba(17, 24, 39, 0.08); background: #fff; box-shadow: 0 18px 40px rgba(17, 24, 39, 0.08); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+        .gallery-item::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0) 35%, rgba(15, 23, 42, 0.55) 100%);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            z-index: 1;
+        }
+        .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(17, 24, 39, 0.15); }
+        .gallery-item:hover::before { opacity: 1; }
+        .gallery-item a { display: block; position: relative; text-decoration: none; }
+        .gallery-item img { width: 100%; height: 230px; object-fit: cover; display: block; transition: transform 0.3s ease; }
+        .gallery-item:hover img { transform: scale(1.04); }
+        .gallery-item .gallery-zoom {
+            position: absolute;
+            right: 14px;
+            bottom: 14px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            color: #111827;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 12px 25px rgba(17, 24, 39, 0.18);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.25s ease;
+        }
+        .gallery-item:hover .gallery-zoom { opacity: 1; transform: translateY(0); }
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.88);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 24px;
+            overflow: auto;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox-inner {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: min(760px, 92vw);
+            max-height: 90vh;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+        }
+        .lightbox-inner img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            max-height: 90vh;
+            height: auto;
+            margin: 0 auto;
+            object-fit: contain;
+            background: #0f172a;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.22);
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         @media (max-width: 640px) {
             .article-image { max-height: 380px; height: auto; object-fit: contain; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item img { height: 260px; }
+            .lightbox { padding: 12px; }
+            .lightbox-inner { width: min(100%, 94vw); }
         }
     </style>
 </head>
@@ -75,7 +165,7 @@
                     <p class="text-sm">Lecture : 3 min</p>
                 </div>
             </div>
-            <img src="../../images/kin/image_converted_under_50kb.webp" alt="Kinshasa - nouvelle implantation de House Service en RDC" class="article-image" width="1200" height="800" data-aos="zoom-in" data-aos-delay="200">
+            <img src="../../images/blog/ouverture-bureau-kin/couverture.jpeg" alt="Kinshasa - couverture de l’ouverture du bureau House Service" class="article-image" width="1200" height="800" data-aos="zoom-in" data-aos-delay="200">
         </div>
     </header>
 
@@ -137,6 +227,58 @@
                 Notre mission demeure la même : fournir des solutions de sous-traitance professionnelle, humaines et adaptées à la réalité locale, avec un souci constant de qualité, d’éthique et de respect des standards de service.
             </p>
 
+            <div class="gallery-grid" data-aos="fade-up">
+                <figure class="gallery-item">
+                    <a href="#" class="gallery-trigger" data-image="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (1).jpeg" aria-label="Voir l’image 1 de l’ouverture du bureau House Service à Kinshasa">
+                        <img src="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (1).jpeg" alt="House Service à Kinshasa - photo d’ouverture du bureau" loading="lazy" width="600" height="420">
+                        <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    </a>
+                </figure>
+                <figure class="gallery-item">
+                    <a href="#" class="gallery-trigger" data-image="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (2).jpeg" aria-label="Voir l’image 2 de l’ouverture du bureau House Service à Kinshasa">
+                        <img src="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (2).jpeg" alt="Équipe House Service en photo officielle à Kinshasa" loading="lazy" width="600" height="420">
+                        <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    </a>
+                </figure>
+                <figure class="gallery-item">
+                    <a href="#" class="gallery-trigger" data-image="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (3).jpeg" aria-label="Voir l’image 3 de l’ouverture du bureau House Service à Kinshasa">
+                        <img src="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (3).jpeg" alt="Membres de l’équipe House Service au bureau de Kinshasa" loading="lazy" width="600" height="420">
+                        <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    </a>
+                </figure>
+                <figure class="gallery-item">
+                    <a href="#" class="gallery-trigger" data-image="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (4).jpeg" aria-label="Voir l’image 4 de l’ouverture du bureau House Service à Kinshasa">
+                        <img src="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (4).jpeg" alt="Photos de famille et d’équipe lors de l’ouverture du bureau House Service à Kinshasa" loading="lazy" width="600" height="420">
+                        <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    </a>
+                </figure>
+                <figure class="gallery-item">
+                    <a href="#" class="gallery-trigger" data-image="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (5).jpeg" aria-label="Voir l’image 5 de l’ouverture du bureau House Service à Kinshasa">
+                        <img src="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (5).jpeg" alt="Photo de l’équipe House Service avec le bureau Kinshasa en contexte" loading="lazy" width="600" height="420">
+                        <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    </a>
+                </figure>
+                <figure class="gallery-item">
+                    <a href="#" class="gallery-trigger" data-image="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (6).jpeg" aria-label="Voir l’image 6 de l’ouverture du bureau House Service à Kinshasa">
+                        <img src="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (6).jpeg" alt="Le bureau House Service à Kinshasa présenté lors de la cérémonie d’ouverture" loading="lazy" width="600" height="420">
+                        <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    </a>
+                </figure>
+                <figure class="gallery-item">
+                    <a href="#" class="gallery-trigger" data-image="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (7).jpeg" aria-label="Voir l’image 7 de l’ouverture du bureau House Service à Kinshasa">
+                        <img src="../../images/blog/ouverture-bureau-kin/ouvertoure-bureau-kin (7).jpeg" alt="Moment de célébration lors de l’ouverture du bureau House Service à Kinshasa" loading="lazy" width="600" height="420">
+                        <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                    </a>
+                </figure>
+            </div>
+
+            <div id="lightbox" class="lightbox" aria-hidden="true">
+                <div class="lightbox-inner">
+                    <button type="button" class="lightbox-close" aria-label="Fermer la galerie">×</button>
+                    <img id="lightboxImage" src="" alt="Vue agrandie de l’ouverture du bureau House Service à Kinshasa">
+                </div>
+            </div>
+
             <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 my-10">
                 <p><strong>House Service – Sous-traitance professionnelle des services en RDC.</strong></p>
             </div>
@@ -190,11 +332,44 @@
         const hamburger = document.getElementById('hamburgerBtn');
         const navMenu = document.getElementById('navMenu');
         const navOverlay = document.getElementById('navOverlay');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const closeLightbox = document.querySelector('.lightbox-close');
 
         function closeMobileMenu() {
             if (navMenu) navMenu.classList.remove('active');
             if (navOverlay) navOverlay.classList.remove('active');
             if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+        }
+
+        document.querySelectorAll('.gallery-trigger').forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                const imageSrc = this.getAttribute('data-image');
+                if (lightbox && lightboxImage && imageSrc) {
+                    lightboxImage.src = imageSrc;
+                    lightbox.classList.add('open');
+                    lightbox.setAttribute('aria-hidden', 'false');
+                }
+            });
+        });
+
+        if (closeLightbox) {
+            closeLightbox.addEventListener('click', function () {
+                if (lightbox) {
+                    lightbox.classList.remove('open');
+                    lightbox.setAttribute('aria-hidden', 'true');
+                }
+            });
+        }
+
+        if (lightbox) {
+            lightbox.addEventListener('click', function (event) {
+                if (event.target === lightbox) {
+                    lightbox.classList.remove('open');
+                    lightbox.setAttribute('aria-hidden', 'true');
+                }
+            });
         }
 
         if (hamburger && navMenu && navOverlay) {
