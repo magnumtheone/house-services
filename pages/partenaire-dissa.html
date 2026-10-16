@@ -9,25 +9,68 @@
     <meta property="og:title" content="Hôtel Dissa | Partenaire House Service">
     <meta property="og:description" content="Une adresse partenaire de House Service pour l'accueil, la restauration et le confort à Kisangani.">
     <meta property="og:type" content="website">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="/js/site.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container nav-inner">
-            <a href="../index.html" class="logo">HOUSE <span>SERVICE S.A.S</span></a>
-            <nav class="nav-menu" aria-label="Navigation principale">
-                <a href="../index.html#about" class="nav-link">À Propos</a>
-                <a href="../index.html#services" class="nav-link">Services</a>
-                <a href="partenaires.html" class="nav-link" aria-current="page">Partenaires</a>
-                <a href="../index.html#blog" class="nav-link">Blog</a>
+
+    <a class="skip-link" href="#main">Aller au contenu principal</a>
+    <header class="site-header" id="siteHeader">
+        <div class="site-container nav-inner">
+            <a href="/" class="logo" aria-label="House Service S.A.S, retour à l'accueil">HOUSE <span>SERVICE S.A.S</span></a>
+            <div class="nav-overlay" id="navOverlay"></div>
+            <nav class="nav-menu" id="navMenu" aria-label="Navigation principale">
+                <a href="/pages/about.html" class="nav-link">À propos</a>
+                <div class="dropdown">
+                    <a href="/pages/en-savoir-plus-services.html" class="nav-link" aria-haspopup="true" aria-expanded="false">Services <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="/pages/en-savoir-plus-services.html" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-concierge-bell" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Tous nos services</strong><span>Ménage, sécurité, garde d'enfants…</span></span>
+                        </a>
+                        <a href="/pages/en-savoir-plus-tarifs.html" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-tags" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Tarifs &amp; paiement</strong><span>Formules et moyens de paiement</span></span>
+                        </a>
+                        <a href="/#vidange-service" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-truck" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Vidange</strong><span>Fosses septiques et assainissement</span></span>
+                        </a>
+                        <a href="/#verifier-agent" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-user-check" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Vérifier un agent</strong><span>Authentifier un agent House Service</span></span>
+                        </a>
+                    </div>
+                </div>
+                <a href="/pages/en-savoir-plus-recrutement.html" class="nav-link">Talents</a>
+                <div class="dropdown">
+                    <a href="/pages/galerie.html" class="nav-link" aria-haspopup="true" aria-expanded="false">Découvrir <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="/pages/galerie.html" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-images" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Galerie</strong><span>Nos équipes sur le terrain</span></span>
+                        </a>
+                        <a href="/pages/nos-villes.html" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-city" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Nos villes</strong><span>Kisangani, Goma, Kinshasa</span></span>
+                        </a>
+                        <a href="/pages/partenaires.html" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Partenaires</strong><span>Ils nous font confiance</span></span>
+                        </a>
+                    </div>
+                </div>
+                <a href="/#blog" class="nav-link">Blog</a>
+                <a href="/pages/devis.html" class="btn btn-primary btn-sm nav-cta">Devis gratuit</a>
             </nav>
-            <div class="partner-nav-actions">
-                <a href="partenaires.html" class="btn btn-secondary btn-devis-desktop">Tous les partenaires</a>
-                <button class="hamburger" type="button" aria-label="Ouvrir le menu de navigation" aria-expanded="false"><i class="fas fa-bars" aria-hidden="true"></i></button>
-            </div>
+            <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu"><i class="fas fa-bars" aria-hidden="true"></i></button>
         </div>
     </header>
+
     <main>
         <section class="page-hero hero-partners">
             <div class="container">
@@ -68,7 +111,53 @@
             </div>
         </section>
     </main>
-    <footer><div class="container footer-bottom"><p>&copy; 2026 House Service S.A.S. Tous droits réservés.</p></div></footer>
+    <footer class="site-footer" id="contact" role="contentinfo">
+        <div class="site-container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <a href="/" class="logo logo-light">HOUSE <span>SERVICE S.A.S</span></a>
+                    <p>Excellence &amp; sous-traitance au service de votre entreprise et de vos ménages, à Kisangani, Goma et Kinshasa.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/houseservicerdc" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/243840665620" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/company/house-service-sarl" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-title">Services</h2>
+                    <ul>
+                        <li><a href="/pages/en-savoir-plus-services.html">Nos services</a></li>
+                        <li><a href="/pages/en-savoir-plus-tarifs.html">Tarifs &amp; paiement</a></li>
+                        <li><a href="/pages/devis.html">Devis gratuit</a></li>
+                        <li><a href="/#verifier-agent">Vérifier un agent</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-title">Entreprise</h2>
+                    <ul>
+                        <li><a href="/pages/about.html">À propos</a></li>
+                        <li><a href="/pages/en-savoir-plus-recrutement.html">Carrières &amp; formations</a></li>
+                        <li><a href="/pages/galerie.html">Galerie</a></li>
+                        <li><a href="/pages/nos-villes.html">Nos villes</a></li>
+                        <li><a href="/pages/partenaires.html">Partenaires</a></li>
+                        <li><a href="/#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-title">Contact</h2>
+                    <ul>
+                        <li><i class="fas fa-phone" aria-hidden="true"></i><a href="tel:+243840665620">+243 840 665 620</a></li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:contact@house-servicerdc.com">contact@house-servicerdc.com</a></li>
+                        <li><i class="fas fa-location-dot" aria-hidden="true"></i><span>Av. Munyororo N°02, Bloc Météo, Q/ Plateau Médical, C/ Makiso, Kisangani, RDC</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="footer-year">2026</span> House Service S.A.S. Tous droits réservés.</p>
+                <p>Design by <a href="https://davidwawina.site" target="_blank" rel="noopener noreferrer">David Wawina</a></p>
+            </div>
+        </div>
+    </footer>
     <script>
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');

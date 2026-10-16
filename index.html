@@ -150,254 +150,10 @@
 
 
     <!-- Styles CSS Modernes -->
+    <link rel="stylesheet" href="/styles.css">
     <style>
-        :root {
-            /* Palette Brand */
-            --hs-blue: #29B6F6;
-            --hs-blue-dark: #0288D1;
-            --hs-yellow: #FBC02D;
-            --hs-red: #D32F2F;
-            --hs-dark: #111827;
-            --hs-gray: #F3F4F6;
-            --hs-white: #FFFFFF;
-            
-            
-            /* UI Variables */
-            --glass: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.5);
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --radius-md: 12px;
-            --radius-lg: 24px;
-            
-            --font-main: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-display: 'Outfit', sans-serif;
-        }
-
-        html {
-            overflow-x: hidden;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        body {
-            background-color: var(--hs-white);
-            color: var(--hs-dark);
-            font-family: var(--font-main);
-            overflow-x: hidden;
-            line-height: 1.6;
-            font-size: 1rem; /* 16px base */
-        }
-
-        /* --- Typography Scale (Outfit + Roboto) --- */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-display);
-            font-weight: 500;
-            line-height: 1.25;
-            letter-spacing: -0.5px;
-            color: var(--hs-dark);
-        }
-        
-        h1 { font-size: 3.5rem; } /* 56px - Héros */
-        h2 { font-size: 2.25rem; } /* 36px - Sections */
-        h3 { font-size: 1.5rem; } /* 24px - Cartes */
-        h4 { 
-            font-size: 0.9rem; /* 14.4px - Petits titres */
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-        
-        p {
-            font-size: 1rem; /* 16px */
-            line-height: 1.7;
-            color: var(--text-secondary, #5F6368);
-            margin-bottom: 16px;
-        }
-        
-        .text-lead {
-            font-size: 1.2rem; /* 19.2px - Sous-titres */
-            line-height: 1.6;
-        }
-        
-        .text-secondary {
-            font-size: 0.95rem; /* 15.2px */
-        }
-        
-        .text-small {
-            font-size: 0.85rem; /* 13.6px */
-            color: var(--text-muted, #9AA0A6);
-        }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, var(--hs-dark) 0%, var(--hs-blue) 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .text-red { color: var(--hs-red); }
-        .text-blue { color: var(--hs-blue); }
-        
-        /* --- Layout Utils --- */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 2;
-        }
-        .section-py { padding: 60px 0; }
-        
-        /* --- Buttons --- */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            cursor: pointer;
-        }
-        .btn-primary {
-            background: var(--hs-dark);
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 0%; height: 100%;
-            background: var(--hs-blue);
-            z-index: -1;
-            transition: width 0.3s ease;
-        }
-        .btn-primary:hover::before { width: 100%; }
-        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(41, 182, 246, 0.4); }
-
-        .btn-secondary {
-            background: white;
-            color: var(--hs-dark);
-            border: 1px solid #e5e7eb;
-        }
-        .btn-secondary:hover {
-            border-color: var(--hs-blue);
-            color: var(--hs-blue);
-        }
-
-        /* --- Header / Nav --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            padding: 20px 0;
-            transition: 0.3s;
-        }
-        header.scrolled {
-            padding: 10px 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            box-shadow: var(--shadow-sm);
-        }
-        .nav-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--hs-dark);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .logo span { color: var(--hs-red); }
-        
-        .nav-menu {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-        .nav-link {
-            text-decoration: none;
-            color: var(--hs-dark);
-            font-weight: 500;
-            position: relative;
-            padding: 8px 0;
-            font-size: 0.95rem;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; width: 0%; height: 2px;
-            background: var(--hs-blue);
-            transition: 0.3s;
-        }
-        .nav-link:hover::after { width: 100%; }
-
-        /* Dropdown Menu Style Google */
-        .dropdown { position: relative; }
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            width: 600px;
-            background: white;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-xl);
-            padding: 16px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s;
-            border: 1px solid #f0f0f0;
-        }
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(10px);
-        }
-        .drop-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            padding: 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--hs-dark);
-            transition: 0.2s;
-        }
-        .drop-item:hover { background: var(--hs-gray); }
-        .drop-icon {
-            font-size: 1.2rem;
-            color: var(--hs-blue);
-            background: rgba(41, 182, 246, 0.1);
-            width: 40px; height: 40px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 8px;
-        }
-        .drop-text h5 { font-weight: 700; margin-bottom: 4px; }
-        .drop-text p { font-size: 0.8rem; color: #666; }
+        /* Base, typographie, boutons, en-tête, navigation et pied de page : voir /styles.css */
+        :root { --glass: rgba(255, 255, 255, 0.7); --glass-border: rgba(255, 255, 255, 0.5); }
 
         /* --- Hero Section Static --- */
         .hero {
@@ -631,145 +387,11 @@
         .blog-content { padding: 20px; }
         .blog-tag { font-size: 0.75rem; text-transform: uppercase; color: var(--hs-blue); font-weight: 700; }
 
-        /* --- Footer --- */
-        footer {
-            background: var(--hs-dark);
-            color: #9ca3af;
-            padding-top: 60px;
-            font-size: 0.9rem;
-        }
-        .footer-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px; padding-bottom: 60px; border-bottom: 1px solid #374151;
-        }
-        .footer-col h4 { color: white; margin-bottom: 25px; font-size: 1.1rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col a { color: #9ca3af; text-decoration: none; transition: 0.3s; }
-        .footer-col a:hover { color: var(--hs-blue); padding-left: 5px; }
-        .footer-bottom { text-align: center; padding: 20px 0; border-top: 1px solid #374151; }
-
-        /* Mobile Nav */
-        .hamburger { 
-            display: none; 
-            cursor: pointer; 
-            z-index: 1001; 
-            background: var(--hs-red);
-            border: none;
-            border-radius: 8px;
-            width: 44px;
-            height: 44px;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        .hamburger:hover { background: #B71C1C; }
-        
-        .btn-devis-desktop { display: inline-flex; }
-        
         @media (max-width: 992px) {
-            .btn-devis-desktop { display: none; }
-            .hamburger { display: flex; }
-            
-            .nav-menu {
-                position: fixed; 
-                top: 0; 
-                right: -100%; 
-                height: 100vh; 
-                width: 85%;
-                max-width: 350px;
-                background: white; 
-                flex-direction: column; 
-                padding: 100px 30px 40px;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.15); 
-                transition: 0.4s ease;
-                z-index: 1000;
-                overflow-y: auto;
-                gap: 8px;
-                align-items: stretch;
-            }
-            .nav-menu.active { right: 0; }
-            
-            .nav-link { 
-                padding: 16px 20px; 
-                border-radius: 10px; 
-                width: 100%; 
-                display: block;
-                font-size: 1rem;
-                background: #f8f9fa;
-                border-left: 3px solid transparent;
-                transition: all 0.2s ease;
-            }
-            .nav-link:hover, .nav-link:focus { 
-                background: white; 
-                color: var(--hs-red); 
-                border-left-color: var(--hs-red);
-            }
-            .nav-link::after { display: none; }
-            
-            .dropdown { width: 100%; }
-            .dropdown > .nav-link { 
-                display: flex; 
-                justify-content: space-between; 
-                align-items: center;
-            }
-            .dropdown-menu { 
-                position: static !important; 
-                left: 0 !important;
-                right: 0 !important;
-                width: 100% !important; 
-                max-width: 100% !important;
-                transform: none !important; 
-                box-shadow: none; 
-                border: none; 
-                padding: 12px; 
-                display: none;
-                background: #e8f4fc;
-                border-radius: 10px;
-                margin-top: 8px;
-                grid-template-columns: 1fr;
-            }
-            .dropdown.active .dropdown-menu { display: grid; gap: 10px; }
-            .drop-item { 
-                padding: 14px 16px; 
-                border-radius: 8px; 
-                background: white;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-            }
-            .drop-item:hover { background: #f0f7ff; }
-            .drop-icon {
-                width: 40px;
-                height: 40px;
-                min-width: 40px;
-                border-radius: 8px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1rem;
-            }
-            .drop-text h5 { font-size: 0.95rem; margin-bottom: 2px; }
-            .drop-text p { font-size: 0.8rem; margin: 0; }
-            
-            .nav-btn-mobile {
-                margin-top: 20px;
-                width: 100%;
-                justify-content: center;
-                background: var(--hs-blue) !important;
-                color: white !important;
-                border-radius: 10px;
-            }
             
             .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
             .bento-item { grid-column: span 1 !important; grid-row: span 1 !important; height: 250px; }
             
-            /* Échelle typographique tablet */
-            h1 { font-size: 2.5rem; } /* 40px */
-            h2 { font-size: 1.75rem; } /* 28px */
-            h3 { font-size: 1.25rem; } /* 20px */
             
             .ai-grid { grid-template-columns: 1fr; }
             .hero { height: auto; min-height: 80vh; padding: 120px 0 60px; }
@@ -783,10 +405,6 @@
             .services-grid { grid-template-columns: 1fr; }
             .team-grid { justify-content: center; }
             .mission-grid { grid-template-columns: 1fr; }
-            .btn { padding: 12px 24px; font-size: 0.9rem; }
-            .btn-lg { padding: 14px 28px; }
-            header { padding: 12px 0; background: rgba(255,255,255,0.98); }
-            .logo { font-size: 1.2rem; }
             
             /* Services header responsive */
             .services-header { 
@@ -802,13 +420,7 @@
         }
         
         @media (max-width: 480px) {
-            .nav-menu { width: 100%; max-width: none; padding: 90px 20px 30px; }
-            .container { padding: 0 15px; }
             
-            /* Échelle typographique mobile */
-            h1 { font-size: 2rem; } /* 32px */
-            h2 { font-size: 1.5rem; } /* 24px */
-            h3 { font-size: 1.125rem; } /* 18px */
             .text-lead { font-size: 1rem; }
             
             .section-py { padding: 50px 0; }
@@ -817,8 +429,6 @@
             .stat-number { font-size: 2rem; }
             .hero-logo-img { max-width: 120px; }
             .service-card { padding: 25px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-            .footer-col div[style*="display: flex"] { justify-content: center; }
             
             /* Section DG responsive */
             #team > .container > div > div {
@@ -827,24 +437,6 @@
             #team > .container > div > div > div:first-child {
                 min-height: 250px !important;
             }
-        }
-
-        /* Overlay for mobile menu */
-        .nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        .nav-overlay.active {
-            opacity: 1;
-            pointer-events: all;
         }
 
         /* DG Section Social Hover Effects */
@@ -1548,19 +1140,6 @@ html {
 </style>
 
 <style>
-/* Agrandissement de la zone cliquable pour les boutons "large" */
-.btn-lg {
-    padding: 14px 22px !important;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 48px;
-    border-radius: 12px;
-    touch-action: manipulation;
-}
-</style>
-<style>
     /* Section partenaires de l'accueil */
     #partners.partner-section {
         background: var(--hs-gray);
@@ -1779,10 +1358,177 @@ html {
             width: 100%;
         }
     }
+
+    /* ===================== SECTION FACEBOOK ===================== */
+    #facebook {
+        background: linear-gradient(180deg, #FFFFFF 0%, #F0F6FF 100%);
+    }
+
+    #facebook .facebook-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+    }
+
+    #facebook .facebook-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #1877F2;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    #facebook h2 {
+        color: var(--hs-dark);
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin-bottom: 16px;
+    }
+
+    #facebook .facebook-text p {
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+
+    #facebook .facebook-perks {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 28px;
+        display: grid;
+        gap: 12px;
+    }
+
+    #facebook .facebook-perks li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--hs-dark);
+        font-weight: 500;
+    }
+
+    #facebook .facebook-perks i {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(24, 119, 242, 0.1);
+        color: #1877F2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    #facebook .btn-facebook {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #1877F2;
+        color: #FFFFFF;
+        padding: 14px 28px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.2s;
+    }
+
+    #facebook .btn-facebook:hover {
+        background: #0F5FCC;
+        transform: translateY(-2px);
+    }
+
+    #facebook .facebook-embed {
+        display: flex;
+        justify-content: center;
+        background: #FFFFFF;
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+    }
+
+    #facebook .facebook-embed iframe {
+        width: 100%;
+        max-width: 500px;
+        height: 500px;
+        border: none;
+        overflow: hidden;
+    }
+
+    @media (max-width: 992px) {
+        #facebook .facebook-grid {
+            grid-template-columns: 1fr;
+            gap: 36px;
+        }
+
+        #facebook h2 {
+            font-size: 2rem;
+        }
+    }
 </style>
 
+    <script src="/js/site.js" defer></script>
 </head>
 <body>
+
+    <a class="skip-link" href="#main">Aller au contenu principal</a>
+    <header class="site-header" id="siteHeader">
+        <div class="site-container nav-inner">
+            <a href="/" class="logo" aria-label="House Service S.A.S, retour à l'accueil">HOUSE <span>SERVICE S.A.S</span></a>
+            <div class="nav-overlay" id="navOverlay"></div>
+            <nav class="nav-menu" id="navMenu" aria-label="Navigation principale">
+                <a href="/pages/about.html" class="nav-link">À propos</a>
+                <div class="dropdown">
+                    <a href="/pages/en-savoir-plus-services.html" class="nav-link" aria-haspopup="true" aria-expanded="false">Services <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="/pages/en-savoir-plus-services.html" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-concierge-bell" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Tous nos services</strong><span>Ménage, sécurité, garde d'enfants…</span></span>
+                        </a>
+                        <a href="/pages/en-savoir-plus-tarifs.html" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-tags" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Tarifs &amp; paiement</strong><span>Formules et moyens de paiement</span></span>
+                        </a>
+                        <a href="/#vidange-service" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-truck" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Vidange</strong><span>Fosses septiques et assainissement</span></span>
+                        </a>
+                        <a href="/#verifier-agent" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-user-check" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Vérifier un agent</strong><span>Authentifier un agent House Service</span></span>
+                        </a>
+                    </div>
+                </div>
+                <a href="/pages/en-savoir-plus-recrutement.html" class="nav-link">Talents</a>
+                <div class="dropdown">
+                    <a href="/pages/galerie.html" class="nav-link" aria-haspopup="true" aria-expanded="false">Découvrir <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="/pages/galerie.html" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-images" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Galerie</strong><span>Nos équipes sur le terrain</span></span>
+                        </a>
+                        <a href="/pages/nos-villes.html" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-city" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Nos villes</strong><span>Kisangani, Goma, Kinshasa</span></span>
+                        </a>
+                        <a href="/pages/partenaires.html" class="drop-item">
+                            <span class="drop-icon"><i class="fas fa-handshake" aria-hidden="true"></i></span>
+                            <span class="drop-text"><strong>Partenaires</strong><span>Ils nous font confiance</span></span>
+                        </a>
+                    </div>
+                </div>
+                <a href="/#blog" class="nav-link">Blog</a>
+                <a href="/pages/devis.html" class="btn btn-primary btn-sm nav-cta">Devis gratuit</a>
+            </nav>
+            <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu"><i class="fas fa-bars" aria-hidden="true"></i></button>
+        </div>
+    </header>
+
 
     <!-- Preloader 
     <div id="loader">
@@ -1790,68 +1536,6 @@ html {
         <div class="spinner"></div>
     </div> -->
 
-    <!-- Navigation -->
-    <header>
-        <div class="container nav-inner">
-            <a href="#" class="logo">HOUSE <span>SERVICE S.A.S</span></a>
-            
-            <!-- Overlay mobile -->
-            <div class="nav-overlay" id="navOverlay"></div>
-            
-            <nav class="nav-menu">
-                <a href="#about" class="nav-link">À Propos</a>
-                
-                <!-- Mega Dropdown -->
-                <div class="dropdown">
-                    <a href="#services" class="nav-link">Services <i class="fas fa-chevron-down" style="font-size:0.7em; margin-left:5px;"></i></a>
-                    <div class="dropdown-menu">
-                        <a href="/pages/en-savoir-plus-services.html" class="drop-item">
-                            <div class="drop-icon"><i class="fas fa-home"></i></div>
-                            <div class="drop-text"><strong>Habitation</strong><p>Ménage, Baby-sitting, Jardin</p></div>
-                        </a>
-                        <a href="/pages/en-savoir-plus-services.html" class="drop-item">
-                            <div class="drop-icon"><i class="fas fa-briefcase"></i></div>
-                            <div class="drop-text"><strong>Entreprise</strong><p>Sécurité, Accueil, Protocole</p></div>
-                        </a>
-                        <a href="/pages/en-savoir-plus-services.html" class="drop-item">
-                            <div class="drop-icon"><i class="fas fa-plane"></i></div>
-                            <div class="drop-text"><strong>Spécialisé</strong><p>Hôtesses de l'air, Tourisme</p></div>
-                        </a>
-                        <a href="/pages/en-savoir-plus-services.html" class="drop-item">
-                            <div class="drop-icon"><i class="fas fa-user-tie"></i></div>
-                            <div class="drop-text"><strong>Sur Mesure</strong><p>Personnel administratif</p></div>
-                        </a>
-                    </div>
-                </div>
-
-                <a href="#verifier-agent" class="nav-link">Vérifier un Agent</a>
-                <a href="#blog" class="nav-link">Blog</a>
-                <a href="pages/partenaires.html" class="nav-link">Partenaires</a>
-                
-                <!-- Dropdown Galerie -->
-                <div class="dropdown">
-                    <a href="pages/galerie.html" class="nav-link">Galerie <i class="fas fa-chevron-down" style="font-size:0.7em; margin-left:5px;"></i></a>
-                    <div class="dropdown-menu">
-                        <a href="pages/galerie.html" class="drop-item">
-                            <div class="drop-icon"><i class="fas fa-images"></i></div>
-                            <div class="drop-text"><strong>Photos</strong><p>Notre portfolio complet</p></div>
-                        </a>
-                        <a href="pages/nos-villes.html" class="drop-item">
-                            <div class="drop-icon"><i class="fas fa-city"></i></div>
-                            <div class="drop-text"><strong>Nos Villes</strong><p>Kisangani, Goma, Kinshasa</p></div>
-                        </a>
-                    </div>
-                </div>
-                
-                <div onclick="openPayment()" class="btn btn-secondary nav-btn-mobile" style="padding: 10px 20px; font-size: 0.8rem;">Paiement</div>
-            </nav>
-
-            <div style="display: flex; gap: 15px; align-items: center;">
-                <a href="pages/devis.html" class="btn btn-primary btn-devis-desktop">Devis Gratuit</a>
-                <button class="hamburger" id="hamburgerBtn" aria-label="Ouvrir le menu de navigation" aria-expanded="false"><i class="fas fa-bars" aria-hidden="true"></i></button>
-            </div>
-        </div>
-    </header>
 
     <!-- Main Content -->
     <main role="main">
@@ -3038,6 +2722,36 @@ html {
         </div>
     </section>
 
+    <!-- ===================== SECTION FACEBOOK ===================== -->
+    <section id="facebook" class="section-py" aria-labelledby="facebook-title">
+        <div class="container">
+            <div class="facebook-grid">
+                <div class="facebook-text">
+                    <span class="facebook-tag"><i class="fab fa-facebook" aria-hidden="true"></i> Restons connectés</span>
+                    <h2 id="facebook-title">Suivez House Service sur Facebook</h2>
+                    <p>Rejoignez notre communauté pour suivre nos actualités, nos offres d'emploi et les coulisses de nos équipes à Kisangani et partout en RDC.</p>
+                    <ul class="facebook-perks">
+                        <li><i class="fas fa-bullhorn" aria-hidden="true"></i> Actualités et annonces de l'entreprise</li>
+                        <li><i class="fas fa-briefcase" aria-hidden="true"></i> Offres d'emploi et recrutements</li>
+                        <li><i class="fas fa-comments" aria-hidden="true"></i> Échangez directement avec notre équipe</li>
+                    </ul>
+                    <a href="https://www.facebook.com/houseservicerdc" class="btn-facebook" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook-f" aria-hidden="true"></i> Suivre notre page
+                    </a>
+                </div>
+                <div class="facebook-embed">
+                    <iframe
+                        src="https://www.facebook.com/houseservicerdc"
+                        title="Page Facebook House Service"
+                        loading="lazy"
+                        scrolling="no"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
 <section id="faq" class="section-py bg-color">
     <div class="container">
         <!-- Titres de Section -->
@@ -3268,51 +2982,53 @@ html {
 
     </main>
 
-    <!-- Footer -->
-    <footer id="contact" role="contentinfo">
-        <div class="container">
+    <footer class="site-footer" id="contact" role="contentinfo">
+        <div class="site-container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>House Service S.A.S</h4>
-                    <p>Excellence & Sous-traitance au Service de Votre Entreprise et de Vos Ménages.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#services">Nos Services</a></li>
-                        <li><a href="pages/en-savoir-plus-tarifs.html">Tarifs & Paiement</a></li>
-                        <li><a href="#team">Notre Équipe</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Talents</h4>
-                    <ul>
-                        <li><a href="pages/en-savoir-plus-recrutement.html">Carrières</a></li>
-                        <li><a href="pages/en-savoir-plus-recrutement.html">Formations</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:contact@house-servicerdc.com">contact@house-servicerdc.com</a></li>
-                        <li><a href="tel:+243840665620">+243 840665620</a></li>
-                        <li><a href="#">Avenue Munyororo N°02, Bloc Météo. Q/ Plateau Médical. C/ Makiso. Kisangani, RDC</a></li>
-                    </ul>
-                    <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="https://wa.me/243840665620" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp fa-lg"></i></a>
+                <div class="footer-col footer-brand">
+                    <a href="/" class="logo logo-light">HOUSE <span>SERVICE S.A.S</span></a>
+                    <p>Excellence &amp; sous-traitance au service de votre entreprise et de vos ménages, à Kisangani, Goma et Kinshasa.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/houseservicerdc" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://wa.me/243840665620" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/company/house-service-sarl" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                     </div>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-title">Services</h2>
+                    <ul>
+                        <li><a href="/pages/en-savoir-plus-services.html">Nos services</a></li>
+                        <li><a href="/pages/en-savoir-plus-tarifs.html">Tarifs &amp; paiement</a></li>
+                        <li><a href="/pages/devis.html">Devis gratuit</a></li>
+                        <li><a href="/#verifier-agent">Vérifier un agent</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-title">Entreprise</h2>
+                    <ul>
+                        <li><a href="/pages/about.html">À propos</a></li>
+                        <li><a href="/pages/en-savoir-plus-recrutement.html">Carrières &amp; formations</a></li>
+                        <li><a href="/pages/galerie.html">Galerie</a></li>
+                        <li><a href="/pages/nos-villes.html">Nos villes</a></li>
+                        <li><a href="/pages/partenaires.html">Partenaires</a></li>
+                        <li><a href="/#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h2 class="footer-title">Contact</h2>
+                    <ul>
+                        <li><i class="fas fa-phone" aria-hidden="true"></i><a href="tel:+243840665620">+243 840 665 620</a></li>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:contact@house-servicerdc.com">contact@house-servicerdc.com</a></li>
+                        <li><i class="fas fa-location-dot" aria-hidden="true"></i><span>Av. Munyororo N°02, Bloc Météo, Q/ Plateau Médical, C/ Makiso, Kisangani, RDC</span></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <span id="footer-year"></span> House Service S.A.S | Tous droits réservés</p>
-                <p style="margin-top: 10px; font-size: 0.85rem;">Design by <a href="https://davidwawina.site" target="_blank" rel="noopener noreferrer" style="color: var(--hs-blue); text-decoration: none; font-weight: 600; transition: color 0.2s;">David Wawina</a></p>
+                <p>&copy; <span id="footer-year">2026</span> House Service S.A.S. Tous droits réservés.</p>
+                <p>Design by <a href="https://davidwawina.site" target="_blank" rel="noopener noreferrer">David Wawina</a></p>
             </div>
         </div>
-    <script>document.getElementById("footer-year").textContent=new Date().getFullYear();</script>
-</footer>
+    </footer>
 
     <!-- Payment Modal -->
     <div class="payment-modal" id="paymentModal">
